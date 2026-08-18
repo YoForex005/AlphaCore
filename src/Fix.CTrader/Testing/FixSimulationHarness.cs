@@ -13,7 +13,7 @@ public sealed class FixSimulationHarness
 {
     private readonly FixMessageParser _parser = new();
 
-    public string SimulateLogonSuccess(string senderCompId, string senderSubId, string targetCompId = "CSERVER", string targetSubId = "QUOTE")
+    public string SimulateLogonSuccess(string senderCompId, string senderSubId, string targetCompId = "cServer", string targetSubId = "QUOTE")
         => BuildStandardMessage(
             new[] {
                 (8, "FIX.4.4"),
@@ -27,7 +27,7 @@ public sealed class FixSimulationHarness
                 (141, "Y") // ResetSeqNumFlag
             });
 
-    public string SimulateLogonFail(string senderCompId, string senderSubId, string reason = "InvalidCredentials", string targetCompId = "CSERVER", string targetSubId = "TRADE")
+    public string SimulateLogonFail(string senderCompId, string senderSubId, string reason = "InvalidCredentials", string targetCompId = "cServer", string targetSubId = "TRADE")
         => BuildStandardMessage(
             new[] {
                 (8, "FIX.4.4"),
@@ -126,7 +126,7 @@ public sealed class FixSimulationHarness
                 (1128, text) // TestMessageIndicator-like field (simplified)
             });
 
-    public string SimulateSecurityList(string senderCompId = "SENDER", string senderSubId = "QUOTE", string targetCompId = "CSERVER", string targetSubId = "QUOTE")
+    public string SimulateSecurityList(string senderCompId = "SENDER", string senderSubId = "QUOTE", string targetCompId = "cServer", string targetSubId = "QUOTE")
     {
         // Extremely simplified. Only the tags our services look at:
         // 1007 = SymbolName, 55 = InstrumentID (numeric)
@@ -152,7 +152,7 @@ public sealed class FixSimulationHarness
             (8, "FIX.4.4"),
             (35, "X"), // MarketDataSnapshotFullRefresh (simplified)
             (49, senderCompId),
-            (56, "CSERVER"),
+            (56, "cServer"),
             (57, "QUOTE"),
             (50, senderSubId),
             (55, symbolIdNumeric),
@@ -184,7 +184,7 @@ public sealed class FixSimulationHarness
             (8, "FIX.4.4"),
             (35, "8"), // ExecutionReport
             (49, senderCompId),
-            (56, "CSERVER"),
+            (56, "cServer"),
             (57, "TRADE"),
             (50, senderSubId),
             (11, clOrdId), // ClOrdID

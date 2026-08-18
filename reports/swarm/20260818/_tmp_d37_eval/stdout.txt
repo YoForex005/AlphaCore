@@ -1,0 +1,57 @@
+Brokers	2
+Mt5Groups	4
+Mt5Accounts	4
+Mt5Deals	18
+Mt5Positions	0
+ReconstructedTrades	9
+ReconstructedCompletedXau	9
+TraderScores	4
+TraderScoreHistory	4
+FixSessionStates	2
+DestinationQuotes	1
+KillSwitches	1
+CanonicalInstruments	1
+OutboxEvents	4
+CopyIntents	6
+ShadowOrders	6
+SyncCheckpoints	0
+SourceSymbolMappings	0
+AuditLogs	0
+RiskDecisions	0
+ExecutionIntents	0
+---BROKERS---
+ACHIEVER	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	57.128.141.65	2027
+STARWAVEFX	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2	84.201.6.142	9904
+---GROUPS---
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	contest\yo-2step
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	demo\Maxmaster
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	demo\yo-2step
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2	real\standard
+---ACCOUNTS---
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	10001	demo\Maxmaster
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	10002	demo\yo-2step
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1	10003	contest\yo-2step
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2	99001	real\standard
+---SCORES---
+10001	SHADOW	Xau=3	Mart=False	Avg=False	Lot=False	Risk=10	Qual=95.50
+10002	RISK_BLOCKED	Xau=3	Mart=True	Avg=False	Lot=True	Risk=70	Qual=42.50
+10003	INSUFFICIENT_DATA	Xau=0	Mart=False	Avg=False	Lot=False	Risk=10	Qual=40
+99001	SHADOW	Xau=3	Mart=False	Avg=False	Lot=False	Risk=10	Qual=95.50
+---FIX---
+Quote	Disconnected	live-us-eqx-01.p.c-trader.com	5211	live.pepperstone.1369850	cServer	No live QUOTE socket. Demo seed only.
+Trade	Disconnected	live-us-eqx-01.p.c-trader.com	5212	live.pepperstone.1369850	cServer	No live TRADE socket. NewOrderSingle off.
+---OUTBOX---
+ScoreUpdate	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001	{"state":"SHADOW","completed":3}
+ScoreUpdate	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10002	{"state":"RISK_BLOCKED","completed":3}
+ScoreUpdate	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10003	{"state":"INSUFFICIENT_DATA","completed":0}
+ScoreUpdate	aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001	{"state":"SHADOW","completed":3}
+---COPY---
+10001	SHADOW_ONLY	shadow:...:10001:501	0.1
+10001	SHADOW_ONLY	shadow:...:10001:502	0.1
+10001	SHADOW_ONLY	shadow:...:10001:503	0.1
+99001	SHADOW_ONLY	shadow:...:99001:701	0.05
+99001	SHADOW_ONLY	shadow:...:99001:702	0.05
+99001	SHADOW_ONLY	shadow:...:99001:703	0.05
+RESEED_DEALS	18	was=18
+RESEED_SCORES	4
+RESEED_OUTBOX	4

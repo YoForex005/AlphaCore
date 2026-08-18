@@ -1,0 +1,212 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/App.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=4ca40357"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("D:/Prop/apps/web/src/App.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Routes, Route, Navigate } from "/node_modules/.vite/deps/react-router-dom.js?v=341dd2d2";
+import DashboardLayout from "/src/layouts/DashboardLayout.tsx";
+import OverviewPage from "/src/pages/OverviewPage.tsx";
+import BrokersPage from "/src/pages/BrokersPage.tsx";
+import GroupsPage from "/src/pages/GroupsPage.tsx";
+import TradersPage from "/src/pages/TradersPage.tsx";
+import TraderDetailPage from "/src/pages/TraderDetailPage.tsx";
+import TradeExplorerPage from "/src/pages/TradeExplorerPage.tsx";
+import ScoringPage from "/src/pages/ScoringPage.tsx";
+import ShadowPortfolioPage from "/src/pages/ShadowPortfolioPage.tsx";
+import LiveCopyPage from "/src/pages/LiveCopyPage.tsx";
+import FixSessionsPage from "/src/pages/FixSessionsPage.tsx";
+import RiskPage from "/src/pages/RiskPage.tsx";
+import ReconciliationPage from "/src/pages/ReconciliationPage.tsx";
+import SystemHealthPage from "/src/pages/SystemHealthPage.tsx";
+import AuditPage from "/src/pages/AuditPage.tsx";
+import SettingsPage from "/src/pages/SettingsPage.tsx";
+export default function App() {
+  return /* @__PURE__ */ jsxDEV(Routes, { children: /* @__PURE__ */ jsxDEV(Route, { element: /* @__PURE__ */ jsxDEV(DashboardLayout, {}, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/App.tsx",
+    lineNumber: 41,
+    columnNumber: 23
+  }, this), children: [
+    /* @__PURE__ */ jsxDEV(Route, { index: true, element: /* @__PURE__ */ jsxDEV(Navigate, { to: "/overview", replace: true }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 42,
+      columnNumber: 31
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 42,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "overview", element: /* @__PURE__ */ jsxDEV(OverviewPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 43,
+      columnNumber: 41
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 43,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "brokers", element: /* @__PURE__ */ jsxDEV(BrokersPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 44,
+      columnNumber: 40
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 44,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "groups", element: /* @__PURE__ */ jsxDEV(GroupsPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 45,
+      columnNumber: 39
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 45,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "traders", element: /* @__PURE__ */ jsxDEV(TradersPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 46,
+      columnNumber: 40
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 46,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "traders/:brokerId/:login", element: /* @__PURE__ */ jsxDEV(TraderDetailPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 47,
+      columnNumber: 57
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 47,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "trades", element: /* @__PURE__ */ jsxDEV(TradeExplorerPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 48,
+      columnNumber: 39
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 48,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "scoring", element: /* @__PURE__ */ jsxDEV(ScoringPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 49,
+      columnNumber: 40
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 49,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "shadow", element: /* @__PURE__ */ jsxDEV(ShadowPortfolioPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 50,
+      columnNumber: 39
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 50,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "live", element: /* @__PURE__ */ jsxDEV(LiveCopyPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 51,
+      columnNumber: 37
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 51,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "fix", element: /* @__PURE__ */ jsxDEV(FixSessionsPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 52,
+      columnNumber: 36
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 52,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "risk", element: /* @__PURE__ */ jsxDEV(RiskPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 53,
+      columnNumber: 37
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 53,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "reconciliation", element: /* @__PURE__ */ jsxDEV(ReconciliationPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 54,
+      columnNumber: 47
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 54,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "health", element: /* @__PURE__ */ jsxDEV(SystemHealthPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 55,
+      columnNumber: 39
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 55,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "audit", element: /* @__PURE__ */ jsxDEV(AuditPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 56,
+      columnNumber: 38
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 56,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(Route, { path: "settings", element: /* @__PURE__ */ jsxDEV(SettingsPage, {}, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 57,
+      columnNumber: 41
+    }, this) }, void 0, false, {
+      fileName: "D:/Prop/apps/web/src/App.tsx",
+      lineNumber: 57,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "D:/Prop/apps/web/src/App.tsx",
+    lineNumber: 41,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/App.tsx",
+    lineNumber: 40,
+    columnNumber: 5
+  }, this);
+}
+_c = App;
+var _c;
+$RefreshReg$(_c, "App");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("D:/Prop/apps/web/src/App.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("D:/Prop/apps/web/src/App.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QkFBaUIsU0FBUyx1QkFBQyx3QkFBRDtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBQW1CLEtBQXpEO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBNkQ7QUFBQSxJQUM3RCx1QkFBQyxTQUFNLE1BQUssVUFBUyxTQUFTLHVCQUFDLHNCQUFEO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBaUIsS0FBL0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUFtRDtBQUFBLElBQ25ELHVCQUFDLFNBQU0sTUFBSyxTQUFRLFNBQVMsdUJBQUMsZUFBRDtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBQVUsS0FBdkM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUEyQztBQUFBLElBQzNDLHVCQUFDLFNBQU0sTUFBSyxZQUFXLFNBQVMsdUJBQUMsa0JBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUFhLEtBQTdDO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FBaUQ7QUFBQSxPQWhCbkQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQWlCQSxLQWxCRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBbUJBO0FBRUo7QUFBQ0MsS0F2QnVCRDtBQUFHLElBQUFDO0FBQUEsYUFBQUEsSUFBQSIsIm5hbWVzIjpbIlJvdXRlcyIsIlJvdXRlIiwiTmF2aWdhdGUiLCJEYXNoYm9hcmRMYXlvdXQiLCJPdmVydmlld1BhZ2UiLCJCcm9rZXJzUGFnZSIsIkdyb3Vwc1BhZ2UiLCJUcmFkZXJzUGFnZSIsIlRyYWRlckRldGFpbFBhZ2UiLCJUcmFkZUV4cGxvcmVyUGFnZSIsIlNjb3JpbmdQYWdlIiwiU2hhZG93UG9ydGZvbGlvUGFnZSIsIkxpdmVDb3B5UGFnZSIsIkZpeFNlc3Npb25zUGFnZSIsIlJpc2tQYWdlIiwiUmVjb25jaWxpYXRpb25QYWdlIiwiU3lzdGVtSGVhbHRoUGFnZSIsIkF1ZGl0UGFnZSIsIlNldHRpbmdzUGFnZSIsIkFwcCIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkFwcC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVzLCBSb3V0ZSwgTmF2aWdhdGUgfSBmcm9tICdyZWFjdC1yb3V0ZXItZG9tJztcclxuaW1wb3J0IERhc2hib2FyZExheW91dCBmcm9tICcuL2xheW91dHMvRGFzaGJvYXJkTGF5b3V0JztcclxuaW1wb3J0IE92ZXJ2aWV3UGFnZSBmcm9tICcuL3BhZ2VzL092ZXJ2aWV3UGFnZSc7XHJcbmltcG9ydCBCcm9rZXJzUGFnZSBmcm9tICcuL3BhZ2VzL0Jyb2tlcnNQYWdlJztcclxuaW1wb3J0IEdyb3Vwc1BhZ2UgZnJvbSAnLi9wYWdlcy9Hcm91cHNQYWdlJztcclxuaW1wb3J0IFRyYWRlcnNQYWdlIGZyb20gJy4vcGFnZXMvVHJhZGVyc1BhZ2UnO1xyXG5pbXBvcnQgVHJhZGVyRGV0YWlsUGFnZSBmcm9tICcuL3BhZ2VzL1RyYWRlckRldGFpbFBhZ2UnO1xyXG5pbXBvcnQgVHJhZGVFeHBsb3JlclBhZ2UgZnJvbSAnLi9wYWdlcy9UcmFkZUV4cGxvcmVyUGFnZSc7XHJcbmltcG9ydCBTY29yaW5nUGFnZSBmcm9tICcuL3BhZ2VzL1Njb3JpbmdQYWdlJztcclxuaW1wb3J0IFNoYWRvd1BvcnRmb2xpb1BhZ2UgZnJvbSAnLi9wYWdlcy9TaGFkb3dQb3J0Zm9saW9QYWdlJztcclxuaW1wb3J0IExpdmVDb3B5UGFnZSBmcm9tICcuL3BhZ2VzL0xpdmVDb3B5UGFnZSc7XHJcbmltcG9ydCBGaXhTZXNzaW9uc1BhZ2UgZnJvbSAnLi9wYWdlcy9GaXhTZXNzaW9uc1BhZ2UnO1xyXG5pbXBvcnQgUmlza1BhZ2UgZnJvbSAnLi9wYWdlcy9SaXNrUGFnZSc7XHJcbmltcG9ydCBSZWNvbmNpbGlhdGlvblBhZ2UgZnJvbSAnLi9wYWdlcy9SZWNvbmNpbGlhdGlvblBhZ2UnO1xyXG5pbXBvcnQgU3lzdGVtSGVhbHRoUGFnZSBmcm9tICcuL3BhZ2VzL1N5c3RlbUhlYWx0aFBhZ2UnO1xyXG5pbXBvcnQgQXVkaXRQYWdlIGZyb20gJy4vcGFnZXMvQXVkaXRQYWdlJztcclxuaW1wb3J0IFNldHRpbmdzUGFnZSBmcm9tICcuL3BhZ2VzL1NldHRpbmdzUGFnZSc7XHJcblxyXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBBcHAoKSB7XHJcbiAgcmV0dXJuIChcclxuICAgIDxSb3V0ZXM+XHJcbiAgICAgIDxSb3V0ZSBlbGVtZW50PXs8RGFzaGJvYXJkTGF5b3V0IC8+fT5cclxuICAgICAgICA8Um91dGUgaW5kZXggZWxlbWVudD17PE5hdmlnYXRlIHRvPVwiL292ZXJ2aWV3XCIgcmVwbGFjZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cIm92ZXJ2aWV3XCIgZWxlbWVudD17PE92ZXJ2aWV3UGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cImJyb2tlcnNcIiBlbGVtZW50PXs8QnJva2Vyc1BhZ2UgLz59IC8+XHJcbiAgICAgICAgPFJvdXRlIHBhdGg9XCJncm91cHNcIiBlbGVtZW50PXs8R3JvdXBzUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cInRyYWRlcnNcIiBlbGVtZW50PXs8VHJhZGVyc1BhZ2UgLz59IC8+XHJcbiAgICAgICAgPFJvdXRlIHBhdGg9XCJ0cmFkZXJzLzpicm9rZXJJZC86bG9naW5cIiBlbGVtZW50PXs8VHJhZGVyRGV0YWlsUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cInRyYWRlc1wiIGVsZW1lbnQ9ezxUcmFkZUV4cGxvcmVyUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cInNjb3JpbmdcIiBlbGVtZW50PXs8U2NvcmluZ1BhZ2UgLz59IC8+XHJcbiAgICAgICAgPFJvdXRlIHBhdGg9XCJzaGFkb3dcIiBlbGVtZW50PXs8U2hhZG93UG9ydGZvbGlvUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cImxpdmVcIiBlbGVtZW50PXs8TGl2ZUNvcHlQYWdlIC8+fSAvPlxyXG4gICAgICAgIDxSb3V0ZSBwYXRoPVwiZml4XCIgZWxlbWVudD17PEZpeFNlc3Npb25zUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cInJpc2tcIiBlbGVtZW50PXs8Umlza1BhZ2UgLz59IC8+XHJcbiAgICAgICAgPFJvdXRlIHBhdGg9XCJyZWNvbmNpbGlhdGlvblwiIGVsZW1lbnQ9ezxSZWNvbmNpbGlhdGlvblBhZ2UgLz59IC8+XHJcbiAgICAgICAgPFJvdXRlIHBhdGg9XCJoZWFsdGhcIiBlbGVtZW50PXs8U3lzdGVtSGVhbHRoUGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cImF1ZGl0XCIgZWxlbWVudD17PEF1ZGl0UGFnZSAvPn0gLz5cclxuICAgICAgICA8Um91dGUgcGF0aD1cInNldHRpbmdzXCIgZWxlbWVudD17PFNldHRpbmdzUGFnZSAvPn0gLz5cclxuICAgICAgPC9Sb3V0ZT5cclxuICAgIDwvUm91dGVzPlxyXG4gICk7XHJcbn1cclxuIl0sImZpbGUiOiJEOi9Qcm9wL2FwcHMvd2ViL3NyYy9BcHAudHN4In0=

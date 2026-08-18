@@ -1,0 +1,17 @@
+﻿AFTER_SEND=SentAcknowledgementUnknown
+MAY_RETRY_AFTER_SEND=False
+RECON_AFTER_SEND=True
+AFTER_DISCONNECT=ExecutionStateUnknown
+MAY_RETRY_AFTER_DISCONNECT=False
+RECON_AFTER_DISCONNECT=True
+MAY_RETRY_NOTSENT=True
+MAY_RETRY_REJECTED=True
+---MATRIX---
+0	NotSent	True	False
+1	SentAcknowledgementUnknown	False	True
+2	Accepted	False	False
+3	PartiallyFilled	False	False
+4	Filled	False	False
+5	Rejected	True	False
+6	Cancelled	False	False
+7	ExecutionStateUnknown	False	True

@@ -3,7 +3,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\TraderIntelligence.Domain.csproj" />
     <ProjectReference Include="..\Application\TraderIntelligence.Application.csproj" />
-    <PackageReference Include="QuickFix.Net" Version="1.8.0" />
   </ItemGroup>
 
   <PropertyGroup>

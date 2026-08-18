@@ -1,0 +1,61 @@
+META	hasDirty=False	hasFailure=False	hasSeq=False	hasEligible=True	hasFirst3Keys=False	entityDirty=False	entityEligible=False	entityFailure=False	earlyN=3	isTradingBuyCanceled=False	isTradingSellCanceled=False
+UNIT	n=3	comp=3	xauComp=3	helperN=2	helperElig=False	inelig=1	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+UNIT	i=0	pos=10	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[1,2]	entry=2300	exit=2310
+UNIT	i=1	pos=20	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[4,5]	entry=2300	exit=2310
+UNIT	i=2	pos=30	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[6,7]	entry=2300	exit=2310
+F17	n=2	comp=1	xauComp=1	helperN=1	helperElig=False	inelig=1	scoreN=1	scoreElig=False	scoreNet=10	state=INSUFFICIENT_DATA
+F17	i=0	pos=5017	comp=False	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0	rem=0.1	net=0	deals=1	tickets=[961]	entry=2400	exit=
+F17	i=1	pos=5018	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[963,964]	entry=2401	exit=2411
+F17_FLAT	n=1	comp=1	xauComp=1	helperN=0	helperElig=False	inelig=1	scoreN=1	scoreElig=False	scoreNet=10	state=INSUFFICIENT_DATA
+F17_FLAT	i=0	pos=5017	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[961,965]	entry=2400	exit=2410
+F17B	n=0	comp=0	xauComp=0	helperN=0	helperElig=False	inelig=0	scoreN=0	scoreElig=False	scoreNet=0	state=INSUFFICIENT_DATA
+F17C	n=1	comp=1	xauComp=1	helperN=0	helperElig=False	inelig=1	scoreN=1	scoreElig=False	scoreNet=10	state=INSUFFICIENT_DATA
+F17C	i=0	pos=5028	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[971,973]	entry=2400	exit=2410
+F17D	n=1	comp=0	xauComp=0	helperN=0	helperElig=False	inelig=1	scoreN=0	scoreElig=False	scoreNet=0	state=INSUFFICIENT_DATA
+F17D	i=0	pos=5029	comp=False	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0	rem=0.1	net=0	deals=1	tickets=[981]	entry=2400	exit=
+F17E	n=0	comp=0	xauComp=0	helperN=0	helperElig=False	inelig=0	scoreN=0	scoreElig=False	scoreNet=0	state=INSUFFICIENT_DATA
+F17F	n=1	comp=1	xauComp=1	helperN=1	helperElig=False	inelig=0	scoreN=1	scoreElig=False	scoreNet=10	state=INSUFFICIENT_DATA
+F17F	i=0	pos=40	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[400,401]	entry=2300	exit=2310
+F17G_BEFORE	n=3	comp=3	xauComp=3	helperN=3	helperElig=True	inelig=0	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+F17G_BEFORE	i=0	pos=100	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[10,11]	entry=2300	exit=2310
+F17G_BEFORE	i=1	pos=101	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[12,13]	entry=2300	exit=2310
+F17G_BEFORE	i=2	pos=102	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[14,15]	entry=2300	exit=2310
+F17G_AFTER	n=3	comp=2	xauComp=2	helperN=2	helperElig=False	inelig=1	scoreN=2	scoreElig=False	scoreNet=20	state=INSUFFICIENT_DATA
+F17G_AFTER	i=0	pos=100	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[10,11]	entry=2300	exit=2310
+F17G_AFTER	i=1	pos=101	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[12,13]	entry=2300	exit=2310
+F17G_AFTER	i=2	pos=102	comp=False	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0	rem=0.1	net=0	deals=1	tickets=[14]	entry=2300	exit=
+SELL_CXL	n=3	comp=3	xauComp=3	helperN=2	helperElig=False	inelig=1	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+SELL_CXL	i=0	pos=10	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[1,2]	entry=2300	exit=2310
+SELL_CXL	i=1	pos=20	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[4,5]	entry=2300	exit=2310
+SELL_CXL	i=2	pos=30	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[6,7]	entry=2300	exit=2310
+NETTING	n=2	comp=2	xauComp=2	helperN=0	helperElig=False	inelig=2	scoreN=2	scoreElig=False	scoreNet=20	state=INSUFFICIENT_DATA
+NETTING	i=0	pos=50	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[1,2]	entry=2300	exit=2310
+NETTING	i=1	pos=50	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[4,5]	entry=2320	exit=2330
+POS0	n=3	comp=3	xauComp=3	helperN=3	helperElig=True	inelig=0	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+POS0	i=0	pos=60	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[600,601]	entry=2300	exit=2310
+POS0	i=1	pos=61	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[610,611]	entry=2300	exit=2310
+POS0	i=2	pos=62	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[620,621]	entry=2300	exit=2310
+OTHER_LOGIN	n=3	comp=3	xauComp=3	helperN=3	helperElig=True	inelig=0	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+OTHER_LOGIN	i=0	pos=10	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[100,101]	entry=2300	exit=2310
+OTHER_LOGIN	i=1	pos=20	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[200,201]	entry=2300	exit=2310
+OTHER_LOGIN	i=2	pos=30	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[300,301]	entry=2300	exit=2310
+OTHER_BROKER	n=3	comp=3	xauComp=3	helperN=3	helperElig=True	inelig=0	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+OTHER_BROKER	i=0	pos=10	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[100,101]	entry=2300	exit=2310
+OTHER_BROKER	i=1	pos=20	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[200,201]	entry=2300	exit=2310
+OTHER_BROKER	i=2	pos=30	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[300,301]	entry=2300	exit=2310
+REASON	n=1	comp=1	xauComp=1	helperN=0	helperElig=False	inelig=1	scoreN=1	scoreElig=False	scoreNet=10	state=INSUFFICIENT_DATA
+REASON	i=0	pos=70	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[1,2]	entry=2300	exit=2310
+EMPTY_SYM	n=1	comp=0	xauComp=0	helperN=0	helperElig=False	inelig=1	scoreN=0	scoreElig=False	scoreNet=0	state=INSUFFICIENT_DATA
+EMPTY_SYM	i=0	pos=80	comp=False	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0	rem=0.1	net=0	deals=1	tickets=[1]	entry=2300	exit=
+M5	n=3	comp=3	xauComp=3	helperN=2	helperElig=False	inelig=1	scoreN=3	scoreElig=True	scoreNet=30	state=SHADOW
+M5	i=0	pos=1	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[10,11]	entry=2300	exit=2310
+M5	i=1	pos=2	comp=True	xau=True	elig=True	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[20,21]	entry=2300	exit=2310
+M5	i=2	pos=3	comp=True	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSDm	init=0.1	max=0.1	closed=0.1	rem=0.0	net=10	deals=2	tickets=[31,32]	entry=2300	exit=2310
+NO_INVERSE	n=1	comp=0	xauComp=0	helperN=0	helperElig=False	inelig=1	scoreN=0	scoreElig=False	scoreNet=0	state=INSUFFICIENT_DATA
+NO_INVERSE	i=0	pos=90	comp=False	xau=True	elig=False	dir=Long	canon=XAUUSD	src=XAUUSD	init=0.1	max=0.1	closed=0	rem=0.1	net=0	deals=1	tickets=[1]	entry=2400	exit=
+DASH	pos=1	comp=True	elig=True	first=True
+DASH	pos=2	comp=True	elig=True	first=True
+DASH	pos=3	comp=True	elig=False	first=True
+DASH	highlighted=3
+ENTITY	BrokerId,CanonicalSymbol,ClosedAt,ClosedVolumeLots,Commission,Completed,DealCount,Direction,EntryVwap,ExitVwap,Fees,FinalSl,FinalTp,GrossRealizedPnl,Id,InitialSl,InitialTp,InitialVolumeLots,Login,MaxVolumeLots,NetRealizedPnl,OpenedAt,OrderCount,PositionId,SourceSymbol,Swap,WasAveragedDown,WasPartialClose,WasScaledIn
+RESULT	BrokerId,CanonicalSymbol,ClosedAt,ClosedVolumeLots,Commission,Completed,DealCount,DealTickets,Direction,EligibleForFirstThree,EntryVwap,ExitVwap,Fees,FinalSl,FinalTp,GrossRealizedPnl,Id,InitialSl,InitialTp,InitialVolumeLots,IsXauUsd,Login,MaxVolumeLots,NetRealizedPnl,OpenedAt,OrderCount,PositionId,RemainingVolumeLots,SourceSymbol,Swap,WasAveragedDown,WasPartialClose,WasScaledIn

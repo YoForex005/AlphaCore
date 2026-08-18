@@ -1,0 +1,29 @@
+﻿META	hasDirty=False	hasSeq=False	hasFirst3Keys=False	hasEligible=True	entityEligible=False	entityFirst3OrDirty=False	earlyN=3
+M1_MIXED	recon=7	completed=5	completedXauFilter=3	countHelper=3	eligibleHelper=True	xauList=3	xauPos=[1,2,5]	scoreAllN=3	scoreAllElig=True	scoreXauN=3	scoreXauElig=True	scoreNoEligN=3	dashFirst3=3	dashPos=[1,2,5]
+M1_BOOK	i=0	pos=1	comp=True	xau=True	elig=True	canon=XAUUSD	src=XAUUSDm	rem=0	part=False
+M1_BOOK	i=1	pos=2	comp=True	xau=True	elig=True	canon=XAUUSD	src=XAUUSD.	rem=0	part=False
+M1_BOOK	i=2	pos=3	comp=True	xau=False	elig=True	canon=EURUSD	src=EURUSD	rem=0	part=False
+M1_BOOK	i=3	pos=4	comp=True	xau=False	elig=True	canon=XAGUSD	src=XAGUSD	rem=0	part=False
+M1_BOOK	i=4	pos=5	comp=True	xau=True	elig=True	canon=XAUUSD	src=GOLD	rem=0	part=False
+M1_BOOK	i=5	pos=6	comp=False	xau=True	elig=True	canon=XAUUSD	src=XAUUSD	rem=1	part=False
+M1_BOOK	i=6	pos=7	comp=False	xau=True	elig=True	canon=XAUUSD	src=XAUUSDm	rem=0.6	part=True
+M2_ALIAS	src=XAUUSD	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=XAUUSD.	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=XAUUSDm	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=XAUUSD.a	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=GOLD	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=GOLD.	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=XAUUSDFUT	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M2_ALIAS	src=XAUEUR	mapOk=False	mapCanon=	tradeCanon=XAUEUR	xau=False	count=0
+M2_ALIAS	src=XAGUSD	mapOk=False	mapCanon=	tradeCanon=XAGUSD	xau=False	count=0
+M2_ALIAS	src=EURUSD	mapOk=False	mapCanon=	tradeCanon=EURUSD	xau=False	count=0
+M2_ALIAS	src=SILVER	mapOk=False	mapCanon=	tradeCanon=SILVER	xau=False	count=0
+M2_ALIAS	src=XAUUSD.c	mapOk=True	mapCanon=XAUUSD	tradeCanon=XAUUSD	xau=True	count=1
+M3_2XAU_1EUR	recon=3	count=2	eligible=False
+M4_FOUR_XAU	count=4	xauList=4	scoreN=4	scoreElig=True	dashFirst3=3	helperDoesNotCapAt3=True
+M5_CANCEL	completed=3	helper=2	helperElig=False	scoreN=3	scoreElig=True	dashFirst3=3	dirtyFlags=[True,False,True]
+M6_REASON	recon=1	completed=0	count=0	pos=[2:comp=False]
+M7_NOISE	recon=2	count=0	eligible=False
+M8_MIXED_POS	comp=True	xau=True	canon=XAUUSD	src=XAUUSDm	count=1
+M9_GOLD_DOT	goldDotMap=True	goldDotCanon=XAUUSD	xaueurMap=False	xaueurCanon=
+DONE

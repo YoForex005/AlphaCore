@@ -1,0 +1,33 @@
+import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=4ca40357"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=4ca40357"; const React = __vite__cjsImport1_react.__esModule ? __vite__cjsImport1_react.default : __vite__cjsImport1_react;
+import __vite__cjsImport2_reactDom_client from "/node_modules/.vite/deps/react-dom_client.js?v=c85508bd"; const ReactDOM = __vite__cjsImport2_reactDom_client.__esModule ? __vite__cjsImport2_reactDom_client.default : __vite__cjsImport2_reactDom_client;
+import { BrowserRouter } from "/node_modules/.vite/deps/react-router-dom.js?v=341dd2d2";
+import { QueryClient, QueryClientProvider } from "/node_modules/.vite/deps/@tanstack_react-query.js?v=b0df5e1f";
+import App from "/src/App.tsx";
+import "/src/index.css";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { retry: 2, refetchOnWindowFocus: false, staleTime: 3e4 }
+  }
+});
+ReactDOM.createRoot(document.getElementById("root")).render(
+  /* @__PURE__ */ jsxDEV(React.StrictMode, { children: /* @__PURE__ */ jsxDEV(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxDEV(BrowserRouter, { children: /* @__PURE__ */ jsxDEV(App, {}, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/main.tsx",
+    lineNumber: 18,
+    columnNumber: 9
+  }, this) }, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/main.tsx",
+    lineNumber: 17,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/main.tsx",
+    lineNumber: 16,
+    columnNumber: 5
+  }, this) }, void 0, false, {
+    fileName: "D:/Prop/apps/web/src/main.tsx",
+    lineNumber: 15,
+    columnNumber: 3
+  }, this)
+);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBaUJRO0FBakJSLE9BQU9BLFdBQVc7QUFDbEIsT0FBT0MsY0FBYztBQUNyQixTQUFTQyxxQkFBcUI7QUFDOUIsU0FBU0MsYUFBYUMsMkJBQTJCO0FBQ2pELE9BQU9DLFNBQVM7QUFDaEIsT0FBTztBQUVQLE1BQU1DLGNBQWMsSUFBSUgsWUFBWTtBQUFBLEVBQ2xDSSxnQkFBZ0I7QUFBQSxJQUNkQyxTQUFTLEVBQUVDLE9BQU8sR0FBR0Msc0JBQXNCLE9BQU9DLFdBQVcsSUFBTztBQUFBLEVBQ3RFO0FBQ0YsQ0FBQztBQUVEVixTQUFTVyxXQUFXQyxTQUFTQyxlQUFlLE1BQU0sQ0FBRSxFQUFFQztBQUFBQSxFQUNwRCx1QkFBQyxNQUFNLFlBQU4sRUFDQyxpQ0FBQyx1QkFBb0IsUUFBUVQsYUFDM0IsaUNBQUMsaUJBQ0MsaUNBQUMsU0FBRDtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBQUksS0FETjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBRUEsS0FIRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBSUEsS0FMRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBTUE7QUFDRiIsIm5hbWVzIjpbIlJlYWN0IiwiUmVhY3RET00iLCJCcm93c2VyUm91dGVyIiwiUXVlcnlDbGllbnQiLCJRdWVyeUNsaWVudFByb3ZpZGVyIiwiQXBwIiwicXVlcnlDbGllbnQiLCJkZWZhdWx0T3B0aW9ucyIsInF1ZXJpZXMiLCJyZXRyeSIsInJlZmV0Y2hPbldpbmRvd0ZvY3VzIiwic3RhbGVUaW1lIiwiY3JlYXRlUm9vdCIsImRvY3VtZW50IiwiZ2V0RWxlbWVudEJ5SWQiLCJyZW5kZXIiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsibWFpbi50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcclxuaW1wb3J0IFJlYWN0RE9NIGZyb20gJ3JlYWN0LWRvbS9jbGllbnQnO1xyXG5pbXBvcnQgeyBCcm93c2VyUm91dGVyIH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7XHJcbmltcG9ydCB7IFF1ZXJ5Q2xpZW50LCBRdWVyeUNsaWVudFByb3ZpZGVyIH0gZnJvbSAnQHRhbnN0YWNrL3JlYWN0LXF1ZXJ5JztcclxuaW1wb3J0IEFwcCBmcm9tICcuL0FwcCc7XHJcbmltcG9ydCAnLi9pbmRleC5jc3MnO1xyXG5cclxuY29uc3QgcXVlcnlDbGllbnQgPSBuZXcgUXVlcnlDbGllbnQoe1xyXG4gIGRlZmF1bHRPcHRpb25zOiB7XHJcbiAgICBxdWVyaWVzOiB7IHJldHJ5OiAyLCByZWZldGNoT25XaW5kb3dGb2N1czogZmFsc2UsIHN0YWxlVGltZTogMzBfMDAwIH0sXHJcbiAgfSxcclxufSk7XHJcblxyXG5SZWFjdERPTS5jcmVhdGVSb290KGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyb290JykhKS5yZW5kZXIoXHJcbiAgPFJlYWN0LlN0cmljdE1vZGU+XHJcbiAgICA8UXVlcnlDbGllbnRQcm92aWRlciBjbGllbnQ9e3F1ZXJ5Q2xpZW50fT5cclxuICAgICAgPEJyb3dzZXJSb3V0ZXI+XHJcbiAgICAgICAgPEFwcCAvPlxyXG4gICAgICA8L0Jyb3dzZXJSb3V0ZXI+XHJcbiAgICA8L1F1ZXJ5Q2xpZW50UHJvdmlkZXI+XHJcbiAgPC9SZWFjdC5TdHJpY3RNb2RlPlxyXG4pO1xyXG4iXSwiZmlsZSI6IkQ6L1Byb3AvYXBwcy93ZWIvc3JjL21haW4udHN4In0=

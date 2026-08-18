@@ -10,10 +10,12 @@ const nav = [
   { to: '/trades', label: 'Trades', icon: '⇄' },
   { to: '/scoring', label: 'Scoring', icon: '★' },
   { to: '/shadow', label: 'Shadow', icon: '◐' },
+  { to: '/live', label: 'Live', icon: '▶' },
   { to: '/fix', label: 'FIX', icon: '⚡' },
   { to: '/risk', label: 'Risk', icon: '⚠' },
   { to: '/reconciliation', label: 'Recon', icon: '⟳' },
   { to: '/health', label: 'Health', icon: '♥' },
+  { to: '/audit', label: 'Audit', icon: '☰' },
   { to: '/settings', label: 'Settings', icon: '⚙' },
 ];
 

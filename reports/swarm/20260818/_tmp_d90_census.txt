@@ -1,0 +1,107 @@
+NOW=2026-08-18T13:45:36+05:30
+INDEX_LEN=47677
+INDEX_LINES=285
+INDEX_MTIME=2026-08-18T13:45:28+05:30
+INDEX_SHA256=F33CDCD46214C3CF8260198192963578E2DE2F2BD4889BD54E9ADAE6CA03E01A
+INDEX_TABLE_ROWS=251
+DISK_TOP_MD=280
+DISK_RECURSIVE_MD=280
+BAND_A=105 B=41 C=60 D=74 OTHER=0
+ON_DISK_NOT_INDEX=29
+IN_INDEX_NOT_DISK=0
+INDEX_D_COUNT=45
+DISK_D_IDS=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,66,67,68,69,70,71,72,73,79,89
+INDEX_D_IDS=1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,31,32,33,35,38,39,41,48,50,51,53,54,56,57,62,63,72,79
+DISK_D_GAPS=65,74,75,76,77,78,80,81,82,83,84,85,86,87,88,90
+D_ON_DISK_NOT_INDEXED_IDS=11,27,30,34,36,37,40,42,43,44,45,46,47,49,52,55,58,59,60,61,64,66,67,68,69,70,71,73,89
+---HEADER---
+# D:\Prop\reports - Swarm Report Index
+
+**Cataloged:** 2026-08-18 (wave 2 recensus)
+**Snapshot time:** 2026-08-18 13:33:33 +05:30
+**Method:** `Get-ChildItem *.md` of `D:\Prop\reports\swarm\20260818\` + first heading of each file
+**Tree:** `D:\Prop\reports\swarm\20260818\`
+**Markdown report count:** **236**
+**Product source modified by this catalog:** **No**
+**`D:\Prop\reports\agents\`:** empty (no per-agent copies)
+
+| Band | On disk | Gaps |
+|---|---:|---|
+| A01-A105 | **105** | none |
+| B-series | **41** | none in B01-B41 |
+| C-series | **60** | none in C01-C60 |
+| D-series | **30** | other D IDs still landing |
+| Other bands | **0** | â€” |
+| **Report total** | **236** | D-band landing at catalog close |
+
+Scratch (not markdown reports): `_tmp_b35_cv/`, `_tmp_b35_score/`, `_tmp_c23_empty/` - throwaway compile trees.
+
+**Wave-2 headline (do not greenwash):** first useful version **0/12** (A57/C13/**D41** current); sec68 go-live **0/19** (A100/C14); sec70 live FIX **0/14** (A101). Domain compiles clean (B01). Live `NewOrderSingle` stays **off** (C07, SAFE_BY_ABSENCE). Live MT5 and live FIX Logon are **not proven** (C42/C43). ML is **not built**, correctly (C44/B39).
+
+**Stale-vs-later (use the later file):** A01->B01, A02->B02, A03->B03, A05->B05/C19/D05 (inventory: D05), A06->B06/C04/D06, A07/A08->B07/C07->**D07** (fix-worker now stamps Disconnected; B07/C07 Worker.cs hash stale), A09/A27 names->A89, A09 coverage->C17, A11->A88/B09, A19->B25, A52/A104->B39/C44, A57->C13->**D41** (Â§69 0/12 re-score; C13 item-11 FAIL and forged LoggedOn are stale; D16 â€œzero callersâ€ stale; D22 seeder LoggedOn stale), A62->B22/C08/D08, A65->B37/C12/D63, A103/B40 gitignore->**D62** (A103 Â§6 still unapplied; `.env.example` deleted in worktree), A100->C14, B10 npm absence->C49, B10/B22 Live+Audit "never created"->C37/C38/C53, C08 page list->D08 (same 15 SHAs, remeasured 13:33:46).
+
+---
+---FOOTER---
+
+**Counted markdown files:** 241 (D72 row added; not a full recensus)
+
+---MISSING_FROM_INDEX---
+D11_recon_bugs.md|31433|13:41:46|A5A3A25F36C4|# D11 — Adversarial bugs in `TradeReconstructor`
+D27_parser.md|19922|13:39:34|E0BFED0977C3|# D27 — `FixMessageParser` (pipe codec, not a FIX engine)
+D30_api.md|19665|13:39:35|554CFF5AE21E|# D30 — `apps/api` endpoints and secrets (measured from `Program.cs`)
+D34_score_tests.md|26096|13:39:18|1A206BB7CA6C|# D34 — `BaselineScorerTests` surface (3 facts, not A22)
+D36_exec_tests.md|23823|13:39:20|700CD2EF5C99|# D36 — `ExecutionAndSizingTests` review (FSM + qty + ClOrdID + expiry)
+D37_integ.md|33064|13:41:41|40B7601FA68A|# D37 — `SeedingAndStoreTests` integration recensus (InMemory smoke ≠ §60)
+D40_secrets.md|17343|13:41:59|2F4EE6FBC7D8|# D40 — Password / secrets grep (product source; vendor + reports excluded)
+D42_gates_now.md|38269|13:43:08|3EA1CE8ED0B3|# D42 — Architecture §68 go-live gates scored vs current tests
+D43_s70.md|24402|13:42:49|FB0362AB5394|# D43 — Architecture §70 live FIX acceptance: **all 14 FAIL for live**
+D44_reason_gap.md|16576|13:40:21|FD09BB8304C2|# D44 — `DealReason` persist gap
+D45_outbox.md|14037|13:40:28|C50D82720C31|# D45 — Is `OutboxEvent` written anywhere?
+D46_checkpoint.md|20654|13:41:23|0C95F41D3767|# D46 — Is `SyncCheckpoint` written?
+D47_copyintent.md|21022|13:41:40|73D836674A35|# D47 — Is `CopyIntent` created after score `SHADOW`?
+D49_detail_thin.md|33902|13:43:05|B88F5434C2E3|# D49 — `GetTraderAsync` vs A93 (detail is thin)
+D52_qfn.md|17297|13:40:54|F84227358525|# D52 — csproj QuickFIX? **No official QuickFIX/n on any product project**
+D55_redis.md|17595|13:40:55|61E087AC73C2|# D55 — Is `StackExchange.Redis` used?
+D58_lp.md|15627|13:42:10|582BF44247EC|# D58 — Product-code grep for `LP`
+D59_tmp_junk.md|12043|13:40:48|46154E326710|# D59 — `reports/swarm/20260818/_tmp_*` is not product
+D60_sln.md|24042|13:41:52|4AC437A4B4E1|# D60 — `Mt5TraderIntelligence.sln` project list (remeasured)
+D61_env.md|15411|13:42:05|B425911B5A47|# D61 — `D:\Prop\.env.example`: placeholders only?
+D64_readme.md|32890|13:45:27|59E2E303A5D2|# D64 — `D:\Prop\README.md` vs the as-built tree
+D66_sdk.md|20188|13:45:27|A8F178781656|# D66 — Confirm `mt5-sdk` C++ was not rewritten
+D67_http_groups.md|15096|13:42:58|CC2A6E35C81F|# D67 — Confirm `MT5HttpClient::GetGroupDetails` is a hard-false stub
+D68_plan_filter.md|21419|13:43:27|82D041EEBB07|# D68 — Does ingestion filter by plan groups?
+D69_flag.md|10612|13:43:18|3973353501EB|# D69 — `RealCopyExecutionEnabled` default is **`false`**
+D70_kill.md|24473|13:44:02|CEF135CE0006|# D70 — Are `STOP_NEW` and `FLATTEN` distinct?
+D71_expire.md|18500|13:43:28|C9BAF76519AC|# D71 — Is `CopyIntentExpiry` used?
+D73_canceled.md|14239|13:44:01|7AC73C7EC22B|# D73 — Does `IsTradingDeal` exclude canceled?
+D89_count.md|9459|13:44:41|E6B530A11B95|# D89 — Markdown file count for `reports/swarm/20260818`
+---INDEX_ONLY---
+---SCRATCH---
+_tmp_c23_empty
+_tmp_c31_recon
+_tmp_c32_score
+_tmp_d11_recon
+_tmp_d27_parser
+_tmp_d37_eval
+_tmp_d48_shadow
+_tmp_d57_mfe
+_tmp_d72_first3
+_tmp_d74_enums
+---NEWEST10---
+13:45:27.890 D66_sdk.md
+13:45:27.611 D64_readme.md
+13:45:21.285 D72_first3.md
+13:44:41.547 D89_count.md
+13:44:24.082 D62_gitignore.md
+13:44:12.717 D79_fixpage.md
+13:44:02.242 D70_kill.md
+13:44:01.456 D73_canceled.md
+13:43:38.218 D41_fuv_now.md
+13:43:33.034 D48_shadow_rows.md
+---AGENTS---
+agents_count=0
+---ROOT_REPORTS---
+CREDENTIALS_AND_COPY_STATUS.md|1268|13:42:14|B061F86EC3F5A7AB
+INDEX.md|47677|13:45:28|F33CDCD46214C3CF
+PHASE0_AUDIT.md|1564|13:20:12|09CD30F357837987
+SWARM_LOG.md|40253|13:45:21|5B904412F10511B1

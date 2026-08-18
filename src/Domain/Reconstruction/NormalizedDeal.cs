@@ -21,6 +21,9 @@ public sealed record NormalizedDeal
     public decimal? StopLoss { get; init; }
     public decimal? TakeProfit { get; init; }
     public string? Comment { get; init; }
+    public DealReason? Reason { get; init; }
 
-    public bool IsTradingDeal => Action is DealAction.Buy or DealAction.Sell;
+    public bool IsTradingDeal =>
+        Action is DealAction.Buy or DealAction.Sell
+        && DealReasons.CountsAsTraderActivity(Reason);
 }

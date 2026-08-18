@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ti
+      POSTGRES_PASSWORD: ti_dev_only
+      POSTGRES_DB: trader_intelligence
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  api:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    working_dir: /src
+    volumes:
+      - ./:/src
+    command: dotnet run --project apps/api/TraderIntelligence.Api.csproj --urls http://0.0.0.0:5000
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    depends_on:
+      - postgres
+      - redis
+
+# Native MT5 Manager DLL workers stay on Windows hosts. Do not put them in Linux containers.

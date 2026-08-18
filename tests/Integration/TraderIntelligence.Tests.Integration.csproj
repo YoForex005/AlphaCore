@@ -27,6 +27,7 @@
     <ProjectReference Include="..\..\src\Application\TraderIntelligence.Application.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\TraderIntelligence.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\Fix.CTrader\TraderIntelligence.Fix.CTrader.csproj" />
+    <ProjectReference Include="..\..\src\Mt5\TraderIntelligence.Mt5.csproj" />
   </ItemGroup>
 
 </Project>

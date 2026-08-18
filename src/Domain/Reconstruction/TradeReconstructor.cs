@@ -26,17 +26,30 @@ public sealed class TradeReconstructor
         long login,
         IReadOnlyList<NormalizedDeal> deals)
     {
-        var trading = deals
-            .Where(d => d.IsTradingDeal)
+        var scoped = deals
             .Where(d => string.Equals(d.BrokerId, brokerId, StringComparison.OrdinalIgnoreCase))
             .Where(d => d.Login == login)
+            .ToList();
+
+        var dirtyPositions = scoped
+            .Where(d => d.Action is DealAction.BuyCanceled or DealAction.SellCanceled)
+            .Select(d => d.PositionId)
+            .ToHashSet();
+
+        var trading = scoped
+            .Where(d => d.IsTradingDeal)
             .OrderBy(d => d.Time)
             .ThenBy(d => d.DealTicket)
             .ToList();
 
         var results = new List<ReconstructedTradeResult>();
         foreach (var group in trading.GroupBy(d => d.PositionId))
-            results.AddRange(ReconstructPosition(brokerId, login, group.Key, group.ToList()));
+        {
+            var rows = ReconstructPosition(brokerId, login, group.Key, group.ToList());
+            if (dirtyPositions.Contains(group.Key))
+                rows = rows.Select(r => r with { EligibleForFirstThree = false }).ToList();
+            results.AddRange(rows);
+        }
 
         return results
             .OrderBy(t => t.OpenedAt)
@@ -50,7 +63,7 @@ public sealed class TradeReconstructor
         IReadOnlyList<NormalizedDeal> deals)
     {
         return Reconstruct(brokerId, login, deals)
-            .Where(t => t.Completed && t.IsXauUsd)
+            .Where(t => t.Completed && t.IsXauUsd && t.EligibleForFirstThree)
             .OrderBy(t => t.ClosedAt)
             .ThenBy(t => t.OpenedAt)
             .ToList();
@@ -234,9 +247,10 @@ public sealed class TradeReconstructor
 
         public void ScaleIn(NormalizedDeal deal, decimal lots)
         {
+            // Averaging down: add to a long after price fell, or to a short after price rose.
             var worse = Direction == TradeDirection.Long
-                ? deal.Price > EntryVwap
-                : deal.Price < EntryVwap;
+                ? deal.Price < EntryVwap
+                : deal.Price > EntryVwap;
             if (worse)
                 WasAveragedDown = true;
 

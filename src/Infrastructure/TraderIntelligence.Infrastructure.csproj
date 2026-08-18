@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\TraderIntelligence.Domain.csproj" />
     <ProjectReference Include="..\Application\TraderIntelligence.Application.csproj" />
+    <ProjectReference Include="..\Mt5\TraderIntelligence.Mt5.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -10,6 +11,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
     <PackageReference Include="StackExchange.Redis" Version="2.8.0" />
   </ItemGroup>

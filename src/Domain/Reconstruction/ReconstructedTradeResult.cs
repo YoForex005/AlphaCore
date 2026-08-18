@@ -3,7 +3,7 @@ using TraderIntelligence.Domain.Instruments;
 
 namespace TraderIntelligence.Domain.Reconstruction;
 
-public sealed class ReconstructedTradeResult
+public sealed record ReconstructedTradeResult
 {
     public required string Id { get; init; }
     public required string BrokerId { get; init; }
@@ -35,6 +35,7 @@ public sealed class ReconstructedTradeResult
     public required bool WasPartialClose { get; init; }
     public required bool WasAveragedDown { get; init; }
     public required bool Completed { get; init; }
+    public bool EligibleForFirstThree { get; init; } = true;
     public IReadOnlyList<long> DealTickets { get; init; } = Array.Empty<long>();
 
     public bool IsXauUsd =>

@@ -1,0 +1,788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7c79587a-8e0a-42a5-b6de-db420a982cb4" name="ADMIN@DESKTOP-FQPFPKE 2026-08-18 13:48:20" runUser="DESKTOP-FQPFPKE\ADMIN" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-08-18T13:48:20.5527946+05:30" queuing="2026-08-18T13:48:20.5527947+05:30" start="2026-08-18T13:48:20.2308598+05:30" finish="2026-08-18T13:48:20.5760630+05:30" />
+  <TestSettings name="default" id="305d90b9-4e9d-4512-a151-5318db6a52e4">
+    <Deployment runDeploymentRoot="ADMIN_DESKTOP-FQPFPKE_2026-08-18_13_48_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c54a09c4-50ca-40c1-8ce4-61ee9d25ba83" testId="908a90da-a76c-6aaa-b10f-41c73f186098" testName="TraderIntelligence.Tests.Unit.BaselineScorerTests.Martingale_after_losses_is_risk_blocked" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0106351" startTime="2026-08-18T13:48:20.5463440+05:30" endTime="2026-08-18T13:48:20.5463441+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c54a09c4-50ca-40c1-8ce4-61ee9d25ba83" />
+    <UnitTestResult executionId="e959dc86-d1c4-41a5-95c1-c8b5998f683e" testId="1499de87-9392-366e-ca89-fba7f2e408c3" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_step_or_min_rejects" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5457750+05:30" endTime="2026-08-18T13:48:20.5457750+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e959dc86-d1c4-41a5-95c1-c8b5998f683e">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E44–E46: step 0 / step 0.001 / min not multiple of step reject the spec.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="156479dc-a505-43b0-953d-cc426d7e342b" testId="3e6389fc-4c0f-6eb4-d16b-cb2465b42ede" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Canceled_deal_on_a_position_excludes_it_from_first_three" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0004482" startTime="2026-08-18T13:48:20.5467179+05:30" endTime="2026-08-18T13:48:20.5467179+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="156479dc-a505-43b0-953d-cc426d7e342b" />
+    <UnitTestResult executionId="253f5087-f88f-4939-b711-b46309c0aeba" testId="a85daa16-38b9-f3fa-23e5-7bfbb25ea6b2" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Partial_reduce_is_fraction_of_dest" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5454728+05:30" endTime="2026-08-18T13:48:20.5454728+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="253f5087-f88f-4939-b711-b46309c0aeba">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E33–E37: REDUCE is a fraction of mapped dest qty.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fdfdf465-cda0-4efd-aea6-bfed8b51eca7" testId="e3ce8c1f-88e3-d678-dce1-84ce5906de0c" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Real_flag_false_never_allows_fix_send" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0004266" startTime="2026-08-18T13:48:20.5459787+05:30" endTime="2026-08-18T13:48:20.5459787+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fdfdf465-cda0-4efd-aea6-bfed8b51eca7" />
+    <UnitTestResult executionId="55f8f511-7c6f-4e31-bde6-fc65320c569a" testId="6dfd272a-d270-f0e4-a43b-a5626a5062d5" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_re_floors_to_step" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5464972+05:30" endTime="2026-08-18T13:48:20.5464973+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55f8f511-7c6f-4e31-bde6-fc65320c569a">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E23: after dest max, q must be FloorToStep(max, step). Today Normalize returns raw MaxQuantity.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="15de6f59-83d6-4809-a34a-f8114567f235" testId="5dd5e1a2-5aee-b4eb-6da3-1adc51ca3438" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Respects_min_qty_and_step_as_last_stage" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001859" startTime="2026-08-18T13:48:20.5456013+05:30" endTime="2026-08-18T13:48:20.5456013+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="15de6f59-83d6-4809-a34a-f8114567f235" />
+    <UnitTestResult executionId="930dfb82-cab1-4833-bf6c-f032ab9fa513" testId="829e7a81-f210-32fd-85a0-a254abedbf0d" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Close_uses_mapped_destination_qty" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5455280+05:30" endTime="2026-08-18T13:48:20.5455280+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="930dfb82-cab1-4833-bf6c-f032ab9fa513">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 §4.7 E32/E38: REDUCE/CLOSE uses mapped dest qty, not source lots × allocation.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1525cda0-b39b-4381-81f7-c56a18aa404e" testId="67307c97-f858-eca8-9740-fccd6cf9d7da" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: -1)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000840" startTime="2026-08-18T13:48:20.5464482+05:30" endTime="2026-08-18T13:48:20.5464482+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1525cda0-b39b-4381-81f7-c56a18aa404e" />
+    <UnitTestResult executionId="52a2786a-1ffc-4448-a317-008daa1fe764" testId="430aab03-9c85-aaa2-4165-27f515768f28" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_row_also_returns_source_lots" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0052875" startTime="2026-08-18T13:48:20.5444000+05:30" endTime="2026-08-18T13:48:20.5444000+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52a2786a-1ffc-4448-a317-008daa1fe764" />
+    <UnitTestResult executionId="4432345c-435a-4724-b33a-4583ca16c7e8" testId="d436a4e4-14d6-207d-a904-2cf351416624" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_contract_same_lots_same_normalizer_output" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001670" startTime="2026-08-18T13:48:20.5450826+05:30" endTime="2026-08-18T13:48:20.5450826+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4432345c-435a-4724-b33a-4583ca16c7e8" />
+    <UnitTestResult executionId="71f5b228-246e-45c4-92b5-bf7bb6f5f9c9" testId="16a6bf8d-9134-59c7-5e7d-0a402fc9fc18" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Copy_intent_expires" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0048506" startTime="2026-08-18T13:48:20.5444383+05:30" endTime="2026-08-18T13:48:20.5444383+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71f5b228-246e-45c4-92b5-bf7bb6f5f9c9" />
+    <UnitTestResult executionId="4f09d269-e657-431a-bf47-a6e2232c7040" testId="0ced0ffb-7209-c80c-c50e-37449850b91c" testName="TraderIntelligence.Tests.Unit.BaselineScorerTests.Two_trades_remain_insufficient" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000852" startTime="2026-08-18T13:48:20.5465306+05:30" endTime="2026-08-18T13:48:20.5465306+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f09d269-e657-431a-bf47-a6e2232c7040" />
+    <UnitTestResult executionId="84443b16-44ed-4046-b942-6b6403b8bd4c" testId="5fa412a6-7814-f6ca-c334-52e642cf67e3" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Known_lot_to_OrderQty_examples" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5451239+05:30" endTime="2026-08-18T13:48:20.5451239+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="84443b16-44ed-4046-b942-6b6403b8bd4c">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 §10.1 E01–E09: IQuantityConverter missing.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="caa26184-6cd5-4399-be05-b07b0b09cda1" testId="18dd12d6-3286-b875-4403-91724ac09e00" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_not_rounds_up_on_whole_step" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000677" startTime="2026-08-18T13:48:20.5466508+05:30" endTime="2026-08-18T13:48:20.5466508+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="caa26184-6cd5-4399-be05-b07b0b09cda1" />
+    <UnitTestResult executionId="36aced97-474c-4d5b-8675-58f0a626d53f" testId="930791b0-6191-ffb4-11c6-87c87a0e1ac8" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_caps" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001399" startTime="2026-08-18T13:48:20.5464683+05:30" endTime="2026-08-18T13:48:20.5464684+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36aced97-474c-4d5b-8675-58f0a626d53f" />
+    <UnitTestResult executionId="5c5130a4-cac6-43b1-b2e1-7e5479e4cc71" testId="8d34e42f-4075-fd1b-ab84-35fc23e8b59c" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_only_when_mapped" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5397698+05:30" endTime="2026-08-18T13:48:20.5397700+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c5130a4-cac6-43b1-b2e1-7e5479e4cc71">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E08: Lots convention is the only mapping where 0.10 lots may equal OrderQty 0.10.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9a0b2c89-9869-4881-95c5-88252eb33b8f" testId="3b414ba0-8bbe-51d8-5c91-be65d81ef982" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Exact_min_is_kept" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000611" startTime="2026-08-18T13:48:20.5465169+05:30" endTime="2026-08-18T13:48:20.5465169+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a0b2c89-9869-4881-95c5-88252eb33b8f" />
+    <UnitTestResult executionId="36498272-f324-424b-890e-d9f73359d6a2" testId="eaf24181-1b02-a3ba-601c-6deaa6ce5240" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Scale_in_and_partial_close" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0008197" startTime="2026-08-18T13:48:20.5464582+05:30" endTime="2026-08-18T13:48:20.5464582+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36498272-f324-424b-890e-d9f73359d6a2" />
+    <UnitTestResult executionId="1d022ca5-7e99-4e00-be26-bc31311d9aed" testId="9f8d8280-f4e7-8c8c-c3a4-39e4209e1ec8" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Never_passthrough_MT5_lots" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5453459+05:30" endTime="2026-08-18T13:48:20.5453459+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1d022ca5-7e99-4e00-be26-bc31311d9aed">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 G7 / E01: IQuantityConverter missing. 0.10 MT5 lots × 100 oz → BaseUnits OrderQty 10.00, not 0.10.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bdeef090-6b73-4af1-9056-8cc576c64711" testId="fa230096-9e7b-0ff4-d142-8e9762f44d2d" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.335, allocation: 1, expected: 0.33)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000006" startTime="2026-08-18T13:48:20.5452968+05:30" endTime="2026-08-18T13:48:20.5452969+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bdeef090-6b73-4af1-9056-8cc576c64711" />
+    <UnitTestResult executionId="82585025-c638-4d7b-8e2d-7928bc081c6e" testId="db1f58da-1f49-490c-ac92-5a8b0460e5c2" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Allocation_greater_than_one_is_currently_accepted" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000410" startTime="2026-08-18T13:48:20.5466702+05:30" endTime="2026-08-18T13:48:20.5466702+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82585025-c638-4d7b-8e2d-7928bc081c6e" />
+    <UnitTestResult executionId="a212e130-c2fd-48c0-86c8-3c367b3e5cbd" testId="e6b3ba6f-b1f7-b36c-1394-da26bde281a6" testName="TraderIntelligence.Tests.Unit.SmokeTests.Domain_assembly_loads" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0018313" startTime="2026-08-18T13:48:20.5442480+05:30" endTime="2026-08-18T13:48:20.5442481+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a212e130-c2fd-48c0-86c8-3c367b3e5cbd" />
+    <UnitTestResult executionId="d0061e18-0e62-47e0-bd9f-db96b9407bb0" testId="e1b14853-2c6d-7e4d-f336-1bba56daddde" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD&quot;)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000081" startTime="2026-08-18T13:48:20.5459494+05:30" endTime="2026-08-18T13:48:20.5459494+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0061e18-0e62-47e0-bd9f-db96b9407bb0" />
+    <UnitTestResult executionId="79f1fade-4754-483b-bea1-c3808251e0e2" testId="9a5cc5be-e0a7-b226-58bf-e3ff8d3686df" testName="TraderIntelligence.Tests.Unit.VolumeConverterTests.Hundredths_comment_is_not_the_default" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001901" startTime="2026-08-18T13:48:20.5453150+05:30" endTime="2026-08-18T13:48:20.5453151+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79f1fade-4754-483b-bea1-c3808251e0e2" />
+    <UnitTestResult executionId="69d1f167-cc54-4424-9d79-d10533eb3306" testId="1ebc85c3-0165-1ba8-ba79-33d796cdc273" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: 0)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000877" startTime="2026-08-18T13:48:20.5462721+05:30" endTime="2026-08-18T13:48:20.5462721+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69d1f167-cc54-4424-9d79-d10533eb3306" />
+    <UnitTestResult executionId="b25a0575-407f-4487-ae3c-270a8514d70b" testId="66fde4c2-348b-29aa-19e9-7df4dde2adf4" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Below_min_returns_zero" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000667" startTime="2026-08-18T13:48:20.5466605+05:30" endTime="2026-08-18T13:48:20.5466606+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b25a0575-407f-4487-ae3c-270a8514d70b" />
+    <UnitTestResult executionId="738a5a27-6c0e-4201-8e64-1e26b3b59a70" testId="266c8fba-7bec-d362-ff57-d8a0190d9b7f" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Disconnect_after_send_is_unknown_state" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000480" startTime="2026-08-18T13:48:20.5455896+05:30" endTime="2026-08-18T13:48:20.5455896+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="738a5a27-6c0e-4201-8e64-1e26b3b59a70" />
+    <UnitTestResult executionId="ea8cd771-8897-42a8-944b-66770607eb8f" testId="e8f446fa-93d6-512e-167f-e2490b055b6c" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Coarser_precision_than_step_can_break_step_alignment" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000994" startTime="2026-08-18T13:48:20.5462949+05:30" endTime="2026-08-18T13:48:20.5462949+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea8cd771-8897-42a8-944b-66770607eb8f" />
+    <UnitTestResult executionId="5c1944aa-69c5-453e-bfca-3f213a56fe6a" testId="48dbc83a-d1c8-36fc-23b6-17a94f46d48a" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: -0.01)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002477" startTime="2026-08-18T13:48:20.5461533+05:30" endTime="2026-08-18T13:48:20.5461533+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c1944aa-69c5-453e-bfca-3f213a56fe6a" />
+    <UnitTestResult executionId="e48681e2-0dcc-4fa2-a266-6f845ed3e305" testId="d27194c8-f677-34dd-4911-c9d5c46ffcfc" testName="TraderIntelligence.Tests.Unit.VolumeConverterTests.Extended_scale_maps_one_lot_to_100_million" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0048544" startTime="2026-08-18T13:48:20.5444290+05:30" endTime="2026-08-18T13:48:20.5444290+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e48681e2-0dcc-4fa2-a266-6f845ed3e305" />
+    <UnitTestResult executionId="1e390229-75cd-482e-9c16-6f5948f05397" testId="da84e900-515b-f900-f1e9-39baa162e7ef" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;GOLD&quot;)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000032" startTime="2026-08-18T13:48:20.5459413+05:30" endTime="2026-08-18T13:48:20.5459413+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1e390229-75cd-482e-9c16-6f5948f05397" />
+    <UnitTestResult executionId="a143d1e1-2897-4ae4-8f75-8aa20627e2a7" testId="412ee0c9-2959-af62-5d04-40592e445b61" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Decimal_not_double_for_0_0001_lot" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5455000+05:30" endTime="2026-08-18T13:48:20.5455000+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a143d1e1-2897-4ae4-8f75-8aa20627e2a7">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E05: 1 tick × 100 oz = 0.01 dest; must stay decimal 0.01m.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9e47ca6f-91b6-4aa3-9dd5-6c40a0b3f817" testId="b9e7ad58-e545-b49e-4d45-4b315e29f22d" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: -0.01)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002145" startTime="2026-08-18T13:48:20.5463359+05:30" endTime="2026-08-18T13:48:20.5463359+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e47ca6f-91b6-4aa3-9dd5-6c40a0b3f817" />
+    <UnitTestResult executionId="0ac55dad-0203-49e4-a812-e7d7002569da" testId="cdce3bdb-6a85-e925-237e-560ac0d3fc85" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Margin_room_reduces_qty" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5400620+05:30" endTime="2026-08-18T13:48:20.5400620+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ac55dad-0203-49e4-a812-e7d7002569da">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E27–E29: margin room reduces qty. No quote/leverage on QuantityNormalizer.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9205594a-17eb-47a6-b87a-2d92026dbd65" testId="a0826b92-1a4c-081d-3303-a522afd87309" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Below_min_after_floor_returns_zero" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000640" startTime="2026-08-18T13:48:20.5465378+05:30" endTime="2026-08-18T13:48:20.5465378+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9205594a-17eb-47a6-b87a-2d92026dbd65" />
+    <UnitTestResult executionId="4b85d80b-3069-4414-b227-12a7b36288bb" testId="e7704410-67b5-0219-c9cf-ab4ee623cd06" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Unverified_dest_spec_rejects" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5439240+05:30" endTime="2026-08-18T13:48:20.5439241+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b85d80b-3069-4414-b227-12a7b36288bb">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E39: Unverified dest spec must reject. InstrumentQuantitySpec has no spec_status.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5e8e562f-3db8-4a14-bce9-a65d5176f98c" testId="059ae128-d1f0-4e94-3955-2bc9e0148004" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Reconstructs_simple_round_trip" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0004720" startTime="2026-08-18T13:48:20.5466990+05:30" endTime="2026-08-18T13:48:20.5466990+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e8e562f-3db8-4a14-bce9-a65d5176f98c" />
+    <UnitTestResult executionId="ffdbda88-fb13-4787-b125-1db382f0e7a7" testId="b2470326-10b9-ee01-858e-2308cd15ac0e" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.10, allocation: 1, expected: 0.10)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000008" startTime="2026-08-18T13:48:20.5452707+05:30" endTime="2026-08-18T13:48:20.5452707+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ffdbda88-fb13-4787-b125-1db382f0e7a7" />
+    <UnitTestResult executionId="511982a0-7744-444a-964b-e9c360ffe844" testId="1f0bbd17-ce2d-1594-fa5e-4792bc83c475" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stop_new_execution_blocks_opens_not_closes" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001588" startTime="2026-08-18T13:48:20.5460769+05:30" endTime="2026-08-18T13:48:20.5460769+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="511982a0-7744-444a-964b-e9c360ffe844" />
+    <UnitTestResult executionId="e6be90f4-2f37-4ff3-90fc-6a09385b0177" testId="21ff5cc5-ffa4-1367-ea90-7311244ffd65" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Quantity_normalizer_steps_and_min" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002336" startTime="2026-08-18T13:48:20.5459613+05:30" endTime="2026-08-18T13:48:20.5459613+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6be90f4-2f37-4ff3-90fc-6a09385b0177" />
+    <UnitTestResult executionId="582c7d54-ddb6-4c0f-afa9-1e85a971f82a" testId="4f2a34cc-735e-92a1-100d-5045e2307726" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.QuantityNormalizer_passthroughs_0_10_lots_when_allocation_is_one" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002115" startTime="2026-08-18T13:48:20.5453078+05:30" endTime="2026-08-18T13:48:20.5453078+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="582c7d54-ddb6-4c0f-afa9-1e85a971f82a" />
+    <UnitTestResult executionId="43cf6b5a-55b5-4e6a-8aaf-36ba07d37439" testId="e7551cfd-faac-512a-6234-01d55dd816bf" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Fix_worker_does_not_rescale" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5455791+05:30" endTime="2026-08-18T13:48:20.5455792+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43cf6b5a-55b5-4e6a-8aaf-36ba07d37439">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 §6: FIX worker must not rescale requested_quantity.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="29786df1-bd6d-455b-8efb-acb09a1fa838" testId="e5045382-fa61-7fcf-0280-a5d39b3be603" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Precision_truncates_toward_zero_after_step" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000535" startTime="2026-08-18T13:48:20.5466399+05:30" endTime="2026-08-18T13:48:20.5466399+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="29786df1-bd6d-455b-8efb-acb09a1fa838" />
+    <UnitTestResult executionId="88ea91d8-6f97-4c85-b2c3-e43244f77851" testId="ef7965fe-0774-fe73-c41c-683b3d219117" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.First_three_completed_xau_unlocks_early_score" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0037233" startTime="2026-08-18T13:48:20.5462822+05:30" endTime="2026-08-18T13:48:20.5462823+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="88ea91d8-6f97-4c85-b2c3-e43244f77851" />
+    <UnitTestResult executionId="e258a332-3c0f-4013-9440-5ea88dc0e0b8" testId="c19da5d3-fcb9-29f1-f0bd-12c6fce177f5" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.ClOrdId_is_deterministic_and_unique_per_sequence" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0013461" startTime="2026-08-18T13:48:20.5461052+05:30" endTime="2026-08-18T13:48:20.5461053+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e258a332-3c0f-4013-9440-5ea88dc0e0b8" />
+    <UnitTestResult executionId="52ed1e0d-5561-4835-86ca-280fd009ca30" testId="4c010a6b-4ba2-9f93-16cd-ad8b9d636df4" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Does_not_guess_venue_instrument_ids" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001967" startTime="2026-08-18T13:48:20.5459716+05:30" endTime="2026-08-18T13:48:20.5459716+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52ed1e0d-5561-4835-86ca-280fd009ca30" />
+    <UnitTestResult executionId="a5b476eb-30e9-446f-9697-77dd9f1f29f7" testId="610f9e3b-e760-f60a-4c51-7e6a65347847" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Exact_max_is_kept" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000921" startTime="2026-08-18T13:48:20.5461313+05:30" endTime="2026-08-18T13:48:20.5461313+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a5b476eb-30e9-446f-9697-77dd9f1f29f7" />
+    <UnitTestResult executionId="df72b33f-fd65-4b33-b681-fc1085bd98c5" testId="ba6723c1-6b81-bcf9-290e-33d63a50b066" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dest_max_and_risk_caps_reduce" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5439540+05:30" endTime="2026-08-18T13:48:20.5439540+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df72b33f-fd65-4b33-b681-fc1085bd98c5">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E22–E26: dest max and risk caps reduce then re-quantize.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5e37e9a7-95f0-4fa9-9939-3ef855cd76e3" testId="e1188176-ccf5-0861-4fdb-d50e23153fc2" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD.&quot;)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0064861" startTime="2026-08-18T13:48:20.5457892+05:30" endTime="2026-08-18T13:48:20.5457892+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e37e9a7-95f0-4fa9-9939-3ef855cd76e3" />
+    <UnitTestResult executionId="63080bdb-947d-4d1b-9678-3637b558e6d9" testId="120f6ec9-b244-036b-65a2-a5a447774ad5" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Unknown_ack_cannot_retry_new_order" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0003823" startTime="2026-08-18T13:48:20.5454511+05:30" endTime="2026-08-18T13:48:20.5454512+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="63080bdb-947d-4d1b-9678-3637b558e6d9" />
+    <UnitTestResult executionId="8ed0b9ad-e554-4a70-ab6d-028412c2f08e" testId="8c5c1d5c-872b-5861-918a-1b548484d824" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Allocation_and_confidence_scale" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5457257+05:30" endTime="2026-08-18T13:48:20.5457257+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ed0b9ad-e554-4a70-ab6d-028412c2f08e">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E16–E21: allocation × confidence before dest step. QuantityNormalizer has no confidence input.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f5bc828b-0764-4f20-afeb-0f62b023fca6" testId="890e9599-d636-827d-46c6-aa30896a9265" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_signal_rejected" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000738" startTime="2026-08-18T13:48:20.5460986+05:30" endTime="2026-08-18T13:48:20.5460986+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f5bc828b-0764-4f20-afeb-0f62b023fca6" />
+    <UnitTestResult executionId="a62003fe-fc14-44e8-b991-d12f460c9829" testId="13ef9974-3501-d3ea-8665-754de70b726c" testName="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Filled_report_is_terminal" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0003371" startTime="2026-08-18T13:48:20.5457822+05:30" endTime="2026-08-18T13:48:20.5457822+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a62003fe-fc14-44e8-b991-d12f460c9829" />
+    <UnitTestResult executionId="a86093b4-6708-464a-b56d-f5e3e5dfbc0d" testId="da7d5b66-4602-45a1-3fd0-06715099ccf5" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Reverse_inout_closes_then_opens_opposite" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0007314" startTime="2026-08-18T13:48:20.5466894+05:30" endTime="2026-08-18T13:48:20.5466894+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a86093b4-6708-464a-b56d-f5e3e5dfbc0d" />
+    <UnitTestResult executionId="dba21040-adde-48c8-a071-1a2b971e67e7" testId="f7aea955-a1cb-c6c1-77c4-888e0f0fdeec" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Missing_mapping_rejects" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5401480+05:30" endTime="2026-08-18T13:48:20.5401481+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dba21040-adde-48c8-a071-1a2b971e67e7">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E42–E43: missing dest spec or REDUCE link rejects.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e1179a3a-b8b1-438c-a53e-ab89d87c01fa" testId="91738602-25e1-bb00-5660-0f8df8bc1773" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_quote_rejects_open" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0063216" startTime="2026-08-18T13:48:20.5458013+05:30" endTime="2026-08-18T13:48:20.5458013+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1179a3a-b8b1-438c-a53e-ab89d87c01fa" />
+    <UnitTestResult executionId="bdeb6fd1-cbf5-41f5-96db-e165d2382c0e" testId="a06dd21e-aa44-2277-2150-8e8ac4fc0920" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Negative_precision_throws" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002686" startTime="2026-08-18T13:48:20.5461416+05:30" endTime="2026-08-18T13:48:20.5461417+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bdeb6fd1-cbf5-41f5-96db-e165d2382c0e" />
+    <UnitTestResult executionId="70a10c94-91d2-44eb-8a1d-ec0f2eb51562" testId="72fa619e-3df2-0277-da60-098c95bcda92" testName="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Ignores_balance_deals" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0065261" startTime="2026-08-18T13:48:20.5458033+05:30" endTime="2026-08-18T13:48:20.5458033+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70a10c94-91d2-44eb-8a1d-ec0f2eb51562" />
+    <UnitTestResult executionId="61d7b63b-8e87-494c-a437-68bf6eb65c50" testId="28ab0e57-d3c3-2659-b8d9-d038136d3dc6" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_step_throws(step: -0.01)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002693" startTime="2026-08-18T13:48:20.5461214+05:30" endTime="2026-08-18T13:48:20.5461214+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61d7b63b-8e87-494c-a437-68bf6eb65c50" />
+    <UnitTestResult executionId="8c07b5cc-75fa-46e9-a951-3ed4047503fe" testId="c26e31dc-a0a1-4387-a3bb-8f73ab694f61" testName="TraderIntelligence.Tests.Unit.DealReasonTests.Client_buy_still_counts" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0048521" startTime="2026-08-18T13:48:20.5444246+05:30" endTime="2026-08-18T13:48:20.5444246+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8c07b5cc-75fa-46e9-a951-3ed4047503fe" />
+    <UnitTestResult executionId="e1f06e17-93df-4773-8b2f-6a4d10e038cf" testId="6b7db3be-7d69-07b2-82cf-50984b9b15f1" testName="TraderIntelligence.Tests.Unit.DealReasonTests.Rollover_is_not_a_trader_lifecycle_deal" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0008387" startTime="2026-08-18T13:48:20.5458114+05:30" endTime="2026-08-18T13:48:20.5458114+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1f06e17-93df-4773-8b2f-6a4d10e038cf" />
+    <UnitTestResult executionId="43d3a524-1f5e-4cf0-b9b9-c6b7f36aaeb4" testId="e41a03f2-0f57-1b70-e014-44f1e7aec6b1" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Below_min_after_cap_rejects" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5400074+05:30" endTime="2026-08-18T13:48:20.5400074+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43d3a524-1f5e-4cf0-b9b9-c6b7f36aaeb4">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E14/E20/E25/E29: below min after cap is REJECT, not a sendable 0.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="94d183a4-b0db-4ad0-8231-61a9deff321e" testId="96e27764-5560-8990-7168-1be70b0ee7f5" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Allocation_scales_before_step" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0052256" startTime="2026-08-18T13:48:20.5444110+05:30" endTime="2026-08-18T13:48:20.5444110+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="94d183a4-b0db-4ad0-8231-61a9deff321e" />
+    <UnitTestResult executionId="b0039dc9-402d-4091-a3d7-c8ddd463116f" testId="b83c50d0-642f-50cd-3bd9-8379cf092f4e" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Unaligned_max_is_returned_raw_not_re_floored" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000629" startTime="2026-08-18T13:48:20.5463046+05:30" endTime="2026-08-18T13:48:20.5463046+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0039dc9-402d-4091-a3d7-c8ddd463116f" />
+    <UnitTestResult executionId="bcdcd336-6979-4aa9-86ab-283d01d1c0e6" testId="975eb552-20bf-fb8f-aff5-535d1128cf6c" testName="TraderIntelligence.Tests.Unit.VolumeConverterTests.Manager_scale_maps_0_10_lots_to_1000_native" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001632" startTime="2026-08-18T13:48:20.5451370+05:30" endTime="2026-08-18T13:48:20.5451370+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bcdcd336-6979-4aa9-86ab-283d01d1c0e6" />
+    <UnitTestResult executionId="a44087c1-625e-4db4-9973-b1b353b69e2d" testId="b157afcf-d55c-bceb-7121-113d6ee20a13" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_step_throws(step: 0)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0030138" startTime="2026-08-18T13:48:20.5461119+05:30" endTime="2026-08-18T13:48:20.5461119+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a44087c1-625e-4db4-9973-b1b353b69e2d" />
+    <UnitTestResult executionId="a808e3d8-2cf9-409f-946d-e7290e541b35" testId="c0246f83-3339-e810-5839-7e193e032186" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Confidence_cannot_exceed_one" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5401222+05:30" endTime="2026-08-18T13:48:20.5401222+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a808e3d8-2cf9-409f-946d-e7290e541b35">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E21: confidence_scale &gt; 1 is illegal. QuantityNormalizer has no confidence input.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bdb2f684-6b44-4359-8410-1c70aa47e911" testId="8c57798f-b283-cbc7-b446-914bdb3bf460" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD.a&quot;)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000056" startTime="2026-08-18T13:48:20.5459326+05:30" endTime="2026-08-18T13:48:20.5459327+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bdb2f684-6b44-4359-8410-1c70aa47e911" />
+    <UnitTestResult executionId="f1754e27-766b-4573-94b7-dc57983e855a" testId="85006c29-0648-942d-99d3-a72569d2f306" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 1.999, allocation: 1, expected: 1.99)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001508" startTime="2026-08-18T13:48:20.5451468+05:30" endTime="2026-08-18T13:48:20.5451469+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1754e27-766b-4573-94b7-dc57983e855a" />
+    <UnitTestResult executionId="52caac49-c6d1-47b2-bbdc-06f464e8c995" testId="9d7150d5-fca8-4252-8c18-b83d22ea72fd" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mt5_ticks_scale_is_10000" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5382582+05:30" endTime="2026-08-18T13:48:20.5382700+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52caac49-c6d1-47b2-bbdc-06f464e8c995">
+      <Output>
+        <ErrorInfo>
+          <Message>A38: source ticks / 10_000 = lots. Converter not implemented.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ff728ad6-af2d-4038-ba18-69aabf43e3a6" testId="8fd95213-52a3-241c-7f6a-3f31ed25b454" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Unreconciled_venue_blocks_new_exposure" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000699" startTime="2026-08-18T13:48:20.5460887+05:30" endTime="2026-08-18T13:48:20.5460887+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ff728ad6-af2d-4038-ba18-69aabf43e3a6" />
+    <UnitTestResult executionId="12f7699b-bacf-4203-9b11-4cd086e69842" testId="7a41d670-1ef4-27cf-7e9d-22eacedb7609" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.333, allocation: 1, expected: 0.33)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000007" startTime="2026-08-18T13:48:20.5452882+05:30" endTime="2026-08-18T13:48:20.5452882+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12f7699b-bacf-4203-9b11-4cd086e69842" />
+    <UnitTestResult executionId="4970d289-cc5a-4bdc-8c29-eb616088c8f9" testId="b661e207-4316-d5bc-74cd-d92c19ce9723" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Increase_uses_incremental_volume" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5457517+05:30" endTime="2026-08-18T13:48:20.5457517+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4970d289-cc5a-4bdc-8c29-eb616088c8f9">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E30–E31: INCREASE uses incremental source ticks, not position max_volume.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="52f8965f-750b-489a-99e7-d4b832481f48" testId="fe495576-95b4-47d0-3f0c-3da3c3bdd240" testName="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSDm&quot;)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001659" startTime="2026-08-18T13:48:20.5459221+05:30" endTime="2026-08-18T13:48:20.5459222+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="52f8965f-750b-489a-99e7-d4b832481f48" />
+    <UnitTestResult executionId="e0e4d1c5-5f59-46a9-ac1a-b53868180248" testId="c39fe328-612d-0f9d-3ecf-3b434f55c788" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_contract_size_rejects" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5401763+05:30" endTime="2026-08-18T13:48:20.5401763+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e0e4d1c5-5f59-46a9-ac1a-b53868180248">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E40–E41: contract_size &lt;= 0 / NaN rejects.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="107af4ad-f36e-4f94-80a8-648d9a76b44f" testId="9368b400-bab9-5c5a-d4fd-76283514f30d" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.019, allocation: 1, expected: 0.01)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000839" startTime="2026-08-18T13:48:20.5450706+05:30" endTime="2026-08-18T13:48:20.5450707+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="107af4ad-f36e-4f94-80a8-648d9a76b44f" />
+    <UnitTestResult executionId="9c1c34a9-dde8-4a6e-b060-9f5fcb5413c1" testId="ad5c8704-3594-ca6a-833d-f19faf5f66c2" testName="TraderIntelligence.Tests.Unit.BaselineScorerTests.Three_disciplined_winners_go_to_shadow_not_live" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0002034" startTime="2026-08-18T13:48:20.5465071+05:30" endTime="2026-08-18T13:48:20.5465072+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9c1c34a9-dde8-4a6e-b060-9f5fcb5413c1" />
+    <UnitTestResult executionId="b87fa771-20f4-4ab6-a827-6d49ae5d00e0" testId="0d10d247-370d-d132-9cc6-42dae40df966" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: 0)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0003259" startTime="2026-08-18T13:48:20.5463239+05:30" endTime="2026-08-18T13:48:20.5463239+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b87fa771-20f4-4ab6-a827-6d49ae5d00e0" />
+    <UnitTestResult executionId="345e281e-3881-4be9-b9a8-6ebbd69a2e76" testId="ce18ec99-3fb5-4185-160a-29c4b7ee7a3d" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Shadow_and_live_share_converter" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5455535+05:30" endTime="2026-08-18T13:48:20.5455535+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="345e281e-3881-4be9-b9a8-6ebbd69a2e76">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 §6: shadow and live must call the same converter.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5ee16cd3-fcc0-4601-ae5a-e92fad37b1ee" testId="302ddc6b-a087-4ab4-3237-2f23e4983ef4" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_and_nano_contracts_differ" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5400362+05:30" endTime="2026-08-18T13:48:20.5400363+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ee16cd3-fcc0-4601-ae5a-e92fad37b1ee">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E06 vs E01: mini contract_size=10 must yield 1.00 oz, not the same qty as contract_size=100.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="55caf1e8-9ca1-4afb-8f5d-fc5c9e5ebc35" testId="6297743e-4806-a548-0b16-749ff62fddce" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.339, allocation: 1, expected: 0.33)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000007" startTime="2026-08-18T13:48:20.5452799+05:30" endTime="2026-08-18T13:48:20.5452799+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55caf1e8-9ca1-4afb-8f5d-fc5c9e5ebc35" />
+    <UnitTestResult executionId="b792d766-e6c0-4ea7-8c91-710e6d966ebf" testId="1187efe2-44fe-6aed-c266-1f3e6f6e8838" testName="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dust_leftover_promotes_to_close" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0010000" startTime="2026-08-18T13:48:20.5400947+05:30" endTime="2026-08-18T13:48:20.5400948+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b792d766-e6c0-4ea7-8c91-710e6d966ebf">
+      <Output>
+        <ErrorInfo>
+          <Message>A43 E37: leftover &lt; dest min promotes REDUCE to CLOSE.</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1f947e34-b1d4-4a06-9809-68de013ccdf1" testId="bbde0039-77d5-7439-9e40-c5fa58fd29c7" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_partial_step_of_tenth" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000776" startTime="2026-08-18T13:48:20.5466822+05:30" endTime="2026-08-18T13:48:20.5466822+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f947e34-b1d4-4a06-9809-68de013ccdf1" />
+    <UnitTestResult executionId="3a8ff1cc-2549-432b-8a45-f6c25964ce86" testId="5d55a0c2-ba23-b804-1879-cce4a7236cc7" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: -1)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001958" startTime="2026-08-18T13:48:20.5462634+05:30" endTime="2026-08-18T13:48:20.5462634+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3a8ff1cc-2549-432b-8a45-f6c25964ce86" />
+    <UnitTestResult executionId="ffd51559-1b39-49e7-bf31-d3e4f83d1761" testId="46a3c936-815e-28df-f461-3bc1ae5121bd" testName="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 1, allocation: 0.3333333333333333333333333333, expected: 0.33)" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000023" startTime="2026-08-18T13:48:20.5452622+05:30" endTime="2026-08-18T13:48:20.5452622+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ffd51559-1b39-49e7-bf31-d3e4f83d1761" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Missing_mapping_rejects" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="f7aea955-a1cb-c6c1-77c4-888e0f0fdeec">
+      <Execution id="dba21040-adde-48c8-a071-1a2b971e67e7" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Missing_mapping_rejects" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.BaselineScorerTests.Three_disciplined_winners_go_to_shadow_not_live" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="ad5c8704-3594-ca6a-833d-f19faf5f66c2">
+      <Execution id="9c1c34a9-dde8-4a6e-b060-9f5fcb5413c1" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.BaselineScorerTests" name="Three_disciplined_winners_go_to_shadow_not_live" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_partial_step_of_tenth" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="bbde0039-77d5-7439-9e40-c5fa58fd29c7">
+      <Execution id="1f947e34-b1d4-4a06-9809-68de013ccdf1" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_partial_step_of_tenth" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Quantity_normalizer_steps_and_min" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="21ff5cc5-ffa4-1367-ea90-7311244ffd65">
+      <Execution id="e6be90f4-2f37-4ff3-90fc-6a09385b0177" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="Quantity_normalizer_steps_and_min" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Allocation_scales_before_step" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="96e27764-5560-8990-7168-1be70b0ee7f5">
+      <Execution id="94d183a4-b0db-4ad0-8231-61a9deff321e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Allocation_scales_before_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Exact_max_is_kept" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="610f9e3b-e760-f60a-4c51-7e6a65347847">
+      <Execution id="a5b476eb-30e9-446f-9697-77dd9f1f29f7" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Exact_max_is_kept" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Respects_min_qty_and_step_as_last_stage" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="5dd5e1a2-5aee-b4eb-6da3-1adc51ca3438">
+      <Execution id="15de6f59-83d6-4809-a34a-f8114567f235" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Respects_min_qty_and_step_as_last_stage" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Shadow_and_live_share_converter" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="ce18ec99-3fb5-4185-160a-29c4b7ee7a3d">
+      <Execution id="345e281e-3881-4be9-b9a8-6ebbd69a2e76" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Shadow_and_live_share_converter" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_quote_rejects_open" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="91738602-25e1-bb00-5660-0f8df8bc1773">
+      <Execution id="e1179a3a-b8b1-438c-a53e-ab89d87c01fa" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stale_quote_rejects_open" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Ignores_balance_deals" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="72fa619e-3df2-0277-da60-098c95bcda92">
+      <Execution id="70a10c94-91d2-44eb-8a1d-ec0f2eb51562" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="Ignores_balance_deals" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Margin_room_reduces_qty" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="cdce3bdb-6a85-e925-237e-560ac0d3fc85">
+      <Execution id="0ac55dad-0203-49e4-a812-e7d7002569da" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Margin_room_reduces_qty" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.333, allocation: 1, expected: 0.33)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="7a41d670-1ef4-27cf-7e9d-22eacedb7609">
+      <Execution id="12f7699b-bacf-4203-9b11-4cd086e69842" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 1, allocation: 0.3333333333333333333333333333, expected: 0.33)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="46a3c936-815e-28df-f461-3bc1ae5121bd">
+      <Execution id="ffd51559-1b39-49e7-bf31-d3e4f83d1761" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Coarser_precision_than_step_can_break_step_alignment" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e8f446fa-93d6-512e-167f-e2490b055b6c">
+      <Execution id="ea8cd771-8897-42a8-944b-66770607eb8f" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Coarser_precision_than_step_can_break_step_alignment" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.VolumeConverterTests.Manager_scale_maps_0_10_lots_to_1000_native" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="975eb552-20bf-fb8f-aff5-535d1128cf6c">
+      <Execution id="bcdcd336-6979-4aa9-86ab-283d01d1c0e6" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.VolumeConverterTests" name="Manager_scale_maps_0_10_lots_to_1000_native" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD&quot;)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e1b14853-2c6d-7e4d-f336-1bba56daddde">
+      <Execution id="d0061e18-0e62-47e0-bd9f-db96b9407bb0" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Maps_known_aliases_to_XAUUSD" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSDm&quot;)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="fe495576-95b4-47d0-3f0c-3da3c3bdd240">
+      <Execution id="52f8965f-750b-489a-99e7-d4b832481f48" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Maps_known_aliases_to_XAUUSD" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_re_floors_to_step" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="6dfd272a-d270-f0e4-a43b-a5626a5062d5">
+      <Execution id="55f8f511-7c6f-4e31-bde6-fc65320c569a" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Above_max_re_floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Increase_uses_incremental_volume" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="b661e207-4316-d5bc-74cd-d92c19ce9723">
+      <Execution id="4970d289-cc5a-4bdc-8c29-eb616088c8f9" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Increase_uses_incremental_volume" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Canceled_deal_on_a_position_excludes_it_from_first_three" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="3e6389fc-4c0f-6eb4-d16b-cb2465b42ede">
+      <Execution id="156479dc-a505-43b0-953d-cc426d7e342b" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="Canceled_deal_on_a_position_excludes_it_from_first_three" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_not_rounds_up_on_whole_step" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="18dd12d6-3286-b875-4403-91724ac09e00">
+      <Execution id="caa26184-6cd5-4399-be05-b07b0b09cda1" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_not_rounds_up_on_whole_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: 0)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="1ebc85c3-0165-1ba8-ba79-33d796cdc273">
+      <Execution id="69d1f167-cc54-4424-9d79-d10533eb3306" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_source_lots_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Known_lot_to_OrderQty_examples" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="5fa412a6-7814-f6ca-c334-52e642cf67e3">
+      <Execution id="84443b16-44ed-4046-b942-6b6403b8bd4c" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Known_lot_to_OrderQty_examples" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Reverse_inout_closes_then_opens_opposite" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="da7d5b66-4602-45a1-3fd0-06715099ccf5">
+      <Execution id="a86093b4-6708-464a-b56d-f5e3e5dfbc0d" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="Reverse_inout_closes_then_opens_opposite" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Exact_min_is_kept" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="3b414ba0-8bbe-51d8-5c91-be65d81ef982">
+      <Execution id="9a0b2c89-9869-4881-95c5-88252eb33b8f" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Exact_min_is_kept" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.First_three_completed_xau_unlocks_early_score" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="ef7965fe-0774-fe73-c41c-683b3d219117">
+      <Execution id="88ea91d8-6f97-4c85-b2c3-e43244f77851" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="First_three_completed_xau_unlocks_early_score" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Real_flag_false_never_allows_fix_send" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e3ce8c1f-88e3-d678-dce1-84ce5906de0c">
+      <Execution id="fdfdf465-cda0-4efd-aea6-bfed8b51eca7" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Real_flag_false_never_allows_fix_send" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.DealReasonTests.Rollover_is_not_a_trader_lifecycle_deal" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="6b7db3be-7d69-07b2-82cf-50984b9b15f1">
+      <Execution id="e1f06e17-93df-4773-8b2f-6a4d10e038cf" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.DealReasonTests" name="Rollover_is_not_a_trader_lifecycle_deal" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_signal_rejected" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="890e9599-d636-827d-46c6-aa30896a9265">
+      <Execution id="f5bc828b-0764-4f20-afeb-0f62b023fca6" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stale_signal_rejected" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Allocation_and_confidence_scale" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="8c5c1d5c-872b-5861-918a-1b548484d824">
+      <Execution id="8ed0b9ad-e554-4a70-ab6d-028412c2f08e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Allocation_and_confidence_scale" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dest_max_and_risk_caps_reduce" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="ba6723c1-6b81-bcf9-290e-33d63a50b066">
+      <Execution id="df72b33f-fd65-4b33-b681-fc1085bd98c5" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Dest_max_and_risk_caps_reduce" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_step_throws(step: -0.01)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="28ab0e57-d3c3-2659-b8d9-d038136d3dc6">
+      <Execution id="61d7b63b-8e87-494c-a437-68bf6eb65c50" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_step_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Filled_report_is_terminal" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="13ef9974-3501-d3ea-8665-754de70b726c">
+      <Execution id="a62003fe-fc14-44e8-b991-d12f460c9829" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="Filled_report_is_terminal" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Never_passthrough_MT5_lots" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="9f8d8280-f4e7-8c8c-c3a4-39e4209e1ec8">
+      <Execution id="1d022ca5-7e99-4e00-be26-bc31311d9aed" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Never_passthrough_MT5_lots" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.10, allocation: 1, expected: 0.10)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="b2470326-10b9-ee01-858e-2308cd15ac0e">
+      <Execution id="ffdbda88-fb13-4787-b125-1db382f0e7a7" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Allocation_greater_than_one_is_currently_accepted" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="db1f58da-1f49-490c-ac92-5a8b0460e5c2">
+      <Execution id="82585025-c638-4d7b-8e2d-7928bc081c6e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Allocation_greater_than_one_is_currently_accepted" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.BaselineScorerTests.Martingale_after_losses_is_risk_blocked" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="908a90da-a76c-6aaa-b10f-41c73f186098">
+      <Execution id="c54a09c4-50ca-40c1-8ce4-61ee9d25ba83" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.BaselineScorerTests" name="Martingale_after_losses_is_risk_blocked" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.DealReasonTests.Client_buy_still_counts" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="c26e31dc-a0a1-4387-a3bb-8f73ab694f61">
+      <Execution id="8c07b5cc-75fa-46e9-a951-3ed4047503fe" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.DealReasonTests" name="Client_buy_still_counts" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.VolumeConverterTests.Extended_scale_maps_one_lot_to_100_million" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="d27194c8-f677-34dd-4911-c9d5c46ffcfc">
+      <Execution id="e48681e2-0dcc-4fa2-a266-6f845ed3e305" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.VolumeConverterTests" name="Extended_scale_maps_one_lot_to_100_million" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Fix_worker_does_not_rescale" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e7551cfd-faac-512a-6234-01d55dd816bf">
+      <Execution id="43cf6b5a-55b5-4e6a-8aaf-36ba07d37439" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Fix_worker_does_not_rescale" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 1.999, allocation: 1, expected: 1.99)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="85006c29-0648-942d-99d3-a72569d2f306">
+      <Execution id="f1754e27-766b-4573-94b7-dc57983e855a" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Unaligned_max_is_returned_raw_not_re_floored" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="b83c50d0-642f-50cd-3bd9-8379cf092f4e">
+      <Execution id="b0039dc9-402d-4091-a3d7-c8ddd463116f" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Unaligned_max_is_returned_raw_not_re_floored" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.339, allocation: 1, expected: 0.33)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="6297743e-4806-a548-0b16-749ff62fddce">
+      <Execution id="55caf1e8-9ca1-4afb-8f5d-fc5c9e5ebc35" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;GOLD&quot;)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="da84e900-515b-f900-f1e9-39baa162e7ef">
+      <Execution id="1e390229-75cd-482e-9c16-6f5948f05397" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Maps_known_aliases_to_XAUUSD" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_caps" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="930791b0-6191-ffb4-11c6-87c87a0e1ac8">
+      <Execution id="36aced97-474c-4d5b-8675-58f0a626d53f" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Above_max_caps" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Does_not_guess_venue_instrument_ids" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="4c010a6b-4ba2-9f93-16cd-ad8b9d636df4">
+      <Execution id="52ed1e0d-5561-4835-86ca-280fd009ca30" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Does_not_guess_venue_instrument_ids" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Decimal_not_double_for_0_0001_lot" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="412ee0c9-2959-af62-5d04-40592e445b61">
+      <Execution id="a143d1e1-2897-4ae4-8f75-8aa20627e2a7" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Decimal_not_double_for_0_0001_lot" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.QuantityNormalizer_passthroughs_0_10_lots_when_allocation_is_one" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="4f2a34cc-735e-92a1-100d-5045e2307726">
+      <Execution id="582c7d54-ddb6-4c0f-afa9-1e85a971f82a" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="QuantityNormalizer_passthroughs_0_10_lots_when_allocation_is_one" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: -0.01)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="b9e7ad58-e545-b49e-4d45-4b315e29f22d">
+      <Execution id="9e47ca6f-91b6-4aa3-9dd5-6c40a0b3f817" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_allocation_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_row_also_returns_source_lots" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="430aab03-9c85-aaa2-4165-27f515768f28">
+      <Execution id="52a2786a-1ffc-4448-a317-008daa1fe764" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Lots_convention_row_also_returns_source_lots" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Copy_intent_expires" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="16a6bf8d-9134-59c7-5e7d-0a402fc9fc18">
+      <Execution id="71f5b228-246e-45c4-92b5-bf7bb6f5f9c9" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="Copy_intent_expires" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Precision_truncates_toward_zero_after_step" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e5045382-fa61-7fcf-0280-a5d39b3be603">
+      <Execution id="29786df1-bd6d-455b-8efb-acb09a1fa838" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Precision_truncates_toward_zero_after_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Close_uses_mapped_destination_qty" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="829e7a81-f210-32fd-85a0-a254abedbf0d">
+      <Execution id="930dfb82-cab1-4833-bf6c-f032ab9fa513" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Close_uses_mapped_destination_qty" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.VolumeConverterTests.Hundredths_comment_is_not_the_default" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="9a5cc5be-e0a7-b226-58bf-e3ff8d3686df">
+      <Execution id="79f1fade-4754-483b-bea1-c3808251e0e2" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.VolumeConverterTests" name="Hundredths_comment_is_not_the_default" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Below_min_after_cap_rejects" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e41a03f2-0f57-1b70-e014-44f1e7aec6b1">
+      <Execution id="43d3a524-1f5e-4cf0-b9b9-c6b7f36aaeb4" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Below_min_after_cap_rejects" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: -1)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="67307c97-f858-eca8-9740-fccd6cf9d7da">
+      <Execution id="1525cda0-b39b-4381-81f7-c56a18aa404e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_allocation_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: -1)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="5d55a0c2-ba23-b804-1879-cce4a7236cc7">
+      <Execution id="3a8ff1cc-2549-432b-8a45-f6c25964ce86" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_source_lots_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD.&quot;)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e1188176-ccf5-0861-4fdb-d50e23153fc2">
+      <Execution id="5e37e9a7-95f0-4fa9-9939-3ef855cd76e3" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Maps_known_aliases_to_XAUUSD" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_step_throws(step: 0)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="b157afcf-d55c-bceb-7121-113d6ee20a13">
+      <Execution id="a44087c1-625e-4db4-9973-b1b353b69e2d" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_step_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SmokeTests.Domain_assembly_loads" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e6b3ba6f-b1f7-b36c-1394-da26bde281a6">
+      <Execution id="a212e130-c2fd-48c0-86c8-3c367b3e5cbd" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SmokeTests" name="Domain_assembly_loads" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_contract_size_rejects" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="c39fe328-612d-0f9d-3ecf-3b434f55c788">
+      <Execution id="e0e4d1c5-5f59-46a9-ac1a-b53868180248" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Invalid_contract_size_rejects" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_allocation_throws(allocation: 0)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="0d10d247-370d-d132-9cc6-42dae40df966">
+      <Execution id="b87fa771-20f4-4ab6-a827-6d49ae5d00e0" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_allocation_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_contract_same_lots_same_normalizer_output" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="d436a4e4-14d6-207d-a904-2cf351416624">
+      <Execution id="4432345c-435a-4724-b33a-4583ca16c7e8" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Mini_contract_same_lots_same_normalizer_output" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.SymbolNormalizerTests.Maps_known_aliases_to_XAUUSD(source: &quot;XAUUSD.a&quot;)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="8c57798f-b283-cbc7-b446-914bdb3bf460">
+      <Execution id="bdb2f684-6b44-4359-8410-1c70aa47e911" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.SymbolNormalizerTests" name="Maps_known_aliases_to_XAUUSD" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_only_when_mapped" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="8d34e42f-4075-fd1b-ab84-35fc23e8b59c">
+      <Execution id="5c5130a4-cac6-43b1-b2e1-7e5479e4cc71" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Lots_convention_only_when_mapped" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.ClOrdId_is_deterministic_and_unique_per_sequence" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="c19da5d3-fcb9-29f1-f0bd-12c6fce177f5">
+      <Execution id="e258a332-3c0f-4013-9440-5ea88dc0e0b8" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="ClOrdId_is_deterministic_and_unique_per_sequence" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_step_or_min_rejects" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="1499de87-9392-366e-ca89-fba7f2e408c3">
+      <Execution id="e959dc86-d1c4-41a5-95c1-c8b5998f683e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Invalid_step_or_min_rejects" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Scale_in_and_partial_close" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="eaf24181-1b02-a3ba-601c-6deaa6ce5240">
+      <Execution id="36498272-f324-424b-890e-d9f73359d6a2" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="Scale_in_and_partial_close" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stop_new_execution_blocks_opens_not_closes" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="1f0bbd17-ce2d-1594-fa5e-4792bc83c475">
+      <Execution id="511982a0-7744-444a-964b-e9c360ffe844" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stop_new_execution_blocks_opens_not_closes" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_and_nano_contracts_differ" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="302ddc6b-a087-4ab4-3237-2f23e4983ef4">
+      <Execution id="5ee16cd3-fcc0-4601-ae5a-e92fad37b1ee" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Mini_and_nano_contracts_differ" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.TradeReconstructionTests.Reconstructs_simple_round_trip" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="059ae128-d1f0-4e94-3955-2bc9e0148004">
+      <Execution id="5e8e562f-3db8-4a14-bce9-a65d5176f98c" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.TradeReconstructionTests" name="Reconstructs_simple_round_trip" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dust_leftover_promotes_to_close" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="1187efe2-44fe-6aed-c266-1f3e6f6e8838">
+      <Execution id="b792d766-e6c0-4ea7-8c91-710e6d966ebf" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Dust_leftover_promotes_to_close" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Below_min_returns_zero" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="66fde4c2-348b-29aa-19e9-7df4dde2adf4">
+      <Execution id="b25a0575-407f-4487-ae3c-270a8514d70b" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Below_min_returns_zero" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mt5_ticks_scale_is_10000" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="9d7150d5-fca8-4252-8c18-b83d22ea72fd">
+      <Execution id="52caac49-c6d1-47b2-bbdc-06f464e8c995" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Mt5_ticks_scale_is_10000" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Unknown_ack_cannot_retry_new_order" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="120f6ec9-b244-036b-65a2-a5a447774ad5">
+      <Execution id="63080bdb-947d-4d1b-9678-3637b558e6d9" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="Unknown_ack_cannot_retry_new_order" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.BaselineScorerTests.Two_trades_remain_insufficient" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="0ced0ffb-7209-c80c-c50e-37449850b91c">
+      <Execution id="4f09d269-e657-431a-bf47-a6e2232c7040" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.BaselineScorerTests" name="Two_trades_remain_insufficient" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Unreconciled_venue_blocks_new_exposure" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="8fd95213-52a3-241c-7f6a-3f31ed25b454">
+      <Execution id="ff728ad6-af2d-4038-ba18-69aabf43e3a6" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Unreconciled_venue_blocks_new_exposure" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Confidence_cannot_exceed_one" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="c0246f83-3339-e810-5839-7e193e032186">
+      <Execution id="a808e3d8-2cf9-409f-946d-e7290e541b35" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Confidence_cannot_exceed_one" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Non_positive_source_lots_throws(sourceLots: -0.01)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="48dbc83a-d1c8-36fc-23b6-17a94f46d48a">
+      <Execution id="5c1944aa-69c5-453e-bfca-3f213a56fe6a" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Non_positive_source_lots_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Partial_reduce_is_fraction_of_dest" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="a85daa16-38b9-f3fa-23e5-7bfbb25ea6b2">
+      <Execution id="253f5087-f88f-4939-b711-b46309c0aeba" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Partial_reduce_is_fraction_of_dest" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Unverified_dest_spec_rejects" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e7704410-67b5-0219-c9cf-ab4ee623cd06">
+      <Execution id="4b85d80b-3069-4414-b227-12a7b36288bb" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests" name="Unverified_dest_spec_rejects" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.335, allocation: 1, expected: 0.33)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="fa230096-9e7b-0ff4-d142-8e9762f44d2d">
+      <Execution id="bdeef090-6b73-4af1-9056-8cc576c64711" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Floors_to_step(sourceLots: 0.019, allocation: 1, expected: 0.01)" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="9368b400-bab9-5c5a-d4fd-76283514f30d">
+      <Execution id="107af4ad-f36e-4f94-80a8-648d9a76b44f" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Floors_to_step" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Negative_precision_throws" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="a06dd21e-aa44-2277-2150-8e8ac4fc0920">
+      <Execution id="bdeb6fd1-cbf5-41f5-96db-e165d2382c0e" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Negative_precision_throws" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Below_min_after_floor_returns_zero" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="a0826b92-1a4c-081d-3303-a522afd87309">
+      <Execution id="9205594a-17eb-47a6-b87a-2d92026dbd65" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests" name="Below_min_after_floor_returns_zero" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests.Disconnect_after_send_is_unknown_state" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="266c8fba-7bec-d362-ff57-d8a0190d9b7f">
+      <Execution id="738a5a27-6c0e-4201-8e64-1e26b3b59a70" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.ExecutionAndSizingTests" name="Disconnect_after_send_is_unknown_state" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="908a90da-a76c-6aaa-b10f-41c73f186098" executionId="c54a09c4-50ca-40c1-8ce4-61ee9d25ba83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1499de87-9392-366e-ca89-fba7f2e408c3" executionId="e959dc86-d1c4-41a5-95c1-c8b5998f683e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3e6389fc-4c0f-6eb4-d16b-cb2465b42ede" executionId="156479dc-a505-43b0-953d-cc426d7e342b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a85daa16-38b9-f3fa-23e5-7bfbb25ea6b2" executionId="253f5087-f88f-4939-b711-b46309c0aeba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e3ce8c1f-88e3-d678-dce1-84ce5906de0c" executionId="fdfdf465-cda0-4efd-aea6-bfed8b51eca7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6dfd272a-d270-f0e4-a43b-a5626a5062d5" executionId="55f8f511-7c6f-4e31-bde6-fc65320c569a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5dd5e1a2-5aee-b4eb-6da3-1adc51ca3438" executionId="15de6f59-83d6-4809-a34a-f8114567f235" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="829e7a81-f210-32fd-85a0-a254abedbf0d" executionId="930dfb82-cab1-4833-bf6c-f032ab9fa513" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67307c97-f858-eca8-9740-fccd6cf9d7da" executionId="1525cda0-b39b-4381-81f7-c56a18aa404e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="430aab03-9c85-aaa2-4165-27f515768f28" executionId="52a2786a-1ffc-4448-a317-008daa1fe764" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d436a4e4-14d6-207d-a904-2cf351416624" executionId="4432345c-435a-4724-b33a-4583ca16c7e8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16a6bf8d-9134-59c7-5e7d-0a402fc9fc18" executionId="71f5b228-246e-45c4-92b5-bf7bb6f5f9c9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ced0ffb-7209-c80c-c50e-37449850b91c" executionId="4f09d269-e657-431a-bf47-a6e2232c7040" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fa412a6-7814-f6ca-c334-52e642cf67e3" executionId="84443b16-44ed-4046-b942-6b6403b8bd4c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18dd12d6-3286-b875-4403-91724ac09e00" executionId="caa26184-6cd5-4399-be05-b07b0b09cda1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="930791b0-6191-ffb4-11c6-87c87a0e1ac8" executionId="36aced97-474c-4d5b-8675-58f0a626d53f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d34e42f-4075-fd1b-ab84-35fc23e8b59c" executionId="5c5130a4-cac6-43b1-b2e1-7e5479e4cc71" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b414ba0-8bbe-51d8-5c91-be65d81ef982" executionId="9a0b2c89-9869-4881-95c5-88252eb33b8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eaf24181-1b02-a3ba-601c-6deaa6ce5240" executionId="36498272-f324-424b-890e-d9f73359d6a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9f8d8280-f4e7-8c8c-c3a4-39e4209e1ec8" executionId="1d022ca5-7e99-4e00-be26-bc31311d9aed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa230096-9e7b-0ff4-d142-8e9762f44d2d" executionId="bdeef090-6b73-4af1-9056-8cc576c64711" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db1f58da-1f49-490c-ac92-5a8b0460e5c2" executionId="82585025-c638-4d7b-8e2d-7928bc081c6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6b3ba6f-b1f7-b36c-1394-da26bde281a6" executionId="a212e130-c2fd-48c0-86c8-3c367b3e5cbd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1b14853-2c6d-7e4d-f336-1bba56daddde" executionId="d0061e18-0e62-47e0-bd9f-db96b9407bb0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a5cc5be-e0a7-b226-58bf-e3ff8d3686df" executionId="79f1fade-4754-483b-bea1-c3808251e0e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1ebc85c3-0165-1ba8-ba79-33d796cdc273" executionId="69d1f167-cc54-4424-9d79-d10533eb3306" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66fde4c2-348b-29aa-19e9-7df4dde2adf4" executionId="b25a0575-407f-4487-ae3c-270a8514d70b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="266c8fba-7bec-d362-ff57-d8a0190d9b7f" executionId="738a5a27-6c0e-4201-8e64-1e26b3b59a70" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8f446fa-93d6-512e-167f-e2490b055b6c" executionId="ea8cd771-8897-42a8-944b-66770607eb8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48dbc83a-d1c8-36fc-23b6-17a94f46d48a" executionId="5c1944aa-69c5-453e-bfca-3f213a56fe6a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d27194c8-f677-34dd-4911-c9d5c46ffcfc" executionId="e48681e2-0dcc-4fa2-a266-6f845ed3e305" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da84e900-515b-f900-f1e9-39baa162e7ef" executionId="1e390229-75cd-482e-9c16-6f5948f05397" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="412ee0c9-2959-af62-5d04-40592e445b61" executionId="a143d1e1-2897-4ae4-8f75-8aa20627e2a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b9e7ad58-e545-b49e-4d45-4b315e29f22d" executionId="9e47ca6f-91b6-4aa3-9dd5-6c40a0b3f817" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cdce3bdb-6a85-e925-237e-560ac0d3fc85" executionId="0ac55dad-0203-49e4-a812-e7d7002569da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0826b92-1a4c-081d-3303-a522afd87309" executionId="9205594a-17eb-47a6-b87a-2d92026dbd65" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7704410-67b5-0219-c9cf-ab4ee623cd06" executionId="4b85d80b-3069-4414-b227-12a7b36288bb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="059ae128-d1f0-4e94-3955-2bc9e0148004" executionId="5e8e562f-3db8-4a14-bce9-a65d5176f98c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2470326-10b9-ee01-858e-2308cd15ac0e" executionId="ffdbda88-fb13-4787-b125-1db382f0e7a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0bbd17-ce2d-1594-fa5e-4792bc83c475" executionId="511982a0-7744-444a-964b-e9c360ffe844" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21ff5cc5-ffa4-1367-ea90-7311244ffd65" executionId="e6be90f4-2f37-4ff3-90fc-6a09385b0177" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f2a34cc-735e-92a1-100d-5045e2307726" executionId="582c7d54-ddb6-4c0f-afa9-1e85a971f82a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7551cfd-faac-512a-6234-01d55dd816bf" executionId="43cf6b5a-55b5-4e6a-8aaf-36ba07d37439" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e5045382-fa61-7fcf-0280-a5d39b3be603" executionId="29786df1-bd6d-455b-8efb-acb09a1fa838" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef7965fe-0774-fe73-c41c-683b3d219117" executionId="88ea91d8-6f97-4c85-b2c3-e43244f77851" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c19da5d3-fcb9-29f1-f0bd-12c6fce177f5" executionId="e258a332-3c0f-4013-9440-5ea88dc0e0b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c010a6b-4ba2-9f93-16cd-ad8b9d636df4" executionId="52ed1e0d-5561-4835-86ca-280fd009ca30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="610f9e3b-e760-f60a-4c51-7e6a65347847" executionId="a5b476eb-30e9-446f-9697-77dd9f1f29f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ba6723c1-6b81-bcf9-290e-33d63a50b066" executionId="df72b33f-fd65-4b33-b681-fc1085bd98c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1188176-ccf5-0861-4fdb-d50e23153fc2" executionId="5e37e9a7-95f0-4fa9-9939-3ef855cd76e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="120f6ec9-b244-036b-65a2-a5a447774ad5" executionId="63080bdb-947d-4d1b-9678-3637b558e6d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c5c1d5c-872b-5861-918a-1b548484d824" executionId="8ed0b9ad-e554-4a70-ab6d-028412c2f08e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="890e9599-d636-827d-46c6-aa30896a9265" executionId="f5bc828b-0764-4f20-afeb-0f62b023fca6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="13ef9974-3501-d3ea-8665-754de70b726c" executionId="a62003fe-fc14-44e8-b991-d12f460c9829" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da7d5b66-4602-45a1-3fd0-06715099ccf5" executionId="a86093b4-6708-464a-b56d-f5e3e5dfbc0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f7aea955-a1cb-c6c1-77c4-888e0f0fdeec" executionId="dba21040-adde-48c8-a071-1a2b971e67e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91738602-25e1-bb00-5660-0f8df8bc1773" executionId="e1179a3a-b8b1-438c-a53e-ab89d87c01fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a06dd21e-aa44-2277-2150-8e8ac4fc0920" executionId="bdeb6fd1-cbf5-41f5-96db-e165d2382c0e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="72fa619e-3df2-0277-da60-098c95bcda92" executionId="70a10c94-91d2-44eb-8a1d-ec0f2eb51562" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28ab0e57-d3c3-2659-b8d9-d038136d3dc6" executionId="61d7b63b-8e87-494c-a437-68bf6eb65c50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c26e31dc-a0a1-4387-a3bb-8f73ab694f61" executionId="8c07b5cc-75fa-46e9-a951-3ed4047503fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b7db3be-7d69-07b2-82cf-50984b9b15f1" executionId="e1f06e17-93df-4773-8b2f-6a4d10e038cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e41a03f2-0f57-1b70-e014-44f1e7aec6b1" executionId="43d3a524-1f5e-4cf0-b9b9-c6b7f36aaeb4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="96e27764-5560-8990-7168-1be70b0ee7f5" executionId="94d183a4-b0db-4ad0-8231-61a9deff321e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b83c50d0-642f-50cd-3bd9-8379cf092f4e" executionId="b0039dc9-402d-4091-a3d7-c8ddd463116f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="975eb552-20bf-fb8f-aff5-535d1128cf6c" executionId="bcdcd336-6979-4aa9-86ab-283d01d1c0e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b157afcf-d55c-bceb-7121-113d6ee20a13" executionId="a44087c1-625e-4db4-9973-b1b353b69e2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0246f83-3339-e810-5839-7e193e032186" executionId="a808e3d8-2cf9-409f-946d-e7290e541b35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c57798f-b283-cbc7-b446-914bdb3bf460" executionId="bdb2f684-6b44-4359-8410-1c70aa47e911" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="85006c29-0648-942d-99d3-a72569d2f306" executionId="f1754e27-766b-4573-94b7-dc57983e855a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9d7150d5-fca8-4252-8c18-b83d22ea72fd" executionId="52caac49-c6d1-47b2-bbdc-06f464e8c995" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8fd95213-52a3-241c-7f6a-3f31ed25b454" executionId="ff728ad6-af2d-4038-ba18-69aabf43e3a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a41d670-1ef4-27cf-7e9d-22eacedb7609" executionId="12f7699b-bacf-4203-9b11-4cd086e69842" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b661e207-4316-d5bc-74cd-d92c19ce9723" executionId="4970d289-cc5a-4bdc-8c29-eb616088c8f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe495576-95b4-47d0-3f0c-3da3c3bdd240" executionId="52f8965f-750b-489a-99e7-d4b832481f48" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c39fe328-612d-0f9d-3ecf-3b434f55c788" executionId="e0e4d1c5-5f59-46a9-ac1a-b53868180248" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9368b400-bab9-5c5a-d4fd-76283514f30d" executionId="107af4ad-f36e-4f94-80a8-648d9a76b44f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad5c8704-3594-ca6a-833d-f19faf5f66c2" executionId="9c1c34a9-dde8-4a6e-b060-9f5fcb5413c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d10d247-370d-d132-9cc6-42dae40df966" executionId="b87fa771-20f4-4ab6-a827-6d49ae5d00e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce18ec99-3fb5-4185-160a-29c4b7ee7a3d" executionId="345e281e-3881-4be9-b9a8-6ebbd69a2e76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="302ddc6b-a087-4ab4-3237-2f23e4983ef4" executionId="5ee16cd3-fcc0-4601-ae5a-e92fad37b1ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6297743e-4806-a548-0b16-749ff62fddce" executionId="55caf1e8-9ca1-4afb-8f5d-fc5c9e5ebc35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1187efe2-44fe-6aed-c266-1f3e6f6e8838" executionId="b792d766-e6c0-4ea7-8c91-710e6d966ebf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bbde0039-77d5-7439-9e40-c5fa58fd29c7" executionId="1f947e34-b1d4-4a06-9809-68de013ccdf1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d55a0c2-ba23-b804-1879-cce4a7236cc7" executionId="3a8ff1cc-2549-432b-8a45-f6c25964ce86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46a3c936-815e-28df-f461-3bc1ae5121bd" executionId="ffd51559-1b39-49e7-bf31-d3e4f83d1761" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="86" executed="64" passed="64" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.04]   Discovering: TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.06]   Discovered:  TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.06]   Starting:    TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.09]       A38: source ticks / 10_000 = lots. Converter not implemented.&#xD;
+[xUnit.net 00:00:00.09]       A43 E08: Lots convention is the only mapping where 0.10 lots may equal OrderQty 0.10.&#xD;
+[xUnit.net 00:00:00.09]       A43 E14/E20/E25/E29: below min after cap is REJECT, not a sendable 0.&#xD;
+[xUnit.net 00:00:00.09]       A43 E06 vs E01: mini contract_size=10 must yield 1.00 oz, not the same qty as contract_size=100.&#xD;
+[xUnit.net 00:00:00.09]       A43 E27–E29: margin room reduces qty. No quote/leverage on QuantityNormalizer.&#xD;
+[xUnit.net 00:00:00.09]       A43 E37: leftover &lt; dest min promotes REDUCE to CLOSE.&#xD;
+[xUnit.net 00:00:00.09]       A43 E21: confidence_scale &gt; 1 is illegal. QuantityNormalizer has no confidence input.&#xD;
+[xUnit.net 00:00:00.09]       A43 E42–E43: missing dest spec or REDUCE link rejects.&#xD;
+[xUnit.net 00:00:00.09]       A43 E40–E41: contract_size &lt;= 0 / NaN rejects.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mt5_ticks_scale_is_10000' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_only_when_mapped' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Below_min_after_cap_rejects' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_and_nano_contracts_differ' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Margin_room_reduces_qty' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dust_leftover_promotes_to_close' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Confidence_cannot_exceed_one' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Missing_mapping_rejects' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_contract_size_rejects' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 E39: Unverified dest spec must reject. InstrumentQuantitySpec has no spec_status.&#xD;
+[xUnit.net 00:00:00.10]       A43 E22–E26: dest max and risk caps reduce then re-quantize.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Unverified_dest_spec_rejects' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dest_max_and_risk_caps_reduce' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 §10.1 E01–E09: IQuantityConverter missing.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Known_lot_to_OrderQty_examples' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 G7 / E01: IQuantityConverter missing. 0.10 MT5 lots × 100 oz → BaseUnits OrderQty 10.00, not 0.10.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Never_passthrough_MT5_lots' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 E33–E37: REDUCE is a fraction of mapped dest qty.&#xD;
+[xUnit.net 00:00:00.10]       A43 E05: 1 tick × 100 oz = 0.01 dest; must stay decimal 0.01m.&#xD;
+[xUnit.net 00:00:00.10]       A43 §4.7 E32/E38: REDUCE/CLOSE uses mapped dest qty, not source lots × allocation.&#xD;
+[xUnit.net 00:00:00.10]       A43 §6: shadow and live must call the same converter.&#xD;
+[xUnit.net 00:00:00.10]       A43 §6: FIX worker must not rescale requested_quantity.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Partial_reduce_is_fraction_of_dest' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Decimal_not_double_for_0_0001_lot' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Close_uses_mapped_destination_qty' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Shadow_and_live_share_converter' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Fix_worker_does_not_rescale' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 E16–E21: allocation × confidence before dest step. QuantityNormalizer has no confidence input.&#xD;
+[xUnit.net 00:00:00.10]       A43 E30–E31: INCREASE uses incremental source ticks, not position max_volume.&#xD;
+[xUnit.net 00:00:00.10]       A43 E44–E46: step 0 / step 0.001 / min not multiple of step reject the spec.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Allocation_and_confidence_scale' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Increase_uses_incremental_volume' was skipped in the test run.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_step_or_min_rejects' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]       A43 E23: after dest max, q must be FloorToStep(max, step). Today Normalize returns raw MaxQuantity.&#xD;
+Test 'TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_re_floors_to_step' was skipped in the test run.&#xD;
+[xUnit.net 00:00:00.10]   Finished:    TraderIntelligence.Tests.Unit&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5447874+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mt5_ticks_scale_is_10000 [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5448667+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Lots_convention_only_when_mapped [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5448867+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Below_min_after_cap_rejects [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5449262+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Mini_and_nano_contracts_differ [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5449458+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Margin_room_reduces_qty [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5449692+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dust_leftover_promotes_to_close [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5449899+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Confidence_cannot_exceed_one [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5450110+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Missing_mapping_rejects [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5450306+05:30">
+        <Text>[xUnit.net 00:00:00.09]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_contract_size_rejects [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5576164+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Unverified_dest_spec_rejects [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5576382+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Dest_max_and_risk_caps_reduce [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5579810+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Known_lot_to_OrderQty_examples [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5581877+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Never_passthrough_MT5_lots [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5583916+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Partial_reduce_is_fraction_of_dest [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5584117+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Decimal_not_double_for_0_0001_lot [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5584318+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Close_uses_mapped_destination_qty [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5584497+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Shadow_and_live_share_converter [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5584724+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Fix_worker_does_not_rescale [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5587376+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Allocation_and_confidence_scale [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5587566+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Increase_uses_incremental_volume [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5587762+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Normalization.SourceDestinationQuantityConversionTests.Invalid_step_or_min_rejects [SKIP]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-FQPFPKE" outcome="Warning" timestamp="2026-08-18T13:48:20.5594592+05:30">
+        <Text>[xUnit.net 00:00:00.10]     TraderIntelligence.Tests.Unit.Sizing.QuantityNormalizerStepMinMaxTests.Above_max_re_floors_to_step [SKIP]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

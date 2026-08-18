@@ -46,7 +46,7 @@ public sealed class CTraderFixOptions
 
         public string SenderCompId { get; set; } = "live.pepperstone.1369850";
 
-        public string TargetCompId { get; set; } = "CSERVER";
+        public string TargetCompId { get; set; } = "cServer";
 
         public string TargetSubId { get; set; } = "QUOTE";
 
@@ -67,7 +67,7 @@ public sealed class CTraderFixOptions
         /// </summary>
         public string SenderCompId { get; set; } = "live.pepperstone.1369850";
 
-        public string TargetCompId { get; set; } = "CSERVER";
+        public string TargetCompId { get; set; } = "cServer";
 
         public string TargetSubId { get; set; } = "TRADE";
 

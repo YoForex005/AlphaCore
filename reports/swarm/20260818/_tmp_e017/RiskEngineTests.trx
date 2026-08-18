@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d83df351-a77f-46d6-ba83-910d6916508b" name="ADMIN@DESKTOP-FQPFPKE 2026-08-18 13:49:20" runUser="DESKTOP-FQPFPKE\ADMIN" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-08-18T13:49:20.7631399+05:30" queuing="2026-08-18T13:49:20.7631402+05:30" start="2026-08-18T13:49:20.3756511+05:30" finish="2026-08-18T13:49:20.7670407+05:30" />
+  <TestSettings name="default" id="bf525b06-0b41-4c94-912b-9452f55ed4ed">
+    <Deployment runDeploymentRoot="ADMIN_DESKTOP-FQPFPKE_2026-08-18_13_49_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="85a6a218-e72b-420a-90ad-9105aa851e03" testId="890e9599-d636-827d-46c6-aa30896a9265" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_signal_rejected" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000738" startTime="2026-08-18T13:49:20.7079148+05:30" endTime="2026-08-18T13:49:20.7079148+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="85a6a218-e72b-420a-90ad-9105aa851e03" />
+    <UnitTestResult executionId="bbe89cad-9304-495f-958e-e0ea9bca4794" testId="8fd95213-52a3-241c-7f6a-3f31ed25b454" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Unreconciled_venue_blocks_new_exposure" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0000688" startTime="2026-08-18T13:49:20.7078993+05:30" endTime="2026-08-18T13:49:20.7078993+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbe89cad-9304-495f-958e-e0ea9bca4794" />
+    <UnitTestResult executionId="9ff03d22-0afb-4875-91ee-1dfd52ff9c0a" testId="91738602-25e1-bb00-5660-0f8df8bc1773" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_quote_rejects_open" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0082782" startTime="2026-08-18T13:49:20.7063320+05:30" endTime="2026-08-18T13:49:20.7063394+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9ff03d22-0afb-4875-91ee-1dfd52ff9c0a" />
+    <UnitTestResult executionId="a8457c33-c8b3-44ec-9828-7189dbaa092c" testId="1f0bbd17-ce2d-1594-fa5e-4792bc83c475" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Stop_new_execution_blocks_opens_not_closes" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0001444" startTime="2026-08-18T13:49:20.7078881+05:30" endTime="2026-08-18T13:49:20.7078881+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8457c33-c8b3-44ec-9828-7189dbaa092c" />
+    <UnitTestResult executionId="f181a17a-519d-4195-8f8d-dc1e15d47483" testId="e3ce8c1f-88e3-d678-dce1-84ce5906de0c" testName="TraderIntelligence.Tests.Unit.RiskEngineTests.Real_flag_false_never_allows_fix_send" computerName="DESKTOP-FQPFPKE" duration="00:00:00.0003220" startTime="2026-08-18T13:49:20.7077571+05:30" endTime="2026-08-18T13:49:20.7077571+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f181a17a-519d-4195-8f8d-dc1e15d47483" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Real_flag_false_never_allows_fix_send" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="e3ce8c1f-88e3-d678-dce1-84ce5906de0c">
+      <Execution id="f181a17a-519d-4195-8f8d-dc1e15d47483" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Real_flag_false_never_allows_fix_send" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stop_new_execution_blocks_opens_not_closes" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="1f0bbd17-ce2d-1594-fa5e-4792bc83c475">
+      <Execution id="a8457c33-c8b3-44ec-9828-7189dbaa092c" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stop_new_execution_blocks_opens_not_closes" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_quote_rejects_open" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="91738602-25e1-bb00-5660-0f8df8bc1773">
+      <Execution id="9ff03d22-0afb-4875-91ee-1dfd52ff9c0a" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stale_quote_rejects_open" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Unreconciled_venue_blocks_new_exposure" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="8fd95213-52a3-241c-7f6a-3f31ed25b454">
+      <Execution id="bbe89cad-9304-495f-958e-e0ea9bca4794" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Unreconciled_venue_blocks_new_exposure" />
+    </UnitTest>
+    <UnitTest name="TraderIntelligence.Tests.Unit.RiskEngineTests.Stale_signal_rejected" storage="d:\prop\tests\unit\bin\debug\net8.0\traderintelligence.tests.unit.dll" id="890e9599-d636-827d-46c6-aa30896a9265">
+      <Execution id="85a6a218-e72b-420a-90ad-9105aa851e03" />
+      <TestMethod codeBase="D:\Prop\tests\Unit\bin\Debug\net8.0\TraderIntelligence.Tests.Unit.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="TraderIntelligence.Tests.Unit.RiskEngineTests" name="Stale_signal_rejected" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="890e9599-d636-827d-46c6-aa30896a9265" executionId="85a6a218-e72b-420a-90ad-9105aa851e03" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8fd95213-52a3-241c-7f6a-3f31ed25b454" executionId="bbe89cad-9304-495f-958e-e0ea9bca4794" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91738602-25e1-bb00-5660-0f8df8bc1773" executionId="9ff03d22-0afb-4875-91ee-1dfd52ff9c0a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0bbd17-ce2d-1594-fa5e-4792bc83c475" executionId="a8457c33-c8b3-44ec-9828-7189dbaa092c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e3ce8c1f-88e3-d678-dce1-84ce5906de0c" executionId="f181a17a-519d-4195-8f8d-dc1e15d47483" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.04]   Discovering: TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.07]   Discovered:  TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.07]   Starting:    TraderIntelligence.Tests.Unit&#xD;
+[xUnit.net 00:00:00.10]   Finished:    TraderIntelligence.Tests.Unit&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

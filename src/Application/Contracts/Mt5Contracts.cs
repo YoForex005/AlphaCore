@@ -67,3 +67,8 @@ public interface IBrokerRegistry
     IMt5BrokerConnector Get(string brokerCode);
     IReadOnlyList<IMt5BrokerConnector> All();
 }
+
+public interface IMt5BulkDealReader
+{
+    Task<IReadOnlyList<Mt5DealDto>> GetGroupDealsAsync(string group, DateTimeOffset from, DateTimeOffset to, CancellationToken ct);
+}

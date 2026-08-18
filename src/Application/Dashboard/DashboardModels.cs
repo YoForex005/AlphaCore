@@ -56,6 +56,22 @@ public sealed record TraderRowDto(
     decimal ShadowPnl,
     DateTimeOffset LastScored);
 
+public sealed record TradeHighlightDto(
+    long PositionId,
+    string SourceSymbol,
+    string CanonicalSymbol,
+    TradeDirection Direction,
+    DateTimeOffset OpenedAt,
+    DateTimeOffset? ClosedAt,
+    decimal NetRealizedPnl,
+    decimal MaxVolumeLots,
+    bool Completed,
+    bool IsFirstThree);
+
+public sealed record TraderDetailDto(
+    TraderRowDto Header,
+    IReadOnlyList<TradeHighlightDto> Trades);
+
 public sealed record FixSessionDto(
     string Qualifier,
     string Host,
@@ -92,6 +108,7 @@ public interface IDashboardQueries
     Task<IReadOnlyList<GroupRowDto>> GetGroupsAsync(CancellationToken ct);
     Task<IReadOnlyList<TraderRowDto>> GetTradersAsync(string? broker, string? state, CancellationToken ct);
     Task<TraderRowDto?> GetTraderAsync(string broker, long login, CancellationToken ct);
+    Task<TraderDetailDto?> GetTraderDetailAsync(string broker, long login, CancellationToken ct);
     Task<IReadOnlyList<FixSessionDto>> GetFixSessionsAsync(CancellationToken ct);
     Task<RiskDashboardDto> GetRiskAsync(CancellationToken ct);
 }

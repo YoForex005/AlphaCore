@@ -25,7 +25,7 @@ public sealed class FixMessageParser
 
         // Normalize: trim whitespace, drop trailing separator if present.
         var normalized = fixPipeDelimited.Trim();
-        normalized = normalized.EndsWith(SeparatorChar, StringComparison.Ordinal)
+        normalized = normalized.EndsWith(SeparatorChar)
             ? normalized[..^1]
             : normalized;
 

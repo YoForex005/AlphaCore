@@ -14,6 +14,7 @@ public interface ITradingStore
     Task<IReadOnlyList<NormalizedDeal>> LoadDealsAsync(Guid brokerId, string brokerCode, long login, CancellationToken ct);
     Task ReplaceReconstructedAsync(Guid brokerId, long login, IReadOnlyList<ReconstructedTradeResult> trades, CancellationToken ct);
     Task UpsertScoreAsync(TraderScore score, CancellationToken ct);
+    Task PersistDemoShadowAsync(Guid brokerId, long login, TraderState state, IReadOnlyList<ReconstructedTradeResult> completedXau, CancellationToken ct);
     Task<Guid> ResolveBrokerIdAsync(string brokerCode, CancellationToken ct);
 }
 
@@ -42,15 +43,35 @@ public sealed class DealIngestionService
         var accounts = await connector.GetAccountsAsync(null, ct);
         var insertedDeals = 0;
         foreach (var account in accounts)
-        {
             await _store.UpsertAccountAsync(brokerId, account, now, ct);
-            var deals = await connector.GetDealsAsync(account.Login, from, to, ct);
-            foreach (var deal in deals)
-            {
-                if (await _store.UpsertDealAsync(brokerId, deal, now, ct))
-                    insertedDeals++;
-            }
 
+        if (connector is IMt5BulkDealReader bulk)
+        {
+            foreach (var group in groups)
+            {
+                var deals = await bulk.GetGroupDealsAsync(group.Name, from, to, ct);
+                foreach (var deal in deals)
+                {
+                    if (await _store.UpsertDealAsync(brokerId, deal, now, ct))
+                        insertedDeals++;
+                }
+            }
+        }
+        else
+        {
+            foreach (var account in accounts)
+            {
+                var deals = await connector.GetDealsAsync(account.Login, from, to, ct);
+                foreach (var deal in deals)
+                {
+                    if (await _store.UpsertDealAsync(brokerId, deal, now, ct))
+                        insertedDeals++;
+                }
+            }
+        }
+
+        foreach (var account in accounts.Take(200))
+        {
             var positions = await connector.GetPositionsAsync(account.Login, ct);
             await _store.ReplacePositionsAsync(brokerId, account.Login, positions, ct);
         }
@@ -99,5 +120,7 @@ public sealed class ReconstructionScoringService
             CurrentState = score.SuggestedState,
             LastScoredAt = DateTimeOffset.UtcNow
         }, ct);
+
+        await _store.PersistDemoShadowAsync(brokerId, login, score.SuggestedState, completedXau, ct);
     }
 }

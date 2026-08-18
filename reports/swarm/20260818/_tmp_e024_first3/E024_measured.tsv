@@ -1,0 +1,21 @@
+id	helperN	helperElig	scoreN	scoreElig	state	note
+UNIT	2	false	3	true	SHADOW	extra-ticket BuyCanceled on completed pos 10; helper excludes; score leaks
+SELL_CXL	2	false	3	true	SHADOW	extra-ticket SellCanceled OUT; same leak
+M5	2	false	3	true	SHADOW	2 clean + complete-then-cancel
+F17	1	false	1	false	INSUFFICIENT_DATA	5017 open+ineligible; 5018 counts
+F17_FLAT	0	false	1	false	INSUFFICIENT_DATA	later real OUT completes dirty book; helper 0
+F17B	0	false	0	false	INSUFFICIENT_DATA	canceled-only; no dirty stub
+F17C	0	false	1	false	INSUFFICIENT_DATA	canceled scale-in not inverted
+F17D	0	false	0	false	INSUFFICIENT_DATA	SellCanceled close; stays open dirty
+F17E	0	false	0	false	INSUFFICIENT_DATA	canceled + balance clawback
+F17F	1	false	1	false	INSUFFICIENT_DATA	EURUSD cancel does not dirty XAU
+F17G_BEFORE	3	true	3	true	SHADOW	3 clean latch
+F17G_AFTER	2	false	2	false	INSUFFICIENT_DATA	#3 close rewritten SellCanceled; latch retracts in-memory
+NETTING	0	false	2	false	INSUFFICIENT_DATA	all seqs on reused position_id ineligible
+POS0	3	true	3	true	SHADOW	cancel pos 0 isolated
+OTHER_LOGIN	3	true	3	true	SHADOW	cancel login 2 isolated
+OTHER_BROKER	3	true	3	true	SHADOW	cancel STARWAVE isolated
+REASON	0	false	1	false	INSUFFICIENT_DATA	BuyCanceled+CorporateAction still dirties
+EMPTY_SYM	0	false	0	false	INSUFFICIENT_DATA	empty-symbol cancel same pos still dirties
+NO_INVERSE	0	false	0	false	INSUFFICIENT_DATA	0.20 cancel does not subtract from 0.10 IN
+DASH	2	false	3	true	SHADOW	highlight=3 including elig=false pos

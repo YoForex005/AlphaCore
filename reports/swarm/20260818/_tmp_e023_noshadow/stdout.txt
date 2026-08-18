@@ -1,0 +1,47 @@
+E023_NO_SHADOW_BLOCKED_EVAL
+DOMAIN_LOSING_MARTINGALE state=RISK_BLOCKED q=42.50 r=70 b=50 mart=True net=-2100 dd=2100 n=3
+DOMAIN_WINNING_MARTINGALE state=WATCH q=72.50 r=70 b=50 mart=True net=1700 dd=300
+DOMAIN_WINNING_MARTINGALE note=A22 Case B lands WATCH not RISK_BLOCKED; persist still skips because not SHADOW
+DOMAIN_MILD_1_30X state=WATCH q=80.75 r=45 mart=True net=120
+SEED_SHADOW_ORDERS=6
+SEED_COPY_INTENTS=6
+SEED_OUTBOX=4
+SEED_DEST_QUOTES=1
+SEED_SCORE login=10001 state=SHADOW n=3 risk=10 q=95.50 mart=False
+SEED_SCORE login=10002 state=RISK_BLOCKED n=3 risk=70 q=42.50 mart=True
+SEED_SCORE login=10003 state=INSUFFICIENT_DATA n=0 risk=10 q=40 mart=False
+SEED_SCORE login=99001 state=SHADOW n=3 risk=10 q=95.50 mart=False
+SEED_BY_LOGIN login=10001 shadow_orders=3 copy_intents=3 outbox=1
+SEED_BY_LOGIN login=10002 shadow_orders=0 copy_intents=0 outbox=1
+SEED_BY_LOGIN login=10003 shadow_orders=0 copy_intents=0 outbox=1
+SEED_BY_LOGIN login=99001 shadow_orders=3 copy_intents=3 outbox=1
+SEED_SHADOW_ROW login=10001 qty=0.1 px=2399.85 slip=79.75
+SEED_SHADOW_ROW login=10001 qty=0.1 px=2399.45 slip=-61.45
+SEED_SHADOW_ROW login=10001 qty=0.1 px=2399.85 slip=74.35
+SEED_SHADOW_ROW login=99001 qty=0.05 px=2399.85 slip=59.85
+SEED_SHADOW_ROW login=99001 qty=0.05 px=2399.85 slip=51.85
+SEED_SHADOW_ROW login=99001 qty=0.05 px=2399.85 slip=43.85
+SEED_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:503
+SEED_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:502
+SEED_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:501
+SEED_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:703
+SEED_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:702
+SEED_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:701
+CLAIM_10002_IS_RISK_BLOCKED=True
+CLAIM_10002_SHADOW_ZERO=True
+CLAIM_10002_INTENT_ZERO=True
+DIRECT_RISK_BLOCKED_DELTA_ORDERS=0
+DIRECT_RISK_BLOCKED_DELTA_INTENTS=0
+DIRECT_RISK_BLOCKED_DELTA_OUTBOX=1
+DIRECT_RISK_BLOCKED_OUTBOX_LAST={"state":"RISK_BLOCKED","completed":3}
+DIRECT_LIE_SHADOW_DELTA_ORDERS=3
+DIRECT_LIE_SHADOW_DELTA_INTENTS=3
+DIRECT_LIE_SHADOW_LOGINS=0.40,0.20,0.10
+DIRECT_WATCH_DELTA_ORDERS=0
+DIRECT_PAUSED_DELTA_ORDERS=0
+DIRECT_DISQUALIFIED_DELTA_ORDERS=0
+DIRECT_INSUFFICIENT_DATA_DELTA_ORDERS=0
+DIRECT_EARLY_SCORE_DELTA_ORDERS=0
+DIRECT_LIVE_DELTA_ORDERS=0
+DIRECT_LIVE_CANDIDATE_DELTA_ORDERS=0
+VERDICT=RISK_BLOCKED_CREATES_ZERO_SHADOW_ON_DEMO_AND_DIRECT

@@ -1,66 +1,28 @@
-# MT5 Trader Intelligence — Architecture Overview
+# Trader Intelligence architecture (implementation map)
 
-## System Diagram
+Source of truth: `D:\Prop\MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md`.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        React Dashboard                          │
-│                    (apps/web — Vite + TS)                        │
-└────────────────────────────┬────────────────────────────────────┘
-                             │ REST / WebSocket
-┌────────────────────────────▼────────────────────────────────────┐
-│                     .NET 8 API Gateway                          │
-│          (ASP.NET Core — Linux or Windows)                       │
-│  ┌──────────┐  ┌──────────┐  ┌───────────┐  ┌───────────────┐  │
-│  │ Account  │  │  Trade   │  │   Risk    │  │  Copy-Trade   │  │
-│  │  Svc     │  │  Recon   │  │  Engine   │  │  Orchestrator │  │
-│  └──────────┘  └──────────┘  └───────────┘  └───────────────┘  │
-└──────┬──────────────┬──────────────┬──────────────┬─────────────┘
-       │              │              │              │
-┌──────▼──────┐ ┌─────▼─────┐ ┌─────▼─────┐ ┌─────▼──────────┐
-│  PostgreSQL │ │   Redis   │ │ MT5 Worker │ │ cTrader FIX    │
-│  (ledger,   │ │ (cache,   │ │ (Windows,  │ │ (QuickFIX/N,  │
-│   accounts) │ │  pub/sub) │ │  native    │ │  Linux-safe)   │
-└─────────────┘ └───────────┘ │  SDK DLL)  │ └────────────────┘
-                              └──────┬─────┘
-                    ┌────────────────┼────────────────┐
-                    ▼                ▼                ▼
-              Achiever MT5    StarwaveFX MT5    (future brokers)
-```
+## What exists now
 
-## Tech Stack
+| Layer | Path | Status |
+|---|---|---|
+| Domain algorithms | `src/Domain` | Reconstruction, symbol map, baseline score, risk, shadow, FIX FSM |
+| Application | `src/Application` | Broker ports, ingestion, scoring, dashboard contracts |
+| Persistence | `src/Infrastructure` | EF Core DbContext, in-memory fallback, demo seed |
+| MT5 | `src/Mt5` + `mt5-sdk` | Fake connector for tests; C++ SDK preserved for Windows local mode |
+| FIX | `src/Fix.CTrader` | Independent QUOTE/TRADE options, simulator harness. Real NewOrderSingle off |
+| API | `apps/api` | Operational endpoints, no secrets |
+| Workers | `apps/mt5-worker`, `apps/fix-worker` | Ingest/score loop; FIX heartbeat/status only |
+| Web | `apps/web` | React + Vite dashboard pages |
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, TypeScript, Vite, TailwindCSS |
-| API | ASP.NET Core 8, C# |
-| MT5 Worker | C++17, MetaTrader 5 Manager API (native DLL, Windows-only) |
-| FIX Engine | QuickFIX/N, FIX 4.4 |
-| Database | PostgreSQL 16 |
-| Cache | Redis 7 |
-| ML (future) | Python, scikit-learn |
+## Safety defaults
 
-## Core Domains
+- `REAL_COPY_EXECUTION_ENABLED=false`
+- Trade #3 → SHADOW / EARLY_SCORE, never LIVE
+- TargetCompID = `cServer` (case preserved)
+- Volume default scale = 10_000 (`IMTDeal.Volume()`)
+- Plan-group mappings are labels, not fetch filters
 
-- **Account Management** — MT5 user provisioning, group assignment, password management
-- **Trade Reconstruction** — deals → reconstructed trades with P&L, XAUUSD normalization
-- **Risk Engine** — hard limits, kill switch, emergency flatten, slippage guard
-- **Copy Trading** — prop challenge → live account mirroring via cTrader FIX
-- **Evidence Ledger** — immutable raw event + deal revision store (append-only, idempotent)
+## Phases
 
-## Data Flow
-
-1. MT5 pump callbacks (OnDealAdd, OnPositionUpdate, etc.) push events to a lock-free queue
-2. Worker thread drains queue, writes raw events to PostgreSQL evidence ledger
-3. Trade reconstruction aggregates deals by position ticket into trades
-4. Risk engine evaluates every trade against configurable hard limits
-5. Copy-trade orchestrator mirrors qualifying trades to cTrader via FIX 4.4
-
-## Phase Plan
-
-| Phase | Scope | Status |
-|-------|-------|--------|
-| 1 | MT5 SDK wrapper, account CRUD, deal ingestion, evidence ledger | Done |
-| 2 | Trade reconstruction, risk engine hard limits, dashboard MVP | In Progress |
-| 3 | cTrader FIX integration, copy-trade orchestrator | Planned |
-| 4 | ML scoring, news filter, advanced analytics | Future |
+Implemented toward first useful version (architecture §69): deterministic path through reconstruction, scoring, dashboard, and FIX session *state*. Live TRADE send and ML are explicitly not enabled.

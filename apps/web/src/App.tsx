@@ -8,10 +8,12 @@ import TraderDetailPage from './pages/TraderDetailPage';
 import TradeExplorerPage from './pages/TradeExplorerPage';
 import ScoringPage from './pages/ScoringPage';
 import ShadowPortfolioPage from './pages/ShadowPortfolioPage';
+import LiveCopyPage from './pages/LiveCopyPage';
 import FixSessionsPage from './pages/FixSessionsPage';
 import RiskPage from './pages/RiskPage';
 import ReconciliationPage from './pages/ReconciliationPage';
 import SystemHealthPage from './pages/SystemHealthPage';
+import AuditPage from './pages/AuditPage';
 import SettingsPage from './pages/SettingsPage';
 
 export default function App() {
@@ -27,10 +29,12 @@ export default function App() {
         <Route path="trades" element={<TradeExplorerPage />} />
         <Route path="scoring" element={<ScoringPage />} />
         <Route path="shadow" element={<ShadowPortfolioPage />} />
+        <Route path="live" element={<LiveCopyPage />} />
         <Route path="fix" element={<FixSessionsPage />} />
         <Route path="risk" element={<RiskPage />} />
         <Route path="reconciliation" element={<ReconciliationPage />} />
         <Route path="health" element={<SystemHealthPage />} />
+        <Route path="audit" element={<AuditPage />} />
         <Route path="settings" element={<SettingsPage />} />
       </Route>
     </Routes>

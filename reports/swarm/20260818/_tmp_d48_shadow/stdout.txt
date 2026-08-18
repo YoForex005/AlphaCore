@@ -1,0 +1,49 @@
+D48_SHADOW_ROWS_EVAL
+mode=reconstruct+score+SimulateEntry (no EF; Infrastructure does not compile)
+TRADER login=10001 broker=ACHIEVER deals=6 recon=3 completedXau=3 state=SHADOW q=95.50 r=10 b=90
+  ROW login=10001 pos=501 dir=Long qty=0.1 entryVwap=2320.10 px=2399.85 spread=0.40 slip=79.75 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:501 expires=2026-06-01T08:00:15.0000000+00:00 opened=2026-06-01T08:00:00.0000000+00:00
+  ROW login=10001 pos=502 dir=Short qty=0.1 entryVwap=2338.00 px=2399.45 spread=0.40 slip=-61.45 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:502 expires=2026-06-01T11:00:15.0000000+00:00 opened=2026-06-01T11:00:00.0000000+00:00
+  ROW login=10001 pos=503 dir=Long qty=0.1 entryVwap=2325.50 px=2399.85 spread=0.40 slip=74.35 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:503 expires=2026-06-01T14:00:15.0000000+00:00 opened=2026-06-01T14:00:00.0000000+00:00
+TRADER login=10002 broker=ACHIEVER deals=6 recon=3 completedXau=3 state=RISK_BLOCKED q=42.50 r=70 b=50
+  SKIP_SHADOW_ORDERS reason=state_not_SHADOW
+TRADER login=10003 broker=ACHIEVER deals=0 recon=0 completedXau=0 state=INSUFFICIENT_DATA q=40 r=10 b=90
+  SKIP_SHADOW_ORDERS reason=state_not_SHADOW
+TRADER login=99001 broker=STARWAVEFX deals=6 recon=3 completedXau=3 state=SHADOW q=95.50 r=10 b=90
+  ROW login=99001 pos=701 dir=Long qty=0.05 entryVwap=2340 px=2399.85 spread=0.40 slip=59.85 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:701 expires=2026-06-02T08:00:15.0000000+00:00 opened=2026-06-02T08:00:00.0000000+00:00
+  ROW login=99001 pos=702 dir=Long qty=0.05 entryVwap=2348 px=2399.85 spread=0.40 slip=51.85 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:702 expires=2026-06-02T10:00:15.0000000+00:00 opened=2026-06-02T10:00:00.0000000+00:00
+  ROW login=99001 pos=703 dir=Long qty=0.05 entryVwap=2356 px=2399.85 spread=0.40 slip=43.85 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:703 expires=2026-06-02T12:00:15.0000000+00:00 opened=2026-06-02T12:00:00.0000000+00:00
+EXPECTED_SHADOW_ORDERS=6
+EXPECTED_COPY_INTENTS=6
+EXPECTED_SLIP_SUM=248.20
+QUOTE bid=2399.45 ask=2399.85 spread=0.40 delayMs=80 overlay=NO
+SEED1_SHADOW_ORDERS=6
+SEED1_COPY_INTENTS=6
+SEED1_OUTBOX=4
+SEED1_DEST_QUOTES=1
+SEED1_SCORES=10001:SHADOW:N=3;10002:RISK_BLOCKED:N=3;10003:INSUFFICIENT_DATA:N=0;99001:SHADOW:N=3
+SEED1_ROW login=10001 dir=Long qty=0.1 px=2399.85 spread=0.40 slip=74.35 intent=4ec23d2e-0c16-4372-a135-4b946b681d0e broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1
+SEED1_ROW login=10001 dir=Long qty=0.1 px=2399.85 spread=0.40 slip=79.75 intent=87dc3af7-b47a-45ef-8de9-79942fd9446b broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1
+SEED1_ROW login=10001 dir=Short qty=0.1 px=2399.45 spread=0.40 slip=-61.45 intent=d7ef36f9-8e09-45dc-8018-06ae61ac86b6 broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1
+SEED1_ROW login=99001 dir=Long qty=0.05 px=2399.85 spread=0.40 slip=43.85 intent=a8d6f3a9-51e2-492d-b2b4-fab68484d8ae broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2
+SEED1_ROW login=99001 dir=Long qty=0.05 px=2399.85 spread=0.40 slip=59.85 intent=d42c1df5-7882-437c-abcc-84fedb28a5ea broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2
+SEED1_ROW login=99001 dir=Long qty=0.05 px=2399.85 spread=0.40 slip=51.85 intent=f3ddab4d-fc97-4b1b-b890-7b8ec376f9fa broker=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2
+SEED1_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure qty=0.1 px=2320.10 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:501 exp=2026-06-01T08:00:15.0000000+00:00
+SEED1_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure qty=0.1 px=2338.00 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:502 exp=2026-06-01T11:00:15.0000000+00:00
+SEED1_INTENT login=10001 status=SHADOW_ONLY action=OpenExposure qty=0.1 px=2325.50 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001:503 exp=2026-06-01T14:00:15.0000000+00:00
+SEED1_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure qty=0.05 px=2340 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:701 exp=2026-06-02T08:00:15.0000000+00:00
+SEED1_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure qty=0.05 px=2348 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:702 exp=2026-06-02T10:00:15.0000000+00:00
+SEED1_INTENT login=99001 status=SHADOW_ONLY action=OpenExposure qty=0.05 px=2356 key=shadow:aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001:703 exp=2026-06-02T12:00:15.0000000+00:00
+SEED1_OUTBOX_ROW type=ScoreUpdate agg=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10001 payload={"state":"SHADOW","completed":3}
+SEED1_OUTBOX_ROW type=ScoreUpdate agg=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10002 payload={"state":"RISK_BLOCKED","completed":3}
+SEED1_OUTBOX_ROW type=ScoreUpdate agg=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1:10003 payload={"state":"INSUFFICIENT_DATA","completed":0}
+SEED1_OUTBOX_ROW type=ScoreUpdate agg=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2:99001 payload={"state":"SHADOW","completed":3}
+SEED1_SLIP_SUM=248.20
+SEED2_EARLY_RETURN_SHADOW_ORDERS=6
+SEED2_EARLY_RETURN_COPY_INTENTS=6
+SEED2_EARLY_RETURN_OUTBOX=4
+REBUILD_SHADOW_ORDERS=6
+REBUILD_COPY_INTENTS=6
+REBUILD_OUTBOX=8
+DASH_SHADOW_COUNT=2 DASH_SHADOW_PNL=248.20 DASH_BLOCKED=1
+SEEDER_TEXT_CONTAINS_ShadowOrders=False
+VERDICT=YES_SIX_SHADOW_ROWS_VIA_REBUILD
