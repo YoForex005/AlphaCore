@@ -1,0 +1,156 @@
+[
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "305750",
+    "SourcePositionId": "21250421",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237339770",
+    "DestClOrdId": "C20260818093047317",
+    "DestFillPrice": 4390.2,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "312762",
+    "SourcePositionId": "21251046",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342655",
+    "DestClOrdId": "C20260818100729845",
+    "DestFillPrice": 4393.86,
+    "DestClosed": true
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21031279",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342712",
+    "DestClOrdId": "C20260818100819889",
+    "DestFillPrice": 4393.08,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21031281",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342715",
+    "DestClOrdId": "C20260818100823497",
+    "DestFillPrice": 4392.98,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21031282",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342720",
+    "DestClOrdId": "C20260818100827082",
+    "DestFillPrice": 4392.91,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21031283",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342812",
+    "DestClOrdId": "C20260818100926971",
+    "DestFillPrice": 4393.01,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21031284",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342816",
+    "DestClOrdId": "C20260818100930708",
+    "DestFillPrice": 4392.93,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21038046",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342821",
+    "DestClOrdId": "C20260818100934372",
+    "DestFillPrice": 4392.93,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21038050",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342891",
+    "DestClOrdId": "C20260818101040314",
+    "DestFillPrice": 4393.66,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21038049",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342893",
+    "DestClOrdId": "C20260818101044026",
+    "DestFillPrice": 4393.41,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21038048",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342898",
+    "DestClOrdId": "C20260818101047634",
+    "DestFillPrice": 4393.33,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "322114",
+    "SourcePositionId": "21038047",
+    "IsLong": true,
+    "Lots": 0.01,
+    "DestPositionId": "237342946",
+    "DestClOrdId": "C20260818101149965",
+    "DestFillPrice": 4393.67,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "318611",
+    "SourcePositionId": "21136787",
+    "IsLong": false,
+    "Lots": 0.01,
+    "DestPositionId": "237342974",
+    "DestClOrdId": "C20260818101215571",
+    "DestFillPrice": 4394.03,
+    "DestClosed": false
+  },
+  {
+    "Broker": "ACHIEVER",
+    "SourceLogin": "318611",
+    "SourcePositionId": "21136786",
+    "IsLong": false,
+    "Lots": 0.01,
+    "DestPositionId": "237342983",
+    "DestClOrdId": "C20260818101219229",
+    "DestFillPrice": 4394.1,
+    "DestClosed": false
+  }
+]

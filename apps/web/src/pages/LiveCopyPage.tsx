@@ -54,7 +54,7 @@ export default function LiveCopyPage() {
         </tbody>
       </table>
       {intents.length === 0 && (
-        <p className="text-gray-500 text-sm">No SHADOW/LIVE_CANDIDATE traders with completed XAU trades yet. Intents appear after scoring promotes someone to SHADOW.</p>
+        <p className="text-gray-500 text-sm">No copy intents yet. Demo dest auto-sends after a trader is ADMITTED and has an open XAUUSD position. Dest closes when that MT5 position closes.</p>
       )}
     </div>
   );

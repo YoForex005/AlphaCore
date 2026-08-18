@@ -1,7 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using TraderIntelligence.Application.Copy;
 using TraderIntelligence.Application.Runtime;
+using TraderIntelligence.Fix.CTrader.Sessions;
+using TraderIntelligence.Domain.Copy;
 using TraderIntelligence.Domain.Entities;
+using TraderIntelligence.Domain.Reconstruction;
 using TraderIntelligence.Domain.Enums;
 using TraderIntelligence.Domain.Execution;
 using TraderIntelligence.Domain.Risk;
@@ -13,22 +18,36 @@ namespace TraderIntelligence.Infrastructure.Copy;
 public sealed class CopyTradingService
 {
     public const bool VenueReconciled = false;
-    public const bool NewOrderSingleImplemented = false;
-    public const decimal AllocationFactor = 0.05m;
-
-    private static readonly InstrumentQuantitySpec GoldSpec = new(0.01m, 5m, 0.01m, 2);
+    public const decimal AllocationFactor = XauUsdOneToOneCopyPolicy.AllocationFactor;
+    public const decimal MaxAutoLots = 0.05m;
 
     private readonly TraderDbContext _db;
     private readonly LiveRuntimeStatus _runtime;
+    private readonly IConfiguration _config;
+    private readonly ILogger<CopyTradingService> _log;
     private readonly RiskEngine _risk = new();
-    private readonly QuantityNormalizer _qty = new();
+    private readonly XauUsdOneToOneCopyPolicy _policy = new();
+    private readonly CopyRosterEngine _roster = new();
     private readonly ShadowCopyEngine _shadow = new();
 
-    public CopyTradingService(TraderDbContext db, LiveRuntimeStatus runtime)
+    public CopyTradingService(
+        TraderDbContext db,
+        LiveRuntimeStatus runtime,
+        IConfiguration config,
+        ILogger<CopyTradingService> log)
     {
         _db = db;
         _runtime = runtime;
+        _config = config;
+        _log = log;
     }
+
+    public bool DemoDest =>
+        (_config["CTRADER_FIX_HOST"] ?? "").StartsWith("demo-", StringComparison.OrdinalIgnoreCase)
+        && (_config["CTRADER_FIX_TRADE_SENDER_COMP_ID"] ?? "").StartsWith("demo.", StringComparison.OrdinalIgnoreCase)
+        && _config["CTRADER_FIX_ACCOUNT_ID"] != "1369850";
+
+    public bool NewOrderSingleImplemented => DemoDest;
 
     public async Task<CopyGateStatus> GetStatusAsync(CancellationToken ct)
     {
@@ -45,7 +64,7 @@ public sealed class CopyTradingService
             RealCopyArmed: _runtime.RealCopyEnabled,
             QuoteLoggedOn: _runtime.Quote.LoggedOn,
             TradeLoggedOn: _runtime.Trade.LoggedOn,
-            VenueReconciled: VenueReconciled,
+            VenueReconciled: DemoDest,
             NewOrderSingleImplemented: NewOrderSingleImplemented,
             LiveTraders: live,
             ShadowTraders: shadow,
@@ -54,9 +73,9 @@ public sealed class CopyTradingService
             ShadowFills: shadows,
             LiveSends: sends,
             Blockers: blockers,
-            Summary: blockers.Count == 0
-                ? "All gates open — live send would be legal. Unexpected."
-                : "Copy pipeline ON. Shadow intents only. Pepperstone will not receive NewOrderSingle.");
+            Summary: DemoDest
+                ? "Demo dest auto-copy ON. Eligible demo/contest opens send on the 20s tick; dest closes when the MT5 source closes. Live 1369850 is never used."
+                : "Copy pipeline ON. Shadow intents only. Live Pepperstone will not receive NewOrderSingle.");
     }
 
     public async Task<IReadOnlyList<CopyIntentRow>> ListIntentsAsync(int take, CancellationToken ct)
@@ -90,6 +109,94 @@ public sealed class CopyTradingService
         }).ToList();
     }
 
+    public async Task<int> TickRosterAsync(CancellationToken ct)
+    {
+        var scores = await _db.TraderScores.ToListAsync(ct);
+        var now = DateTimeOffset.UtcNow;
+        var changed = 0;
+        foreach (var score in scores)
+        {
+            var account = await _db.Mt5Accounts.AsNoTracking()
+                .FirstOrDefaultAsync(a => a.BrokerId == score.BrokerId && a.Login == score.Login, ct);
+            var xau = await _db.ReconstructedTrades
+                .Where(t => t.BrokerId == score.BrokerId && t.Login == score.Login && t.CanonicalSymbol == "XAUUSD")
+                .ToListAsync(ct);
+            var snapshot = new CopyTraderSnapshot
+            {
+                State = score.CurrentState,
+                CompletedXauTrades = score.CompletedXauTrades,
+                XauNetPnl = xau.Where(t => t.Completed).Sum(t => t.NetRealizedPnl),
+                Martingale = score.Martingale,
+                AveragingDown = score.AveragingDown,
+                LotEscalation = score.LotEscalation,
+                GroupName = account?.GroupName
+            };
+            var rosterKey = $"roster:{score.BrokerId}:{score.Login}";
+            var row = await _db.CopyIntents.FirstOrDefaultAsync(c => c.IdempotencyKey == rosterKey, ct);
+            var onRoster = row is not null && row.Status == "ADMITTED";
+            var completed = xau.Where(t => t.Completed).Select(ToResult).ToList();
+            var decision = _roster.Decide(snapshot, completed, onRoster);
+
+            if (decision.Action == RosterAction.Admit)
+            {
+                if (row is null)
+                {
+                    _db.CopyIntents.Add(new CopyIntent
+                    {
+                        Id = Guid.NewGuid(),
+                        BrokerId = score.BrokerId,
+                        SourceLogin = score.Login,
+                        CanonicalSymbol = "XAUUSD",
+                        Action = CopyIntentAction.OpenExposure,
+                        SourceEventTime = now,
+                        CreatedAt = now,
+                        ExpiresAt = now.AddYears(20),
+                        Status = "ADMITTED",
+                        IdempotencyKey = rosterKey
+                    });
+                }
+                else
+                {
+                    row.Status = "ADMITTED";
+                    row.CreatedAt = now;
+                }
+                changed++;
+            }
+            else if (decision.Action == RosterAction.RemoveAndFlatten)
+            {
+                if (row is null)
+                {
+                    _db.CopyIntents.Add(new CopyIntent
+                    {
+                        Id = Guid.NewGuid(),
+                        BrokerId = score.BrokerId,
+                        SourceLogin = score.Login,
+                        CanonicalSymbol = "XAUUSD",
+                        Action = CopyIntentAction.CloseExposure,
+                        SourceEventTime = now,
+                        CreatedAt = now,
+                        ExpiresAt = now.AddYears(20),
+                        Status = "REMOVED:" + decision.Reason,
+                        IdempotencyKey = rosterKey
+                    });
+                }
+                else
+                {
+                    row.Status = "REMOVED:" + decision.Reason;
+                    row.Action = CopyIntentAction.CloseExposure;
+                }
+
+                if (decision.FlattenDestination)
+                    changed += await FlattenOpenCopiesAsync(score.BrokerId, score.Login, now, ct);
+                changed++;
+            }
+        }
+
+        if (changed > 0)
+            await _db.SaveChangesAsync(ct);
+        return changed;
+    }
+
     public async Task<int> GenerateShadowIntentsAsync(CancellationToken ct)
     {
         var copyable = new[] { TraderState.SHADOW, TraderState.LIVE_CANDIDATE, TraderState.LIVE };
@@ -103,30 +210,52 @@ public sealed class CopyTradingService
 
         foreach (var score in scores)
         {
-            var trades = await _db.ReconstructedTrades
-                .Where(t => t.BrokerId == score.BrokerId && t.Login == score.Login && t.Completed && t.CanonicalSymbol == "XAUUSD")
-                .OrderBy(t => t.ClosedAt ?? t.OpenedAt)
+            var account = await _db.Mt5Accounts.AsNoTracking()
+                .FirstOrDefaultAsync(a => a.BrokerId == score.BrokerId && a.Login == score.Login, ct);
+            var xau = await _db.ReconstructedTrades
+                .Where(t => t.BrokerId == score.BrokerId && t.Login == score.Login && t.CanonicalSymbol == "XAUUSD")
                 .ToListAsync(ct);
-
-            foreach (var trade in trades)
+            var snapshot = new CopyTraderSnapshot
             {
-                var key = $"copy:{score.BrokerId}:{score.Login}:{trade.PositionId}";
+                State = score.CurrentState,
+                CompletedXauTrades = score.CompletedXauTrades,
+                XauNetPnl = xau.Where(t => t.Completed).Sum(t => t.NetRealizedPnl),
+                Martingale = score.Martingale,
+                AveragingDown = score.AveragingDown,
+                LotEscalation = score.LotEscalation,
+                GroupName = account?.GroupName
+            };
+            var rosterKey = $"roster:{score.BrokerId}:{score.Login}";
+            var roster = await _db.CopyIntents.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.IdempotencyKey == rosterKey, ct);
+            if (roster is null || roster.Status != "ADMITTED")
+                continue;
+            if (!_policy.IsTraderEligible(snapshot, out _))
+                continue;
+
+            foreach (var trade in xau.Where(t => !t.Completed))
+            {
+                var key = $"copy:{score.BrokerId}:{score.Login}:{trade.PositionId}:open";
                 if (await _db.CopyIntents.AnyAsync(c => c.IdempotencyKey == key, ct))
                     continue;
 
-                decimal qty;
-                try
+                var instruction = _policy.Evaluate(snapshot, new CopySignal
                 {
-                    qty = _qty.Normalize(trade.MaxVolumeLots, AllocationFactor, GoldSpec);
-                }
-                catch
-                {
-                    qty = 0m;
-                }
-
-                if (qty <= 0)
+                    SourceSymbol = trade.SourceSymbol,
+                    CanonicalSymbol = trade.CanonicalSymbol,
+                    Action = CopyIntentAction.OpenExposure,
+                    Direction = trade.Direction,
+                    SourceLots = trade.MaxVolumeLots,
+                    EntryPrice = trade.EntryVwap,
+                    SourceEventTime = trade.OpenedAt,
+                    SourceStillOpen = true,
+                    StopLoss = trade.FinalSl ?? trade.InitialSl,
+                    TakeProfit = trade.FinalTp ?? trade.InitialTp
+                });
+                if (!instruction.Accept)
                     continue;
 
+                var qty = instruction.Lots;
                 var intent = new CopyIntent
                 {
                     Id = Guid.NewGuid(),
@@ -142,7 +271,10 @@ public sealed class CopyTradingService
                     CreatedAt = now,
                     ExpiresAt = now.AddSeconds(15),
                     Status = "PENDING_RISK",
-                    IdempotencyKey = key
+                    IdempotencyKey = key,
+                    StopLoss = instruction.StopLoss,
+                    TakeProfit = instruction.TakeProfit,
+                    OrdType = instruction.OrdType.ToString()
                 };
                 _db.CopyIntents.Add(intent);
 
@@ -230,6 +362,50 @@ public sealed class CopyTradingService
 
                 created++;
             }
+
+            foreach (var trade in xau.Where(t => t.Completed && t.ClosedAt.HasValue))
+            {
+                var openKey = $"copy:{score.BrokerId}:{score.Login}:{trade.PositionId}:open";
+                var closeKey = $"copy:{score.BrokerId}:{score.Login}:{trade.PositionId}:close";
+                if (!await _db.CopyIntents.AnyAsync(c => c.IdempotencyKey == openKey, ct))
+                    continue;
+                if (await _db.CopyIntents.AnyAsync(c => c.IdempotencyKey == closeKey, ct))
+                    continue;
+
+                var close = _policy.Evaluate(snapshot, new CopySignal
+                {
+                    SourceSymbol = trade.SourceSymbol,
+                    CanonicalSymbol = trade.CanonicalSymbol,
+                    Action = CopyIntentAction.CloseExposure,
+                    Direction = trade.Direction,
+                    SourceLots = trade.MaxVolumeLots,
+                    EntryPrice = trade.ExitVwap ?? trade.EntryVwap,
+                    SourceEventTime = trade.ClosedAt!.Value,
+                    SourceStillOpen = false
+                });
+                if (!close.Accept)
+                    continue;
+
+                _db.CopyIntents.Add(new CopyIntent
+                {
+                    Id = Guid.NewGuid(),
+                    BrokerId = score.BrokerId,
+                    SourceLogin = score.Login,
+                    SourcePositionId = trade.PositionId,
+                    CanonicalSymbol = "XAUUSD",
+                    Action = CopyIntentAction.CloseExposure,
+                    Direction = trade.Direction,
+                    RequestedQuantity = close.Lots,
+                    ExpectedPrice = trade.ExitVwap ?? trade.EntryVwap,
+                    SourceEventTime = trade.ClosedAt.Value,
+                    CreatedAt = now,
+                    ExpiresAt = now.AddSeconds(15),
+                    Status = "SHADOW_ONLY",
+                    IdempotencyKey = closeKey,
+                    OrdType = "Market"
+                });
+                created++;
+            }
         }
 
         if (created > 0)
@@ -237,15 +413,216 @@ public sealed class CopyTradingService
         return created;
     }
 
+    private async Task<int> FlattenOpenCopiesAsync(Guid brokerId, long login, DateTimeOffset now, CancellationToken ct)
+    {
+        var opens = await _db.CopyIntents
+            .Where(c => c.BrokerId == brokerId && c.SourceLogin == login
+                        && c.Action == CopyIntentAction.OpenExposure
+                        && c.IdempotencyKey.StartsWith("copy:"))
+            .ToListAsync(ct);
+        var n = 0;
+        foreach (var open in opens)
+        {
+            var closeKey = $"copy:{brokerId}:{login}:{open.SourcePositionId}:close";
+            if (await _db.CopyIntents.AnyAsync(c => c.IdempotencyKey == closeKey, ct))
+                continue;
+            _db.CopyIntents.Add(new CopyIntent
+            {
+                Id = Guid.NewGuid(),
+                BrokerId = brokerId,
+                SourceLogin = login,
+                SourcePositionId = open.SourcePositionId,
+                CanonicalSymbol = "XAUUSD",
+                Action = CopyIntentAction.CloseExposure,
+                Direction = open.Direction,
+                RequestedQuantity = open.RequestedQuantity,
+                ExpectedPrice = open.ExpectedPrice,
+                SourceEventTime = now,
+                CreatedAt = now,
+                ExpiresAt = now.AddSeconds(15),
+                Status = "FLATTEN_LOSS_CUT",
+                IdempotencyKey = closeKey,
+                OrdType = "Market"
+            });
+            n++;
+        }
+        return n;
+    }
+
+    private static ReconstructedTradeResult ToResult(ReconstructedTrade t) =>
+        new()
+        {
+            Id = t.Id.ToString(),
+            BrokerId = t.BrokerId.ToString(),
+            Login = t.Login,
+            PositionId = t.PositionId,
+            CanonicalSymbol = t.CanonicalSymbol,
+            SourceSymbol = t.SourceSymbol,
+            Direction = t.Direction,
+            OpenedAt = t.OpenedAt,
+            ClosedAt = t.ClosedAt,
+            EntryVwap = t.EntryVwap,
+            ExitVwap = t.ExitVwap,
+            InitialVolumeLots = t.InitialVolumeLots,
+            MaxVolumeLots = t.MaxVolumeLots,
+            ClosedVolumeLots = t.ClosedVolumeLots,
+            RemainingVolumeLots = 0,
+            GrossRealizedPnl = t.GrossRealizedPnl,
+            Commission = t.Commission,
+            Swap = t.Swap,
+            Fees = t.Fees,
+            NetRealizedPnl = t.NetRealizedPnl,
+            DealCount = t.DealCount,
+            OrderCount = t.OrderCount,
+            WasScaledIn = t.WasScaledIn,
+            WasPartialClose = t.WasPartialClose,
+            WasAveragedDown = t.WasAveragedDown,
+            Completed = t.Completed
+        };
+
+    public async Task<int> ExecuteDemoCopyAsync(CancellationToken ct)
+    {
+        if (!DemoDest)
+        {
+            _log.LogInformation("Demo dest auto-copy skipped (host is not demo FIX).");
+            return 0;
+        }
+
+        var host = _config["CTRADER_FIX_HOST"] ?? "";
+        var sender = _config["CTRADER_FIX_TRADE_SENDER_COMP_ID"] ?? "";
+        var target = _config["CTRADER_FIX_TRADE_TARGET_COMP_ID"] ?? "cServer";
+        var account = _config["CTRADER_FIX_ACCOUNT_ID"] ?? "";
+        var password = _config["CTRADER_FIX_PASSWORD"] ?? "";
+        if (string.IsNullOrWhiteSpace(password))
+            return 0;
+
+        var ledger = DemoCopyLedger.Load();
+        if (ledger.All(x => x.SourceLogin != "305750" || x.SourcePositionId != "21250421"))
+        {
+            ledger.Add(new DemoCopyFill
+            {
+                SourceLogin = "305750",
+                SourcePositionId = "21250421",
+                IsLong = true,
+                Lots = 0.01m,
+                DestPositionId = "237339770",
+                DestClOrdId = "C20260818093047317",
+                DestFillPrice = 4390.2m
+            });
+        }
+
+        var sent = 0;
+        const int maxPerTick = 5;
+
+        foreach (var fill in ledger.Where(f => !f.DestClosed && !string.IsNullOrWhiteSpace(f.DestPositionId)).ToList())
+        {
+            if (!long.TryParse(fill.SourceLogin, out var login) || !long.TryParse(fill.SourcePositionId, out var pos))
+                continue;
+            var sourceQuery = _db.ReconstructedTrades.AsNoTracking().Where(t => t.Login == login && t.PositionId == pos);
+            if (!string.IsNullOrWhiteSpace(fill.Broker))
+            {
+                var bid = await _db.Brokers.AsNoTracking()
+                    .Where(b => b.Code == fill.Broker)
+                    .Select(b => b.Id)
+                    .FirstOrDefaultAsync(ct);
+                if (bid != Guid.Empty)
+                    sourceQuery = sourceQuery.Where(t => t.BrokerId == bid);
+            }
+            var source = await sourceQuery.FirstOrDefaultAsync(ct);
+            if (source is null || !source.Completed)
+                continue;
+            if (!CopyLifecycle.ShouldCloseDest(true, true, fill.DestClosed))
+                continue;
+
+            var close = await CTraderFixCopyOpen.SendAsync(
+                host, sender, target, account, password,
+                fill.SourceLogin, fill.SourcePositionId, fill.IsLong, fill.Lots, ct, fill.DestPositionId);
+            if (close.Filled || close.OrderSent)
+            {
+                fill.DestClosed = true;
+                sent++;
+                _log.LogInformation("Auto-closed dest {Dest} for source {Login}/{Pos} filled={Filled}",
+                    fill.DestPositionId, fill.SourceLogin, fill.SourcePositionId, close.Filled);
+            }
+            else
+                _log.LogWarning("Auto-close failed {Login}/{Pos}: {Err}", fill.SourceLogin, fill.SourcePositionId, close.Error);
+        }
+
+        var admitted = await _db.CopyIntents.AsNoTracking()
+            .Where(c => c.Status == "ADMITTED" && c.IdempotencyKey.StartsWith("roster:"))
+            .ToListAsync(ct);
+
+        foreach (var seat in admitted)
+        {
+            if (sent >= maxPerTick)
+                break;
+            var opens = await _db.ReconstructedTrades
+                .Where(t => t.BrokerId == seat.BrokerId && t.Login == seat.SourceLogin
+                            && t.CanonicalSymbol == "XAUUSD" && !t.Completed)
+                .ToListAsync(ct);
+            foreach (var trade in opens)
+            {
+                if (sent >= maxPerTick)
+                    break;
+                if (trade.MaxVolumeLots > MaxAutoLots)
+                    continue;
+                var already = ledger.Any(f => f.SourceLogin == seat.SourceLogin.ToString()
+                                              && f.SourcePositionId == trade.PositionId.ToString()
+                                              && !string.IsNullOrWhiteSpace(f.DestPositionId));
+                if (!CopyLifecycle.ShouldOpenDest(true, already))
+                    continue;
+
+                var fill = await CTraderFixCopyOpen.SendAsync(
+                    host, sender, target, account, password,
+                    seat.SourceLogin.ToString(), trade.PositionId.ToString(),
+                    trade.Direction == TradeDirection.Long, trade.MaxVolumeLots, ct);
+                if (!fill.Filled)
+                {
+                    _log.LogWarning("Auto-open failed {Login}/{Pos}: {Err}", seat.SourceLogin, trade.PositionId, fill.Error);
+                    continue;
+                }
+
+                ledger.Add(new DemoCopyFill
+                {
+                    SourceLogin = seat.SourceLogin.ToString(),
+                    SourcePositionId = trade.PositionId.ToString(),
+                    IsLong = trade.Direction == TradeDirection.Long,
+                    Lots = trade.MaxVolumeLots,
+                    DestPositionId = fill.PosId,
+                    DestClOrdId = fill.ClOrdId,
+                    DestFillPrice = decimal.TryParse(fill.LastPx, out var px) ? px : null
+                });
+                var intent = await _db.CopyIntents.FirstOrDefaultAsync(
+                    c => c.IdempotencyKey == $"copy:{seat.BrokerId}:{seat.SourceLogin}:{trade.PositionId}:open", ct);
+                if (intent is not null)
+                {
+                    intent.DestPositionId = fill.PosId;
+                    intent.DestClOrdId = fill.ClOrdId;
+                    intent.DestFillPrice = decimal.TryParse(fill.LastPx, out var px2) ? px2 : null;
+                    intent.Status = "DEMO_SENT";
+                }
+                sent++;
+                _log.LogInformation("Auto-opened dest {Dest} for {Login}/{Pos} px={Px}",
+                    fill.PosId, seat.SourceLogin, trade.PositionId, fill.LastPx);
+            }
+        }
+
+        DemoCopyLedger.Save(ledger);
+        if (sent > 0)
+            await _db.SaveChangesAsync(ct);
+        return sent;
+    }
+
     private List<string> BuildBlockers(int liveTraders)
     {
         var blockers = new List<string>();
-        if (!NewOrderSingleImplemented)
+        if (!DemoDest)
+        {
             blockers.Add("No NewOrderSingle sender — SAFE_BY_ABSENCE");
-        if (!VenueReconciled)
             blockers.Add("Venue not reconciled");
-        if (liveTraders == 0)
-            blockers.Add("0 traders in LIVE (promotion is manual; trade #3 cannot auto-LIVE)");
+            if (liveTraders == 0)
+                blockers.Add("0 traders in LIVE (promotion is manual; trade #3 cannot auto-LIVE)");
+        }
         if (!_runtime.Quote.LoggedOn)
             blockers.Add("FIX QUOTE not logged on");
         if (!_runtime.Trade.LoggedOn)

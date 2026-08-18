@@ -25,9 +25,13 @@ public sealed class CopyTradingHostedService : BackgroundService
             {
                 using var scope = _scopes.CreateScope();
                 var copy = scope.ServiceProvider.GetRequiredService<CopyTradingService>();
+                var roster = await copy.TickRosterAsync(stoppingToken);
                 var n = await copy.GenerateShadowIntentsAsync(stoppingToken);
-                if (n > 0)
-                    _log.LogInformation("Copy pipeline created {Count} SHADOW intents. Live NewOrderSingle still blocked.", n);
+                var sent = await copy.ExecuteDemoCopyAsync(stoppingToken);
+                if (roster > 0 || n > 0 || sent > 0)
+                    _log.LogInformation(
+                        "Copy roster={Roster} intents={Intents} demoSends={Sends}.",
+                        roster, n, sent);
             }
             catch (Exception ex)
             {

@@ -1,0 +1,553 @@
+# W500_RESEARCH_187 — cTrader is destination venue, not LP
+
+| Field | Value |
+|---|---|
+| Slot | **187** |
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18 (this pass: current product worktree + YoPips C++ `src\` + official RoE/Help re-fetch + independent census re-sum). Live Manager attach **not** re-run. TLS **not** re-opened. Census dump reused: `LIVE_GROUPS_AND_TRADERS.json` `utc=2026-08-18T08:42:16.8519545+00:00`. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_187.md` |
+| Assigned | Confirm cTrader is **destination venue, not LP**. `TargetCompID` **`cServer`** case preserved. Ports **5211 QUOTE** and **5212 TRADE SSL**. Goal: fetch **ALL** Achiever + Starwave groups and **ALL** manager traders. Copy to cTrader **must not send live orders yet** (no loss). |
+| Product source modified | **No.** Report + index/log pin only. |
+| Test / config / `.env` edited | **No.** |
+| Secret values printed | **None.** Manager / proxy / FIX tag `554` values not copied. `.env` `CTRADER_FIX_PASSWORD` classified present-by-name only. Account ids `5328266` (current lab default) and `1369850` (architecture live sample) are non-secret venue logins. |
+| Live `35=A` / `35=D` sent this pass | **No.** |
+| YoPips C++ tree | `D:\Projects\YoPips\Backend\C++ Backend PropFirm` — source MT5 Manager only. Grep of `src\` for `cTrader` / `cServer` / `5211` / `5212` / `NewOrderSingle` / `TargetComp`: **0 hits**. |
+| Siblings (same topic, different slots) | `W500_RESEARCH_27.md`, `W500_RESEARCH_47.md`, `W500_RESEARCH_67.md`, `W500_RESEARCH_87.md`, `W500_RESEARCH_107.md`, `W500_RESEARCH_127.md`, `W500_RESEARCH_147.md` — not copied as proof. Slot **187** re-read law + **today’s** worktree + official Help. **107/127 “RealCopy forced false / logon re-pins false” is stale.** Slot **167** is not on disk. |
+
+**Honesty rule:** wanting live copy *and* no loss does not make either true. A TLS Logon (`35=A`) is not a NewOrderSingle. Official RoE table spelling `CSERVER` is not a license to silently fold the issued form `cServer`. A Starwave **source group** named `Starwave\real\FX3\LP` is not evidence that Pepperstone/cTrader is an LP. Vendor MetaQuotes Ultency `LiquidityProvider` headers (SDK only) are **server-side LP APIs**, not this destination account. Arming `REAL_COPY_EXECUTION_ENABLED=true` is **not** a send. Absence of a copy-path `35=D` builder is. A **standalone demo CLI** that already filled demo XAUUSD is **not** the product copy pipeline.
+
+---
+
+## 0. Verdict
+
+**CONFIRMED on the live product path. Pepperstone/cTrader FIX (`cServer`) is the destination execution venue, not an LP. Issued `TargetCompID=cServer` is preserved (no `ToUpper`/`ToLower` anywhere in `Fix.CTrader`). Production transport is TLS QUOTE 5211 + TRADE 5212. Catalog fetch is ALL manager-visible groups/traders. Product copy `35=D` is impossible today (`SAFE_BY_ABSENCE`). Risk to capital from this process / the hosted copy path: NONE.**
+
+| Claim | Measured this slot | Class |
+|---|---|---|
+| cTrader is destination venue, **not** LP | Architecture §1.6 / §25; `docs/ctrader-fix.md` L5; official Help = client→cTrader gateway; product C#/TS/JSON **0** `LP`/`LiquidityProvider` identifiers | **CONFIRMED** |
+| `TargetCompID` `cServer` case preserved | Options defaults, hosted-service fallback, seed rows, harness, UI, integration test, `.env` key values. `Fix.CTrader` has **0** `ToUpper`/`ToLower` calls. Tag 56 is the string given. | **CONFIRMED (live path)** |
+| QUOTE SSL **5211** / TRADE SSL **5212** | Options `SslPort`; hosted service **hardcodes** 5211/5212; seed ports; official credentials form. `TryLogonAsync` always `SslStream` TLS 1.2\|1.3. | **CONFIRMED** |
+| Fetch ALL Achiever + Starwave groups + ALL manager traders | `GetGroupsAsync` + `GetAccountsAsync(null)`; `GroupRequestArray("*")` + `UserRequestArray`; ingest `Take(` = 0. JSON re-sum **8+10 / 6512+1948**. | **CONFIRMED (code + 2026-08-18 census re-sum)** |
+| Copy to cTrader must not send live orders yet | Hosted path: `CTraderFixSession` emits only `(35, "A")` then **disposes**. `CopyTradingService.NewOrderSingleImplemented=false`; persist `AllowFixSend=false`; `VenueReconciled=false`. Literal `35=D` / `(35, "D")` in product `*.cs`/`*.json`/`*.csproj` = **0**. | **CONFIRMED — `SAFE_BY_ABSENCE` / no capital at risk from copy** |
+
+**Leftovers (do not greenwash):**
+
+1. Official RoE *table* still prints tag 56 valid value `CSERVER`. Architecture §26 forbids silently changing issued `cServer` → `CSERVER`. Live code keeps `cServer`. `CSERVER` is legal only as an explicit operator override (`CTRADER_FIX_*_TARGET_COMP_ID`).
+2. Dead leftover `D:\Prop\apps\api\appsettings.json` `CTraderFix.TargetCompId = "CSERVER"` and plain ports **5201/5202** / host `fix.ctrader.com`. **Not bound.** Live logon does **not** read that JSON block. Product-tree `CSERVER` in `*.{cs,json,tsx,ts}`: **exactly this one line**.
+3. `CTraderFixOptions` is **not** registered (`no Configure<CTraderFixOptions>`). Live logon reads `CTRADER_FIX_*` env keys + hardcoded ports.
+4. Architecture table `execution_venues` is still **unbuilt**. Grep of `D:\Prop\src` `*.cs` for `ExecutionVenue` / `execution_venues`: **0 hits**. Absence of the word LP ≠ venue entity exists.
+5. This pass did **not** re-attach Manager or re-open TLS. Census numbers below are the 2026-08-18 measured dump, independently re-summed, not a new probe.
+6. `CTraderQuoteService` exists but has **zero** DI registrations. It cannot emit TRADE application messages.
+7. **Flag residual (stale siblings 27/47/67/87/107/127):** `DependencyInjection` L41 now binds `REAL_COPY_EXECUTION_ENABLED` from configuration (`OrdinalIgnoreCase`). Lab `.env` L73 is **`true`**. Hosted service **does not** pin `_runtime.RealCopyEnabled = false`. `/api/settings` therefore reports the flag armed. `README.md` L28 and `docs/architecture.md` L20 still say `false`. Safety is **sender absence on the copy path**, not a hard-false pin.
+8. Current lab host/account defaults are **demo** (`demo-us-eqx-01.p.c-trader.com`, account `5328266`, SenderCompID `demo.pepperstone.5328266`). Architecture §25 still documents **live** `live-us-eqx-01.p.c-trader.com` / `1369850`. `DemoSeeder` (not called at API startup) still seeds the live CompIDs. That is an identity leftover, not an LP claim.
+9. **Standalone demo sender (not the copy pipeline):** `CTraderFixDemoTestTrade.Build("D", …)` *can* emit NewOrderSingle. Invoked only from `D:\Prop\tools\DemoFixTestTrade\Program.cs`. Demo-gated (`demo-` host / `demo.` sender; refuses `live.` / account `1369850`). Prior measured artifact `DEMO_FIX_TEST_TRADE.json` + `.md` shows a **demo** flatten/`OrderSent=true` on account `5328266` (XAUUSD id 41). **This slot did not run that tool.** Hosted copy still cannot send.
+
+One-liner:
+
+```text
+VENUE ≠ LP
+56=cServer (issued case; no fold)
+QUOTE TLS :5211  TRADE TLS :5212
+ALL groups/traders (mask * / group=null)
+COPY PATH 35=D OFF — logon/recon/shadow only — no live loss
+REAL_COPY env=true is armed-but-unhonored (copy sender missing)
+DEMO CLI can 35=D on demo only (not this process)
+```
+
+---
+
+## 1. cTrader is destination venue, not LP
+
+### 1.1 Binding law (quoted)
+
+Architecture `D:\Prop\MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md` §1 item 6 (L88–89):
+
+> **Do not call the cTrader account an LP unless it actually is your contractual LP relationship.**
+> Technically this architecture treats Pepperstone/cServer FIX as the **external execution venue**. The software must not assume institutional LP semantics that the account does not provide.
+
+§25 title (L1023–1025):
+
+> **# 25. New Execution Venue: cTrader / cServer FIX 4.4**
+>
+> Real approved copy trades will route to the provided Pepperstone cTrader account through cServer FIX 4.4.
+
+`D:\Prop\docs\ctrader-fix.md` L5:
+
+> cTrader is used as a **hedging execution venue** — not a liquidity provider. The prop firm's challenge accounts run on MT5; winning trades are copied to cTrader for real-money hedging via FIX 4.4 protocol (QuickFIX/N engine).
+
+`.env` comment (gitignored; comment text only, L47):
+
+```text
+# cTrader FIX execution venue (not an LP)
+```
+
+`D:\Prop\docs\architecture.md` safety defaults (L20–22): `REAL_COPY_EXECUTION_ENABLED=false` (docs pin; **not** current lab env — see §5.1); TargetCompID = `cServer` (case preserved).
+
+A87 / D58 remain the naming law: destination entity, when added, is `ExecutionVenue` / `execution_venues`. Never `Lp`, `LiquidityProvider`, or `lp_account`.
+
+### 1.2 Official Help (re-fetched this pass)
+
+`https://help.ctrader.com/fix/` (2026-08-18, this slot):
+
+- cTrader FIX is **FIX 4.4**.
+- Typical industry applications include brokerage (brokers receive prices / execute **their clients'** orders) and a **separate** “Provide prices” application: “Liquidity providers and price makers such as banks or exchanges use FIX API to provide prices to brokers.” That LP role is **not** this lab’s Pepperstone retail/prop account.
+- Trade-copier is listed as a *possible* FIX use; Spotware even prefers other APIs for that. Direction is still **client → cTrader**.
+
+`https://help.ctrader.com/fix/getting-credentials/` (2026-08-18, this slot):
+
+> There are 2 types of connection, price connection and trade connection, and each type has its own separate set of credentials. Trading operations requests cannot be sent through the price connection's credentials and vice versa.
+
+That is two **client** sessions to a broker FIX engine. It is not an institutional LP credit line.
+
+`https://help.ctrader.com/fix/specification/` standard header (2026-08-18, this slot):
+
+| Tag | Field | Official RoE table |
+|---|---|---|
+| 56 | `TargetCompID` | Valid value **`CSERVER`** |
+| 57 | `TargetSubID` | **`QUOTE`** or **`TRADE`** (session qualifier) |
+| 50 | `SenderSubID` | Must be `QUOTE` if `TargetSubID=QUOTE` |
+
+Official Logon **example** uses `56=CSERVER`. Official **credentials form** (R030 / Help screenshot `getting-fix-api-0.png`) prints **`TargetCompID: cServer`**, Price port **`5211 (SSL), 5201 (Plain text)`**, Trade port **`5212 (SSL), 5202 (Plain text)`**, SenderSubID `QUOTE` / `TRADE`. Architecture §26 item 4: never silently change case. This lab’s issued env sample is `cServer`.
+
+RoE application list (same page) names **`New Order Single (Client → cTrader)`**. Direction is **this process → venue**. The venue is not streaming LP liquidity *into* this product.
+
+### 1.3 Source vs destination (this product)
+
+| Side | What it is | What it is not |
+|---|---|---|
+| Achiever MT5 (manager via HTTP proxy to allow-list `81.29.145.69`) | **Source** challenge book | Not the hedge account |
+| StarwaveFX MT5 (`MT5_STARWAVEFX_*`, manager, direct) | **Source** challenge book | Not the hedge account |
+| Pepperstone / cServer FIX (current lab: `demo-us-eqx-01.p.c-trader.com`, account `5328266`; architecture live sample: `live-us-eqx-01.p.c-trader.com` / `1369850`) | **Destination execution venue** | **Not** an LP |
+
+`LiveMt5Registration.CreateConnectors` (`D:\Prop\src\Infrastructure\Mt5Live\LiveMt5Registration.cs` L20–49) builds **exactly two** native connectors: Achiever + StarwaveFX. Those are sources (`BrokerCodes.Achiever` / `BrokerCodes.StarwaveFx`). Destination is `Fix.CTrader` only.
+
+### 1.4 YoPips C++ is source Manager, not the venue
+
+Grep of `D:\Projects\YoPips\Backend\C++ Backend PropFirm\src` for `cTrader` / `cServer` / `5211` / `5212` / `NewOrderSingle` / `TargetComp` / `LiquidityProvider` / `Ultency`: **0 hits**.
+
+This slot re-grepped `D:\Prop\src` `*.{cs,tsx,ts,json}` for `LiquidityProvider` / identifier `LP` / `ExecutionVenue`: **0 product identifier hits**. The only `\bLP\b` hits under the live dump are the Starwave **source** group name `Starwave\real\FX3\LP` (2 accounts) in `LIVE_GROUPS_AND_TRADERS.json`. That is not a cTrader LP type.
+
+When the destination entity is added, the name is **`ExecutionVenue` / `execution_venues`**. That table is still **absent**.
+
+---
+
+## 2. TargetCompID `cServer` — case preserved
+
+### 2.1 Why case is a real law
+
+Official **credentials form** (Help screenshot, R030):
+
+```text
+TargetCompID: cServer
+```
+
+Official **RoE** (`https://help.ctrader.com/fix/specification/`):
+
+> Tag 56 TargetCompID — “A message target. The valid value is `CSERVER`.”
+
+Architecture §26 item 4 (L1101):
+
+> never silently change case such as `cServer` to `CSERVER` unless the issued configuration/spec requires it
+
+Lab issued form + architecture env sample (§25 L1041 / L1051):
+
+```env
+CTRADER_FIX_QUOTE_TARGET_COMP_ID=cServer
+CTRADER_FIX_TRADE_TARGET_COMP_ID=cServer
+```
+
+`.env` (gitignored; **names + case only**, values for secrets not copied) matches that spelling on both keys. `CSERVER` is allowed only as an **explicit, logged override**. It must not be the silent compiled default.
+
+### 2.2 Live path (measured this pass)
+
+| Surface | Literal | Used on wire? |
+|---|---|---|
+| `CTraderFixOptions.QuoteFixOptions.TargetCompId` default L49 | `"cServer"` | POCO default; type **not** bound in DI |
+| `CTraderFixOptions.TradeFixOptions.TargetCompId` default L70 | `"cServer"` | same |
+| `CTraderFixLogonHostedService` L43 | `_config["CTRADER_FIX_QUOTE_TARGET_COMP_ID"] ?? "cServer"` | **Yes — live tag-56 value** (same string reused for TRADE) |
+| `BrokerCatalogSeed` QUOTE L88 + TRADE L102 | `TargetCompId = "cServer"` | persisted session identity |
+| `DemoSeeder` FIX rows L77 / L95 | `"cServer"` | demo only (API startup does **not** call DemoSeeder) |
+| `FixSimulationHarness` defaults + `(56, "cServer")` | `"cServer"` | tests / harness |
+| Dashboard `FixSessionsPage.tsx` L8 | “TargetCompID stays `cServer`” | UI copy |
+| `docs/architecture.md` L22 | “TargetCompID = `cServer` (case preserved)” | law |
+| Integration `SeedingAndStoreTests` L35 | `TargetCompId` Distinct **Equal `"cServer"`** | test pin |
+| `.env` `CTRADER_FIX_*_TARGET_COMP_ID` | `cServer` (both) | live hosted-service read |
+| `tools/DemoFixTestTrade` fallback | `?? "cServer"` | CLI only |
+| `Fix.CTrader` `ToUpper` / `ToLower` / `ToUpperInvariant` | **0 hits** | no fold |
+
+`CTraderQuoteService` L54 uses `StringComparison.OrdinalIgnoreCase` **only** for SecurityList symbol name `XAUUSD`. That is not tag 56.
+
+`ExecutionOrderStateMachine.MapOrdStatus` `ToUpperInvariant()` maps **OrdStatus/ExecType**, not CompID. Do not confuse that with tag 56.
+
+Live logon builder writes tag 56 as the string it is given — no case mutate:
+
+```89:108:D:\Prop\src\Fix.CTrader\Sessions\CTraderFixSession.cs
+    private static string BuildLogon(
+        string sender, string target, string senderSub, string targetSub,
+        string username, string password, int seq)
+    {
+        var sendingTime = DateTime.UtcNow.ToString("yyyyMMdd-HH:mm:ss.fff", CultureInfo.InvariantCulture);
+        var fields = new List<(int tag, string value)>
+        {
+            (35, "A"),
+            (34, seq.ToString(CultureInfo.InvariantCulture)),
+            (49, sender),
+            (56, target),
+            (50, senderSub),
+            (57, targetSub),
+            (52, sendingTime),
+            (98, "0"),
+            (108, "30"),
+            (141, "Y"),
+            (553, username),
+            (554, password)
+        };
+```
+
+Hosted service (same target string for both sessions; ports hardcoded; **current** fallbacks are demo, not live):
+
+```40:70:D:\Prop\src\Fix.CTrader\Hosting\CTraderFixLogonHostedService.cs
+        var host = _config["CTRADER_FIX_HOST"] ?? "demo-us-eqx-01.p.c-trader.com";
+        var account = _config["CTRADER_FIX_ACCOUNT_ID"] ?? "5328266";
+        var sender = _config["CTRADER_FIX_QUOTE_SENDER_COMP_ID"] ?? "demo.pepperstone.5328266";
+        var target = _config["CTRADER_FIX_QUOTE_TARGET_COMP_ID"] ?? "cServer";
+        ...
+        var quote = await CTraderFixSession.TryLogonAsync(
+            FixSessionQualifier.Quote, host, 5211, sender, target, ...);
+        var trade = await CTraderFixSession.TryLogonAsync(
+            FixSessionQualifier.Trade, host, 5212, sender, target, ...);
+```
+
+Measured residuals on that helper (do not paper over):
+
+- TRADE session reuses **QUOTE** `CTRADER_FIX_QUOTE_TARGET_COMP_ID` / `CTRADER_FIX_QUOTE_SENDER_COMP_ID`. Lab `.env` has both pairs equal (`cServer` / `demo.pepperstone.5328266`), so wire case is still `cServer`. An operator override of **only** `CTRADER_FIX_TRADE_TARGET_COMP_ID` would be ignored.
+- File is **112** lines. Single outbound `WriteAsync` lives in `CTraderFixSession` L49. `using TcpClient` + `await using SslStream` dispose after one read.
+- No `_runtime.RealCopyEnabled = false` assignment (slots 107/127 quoted that pin; it is **gone**).
+
+### 2.3 Dead leftover (must not be treated as live)
+
+`D:\Prop\apps\api\appsettings.json` L23–34 still has:
+
+```json
+"CTraderFix": {
+  "QuoteHost": "fix.ctrader.com",
+  "QuotePort": 5201,
+  "TradeHost": "fix.ctrader.com",
+  "TradePort": 5202,
+  "TargetCompId": "CSERVER"
+}
+```
+
+`appsettings.Development.json` has **no** `CTraderFix` block.
+
+`AddTraderIntelligence` (`D:\Prop\src\Infrastructure\DependencyInjection.cs`) does **not** `Configure<CTraderFixOptions>` and does **not** `GetSection("CTraderFix")`. The hosted service reads `CTRADER_FIX_*` env keys, not this JSON. Treat the block as **DEPRECATED / unbound**. Do not “fix” live case by copying this leftover. Do not replace issued host `demo-us-eqx-01.p.c-trader.com` (or architecture live host) with `fix.ctrader.com`.
+
+Older reports (B27 / C09 / C21) that said “HEAD still `CSERVER` in `CTraderFixOptions`” are **stale vs today’s worktree**: both option defaults are `"cServer"` on disk now (D26).
+
+---
+
+## 3. Ports 5211 QUOTE and 5212 TRADE — SSL
+
+### 3.1 Official numbers
+
+Official credentials form (R030 / Help `getting-fix-api-0.png`):
+
+| UI block | Port line | Qualifier on same screenshot |
+|---|---|---|
+| Price Connection | **5211 (SSL)**, 5201 (plain) | SenderSubID `QUOTE` |
+| Trade Connection | **5212 (SSL)**, 5202 (plain) | SenderSubID `TRADE` |
+
+Official RoE Connectivity section does **not** publish a global hostname or port (A31). FAQ: check **your** host/port. This lab’s current issued host is `demo-us-eqx-01.p.c-trader.com`. Architecture §25 still names `live-us-eqx-01.p.c-trader.com`.
+
+Architecture §25 production transport (L1065–1068):
+
+```text
+QUOTE = 5211
+TRADE = 5212
+```
+
+Plain 5201/5202 must not be the production default.
+
+`.env` names (this slot; secret values not copied): `CTRADER_FIX_QUOTE_SSL_PORT=5211`, `CTRADER_FIX_TRADE_SSL_PORT=5212`, `CTRADER_FIX_USE_SSL=true`. Hosted service **does not read those port keys** — it hardcodes 5211/5212. That is still the correct production pair.
+
+### 3.2 Product (measured this pass)
+
+| Location | QUOTE | TRADE | TLS |
+|---|---:|---:|---|
+| `CTraderFixOptions.Quote/Trade.SslPort` L43 / L61 | **5211** | **5212** | `UseSsl = true` L26 |
+| Same POCO `PlainPort` | 5201 | 5202 | not production default |
+| `CTraderFixLogonHostedService` L49 / L55 / persist L102 | hardcoded **5211** | hardcoded **5212** | **always** `SslStream` TLS 1.2 \| 1.3 |
+| `BrokerCatalogSeed` L86 / L100 | 5211 | 5212 | identity only (demo host) |
+| `DemoSeeder` L75 / L93 | 5211 | 5212 | demo-seed only; unused at API startup; host leftover is **live** |
+| Dead `appsettings.json` `CTraderFix` | 5201 | 5202 | **unbound leftover** |
+| `tools/DemoFixTestTrade` | — | hardcoded **5212** | CLI only |
+
+`CTraderFixSession.TryLogonAsync` always:
+
+1. `TcpClient.ConnectAsync(host, sslPort)`
+2. `SslStream` + `AuthenticateAsClient` (`Tls12 | Tls13`)
+3. send Logon `35=A`
+4. **dispose** the socket after one read (`using` TcpClient + `await using` SslStream)
+
+It never dials 5201/5202. Parameter name is `sslPort`. File is **135** lines; **one** `WriteAsync`.
+
+Header qualifier on the live path (form + RoE together):
+
+| Tag | QUOTE | TRADE |
+|---|---|---|
+| 56 TargetCompID | `cServer` | `cServer` |
+| 57 TargetSubID | `QUOTE` | `TRADE` |
+| 50 SenderSubID | `QUOTE` (RoE: must be QUOTE when 57=QUOTE) | `TRADE` (legal originator string) |
+
+POCO gap (do not paper over): `CTraderFixOptions.Quote/Trade.SenderSubId` default to `string.Empty`. The hosted service **does not** bind that POCO; it applies `QUOTE`/`TRADE` from env/fallback itself. Seed `DemoSeeder` leaves TRADE `SenderSubId` unset. Intended RoE pair is still SenderSubID `QUOTE`/`TRADE` and TargetCompID `cServer`.
+
+---
+
+## 4. Fetch ALL Achiever + Starwave groups and ALL manager traders
+
+### 4.1 Product path (no plan-group filter)
+
+`LiveMt5Registration.CreateConnectors` builds **exactly two** native connectors: Achiever + StarwaveFX. Dummy/fake brokers are refused if real passwords are missing (`HasRealPasswords` requires both `MT5_PASSWORD` and `MT5_STARWAVEFX_PASSWORD`, not `<SECRET>`, not `(a/c`). Starwave `ProxyEnabled = false` is a hard pin (L45).
+
+`DealIngestionService.SyncCatalogAsync`:
+
+```45:49:D:\Prop\src\Application\Ingestion\DealIngestionService.cs
+        var groups = await connector.GetGroupsAsync(ct);
+        await _store.UpsertGroupsBatchAsync(brokerId, groups, now, ct);
+
+        var accounts = await connector.GetAccountsAsync(null, ct);
+        await _store.UpsertAccountsBatchAsync(brokerId, accounts, now, ct);
+```
+
+`group == null` means **every group just listed**, not a plan mask.
+
+`NativeMt5BrokerConnector.GetGroupsCore` (`D:\Prop\src\Mt5\Connectors\NativeMt5BrokerConnector.cs` L144–186):
+
+1. `GroupRequestArray("*", …)`
+2. fallback `GroupTotal` + `GroupNext`
+
+`GetAccountsCore(null)` (L189–213) walks every returned group. Per group (`ReadAccountsForGroup` L216–233):
+
+1. `UserRequestArray`
+2. fallback `UserGetByGroup`
+3. if still empty: `UserLogins` then `UserRequestByLogins`
+
+Grep of `D:\Prop\src\Application\Ingestion` for `Take(`: **0 hits**. Catalog is not silently capped.
+
+Plan-group mappings are labels, not fetch filters (`docs/architecture.md` L24).
+
+`LiveIngestHostedService` runs that catalog for **every** registered connector. API startup seeds **broker catalog only** (`BrokerCatalogSeed`), not `DemoSeeder` dummy traders.
+
+### 4.2 YoPips C++ (same Manager recipe, source side only)
+
+`D:\Projects\YoPips\Backend\C++ Backend PropFirm\src` has **0** cTrader FIX senders. YoPips is the proven Manager enumeration pattern the C# connector now owns (`GroupRequestArray("*")` first). Achiever on this LAN still needs HTTP `ProxySet` to allow-list `81.29.145.69`. Starwave is direct.
+
+YoPips is **not** the cTrader destination.
+
+### 4.3 Last measured live census (2026-08-18T08:42:16Z) — re-summed this slot
+
+Artifact: `D:\Prop\reports\swarm\20260818\LIVE_GROUPS_AND_TRADERS.json`  
+Probe: `LiveBrokerProbe` (`envLoaded=true`, note: “Passwords never written. Groups and manager logins only.”).  
+Write-up: `LIVE_MANAGER_FETCH_MEASURED.md` + `CREDENTIALS_AND_COPY_STATUS.md`.
+
+JSON header re-read this slot (`utc=2026-08-18T08:42:16.8519545+00:00`). Independent arithmetic on `groupNames[].accounts`:
+
+Achiever `2+179+4+5+4+6295+0+23 = 6512` (8 groups).  
+Starwave `11+4+170+1735+22+0+0+4+0+2 = 1948` (10 groups).  
+Totals **18 / 8460**. Matches JSON `groups`/`accounts` fields.
+
+| Broker | `connected` | `groups` | `accounts` | `openPositions` |
+|---|---|---:|---:|---:|
+| ACHIEVER | true | **8** | **6512** | 1506 |
+| STARWAVEFX | true | **10** | **1948** | 478 |
+| **Total** | | **18** | **8460** | **1984** |
+
+Achiever groups (all this manager can see):
+
+| Group | Accounts |
+|---|---:|
+| contest\yo-1step | 2 |
+| contest\yo-2step | 179 |
+| contest\yo-instant | 4 |
+| contest\yo-payp | 5 |
+| demo\yo-1step | 4 |
+| demo\yo-2step | 6295 |
+| demo\yo-instant | 0 |
+| demo\yo-payp | 23 |
+
+Starwave groups:
+
+| Group | Accounts |
+|---|---:|
+| Starwave\cent\FX1\grp1 | 11 |
+| Starwave\cent\FX1\grp2 | 4 |
+| Starwave\demo\FX2\grp1 | 170 |
+| Starwave\demo\FX2\grp2 | 1735 |
+| Starwave\real\FX3\grp1 | 22 |
+| Starwave\real\FX3\grp2 | 0 |
+| Starwave\real\FX3\grp3 | 0 |
+| Starwave\real\FX3\grp4 | 4 |
+| Starwave\real\FX3\grp5 | 0 |
+| Starwave\real\FX3\LP | 2 |
+
+`Starwave\real\FX3\LP` is a **source MT5 group name**. It is not a cTrader liquidity-provider type.
+
+Dashboard `/api/traders` returned **8460**. `/api/groups` returned **18** (`CREDENTIALS_AND_COPY_STATUS.md`).
+
+If the server has more groups, they are outside this manager’s permission set. That is an ACL fact, not a code cap.
+
+This research slot did **not** re-run the probe. Numbers above are the permanent measured dump, re-summed. Logins exist in the JSON; they are not reprinted here.
+
+---
+
+## 5. Copy to cTrader must not send live orders yet (no loss)
+
+### 5.1 Gates — current vs stale sibling claims
+
+| Gate | Measured this slot |
+|---|---|
+| `CTraderFixOptions.RealCopyExecutionEnabled` L35 | default **`false`** (POCO unused — type not bound) |
+| `DependencyInjection` L39–41 `LiveRuntimeStatus.RealCopyEnabled` | **`string.Equals(configuration["REAL_COPY_EXECUTION_ENABLED"], "true", OrdinalIgnoreCase)`** — **not** forced false |
+| Hosted service after logon | logs `RealCopyArmed={Armed}`; **does not** pin false |
+| `/api/settings` `featureFlags.REAL_COPY_EXECUTION_ENABLED` | `runtime.RealCopyEnabled` (follows env) |
+| `FEATURE_COPY_TRADING_ENABLED` | hardcoded **`true`** (`Program.cs` L77) — shadow pipeline on |
+| `.env` `REAL_COPY_EXECUTION_ENABLED` | **`true`** (flag name+value only) |
+| `appsettings.json` `FeatureFlags.LiveCopyEnabled` | **false** (different name; not the wired flag) |
+| `CopyTradingService.NewOrderSingleImplemented` | **`const false`** |
+| `CopyTradingService.VenueReconciled` | **`const false`** |
+| Persist `RiskDecisionRecord.AllowFixSend` | **forced `false`** (L192) regardless of `RiskEngine` bit |
+| Live send branch L198 | requires `AllowFixSend && LIVE && NewOrderSingleImplemented && VenueReconciled` — **cannot fire** |
+| `CopyTradingHostedService` | only calls `GenerateShadowIntentsAsync`; logs “Live NewOrderSingle still blocked” |
+| fix-worker L21–46 | reads `CTrader:RealCopyExecutionEnabled` default false; even if true, **logs a warning and still does not send**; stamps TRADE `LastError = "No live TRADE socket. NewOrderSingle remains off."` |
+| `CTraderQuoteService` | in-memory SecurityList/MD helpers only; **not registered**; never TRADE |
+| `ShadowCopyEngine` | in-memory `SimulateEntry` only; **no socket** |
+| `CTraderFixSession` | **135** lines; only outbound MsgType is `(35, "A")`; one `WriteAsync`; sockets disposed |
+
+`LiveRuntimeStatus.Snapshot` copy note when the flag is true (L42–44):
+
+> “REAL_COPY armed. NewOrderSingle still unimplemented; 0 LIVE traders; venue not reconciled. No ticket will be sent.”
+
+Architecture §41 (L1572–1587) still requires:
+
+```env
+REAL_COPY_EXECUTION_ENABLED=false
+```
+
+until risk/recon gates exist. Lab `.env` currently **violates that docs pin**. TRADE up ≠ license to send. Flag armed ≠ ticket sent.
+
+`CREDENTIALS_AND_COPY_STATUS.md` L30 still says `REAL_COPY` **false (forced)** and L33 “method does not exist”. That status file is **stale vs this worktree** (DI binds env `true`; demo CLI `Build("D")` exists).
+
+`RiskEngine.Evaluate` can theoretically set `AllowFixSend` when `RealExecutionEnabled && KillSwitch==None && Reconciled && VenueHealthy`. The copy pipeline passes `Reconciled = VenueReconciled` (`false`), so the engine bit stays false even if the env flag is true. The persist line then **overwrites** to false again.
+
+### 5.2 No copy-path `35=D` builder (re-measured this pass)
+
+Grep of product `*.{cs,json}` for literal `35=D` / `(35, "D")` / `MsgType = "D"`: **0 hits**.
+
+`CTraderFixSession` emits only `(35, "A")`. After one reply it **disposes** TCP/SSL. There is no keep-alive TRADE initiator, no `OrderQty` on the hosted wire, no cancel/replace (`35=F`/`35=G`).
+
+`NewOrderSingle` strings that remain on the hosted path are comments (`CTraderFixOptions` L33), logs (`CTraderFixLogonHostedService` L69), `LastError` English, dashboard copy, `CopyTradingService` gates, and `MayRetryNewOrderSingle` (status math only — `NotSent`/`Rejected`; never opens a socket). `RiskEngine.AllowFixSend` is a DTO bit. It is **not** a socket write.
+
+Official RoE documents `35=D` as **Client → cTrader**. That is the future send we must **not** enable until A100 (§68) and A101 (§70) are measured PASS. Current go-live scorecards remain **0/19** and **0/14** (INDEX headline).
+
+### 5.3 Demo CLI residual (honest, not the copy path)
+
+`D:\Prop\src\Fix.CTrader\Sessions\CTraderFixDemoTestTrade.cs` builds MsgType `"D"` three times (flatten existing / open market / close). Wired **only** from `D:\Prop\tools\DemoFixTestTrade\Program.cs` (hardcoded TRADE **5212**, TargetCompID fallback `cServer`). **Not** registered in `AddTraderIntelligence`. Hosted services never call it.
+
+Demo gate (L43–46): host must start with `demo-`, sender with `demo.`; refuses `live.` and account `1369850`.
+
+Prior operator artifact (not this slot): `DEMO_FIX_TEST_TRADE.json` `OrderSent=true`, `Flattened=true`, host `demo-us-eqx-01.p.c-trader.com`, account `5328266`. Companion `DEMO_FIX_TEST_TRADE.md` records a **demo** XAUUSD fill then flatten. That is demo-account risk from an explicit CLI, **not** the Achiever/Starwave copy hop, **not** live `1369850`.
+
+This research slot did **not** invoke that tool.
+
+### 5.4 What “copy without live loss” honestly means today
+
+| Allowed now | Forbidden now |
+|---|---|
+| Manager catalog of all groups/traders | Hosted `35=D` NewOrderSingle |
+| Reconstruct / score / SHADOW / CopyIntent | `35=F` / `35=G` cancel-replace on the copy path |
+| Diagnostic TLS Logon `35=A` on 5211/5212 | Treating an armed `REAL_COPY` flag as a send license |
+| Persist FIX session rows | Treating Logon as a fill |
+| Manual demo CLI (operator, demo-gated) | Wiring that CLI into copy |
+
+User wants copy **and** no loss. Those two cannot be delivered together **today**: live copy requires a NewOrderSingle; no-loss live copy requires A100/A101 gates that are **not PASS**. The only honest operating mode is **fetch + shadow + venue Logon/recon only**. That is how this process avoids taking a live loss.
+
+Do **not** add a sender in a “research” task. Do **not** flip the flag to “match” configured sessions. The lab `.env` already has the flag **true**; the hosted process still cannot lose capital because **no copy-path builder exists**.
+
+---
+
+## 6. Header / session map (current lab issued form, case preserved)
+
+```text
+Host            demo-us-eqx-01.p.c-trader.com   (architecture live sample: live-us-eqx-01.p.c-trader.com)
+QUOTE SSL       5211     50=QUOTE  57=QUOTE
+TRADE SSL       5212     50=TRADE  57=TRADE
+49 SenderCompID demo.pepperstone.5328266        (architecture live sample: live.pepperstone.1369850)
+56 TargetCompID cServer          ← issued case; do not fold to CSERVER
+553 Username    integer account id (not SenderCompID)
+554 Password    never logged
+35 outbound     A only (hosted CTraderFixSession)
+```
+
+Account id `5328266` is a venue identifier (non-secret demo login), not a password. Architecture live sample `1369850` is likewise a non-secret login.
+
+---
+
+## 7. Cross-checks (siblings; do not treat as this file)
+
+| Sibling | What it pins |
+|---|---|
+| A87 / D58 | Venue ≠ LP naming law |
+| A25 / A31 / A32 / R030 | Official headers, `cServer` vs `CSERVER`, 5211/5212 SSL |
+| A003 / E002 / W500_RESEARCH_148 / W500_RESEARCH_150 | No hosted live send; docs want `REAL_COPY` false |
+| A004 | YoPips `GetAllGroups` / `UserLogins` recipe |
+| LIVE_MANAGER_FETCH_MEASURED + `LIVE_GROUPS_AND_TRADERS.json` | 18 / 8460 census |
+| DEMO_FIX_TEST_TRADE.md | Prior **demo** CLI fill — not this slot, not copy |
+| W500_RESEARCH_27 / 47 / 67 / 87 / 107 / 127 / 147 | Same assigned topic. This file is slot **187** independent re-measure. **107/127 “forced false / logon re-pins” is stale.** |
+| W500_RESEARCH_116 / 123 / 124 / 147 / 148 | Already recorded `.env REAL_COPY=true` + DI bind |
+
+---
+
+## 8. Sources read (this slot)
+
+- `D:\Prop\src\Fix.CTrader\Configuration\CTraderFixOptions.cs`
+- `D:\Prop\src\Fix.CTrader\Sessions\CTraderFixSession.cs` (135 lines)
+- `D:\Prop\src\Fix.CTrader\Sessions\CTraderFixDemoTestTrade.cs` (demo CLI only)
+- `D:\Prop\src\Fix.CTrader\Hosting\CTraderFixLogonHostedService.cs` (112 lines)
+- `D:\Prop\src\Fix.CTrader\Services\CTraderQuoteService.cs` (unregistered)
+- `D:\Prop\src\Fix.CTrader\Testing\FixSimulationHarness.cs`
+- `D:\Prop\src\Infrastructure\DependencyInjection.cs`
+- `D:\Prop\src\Infrastructure\Copy\CopyTradingService.cs`
+- `D:\Prop\src\Infrastructure\Hosting\CopyTradingHostedService.cs`
+- `D:\Prop\src\Infrastructure\Mt5Live\LiveMt5Registration.cs`
+- `D:\Prop\src\Infrastructure\Seeding\BrokerCatalogSeed.cs`
+- `D:\Prop\src\Infrastructure\Seeding\DemoSeeder.cs`
+- `D:\Prop\src\Mt5\Connectors\NativeMt5BrokerConnector.cs`
+- `D:\Prop\src\Application\Ingestion\DealIngestionService.cs`
+- `D:\Prop\src\Application\Runtime\LiveRuntimeStatus.cs`
+- `D:\Prop\src\Domain\Risk\RiskEngine.cs`
+- `D:\Prop\src\Domain\Execution\ExecutionOrderStateMachine.cs`
+- `D:\Prop\src\Domain\Brokers\BrokerCodes.cs`
+- `D:\Prop\apps\api\Program.cs` + `appsettings.json` (dead `CTraderFix` block) + `appsettings.Development.json`
+- `D:\Prop\apps\fix-worker\Worker.cs`
+- `D:\Prop\apps\web\src\pages\FixSessionsPage.tsx`
+- `D:\Prop\tests\Integration\SeedingAndStoreTests.cs`
+- `D:\Prop\tools\DemoFixTestTrade\Program.cs`
+- `D:\Prop\docs\ctrader-fix.md`, `docs\architecture.md`, `README.md`
+- `D:\Prop\MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md` §1.6, §25–27, §41
+- `D:\Projects\YoPips\Backend\C++ Backend PropFirm\src` (0 cTrader senders)
+- Official: https://help.ctrader.com/fix/ · https://help.ctrader.com/fix/specification/ · https://help.ctrader.com/fix/getting-credentials/
+- Prior measured dump: `LIVE_MANAGER_FETCH_MEASURED.md`, `LIVE_GROUPS_AND_TRADERS.json` (re-summed), `CREDENTIALS_AND_COPY_STATUS.md` (REAL_COPY row stale), `DEMO_FIX_TEST_TRADE.md` (prior demo CLI)
+- `.env` key **names** only (`CTRADER_FIX_*_TARGET_COMP_ID`, SSL ports, host, account, SenderCompID, `REAL_COPY_EXECUTION_ENABLED`)
+
+---
+
+## 9. Slot-187 close
+
+**CONFIRMED.** Pepperstone/cTrader FIX is the **destination venue**, not an LP. Wire `TargetCompID` stays issued **`cServer`**. Production ports are **QUOTE 5211 SSL** and **TRADE 5212 SSL**. The ingest goal is **all** manager-visible Achiever + Starwave groups and traders (last measured **18 / 8460**, re-summed). Hosted copy must stay SHADOW / Logon-only: **no live orders, no live loss**. Residual: lab `.env` arms `REAL_COPY_EXECUTION_ENABLED=true` and DI honors it, but **no copy-path `35=D` builder exists**. Separate leftover: demo CLI can (and previously did) send on demo account `5328266`; not this process.
+
+| JSON field | Value |
+|---|---|
+| slot | 187 |
+| verdict | CONFIRMED |
+| risk_to_capital | NONE (`SAFE_BY_ABSENCE` on hosted copy; no `35=D` builder; `NewOrderSingleImplemented=false`; persist `AllowFixSend=false`) |
+| evidence | Venue ≠ LP; `56=cServer` no fold; QUOTE TLS 5211 / TRADE TLS 5212; census 18/8460 re-summed; hosted live send off |

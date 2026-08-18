@@ -37,7 +37,8 @@ public static class CTraderFixDemoTestTrade
         string targetCompId,
         string account,
         string password,
-        CancellationToken ct)
+        CancellationToken ct,
+        bool flattenOnly = false)
     {
         if (!host.StartsWith("demo-", StringComparison.OrdinalIgnoreCase)
             || !senderCompId.StartsWith("demo.", StringComparison.OrdinalIgnoreCase)
@@ -140,6 +141,23 @@ public static class CTraderFixDemoTestTrade
                 await ReadUntilAsync(ssl, timeoutCts.Token, TimeSpan.FromSeconds(8), "8", "3", "j");
             }
 
+            if (flattenOnly)
+            {
+                return new DemoTestTradeResult
+                {
+                    Allowed = true,
+                    LoggedOn = true,
+                    OrderSent = !string.IsNullOrWhiteSpace(existingPos),
+                    Filled = false,
+                    Flattened = !string.IsNullOrWhiteSpace(existingPos),
+                    SymbolId = symbolId,
+                    SymbolName = symbolName,
+                    Host = host,
+                    Account = account,
+                    Text = existingPos is null ? "no open gold position" : "flatten submitted for " + existingPos
+                };
+            }
+
             var clOrd = "T" + DateTime.UtcNow.ToString("yyyyMMddHHmmssfff", CultureInfo.InvariantCulture);
             var now = DateTime.UtcNow.ToString("yyyyMMdd-HH:mm:ss.fff", CultureInfo.InvariantCulture);
             await WriteAsync(ssl, Build("D", senderCompId, targetCompId, "TRADE", "TRADE", seq++,
@@ -179,7 +197,9 @@ public static class CTraderFixDemoTestTrade
                 await WriteAsync(ssl, Build("D", senderCompId, targetCompId, "TRADE", "TRADE", seq,
                     closeFields.ToArray()), timeoutCts.Token);
                 var closeEr = await ReadUntilAsync(ssl, timeoutCts.Token, TimeSpan.FromSeconds(12), "8", "3", "j");
-                flattened = Tag(closeEr, "150") is "F" or "2" || Tag(closeEr, "39") is "1" or "2";
+                if (Tag(closeEr, "150") == "0")
+                    closeEr += " || " + await ReadUntilAsync(ssl, timeoutCts.Token, TimeSpan.FromSeconds(8), "8", "3", "j");
+                flattened = closeEr.Contains("|150=F|") || closeEr.Contains("|39=2|");
                 er += " || CLOSE " + closeEr;
             }
 

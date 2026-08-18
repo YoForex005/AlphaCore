@@ -21,4 +21,12 @@ public sealed class CopyIntent
     public string IdempotencyKey { get; set; } = string.Empty;
     public Guid? RiskDecisionId { get; set; }
     public Guid? ExecutionIntentId { get; set; }
+    public decimal? StopLoss { get; set; }
+    public decimal? TakeProfit { get; set; }
+    public decimal? LimitPrice { get; set; }
+    public decimal? StopTrigger { get; set; }
+    public string OrdType { get; set; } = "Market";
+    public string? DestClOrdId { get; set; }
+    public string? DestPositionId { get; set; }
+    public decimal? DestFillPrice { get; set; }
 }

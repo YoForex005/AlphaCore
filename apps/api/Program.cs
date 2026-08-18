@@ -111,6 +111,38 @@ app.MapGet("/api/trades", async (TraderDbContext db, string? broker, long? login
     return rows;
 });
 
+app.MapPost("/api/ops/score/{broker}", async (
+    string broker,
+    ReconstructionScoringService scoring,
+    ITradingStore store,
+    LiveRuntimeStatus runtime,
+    CancellationToken ct) =>
+{
+    var code = broker.Trim().ToUpperInvariant();
+    if (code is not ("ACHIEVER" or "STARWAVEFX"))
+        return Results.BadRequest(new { error = "broker must be ACHIEVER or STARWAVEFX" });
+    var status = runtime.Broker(code);
+    status.Phase = "manual-score";
+    var brokerId = await store.ResolveBrokerIdAsync(code, ct);
+    var logins = await store.ListLoginsWithDealsAsync(brokerId, ct);
+    var scored = 0;
+    foreach (var login in logins)
+    {
+        ct.ThrowIfCancellationRequested();
+        await scoring.RebuildTraderAsync(code, login, ct);
+        scored++;
+        if (scored % 25 == 0)
+        {
+            status.Scored = scored;
+            status.UpdatedAt = DateTimeOffset.UtcNow;
+        }
+    }
+    status.Scored = scored;
+    status.Phase = "score-done";
+    status.UpdatedAt = DateTimeOffset.UtcNow;
+    return Results.Ok(new { broker = code, logins = logins.Count, scored });
+});
+
 app.MapPost("/api/ops/resync", async (
     DealIngestionService ingestion,
     ReconstructionScoringService scoring,
