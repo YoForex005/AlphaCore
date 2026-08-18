@@ -36,6 +36,24 @@ public static class DemoCopyLedger
     public static void Save(IReadOnlyList<DemoCopyFill> rows)
     {
         Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Path)!);
+        var json = JsonSerializer.Serialize(new
+        {
+            updatedUtc = DateTimeOffset.UtcNow,
+            dest = "demo.pepperstone.5328266",
+            open = rows.Count(r => !r.DestClosed),
+            closed = rows.Count(r => r.DestClosed),
+            total = rows.Count,
+            fills = rows
+        }, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(Path, JsonSerializer.Serialize(rows, new JsonSerializerOptions { WriteIndented = true }));
+        try
+        {
+            Directory.CreateDirectory(@"D:\Prop\apps\web\public");
+            File.WriteAllText(@"D:\Prop\apps\web\public\copy-live.json", json);
+        }
+        catch
+        {
+            // dashboard snapshot is best-effort
+        }
     }
 }

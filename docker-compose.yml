@@ -23,6 +23,7 @@ services:
       - "5000:5000"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__TraderIntelligence: Host=postgres;Port=5432;Database=trader_intelligence;Username=ti;Password=ti_dev_only
     depends_on:
       - postgres
       - redis

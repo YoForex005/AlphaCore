@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TraderIntelligence.Infrastructure;
 using TraderIntelligence.Infrastructure.Persistence;
 using TraderIntelligence.Infrastructure.Seeding;
@@ -11,7 +12,10 @@ var host = builder.Build();
 using (var scope = host.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TraderDbContext>();
-    await db.Database.EnsureCreatedAsync();
+    if (db.Database.IsNpgsql())
+        await db.Database.MigrateAsync();
+    else
+        await db.Database.EnsureCreatedAsync();
     await BrokerCatalogSeed.EnsureAsync(db, CancellationToken.None);
 }
 

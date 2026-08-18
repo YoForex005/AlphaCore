@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TraderIntelligence.Application.Dashboard;
 using TraderIntelligence.Application.Ingestion;
 using TraderIntelligence.Application.Runtime;
@@ -101,6 +102,13 @@ app.MapGet("/api/fix/sessions", (IDashboardQueries q, CancellationToken ct) => q
 app.MapGet("/api/risk", (IDashboardQueries q, CancellationToken ct) => q.GetRiskAsync(ct));
 app.MapGet("/api/copy/status", (CopyTradingService copy, CancellationToken ct) => copy.GetStatusAsync(ct));
 app.MapGet("/api/copy/intents", (CopyTradingService copy, CancellationToken ct) => copy.ListIntentsAsync(200, ct));
+app.MapGet("/api/copy/live", () =>
+{
+    var path = @"D:\Prop\apps\web\public\copy-live.json";
+    if (!System.IO.File.Exists(path))
+        return Results.Ok(new { updatedUtc = DateTimeOffset.UtcNow, open = 0, closed = 0, total = 0, fills = Array.Empty<object>() });
+    return Results.Text(System.IO.File.ReadAllText(path), "application/json");
+});
 app.MapGet("/api/trades", async (TraderDbContext db, string? broker, long? login, CancellationToken ct) =>
 {
     var query = db.ReconstructedTrades.AsQueryable();
@@ -184,7 +192,10 @@ app.MapPost("/api/ops/resync", async (
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TraderDbContext>();
-    await db.Database.EnsureCreatedAsync();
+    if (db.Database.IsNpgsql())
+        await db.Database.MigrateAsync();
+    else
+        await db.Database.EnsureCreatedAsync();
     await BrokerCatalogSeed.EnsureAsync(db, CancellationToken.None);
 }
 
