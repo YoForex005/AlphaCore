@@ -2,7 +2,7 @@
 
 Short architecture overview and where to find implementation details.
 
-![Architecture](docs/architecture.svg)
+![Architecture](docs/architecture.png)
 
 Summary: lightweight C#/.NET backend that ingests MT5 manager events, reconstructs trades, scores XAUUSD traders, shadow-copies approved trades and routes execution to a cTrader FIX 4.4 adapter.
 
