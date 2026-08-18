@@ -1,12 +1,16 @@
-import { useGroups } from '../api/hooks';
+import { useGroups, useIngestStatus } from '../api/hooks';
 
 export default function GroupsPage() {
   const { data = [], isLoading } = useGroups();
+  const ingest = useIngestStatus();
   if (isLoading) return <p className="text-gray-400">Loading groups…</p>;
   return (
     <div>
       <h1 className="text-2xl font-semibold text-white mb-2">MT5 Groups</h1>
-      <p className="text-sm text-gray-400 mb-4">Discovered dynamically. Plan mappings are labels only — they do not filter ingestion.</p>
+      <p className="text-sm text-gray-400 mb-4">Every group visible to the Achiever and Starwave managers. Count: {data.length}.</p>
+      {ingest.data?.brokers && (
+        <p className="text-xs text-gray-500 mb-3">{JSON.stringify(ingest.data.brokers)}</p>
+      )}
       <table className="w-full text-sm text-left">
         <thead className="text-gray-400 border-b border-gray-800">
           <tr>

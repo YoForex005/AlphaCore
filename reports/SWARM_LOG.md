@@ -4,6 +4,1734 @@ Permanent log of `D:\Prop` research / audit waves. Chat is not storage.
 
 ---
 
+## 2026-08-18 — W500_RESEARCH_149 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_149 |
+| Slot | 149 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_149.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. `NewOrderSingleImplemented=false`; persist `AllowFixSend=false`. Residual: DI binds env `REAL_COPY=true` (slots 9/69/89/109 hard-false pin stale). Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 155 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_155 |
+| Slot | 155 |
+| Purpose | Check `DealIngestionService` `Take(200)` positions cap. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_155.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows (`Program.cs` L110). Probe JSON re-summed 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Residual: DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true`; sender still unimplemented. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_154 LiveMt5Registration.HasRealPasswords fail-closed
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_154 |
+| Slot | 154 |
+| Purpose | Check `LiveMt5Registration.HasRealPasswords` fail-closed. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_154.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_FAIL_CLOSED_DI.** DI throws unless both `MT5_PASSWORD` + `MT5_STARWAVEFX_PASSWORD` pass `IsSecret`; Native ×2 only; no Fake. Residual: Ordinal case hole; `CreateConnectors*` ungated; probe whitespace-only; 0 tests; DI now env-binds `REAL_COPY` (lab `.env` `true`; 14/34/54/114 hard-false pin stale). Census 18/8460 prior. `35=D` `SAFE_BY_ABSENCE`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_158 QuantityNormalizer lots ↛ FIX OrderQty
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_158 |
+| Slot | 158 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. ALL Achiever+Starwave groups/traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_158.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** (flag booleans only) |
+| Verdict | **FAIL as §38 converter; SAFE_BY_ABSENCE on the wire.** `Normalize(0.10,1,dest)=0.10` not `10.00`. Product calls `Normalize(lots,0.05,GoldSpec)` (`1.00→0.05 ≠ 5.00 oz`). No `35=D`/`OrderQty`. `NewOrderSingleImplemented=false`. Env `REAL_COPY` may be true; persist `AllowFixSend=false`. 78/98/D18 “zero callers” + 108/CREDENTIALS forced-false + 127 logon-repin **STALE**. Capital risk **none**. Census 18/8460 independent. |
+
+---
+
+## 2026-08-18 — W500 slot 156 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_156 |
+| Slot | 156 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_156.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` L99 + left-join scores (A005 scores-only is stale). Catalog `*` + all users (prior 18/8460 re-summed; P500 8463 unreconciled). Hosted score = `ListLoginsWithDealsAsync`. `35=D` absent. DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true`; FIX host no longer pins false; `CopyTradingService` writes SHADOW only (`NewOrderSingleImplemented=false`). W116 stale: `GetRiskAsync` now env-bound; FEATURE copy flag `true`; `/api/copy/*` exists. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_149 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_149 |
+| Slot | 149 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_149.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. `NewOrderSingleImplemented=false`; persist `AllowFixSend=false`. Residual: DI binds env `REAL_COPY=true` (slots 9/69/89/109 hard-false pin stale). Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_148 REAL_COPY_EXECUTION_ENABLED must stay false
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_148 |
+| Slot | 148 |
+| Purpose | Confirm `REAL_COPY_EXECUTION_ENABLED` must stay false. No `35=D` NewOrderSingle until risk/recon gates. Fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_148.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this pass | **No** |
+| Verdict | **CONFIRMED_MUST_STAY_FALSE.** §68 **0/19**, §70 **0/14**, §69 **0/12**. Product `35=D=0`; only outbound MsgType is `35=A`. Residual: lab `.env` L73 is `true` and DI binds it; hosted logon no longer re-pins (W500_68/108 pin-false **stale**). `CopyTradingService` const `NewOrderSingleImplemented=false` / `VenueReconciled=false`; persist `AllowFixSend=false`. YoPips `src` 0 cTrader senders. Census 18/8460 read-only. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_153 Api.csproj TFM vs MT5APIManager64
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_153 |
+| Slot | 153 |
+| Purpose | Check `Api.csproj` TargetFramework. `net8.0` without windows/x64 vs `MT5APIManager64` load. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_153.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this pass | **No** |
+| Verdict | **PASS.** API is `net8.0-windows` + `PlatformTarget` x64; restore `success: true`; trio in `bin\Debug\net8.0-windows\`; `bases/` 2027+9904 prove prior LoadLibrary. Isolated `net8.0` x64 can Initialize (R021). Product `net8.0` hosts still NU1201. Census 18/8460. `35=D` `SAFE_BY_ABSENCE`. Env `REAL_COPY` may be true; sender still unimplemented (slot 113 “forced false” stale). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_151 Program.cs DemoSeeder / FakeMt5 / 10001 / 10002 dummy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_151 |
+| Slot | 151 |
+| Purpose | Search `Program.cs` for DemoSeeder / FakeMt5 / 10001 / 10002 / dummy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_151.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this slot | **No** |
+| Verdict | **PASS_HOST_NO_DUMMY.** API+workers+probe `Program.cs` have 0 `DemoSeeder`/`FakeMt5`/`10001`/`10002`/`dummy` hits. Startup seed is `BrokerCatalogSeed` only. Residual: `DemoSeeder` tests + `Worker.cs` four-login scorer. Hosted score = `ListLoginsWithDealsAsync`. Prior census 18/8460. Copy pipeline SHADOW-only. Env `REAL_COPY` may be true; `35=D` absent. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_147 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_147 |
+| Slot | 147 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_147.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (re-summed, not re-probed). `35=D` absent — `SAFE_BY_ABSENCE`. Residual: DI binds `.env REAL_COPY=true` (slots 27/47/67/87/107 hard-false pin is stale); sender still unimplemented. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_138 QuantityNormalizer lots ↛ FIX OrderQty (slot 138)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_138 |
+| Slot | 138 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. Fetch ALL Achiever+Starwave groups/traders. Copy-to-cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_138.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** (flag booleans only) |
+| Live attach this pass | **No** |
+| Verdict | **EXISTS_NEEDS_REFACTOR** as dest-grid floor; **MISSING** as `IQuantityConverter`. `Normalize(0.10,1,dest)=0.10` (G7/G10 FAIL). Product now calls `Normalize(lots,0.05,GoldSpec)` (`1.00→0.05 ≠ 5.00 oz`). No `35=D` / tag 38. `NewOrderSingleImplemented=false`. Env `REAL_COPY` may be true; persist `AllowFixSend=false`. 78/98 “zero callers” STALE. Census 18/8460 independent. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_150 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_150 |
+| Slot | 150 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_150.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. Copy hop const `NewOrderSingleImplemented=false` + persist `AllowFixSend:=false`. Residual: DI binds env `REAL_COPY_EXECUTION_ENABLED=true`; hosted logon no longer re-pins false. Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500 slot 146 `IMTDeal.Volume` scale 10000
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_146 |
+| Slot | 146 |
+| Purpose | Confirm `IMTDeal.Volume` scale is **10000**, not hundredths, not `VolumeExt` 1e8. Goal: fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_146.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this pass | **No** |
+| Verdict | **CONFIRMED.** Official `MTAPI_VOLUME_DIV=10000.0`; extractors copy `deal->Volume()` (0 `VolumeExt` calls). C# default `10_000`. E004 3/3 VolumeConverter tests Passed. D92 eval `ctor_default_Scale=10000`. Hundredths is a `mt5_types.h` comment bug. Census 18/8460 re-summed (08:42Z). `35=D` absent; `NewOrderSingleImplemented=false`; persist `AllowFixSend=false`. Residual: DI binds env `REAL_COPY` (may be true). Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_128 slot 128 REAL_COPY must stay false
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_128 |
+| Slot | 128 |
+| Purpose | Confirm `REAL_COPY_EXECUTION_ENABLED` must stay false. No `35=D` NewOrderSingle until risk/recon gates. Fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_128.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** (quoted only `REAL_COPY_EXECUTION_ENABLED=true` boolean) |
+| Verdict | **CONFIRMED_MUST_STAY_FALSE.** Law §41 / §68 **0/19** / §70 **0/14**. Product `35=D=0`; only outbound MsgType is `35=A`. Copy `NewOrderSingleImplemented`+`VenueReconciled` const false; persist `AllowFixSend=false`. Residual: `.env` L73 **true**; DI L41 now binds it; hosted no longer re-pins (W500_68/108 stale). Census 18/8460 read-only. YoPips `src` 0 cTrader senders. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — P500_S055 dest-account ruin
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | P500_S055 |
+| Slot | S055 |
+| Purpose | Ruin math for one retail Pepperstone dest vs copy-all / default RiskLimits / 70 same-side SHADOW. No product edit. No secrets. No live NewOrderSingle. |
+| Artifact | `D:\Prop\reports\swarm\20260818\P500_S055_ruin.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live `35=D` sent | **No** |
+| Verdict | **DEST_RUIN_IF_SENT.** Copy-all EV −$154k; blocked tail −$242k; 5-lot / 10-net / 0.70 margin / $2,000 daily are blow-up caps; Evaluate is called with a zero book; dest is one retail login. Today dest PnL $0 by `SAFE_BY_ABSENCE`. Never flatten MT5 source. Profit = filter tail + 0.05 lot + shadow after costs. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_133 Api.csproj TFM vs MT5APIManager64
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_133 |
+| Slot | 133 |
+| Purpose | Check `Api.csproj` TargetFramework. `net8.0` without windows/x64 vs `MT5APIManager64` load. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_133.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** API is `net8.0-windows` + `PlatformTarget` x64; restore `success: true`; trio in `bin\Debug\net8.0-windows\`; `bases/` 2027+9904 prove prior LoadLibrary. Isolated `net8.0` x64 can Initialize (R021). Product `net8.0` hosts still NU1201. Census 18/8460. `35=D` `SAFE_BY_ABSENCE`. Env REAL_COPY=true armed; sender missing. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 137 copy-flag defaults (`FEATURE_COPY` / `REAL_COPY`)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_137 |
+| Slot | 137 |
+| Purpose | Check `FEATURE_COPY_TRADING_ENABLED` and `REAL_COPY_EXECUTION_ENABLED` defaults. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_137.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this pass | **No** |
+| Verdict | **PASS_NO_LIVE_SEND_ENV_ARMED.** FEATURE display/pipeline **ON** (`/api/settings` literal `true`; hosted shadow tick flag-blind). REAL_COPY architecture/POCO/worker-fallback still **false**, but lab `.env` L73 `=true` is **now bound** by `DependencyInjection` onto `LiveRuntimeStatus.RealCopyEnabled`; logon host no longer re-pins false (57/97/108 **STALE**). Catalog walk `GroupRequestArray("*")` + `GetAccountsAsync(null)` flag-blind (census 18/8460 prior). Product `35=D=0`; persist `AllowFixSend=false`; `NewOrderSingleImplemented=false`. YoPips 0 senders. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_130 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_130 |
+| Slot | 130 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_130.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. `NewOrderSingleImplemented` const false. Residual: `.env` `REAL_COPY_EXECUTION_ENABLED=true` and DI binds it; hosted service no longer re-pins false (W500_90/110 stale). Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_145 UserGetByGroup pump-cache vs UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_145 |
+| Slot | 145 |
+| Purpose | Confirm `UserGetByGroup` is pump-cache and `UserRequestArray` is the request path for ALL traders. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_145.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `UserGetByGroup` = pump-cache (`PUMP_MODE_USERS`; absent on Admin). `UserRequestArray` = network; C# primary at `ReadAccountsForGroup` L223; cache fallback only on hard fail; empty → `UserLogins`. Census 18/8460 re-summed (08:42Z, not re-probed). `35=D` absent; `NewOrderSingleImplemented=false`. Env REAL_COPY may be true; sender missing. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_129 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_129 |
+| Slot | 129 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_129.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. `REAL_COPY` env-driven (may be true; no sender). Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 136 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_136 |
+| Slot | 136 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_136.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` L99 + left-join scores (A005 scores-only is stale). Catalog `*` + all users (prior 18/8460 re-summed this slot). Hosted score = `ListLoginsWithDealsAsync`. `35=D` absent. Residual: DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true`; settings `FEATURE_COPY=true`; `/api/copy*` exists but SHADOW only (`NewOrderSingleImplemented=false`). Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_134 `LiveMt5Registration.HasRealPasswords` fail-closed
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_134 |
+| Slot | 134 |
+| Purpose | Check `LiveMt5Registration.HasRealPasswords` fail-closed. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_134.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_FAIL_CLOSED_DI.** Dual-AND + DI throw blocks empty / exact `<SECRET>` / `(a/c` / one-sided keys (no FakeMt5). After pass: Native ×2 + ALL groups/traders. Residuals: Ordinal case hole, dummy words, factory/probe bypass, 0 tests. Sibling 114 “RealCopyEnabled hardcoded false” is **stale** — DI binds env; `.env` is `true` (flag armed, **not** a sender). Product `35=D=0`; NOS `const false`; persist `AllowFixSend=false`. Census pin 18/8460 (08:42Z, not re-probed). Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_144 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_144 |
+| Slot | 144 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_144.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Starwave `Connect(84.201.6.142:443)` with `ProxySet` skipped. C# hardcodes `ProxyEnabled=false`. Achiever HTTP hop is the other broker. Live census 10/1948 direct (total 18/8460 re-summed). `35=D` absent; `NewOrderSingleImplemented=false`. Residual: DI binds env `REAL_COPY_EXECUTION_ENABLED` and lab `.env` L73 is `true`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 142 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_142 |
+| Slot | 142 |
+| Purpose | Read YoPips `mt5_group_probe.cpp`. How does a proven probe enumerate all groups without echoing passwords? Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_142.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_GROUPS_ONLY_NO_PASSWORD_ECHO.** C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords (`spdlog` off; JSON has no secret keys). Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. Probe exe absent (vcxproj generated, FileListAbsolute empty). No `35=D`. `NewOrderSingleImplemented=false`. This slot did not live-attach. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_143 slot 143 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_143 |
+| Slot | 143 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_143.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live `35=D` sent | **No** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Starwave stays direct. Live census 18 groups / 8460 traders (re-summed; not re-attached). `35=D` absent (`SAFE_BY_ABSENCE`). Residual: DI now binds env `REAL_COPY_EXECUTION_ENABLED` and lab `.env` L73 is `true` (slots 3/63/83 hard-false pin is stale); sender still unimplemented. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 135 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_135 |
+| Slot | 135 |
+| Purpose | Check `DealIngestionService` `Take(200)` positions cap. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_135.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984 re-summed. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Residual: DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true`; FIX host no longer pins false; sender still unimplemented. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 117 copy-flag defaults (`FEATURE_COPY` / `REAL_COPY`)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_117 |
+| Slot | 117 |
+| Purpose | Check `FEATURE_COPY_TRADING_ENABLED` and `REAL_COPY_EXECUTION_ENABLED` defaults. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_117.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_NO_LIVE_SEND_ENV_ARMED.** Architecture/POCO REAL_COPY default still **false**. Local `.env` L73+L106 both **true**. DI now binds `REAL_COPY_EXECUTION_ENABLED` (`DependencyInjection.cs` L41). Logon re-pin **removed**. API FEATURE literal **true**. Fetch ALL flag-blind (prior census 18/8460). `35=D` absent; `NewOrderSingleImplemented=false`; `AllowFixSend` persisted false. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). Residual: next sender would see runtime armed on the API host. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_131 Program.cs DemoSeeder FakeMt5 10001 10002 dummy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_131 |
+| Slot | 131 |
+| Purpose | Search `Program.cs` for DemoSeeder / FakeMt5 / 10001 / 10002 / dummy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_131.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_HOST_NO_DUMMY.** Product `Program.cs` (API 160 + both workers + probe 86): 0 hits for DemoSeeder/FakeMt5/10001/10002/dummy. Startup seed is `BrokerCatalogSeed` only. DI fail-closed Native only. Census cited 8/6512 + 10/1948 = 18/8460; dummy logins 0 in live JSON. Residual Worker 4-login scorer. `35=D` SAFE_BY_ABSENCE; `NewOrderSingleImplemented=false`. Delta: DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true` (91/111 forced-false is stale). Risk to capital **NONE**. This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_132 NativeMt5BrokerConnector GroupRequestArray / UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_132 |
+| Slot | 132 |
+| Purpose | Search `NativeMt5BrokerConnector` for `GroupRequestArray` and `UserRequestArray`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_132.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Primary walks are `GroupRequestArray("*")` L155 and per-group `UserRequestArray` L223. Ingest/`LiveBrokerProbe` use `GetAccountsAsync(null)`. Live census 8/6512 + 10/1948 = 18/8460 (08:42Z, re-summed, not re-probed). `35=D` absent; `NewOrderSingleImplemented=false`; `AllowFixSend=false`. Env `REAL_COPY=true` is bound by current DI but cannot emit a ticket (`SAFE_BY_ABSENCE`). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_127 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_127 |
+| Slot | 127 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_127.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (prior measure). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Env `REAL_COPY=true` leftover; logon re-pins false. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 119 RiskEngine between CopyIntent and ExecutionIntent
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_119 |
+| Slot | 119 |
+| Purpose | Check whether `RiskEngine` sits between `CopyIntent` and `ExecutionIntent`. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_119.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PARTIAL_HOP.** Architecture §4/§32/§39/§75 require CopyIntent → Evaluate → ExecutionIntent. Product: 1 Evaluate caller (`CopyTradingService.GenerateShadowIntentsAsync`); `RiskDecisionRecord` written with `AllowFixSend` forced false; `VenueReconciled`/`NewOrderSingleImplemented` const false; 0 `ExecutionIntent` writers; `PersistDemoShadowAsync` still bypasses Evaluate; no `35=D`. Catalog still ALL groups/users (prior 18/8460). Slots 19/59 “0 callers” stale. Risk to capital: **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_124 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_124 |
+| Slot | 124 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_124.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Live attach this pass | **No** |
+| Verdict | **CONFIRMED.** Starwave `ProxyEnabled` hardcoded `false`; `MT5_STARWAVEFX_PROXY*` unread (0 hits in `src`/`apps`/`tools`). Do not `ProxySet` / do not reuse Achiever HTTP `81.29.145.69:49527`. Prior live census Starwave **10/1948 direct**. `35=D` absent (`SAFE_BY_ABSENCE`). Residual: DI now binds env `REAL_COPY_EXECUTION_ENABLED` and lab `.env` is `true`; sender still unimplemented. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_118 QuantityNormalizer lots ↛ FIX OrderQty
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_118 |
+| Slot | 118 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. ALL Achiever+Starwave groups/traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_118.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** (flag booleans only) |
+| Verdict | **FAIL as §38 converter; SAFE_BY_ABSENCE on the wire.** `Normalize(0.10,1,dest)=0.10` not `10.00`. Product now calls `Normalize(lots,0.05,GoldSpec)` (`1.00→0.05 ≠ 5.00 oz`). No `35=D`/`OrderQty`. `NewOrderSingleImplemented=false`. Env `REAL_COPY` may be true; persist `AllowFixSend=false`. 78/98 “zero callers” STALE. Capital risk **none**. Census 18/8460 independent. |
+
+---
+
+## 2026-08-18 — Switch FIX to Pepperstone DEMO 5328266
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Purpose | User supplied demo FIX host/account. Leave live 1369850. Enable copy pipeline without NewOrderSingle. |
+| Host | demo-us-eqx-01.p.c-trader.com |
+| Account | 5328266 |
+| SenderCompID | demo.pepperstone.5328266 |
+| Password | stored in `.env` only, not logged |
+| Measured | QUOTE logon=True TRADE logon=True on account 5328266 |
+| Live send | **still unimplemented** |
+| Product source modified | Yes — env + seed/defaults/fallbacks point at demo |
+
+---
+
+## 2026-08-18 — W500 slot 126 `IMTDeal.Volume` scale 10000
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_126 |
+| Slot | 126 |
+| Purpose | Confirm `IMTDeal.Volume` scale is **10000**, not hundredths, not `VolumeExt` 1e8. Goal: fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_126.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Official `MTAPI_VOLUME_DIV=10000.0`; extractors copy `deal->Volume()` (0 `VolumeExt` calls). C# default `10_000`. E004 3/3 VolumeConverter tests Passed. Hundredths is a `mt5_types.h` comment bug. Slot 66 DI-false pin is stale: env flag may be true; `35=D` still absent (`NewOrderSingleImplemented=false`). Census 18/8460 prior. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_122 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_122 |
+| Slot | 122 |
+| Purpose | Read YoPips `mt5_group_probe.cpp`. How does a proven probe enumerate all groups without echoing passwords? Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_122.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_GROUPS_ONLY_NO_PASSWORD_ECHO.** C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords (`spdlog` off; JSON has no secret keys). Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. Probe exe absent (FileListAbsolute empty). No `35=D`. `RealCopyEnabled=false`. This slot did not live-attach. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 115 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_115 |
+| Slot | 115 |
+| Purpose | Check `DealIngestionService` `Take(200)` positions cap. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_115.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_113 Api.csproj TFM vs MT5APIManager64
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_113 |
+| Slot | 113 |
+| Purpose | Check `Api.csproj` TargetFramework. `net8.0` without windows/x64 vs `MT5APIManager64` load. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_113.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** API is `net8.0-windows` + `PlatformTarget` x64; restore `success: true`; trio in `bin\Debug\net8.0-windows\`; `bases/` 2027+9904 prove prior LoadLibrary. Isolated `net8.0` x64 can Initialize (R021). Product `net8.0` hosts still NU1201. Census 18/8460. `35=D` `SAFE_BY_ABSENCE`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 116 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_116 |
+| Slot | 116 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_116.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` L99 + left-join scores (A005 scores-only is stale). Catalog `*` + all users (prior 18/8460 re-summed). Hosted score = `ListLoginsWithDealsAsync`. `35=D` absent. **New residual:** DI binds `.env` `REAL_COPY_EXECUTION_ENABLED=true`; FIX host no longer pins false; `CopyTradingService` writes SHADOW only (`NewOrderSingleImplemented=false`). Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500 slot 106 `IMTDeal.Volume` scale 10000
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_106 |
+| Slot | 106 |
+| Purpose | Confirm `IMTDeal.Volume` scale is **10000**, not hundredths, not `VolumeExt` 1e8. Goal: fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_106.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Classic `Volume()` = `/10000` (`MTAPI_VOLUME_DIV`). Hundredths `/100` is a wrong `mt5_types.h` comment. `VolumeExt` `/1e8` unused (0 product calls). Extractors copy `Volume()`. Census 18/8460 prior. `35=D` `SAFE_BY_ABSENCE`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_123 slot 123 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_123 |
+| Slot | 123 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_123.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Starwave stays direct. Live census 18 groups / 8460 traders (re-summed; not re-attached). `35=D` absent (`SAFE_BY_ABSENCE`). Residual: DI now binds env `REAL_COPY_EXECUTION_ENABLED` and lab `.env` L73 is `true` (slots 3/63/83 hard-false pin is stale); sender still unimplemented. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_120 MT5APIManager.h request APIs work without pump
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_120 |
+| Slot | 120 |
+| Purpose | Read `MT5APIManager.h` `GroupRequestArray` / `UserRequestArray` / `UserLogins` / `PositionRequestByGroup` / `DealRequestByGroup`. Confirm request APIs work without pump. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_120.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_REQUEST_APIS_NO_PUMP.** Five Manager Request APIs are network RPCs (no `PUMP_MODE_DEALS`; no `DealGet`). C# uses them first; Connect retries `PUMP_MODE_NONE`. Census 18/8460/1984 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_109 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_109 |
+| Slot | 109 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_109.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_114 LiveMt5Registration.HasRealPasswords fail-closed
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_114 |
+| Slot | 114 |
+| Purpose | Check `LiveMt5Registration.HasRealPasswords` fail-closed. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_114.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_FAIL_CLOSED_DI.** Dual-AND of `MT5_PASSWORD` + `MT5_STARWAVEFX_PASSWORD` via `IsSecret`; DI throws `Real MT5 passwords are required. Dummy/fake broker data is disabled.` before `CreateConnectors`. Native ×2 only; no Fake on throw path. Residuals: Ordinal `<secret>`/`(A/C` hole; dummy words pass; factory/probe ungated; 0 tests. After true, ingest is `GroupRequestArray("*")` + `GetAccountsAsync(null)`. Census cited 8/6512 + 10/1948 = 18/8460 (08:42Z, not re-probed). `RealCopyEnabled=false`; `CTraderFixSession` is `35=A` only. C++ AppConfig has no dual-password AND. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_108 slot 108 REAL_COPY must stay false
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_108 |
+| Slot | 108 |
+| Purpose | Confirm `REAL_COPY_EXECUTION_ENABLED` must stay false. No `35=D` NewOrderSingle until risk/recon gates. Fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_108.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_MUST_STAY_FALSE.** Flag pinned false (POCO L35, DI L41, hosted L68, `.env` L73, `/api/settings`). Product `35=D=0`; only outbound MsgType is `35=A`. §68 **0/19**, §70 **0/14**. `RiskEngine.Evaluate` product callers=0. Recon API stub. YoPips `src` 0 cTrader senders. Census 18/8460 read-only. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_107 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_107 |
+| Slot | 107 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_107.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (re-summed, not re-probed). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_112 NativeMt5BrokerConnector GroupRequestArray / UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_112 |
+| Slot | 112 |
+| Purpose | Search `NativeMt5BrokerConnector` for `GroupRequestArray` and `UserRequestArray`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_112.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Primary walks are `GroupRequestArray("*")` L155 and per-group `UserRequestArray` L223. Ingest/`LiveBrokerProbe` use `GetAccountsAsync(null)`. Live census 8/6512 + 10/1948 = 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_110 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_110 |
+| Slot | 110 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_110.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. `RealCopyEnabled` forced false. Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_111 Program.cs DemoSeeder / FakeMt5 / 10001 / 10002 dummy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_111 |
+| Slot | 111 |
+| Purpose | Search `Program.cs` for DemoSeeder / FakeMt5 / 10001 / 10002 / dummy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_111.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_HOST_NO_DUMMY.** API+workers+probe `Program.cs` have 0 `DemoSeeder`/`FakeMt5`/`10001`/`10002`/`dummy` hits. Startup seed is `BrokerCatalogSeed` only. Residual: `DemoSeeder` tests + `Worker.cs` four-login scorer. Hosted score = `ListLoginsWithDealsAsync`. Prior census 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500 slot 99 RiskEngine between CopyIntent and ExecutionIntent
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_99 |
+| Slot | 99 |
+| Purpose | Check whether `RiskEngine` sits between `CopyIntent` and `ExecutionIntent`. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_99.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **NO_HOP.** Architecture §4/§32/§39/§75 require CopyIntent → Evaluate → ExecutionIntent. Product: 0 Evaluate callers (definition + 5 unit facts only); `IRiskEngine` missing; only CopyIntent writer is `PersistDemoShadowAsync` (`SHADOW_ONLY`, no risk); 0 `ExecutionIntent` writers; no `35=D`. Catalog still ALL groups/users (prior 18/8460). Agrees slots 19/39/59/79. Risk to capital: **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — P500 cTrader profit path (500-agent workflow + 56 subagents)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Workflow | `ctrader-profit-path` (500 planned agents, budget 1024) at `.grok/workflows/ctrader-profit-path.rhai` |
+| Subagents | 56 named explore/general-purpose slots S001–S056 |
+| Purpose | How the Pepperstone cTrader account can be profitable: higher profit, lower loss. User also asked to connect and send. |
+| Artifact | `D:\Prop\reports\swarm\20260818\P500_PROFIT_SYNTHESIS.md` + `P500_S*.md` + `P500_MANIFEST.tsv` |
+| Product source modified | **No** |
+| Live `35=D` sent | **No** |
+| Secret values printed | **None** |
+| Live measure | 8463 accounts; Achiever scoring; Starwave scored 0; SHADOW all demo; XAU book ≈ −$154k; blocked ≈ −$242k; dest PnL $0; FIX LoggedOn; `REAL_COPY=false` |
+| Verdict | **SEND_NOW_NEGATIVE_EV.** Connect is already true. Send is absent and must stay absent. Profit = filter left tail + tiny size + shadow after real quotes. Copy-all and scalp-copy lose. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_100 request APIs without pump
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_100 |
+| Slot | 100 |
+| Purpose | Read `MT5APIManager.h` `GroupRequestArray` / `UserRequestArray` / `UserLogins` / `PositionRequestByGroup` / `DealRequestByGroup`. Confirm request APIs work without pump. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_100.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Five APIs are network RPCs; pump optional (Admin MAIL/NEWS-only enum still has four of five; pool `Connect(...,0)` still calls `UserLogins`). C# request-first, no `_pumpEnabled` branch. Live census 18 groups / 8460 traders / 1984 pos (re-summed; not re-attached). `35=D` absent (`SAFE_BY_ABSENCE`). `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_103 slot 103 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_103 |
+| Slot | 103 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_103.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Starwave stays direct. Live census 18 groups / 8460 traders (re-summed; not re-attached). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_101 YoPips Connect pump-none + proxy packing
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_101 |
+| Slot | 101 |
+| Purpose | Read YoPips `mt5_manager.cpp` Connect fallback to pump-none and proxy `IP:port` / `login:password`. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_101.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_WITH_GROUPS_CACHE_GAP.** Fallback `Connect(...,0)` exists. Proxy packs `address=IP:port` `auth=login:password`. Wrapper `pumpMode=0` remaps (omits GROUPS). `GetAllGroups` is cache-only. `UserLogins` is request-complete. YoPips `.env` `MT5_PROXY_ENABLED` unread (`IS_MT5_PROXY_ENABLED`). cTrader `35=D` absent; `REAL_COPY` false. Census 18/8460 prior. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_104 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_104 |
+| Slot | 104 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_104.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Starwave `Connect(84.201.6.142:443)` with `ProxySet` skipped. C# hardcodes `ProxyEnabled=false`. Achiever HTTP hop is the other broker. Live census 10/1948 direct (total 18/8460 re-summed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_105 UserGetByGroup pump-cache vs UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_105 |
+| Slot | 105 |
+| Purpose | Confirm `UserGetByGroup` is pump-cache and `UserRequestArray` is the request path for ALL traders. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_105.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `UserGetByGroup` = pump-cache (`PUMP_MODE_USERS`; absent on Admin). `UserRequestArray` = network; C# primary at `ReadAccountsForGroup` L223; cache fallback only on hard fail; empty → `UserLogins`. Census 18/8460 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 102 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_102 |
+| Slot | 102 |
+| Purpose | Read YoPips `mt5_group_probe.cpp`. How does a proven probe enumerate all groups without echoing passwords? Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_102.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_GROUPS_ONLY_NO_PASSWORD_ECHO.** C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords (`spdlog` off; JSON has no secret keys). Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. Probe exe absent (vcxproj generated, FileListAbsolute empty). No `35=D`. `RealCopyEnabled=false`. This slot did not live-attach. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_98 QuantityNormalizer vs FIX OrderQty (slot 98)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_98 |
+| Slot | 98 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. Fetch ALL Achiever+Starwave groups/traders. Copy-to-cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_98.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **EXISTS_NEEDS_REFACTOR** as dest-grid floor; **MISSING** as `IQuantityConverter`. `Normalize(0.10,1,dest)=0.10` (G7/G10 FAIL). Zero product callers. No `35=D` / tag 38. `RealCopyEnabled=false`. Census 18/8460 independent of this class. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_93 Api.csproj TFM vs MT5APIManager64
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_93 |
+| Slot | 93 |
+| Purpose | Check `Api.csproj` TargetFramework. `net8.0` without windows/x64 vs `MT5APIManager64` load. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_93.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** API is `net8.0-windows` + `PlatformTarget` x64; restore `success: true`; trio in `bin\Debug\net8.0-windows\`; `bases/` 2027+9904 prove prior LoadLibrary. Isolated `net8.0` x64 can Initialize (R021). Product `net8.0` hosts still NU1201. Census 18/8460. `35=D` `SAFE_BY_ABSENCE`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 96 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_96 |
+| Slot | 96 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_96.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` + left-join scores (A005 scores-only is stale). Catalog = `GroupRequestArray("*")` / `GetAccountsAsync(null)`. Hosted score = `ListLoginsWithDealsAsync` only (list still shows rest as `INSUFFICIENT_DATA`). Census 18/8460/1984 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_87 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_87 |
+| Slot | 87 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_87.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (prior measure). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_92 NativeMt5BrokerConnector GroupRequestArray / UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_92 |
+| Slot | 92 |
+| Purpose | Search `NativeMt5BrokerConnector` for `GroupRequestArray` and `UserRequestArray`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_92.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Primary walks are `GroupRequestArray("*")` L155 and per-group `UserRequestArray` L223. Ingest/`LiveBrokerProbe` use `GetAccountsAsync(null)`. Live census 8/6512 + 10/1948 = 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_90 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_90 |
+| Slot | 90 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_90.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. `RealCopyEnabled` forced false. Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500 slot 95 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_95 |
+| Slot | 95 |
+| Purpose | Check `DealIngestionService` `Take(200)` positions cap. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_95.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_91 Program.cs DemoSeeder FakeMt5 10001 10002 dummy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_91 |
+| Slot | 91 |
+| Purpose | Search `Program.cs` for DemoSeeder / FakeMt5 / 10001 / 10002 / dummy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_91.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_HOST_NO_DUMMY.** Product `Program.cs` (API + both workers + probe): 0 hits for DemoSeeder/FakeMt5/10001/10002/dummy. Startup seed is `BrokerCatalogSeed` only. DI fail-closed Native only. Census cited 8/6512 + 10/1948 = 18/8460; dummy logins 0 in live JSON. Residual: `mt5-worker/Worker.cs` still scores `{10001,10002,10003,99001}`; hosted ingest scores `ListLoginsWithDealsAsync` only. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_82 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_82 |
+| Slot | 82 |
+| Purpose | Read YoPips `mt5_group_probe.cpp`. How does a proven probe enumerate all groups without echoing passwords? Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_82.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_GROUPS_ONLY_NO_PASSWORD_ECHO.** C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords (`spdlog` off; JSON has no secret keys). Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. Probe exe absent (FileListAbsolute empty). No `35=D`. `RealCopyEnabled=false`. This slot did not live-attach. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 66 `IMTDeal.Volume` scale 10000
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_66 |
+| Slot | 66 |
+| Purpose | Confirm `IMTDeal.Volume` scale is **10000**, not hundredths, not `VolumeExt` 1e8. Goal: fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_66.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Official `MTAPI_VOLUME_DIV=10000.0`; extractors copy `deal->Volume()` (0 `VolumeExt` calls). C# default `10_000`. E004 3/3 VolumeConverter tests Passed. Hundredths is a `mt5_types.h` comment bug. `35=D` absent; `RealCopyEnabled=false`. Census 18/8460 prior. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_80 MT5APIManager.h request APIs work without pump
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_80 |
+| Slot | 80 |
+| Purpose | Read `MT5APIManager.h` `GroupRequestArray` / `UserRequestArray` / `UserLogins` / `PositionRequestByGroup` / `DealRequestByGroup`. Confirm request APIs work without pump. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_80.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_REQUEST_APIS_NO_PUMP.** Five Manager Request APIs are network RPCs (no `PUMP_MODE_DEALS`; no `DealGet`). C# uses them first; Connect retries `PUMP_MODE_NONE`. Census 18/8460/1984 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_89 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_89 |
+| Slot | 89 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_89.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_78 QuantityNormalizer lots ↛ FIX OrderQty
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_78 |
+| Slot | 78 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. ALL Achiever+Starwave groups/traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_78.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **FAIL as §38 converter; SAFE_BY_ABSENCE on the wire.** `Normalize(0.10,1,dest)=0.10` not `10.00`. Zero product callers. No `35=D`/`OrderQty`. `RealCopyEnabled=false`. Capital risk **none**. Census 18/8460 independent. |
+
+---
+
+## 2026-08-18 — W500 slot 76 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_76 |
+| Slot | 76 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_76.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` L99 + left-join scores (A005 scores-only is stale). Catalog `*` + all users (prior 18/8460 re-summed). Hosted score = `ListLoginsWithDealsAsync`. No `35=D`; `RealCopyEnabled=false`. Risk to capital **NONE**. This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_83 slot 83 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_83 |
+| Slot | 83 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_83.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Starwave stays direct. Live census 18 groups / 8460 traders (re-summed; not re-attached). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_84 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_84 |
+| Slot | 84 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_84.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Starwave `ProxyEnabled` hardcoded `false`; `MT5_STARWAVEFX_PROXY*` unread (0 hits in `src`/`apps`). Do not `ProxySet` / do not reuse Achiever HTTP `81.29.145.69:49527`. Prior live census Starwave **10/1948 direct**. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_85 UserGetByGroup pump-cache vs UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_85 |
+| Slot | 85 |
+| Purpose | Confirm `UserGetByGroup` is pump-cache and `UserRequestArray` is the request path for ALL traders. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_85.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `UserGetByGroup` = pump-cache (`PUMP_MODE_USERS`; absent on Admin). `UserRequestArray` = network; C# primary at `ReadAccountsForGroup` L223; cache fallback only on hard fail; empty → `UserLogins`. Census 18/8460 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_71 Program.cs DemoSeeder / FakeMt5 / 10001 / 10002 dummy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_71 |
+| Slot | 71 |
+| Purpose | Search `Program.cs` for DemoSeeder / FakeMt5 / 10001 / 10002 / dummy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_71.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_HOST_NO_DUMMY.** API+workers+probe `Program.cs` have 0 `DemoSeeder`/`FakeMt5`/`10001`/`10002`/`dummy` hits. Startup seed is `BrokerCatalogSeed` only. Residual: `DemoSeeder` tests + `Worker.cs` four-login scorer. Hosted score = `ListLoginsWithDealsAsync` (slot 11 `ListLoginsAsync` stale). Prior census 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500 slot 68 REAL_COPY must stay false
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_68 |
+| Slot | 68 |
+| Purpose | Confirm `REAL_COPY_EXECUTION_ENABLED` must stay false. No `35=D` NewOrderSingle until risk/recon gates. Fetch ALL Achiever+Starwave groups/traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_68.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_MUST_STAY_FALSE.** Flag pinned false (POCO L35, DI L41, hosted L68, `.env` L73, `/api/settings`). Product `35=D=0`; only outbound MsgType is `35=A`. §68 **0/19**, §70 **0/14**. `RiskEngine.Evaluate` product callers=0. Recon API stub. YoPips `src` 0 cTrader senders. Census 18/8460 read-only. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500 slot 75 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_75 |
+| Slot | 75 |
+| Purpose | Check whether ingest still silently snapshots only the first 200 accounts' positions. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_75.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_67 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_67 |
+| Slot | 67 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_67.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (prior measure). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_70 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_70 |
+| Slot | 70 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_70.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. `RealCopyEnabled` forced false. Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_72 NativeMt5BrokerConnector GroupRequestArray / UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_72 |
+| Slot | 72 |
+| Purpose | Search `NativeMt5BrokerConnector` for `GroupRequestArray` and `UserRequestArray`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_72.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Primary walks are `GroupRequestArray("*")` L155 and per-group `UserRequestArray` L223. Ingest/`LiveBrokerProbe` use `GetAccountsAsync(null)`. Live census 8/6512 + 10/1948 = 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_63 slot 63 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_63 |
+| Slot | 63 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_63.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Live census 18 groups / 8460 traders. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_65 UserGetByGroup pump-cache / UserRequestArray ALL-traders
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Slot | 65 |
+| Agent | W500_RESEARCH_65 |
+| Purpose | Confirm `UserGetByGroup` is pump-cache and `UserRequestArray` is the request path for ALL traders. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_65.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** SDK `UserGetByGroup` (h:672) is pump-cache (`PUMP_MODE_USERS`); `UserRequestArray` (h:410) is the request enumerator. C# `ReadAccountsForGroup` calls `UserRequestArray` first, cache `UserGetByGroup` only on hard fail, then `UserLogins`+`UserRequestByLogins`. Live probe: Achiever 8/6512 + Starwave 10/1948. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_54 LiveMt5Registration.HasRealPasswords fail-closed
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_54 |
+| Slot | 54 |
+| Purpose | Check `LiveMt5Registration.HasRealPasswords` fail-closed. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_54.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_WITH_RESIDUALS.** Dual-AND + DI throw blocks empty / exact `<SECRET>` / `(a/c` / one-sided keys (no FakeMt5). Residuals: Ordinal case hole, dummy words, factory/LiveBrokerProbe bypass, 0 product tests. Census pin 18/8460. `35=D` `SAFE_BY_ABSENCE`; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_61 YoPips Connect pump-none + proxy packing
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_61 |
+| Slot | 61 |
+| Purpose | Read YoPips `mt5_manager.cpp` Connect fallback to pump-none and proxy `IP:port` / `login:password`. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_61.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_WITH_GROUPS_CACHE_GAP.** Fallback `Connect(...,0)` exists. Proxy packs `address=IP:port` `auth=login:password`. Wrapper `pumpMode=0` remaps (omits GROUPS). `GetAllGroups` is cache-only. `UserLogins` is request-complete. YoPips `.env` `MT5_PROXY_ENABLED` unread (`IS_MT5_PROXY_ENABLED`). cTrader `35=D` absent; `REAL_COPY` false. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_64 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_64 |
+| Slot | 64 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_64.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Starwave `Connect(84.201.6.142:443)` with `ProxySet` skipped. C# hardcodes `ProxyEnabled=false`. Achiever HTTP hop is the other broker. Live census 10/1948 direct (total 18/8460). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_60 request APIs without pump
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_60 |
+| Slot | 60 |
+| Purpose | Read `MT5APIManager.h` `GroupRequestArray` / `UserRequestArray` / `UserLogins` / `PositionRequestByGroup` / `DealRequestByGroup`. Confirm request APIs work without pump. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_60.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Five APIs are network RPCs; pump optional (Admin MAIL/NEWS-only enum still has four of five; pool `Connect(...,0)` still calls `UserLogins`). C# request-first, no `_pumpEnabled` branch. Live census 18 groups / 8460 traders / 1984 pos. `35=D` absent (`SAFE_BY_ABSENCE`). `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 62 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_62 |
+| Slot | 62 |
+| Purpose | How a proven probe enumerates ALL groups without echoing passwords; ALL Achiever+Starwave groups/traders; cTrader copy must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_62.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_GROUPS_ONLY_NO_PASSWORD_ECHO.** C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords (`spdlog` off; JSON has no secret keys). Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. Probe exe absent (vcxproj generated, FileListAbsolute empty). No `35=D`. `RealCopyEnabled=false`. This slot did not live-attach. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 59 RiskEngine between CopyIntent and ExecutionIntent
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_59 |
+| Slot | 59 |
+| Purpose | Check whether `RiskEngine` sits between `CopyIntent` and `ExecutionIntent`. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_59.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **NO_HOP.** Architecture §4/§32/§39/§75 require CopyIntent → Evaluate → ExecutionIntent. Product: 0 Evaluate callers (definition + 5 unit facts only); `IRiskEngine` missing; only CopyIntent writer is `PersistDemoShadowAsync` (`SHADOW_ONLY`, no risk); 0 `ExecutionIntent` writers; no `35=D`. Catalog still ALL groups/users (prior 18/8460). Risk to capital: **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500 slot 57 copy-flag defaults (`FEATURE_COPY` / `REAL_COPY`)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_57 |
+| Slot | 57 |
+| Purpose | Check `FEATURE_COPY_TRADING_ENABLED` and `REAL_COPY_EXECUTION_ENABLED` defaults. Fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_57.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_DEFAULTS_FALSE_NO_LIVE_SEND.** Both flags default false. FEATURE is API literal / unused env. REAL_COPY is arch §41 floor + POCO false + DI/logon pin; worker reads a different key and only logs. Fetch is flag-blind. `35=D` absent (`SAFE_BY_ABSENCE`). Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 55 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_55 |
+| Slot | 55 |
+| Purpose | Check whether ingest still silently snapshots only the first 200 accounts' positions. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_55.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (146 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_58 QuantityNormalizer vs FIX OrderQty (slot 58)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_58 |
+| Slot | 58 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. Fetch ALL Achiever+Starwave groups/traders. Copy-to-cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_58.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **EXISTS_NEEDS_REFACTOR** as dest-grid floor; **MISSING** as `IQuantityConverter`. `Normalize(0.10,1,dest)=0.10` (G7/G10 FAIL). Zero product callers. No `35=D` / tag 38. `RealCopyEnabled=false`. Census 18/8460 independent of this class. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_49 trade #3 EARLY_SCORE/SHADOW never auto LIVE
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Slot | 49 |
+| Agent | W500_RESEARCH_49 |
+| Purpose | Confirm trade #3 is EARLY_SCORE/SHADOW never auto LIVE. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_49.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** `FromBaseline` reachable set `{INSUFFICIENT_DATA, EARLY_SCORE, WATCH, SHADOW, RISK_BLOCKED}` — no LIVE. `CanPromoteToLive => false`. Copy `SHADOW_ONLY`. `35=D` absent. Census 18/8460 (re-summed JSON). Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 34 `LiveMt5Registration.HasRealPasswords` fail-closed
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_34 |
+| Slot | 34 |
+| Purpose | Check `LiveMt5Registration.HasRealPasswords` fail-closed. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_34.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_FAIL_CLOSED_DI.** `AddTraderIntelligence` throws unless both password keys pass `IsSecret` (non-whitespace, no exact `<SECRET>`, no `(a/c`); then registers Native ×2 only. Residual: `IsSecret` is case-sensitive / template words pass; `CreateConnectors*` ungated; LiveBrokerProbe whitespace-only; 0 tests. `35=D` absent (`SAFE_BY_ABSENCE`). `RealCopyEnabled` forced false. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500 slot 56 `GetTradersAsync` scores-only vs all `Mt5Accounts`
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_56 |
+| Slot | 56 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_56.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_ALL_ACCOUNTS_NO_LIVE_SEND.** Driver is `foreach (var account in accounts)` + left-join scores (A005 scores-only is stale). Catalog = `GroupRequestArray("*")` / `GetAccountsAsync(null)`. Hosted score = `ListLoginsWithDealsAsync` only (list still shows rest as `INSUFFICIENT_DATA`). Census 18/8460/1984 (08:42Z, not re-probed). `35=D` absent; `RealCopyEnabled=false`. Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_33 Api.csproj TFM vs MT5APIManager64
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_33 |
+| Slot | 33 |
+| Purpose | Check `Api.csproj` TargetFramework. `net8.0` without windows/x64 vs `MT5APIManager64` load. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_33.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** API is `net8.0-windows` + x64; restore `success: true`; trio in `bin\Debug\net8.0-windows\`. Isolated `net8.0` x64 can still LoadLibrary (R021); product `net8.0` host cannot ProjectReference Mt5 (NU1201). Workers+Integration still fail restore. Census 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_44 Starwave must connect direct (no proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_44 |
+| Slot | 44 |
+| Purpose | Confirm Starwave must connect direct with no proxy. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_44.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Starwave `ProxyEnabled` hardcoded `false`; `MT5_STARWAVEFX_PROXY_ENABLED` unread. Do not `ProxySet` / do not reuse Achiever HTTP `81.29.145.69:49527`. Prior live census Starwave **10/1948 direct**. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_52 NativeMt5BrokerConnector GroupRequestArray / UserRequestArray
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_52 |
+| Slot | 52 |
+| Purpose | Search `NativeMt5BrokerConnector` for `GroupRequestArray` and `UserRequestArray`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_52.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Primary walks are `GroupRequestArray("*")` L155 and per-group `UserRequestArray` L223. Ingest/`LiveBrokerProbe` use `GetAccountsAsync(null)`. Live census 8/6512 + 10/1948 = 18/8460. `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_47 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Slot | 47 |
+| Agent | W500_RESEARCH_47 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_47.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (prior measure). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_36 GetTradersAsync scores-only vs all Mt5Accounts
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_36 |
+| Slot | 36 |
+| Purpose | Check `EfDashboardQueries.GetTradersAsync` only scores vs all `Mt5Accounts`. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_36.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_ALL_MT5ACCOUNTS_NO_35D.** Driver is `foreach (var account in accounts)` + left-join scores (A005 scores-only is stale). Catalog 18/8460 last measure; `/api/traders` listed 8460. Auto-score is `ListLoginsWithDealsAsync` (slot-16 “score every login” stale). `35=D` absent; `RealCopyEnabled=false`. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_50 CTraderFixSession 35=D / NewOrderSingle
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_50 |
+| Slot | 50 |
+| Purpose | Search `CTraderFixSession.cs` for `35=D` or `NewOrderSingle`. FAIL if live send exists. ALL Achiever+Starwave groups/traders; copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_50.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS.** Assigned file 135/135: `NewOrderSingle=0`, `35=D=0`; only outbound MsgType is `(35, "A")` Logon; one `WriteAsync`; sockets disposed. Product `*.cs`/`*.json`/`*.csproj` have 0 `35=D`. YoPips C++ `src` has 0 cTrader FIX senders. `RealCopyEnabled` forced false. Census cited 18/8460. Risk to capital **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_38 QuantityNormalizer lots ↛ FIX OrderQty
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_38 |
+| Slot | 38 |
+| Purpose | Check `QuantityNormalizer` never blindly converts MT5 lots to FIX `OrderQty`. ALL Achiever+Starwave groups/traders. Copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_38.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **FAIL as §38 converter; SAFE_BY_ABSENCE on the wire.** `Normalize(0.10,1,dest)=0.10` not `10.00`. Zero product callers. No `35=D`/`OrderQty`. `RealCopyEnabled=false`. Capital risk **none**. Census 18/8460 independent. |
+
+---
+
+## 2026-08-18 — W500 slot 35 `DealIngestionService` `Take(200)` positions cap
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_35 |
+| Slot | 35 |
+| Purpose | Check whether ingest still silently snapshots only the first 200 accounts' positions. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_35.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **PASS_CAP_REMOVED.** Current `DealIngestionService` (145 lines) has zero `Take(`/`Skip`. Live path uses `GetGroupPositionsAsync("*")` or `foreach` all accounts. Only leftover `Take(200)` is `GET /api/trades` reconstructed rows. Probe JSON 18/8460/1984. `35=D` absent (`SAFE_BY_ABSENCE`). Hosted scoring is `ListLoginsWithDealsAsync` (W500_15 “all logins” is stale). Risk to capital: **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_1 YoPips Connect pump-none + proxy packing
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_1 |
+| Slot | 1 |
+| Purpose | Read YoPips `mt5_manager.cpp` Connect fallback to pump-none and proxy `IP:port` / `login:password`. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_1.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_WITH_GROUPS_CACHE_GAP.** Fallback `Connect(...,0)` exists. Proxy packs `address=IP:port` `auth=login:password`. Wrapper `pumpMode=0` remaps (omits GROUPS). `GetAllGroups` is cache-only. `UserLogins` is request-complete. cTrader `35=D` absent; `REAL_COPY` false. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_3 slot 3 (1012 + Achiever HTTP proxy)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Slot | 3 |
+| Agent | W500_RESEARCH_3 |
+| Purpose | Confirm `MT_RET_AUTH_MANAGER_IPBLOCK=1012` and Achiever HTTP proxy `81.29.145.69:49527`. Fetch ALL groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_3.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** 1012 is the official Manager IP-block retcode. This LAN needs `ProxySet PROXY_HTTP 81.29.145.69:49527` for Achiever (else 1012). Live census 18 groups / 8460 traders. `35=D` absent; `RealCopyEnabled=false`. |
+
+---
+
+## 2026-08-18 — W500 slot 22 YoPips `mt5_group_probe` (no password echo)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_22 |
+| Slot | 22 |
+| Purpose | How a proven probe enumerates ALL groups without echoing passwords; ALL Achiever+Starwave groups/traders; cTrader copy must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_22.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | C++ `mt5_group_probe` prints manager-visible group names via `GetAllGroups` (`GroupTotal`+`GroupNext`), never passwords. Traders are a sibling walk (`UserLogins`/`UserRequestArray`) already measured by `LiveBrokerProbe`: Achiever 8/6512, Starwave 10/1948. No `35=D`. `RealCopyEnabled=false`. This slot did not live-attach. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_27 cTrader venue / cServer / 5211-5212 / no live send
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Slot | 27 |
+| Purpose | Confirm cTrader is destination venue not LP. TargetCompID `cServer` case preserved. Ports 5211 QUOTE / 5212 TRADE SSL. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_27.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Venue ≠ LP. Live path `56=cServer` (no fold). QUOTE TLS 5211 / TRADE TLS 5212. Census 18/8460 (prior measure). `35=D` absent — `SAFE_BY_ABSENCE`. Dead leftover: API JSON `CSERVER`+5201/5202 unbound. |
+
+---
+
+## 2026-08-18 — Live Manager all-groups/all-traders (measured)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T08:45Z |
+| Purpose | Fetch ALL Achiever + Starwave groups and manager traders. No dummy seed. Copy-to-cTrader without live loss. |
+| Artifact | `D:\Prop\reports\swarm\20260818\LIVE_MANAGER_FETCH_MEASURED.md` + `LIVE_GROUPS_AND_TRADERS.json` |
+| Orchestration | Workflow `live-mt5-all-groups` 500 agents + parent review wave |
+| Product source modified | **Yes** — Native Manager connector, catalog-first ingest, DemoSeeder removed from API startup |
+| Secret values printed | **None** |
+| Verdict | **LIVE CENSUS PROVEN.** Achiever 8 groups / 6512 traders (proxy). Starwave 10 groups / 1948 traders (direct). FIX QUOTE+TRADE logon **true** after tag 553=account id. **NewOrderSingle still off.** |
+
+---
+
+## 2026-08-18 — R005 secret locations (`MT5_PASSWORD` in `.env` / `appsettings`)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T08:26:34Z / this pass ~08:28Z |
+| Agent | R005 |
+| Purpose | Search `D:\Prop` and sibling folders for `.env` / `appsettings` containing `MT5_PASSWORD`. Path + PLACEHOLDER vs PRESENT only. Do not write the password. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\R005_secret_locations.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **3 files have the key.** `D:\Prop\.env` **PRESENT**. `D:\Prop\mt5-sdk\.env.example` **PLACEHOLDER**. `D:\Projects\YoPips\Backend\C++ Backend PropFirm\.env` **PRESENT**. No `appsettings*` contains `MT5_PASSWORD`. |
+
+---
+
+## 2026-08-18 — R030 official cTrader FIX headers
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T13:56:36+05:30 |
+| Agent | R030 |
+| Purpose | Official cTrader: SenderSubID=QUOTE/TRADE, TargetCompID=cServer, SSL 5211/5212. Password not a real secret. Do not invent one. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\R030_fix_headers.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **Official form (screenshot): SenderSubID=QUOTE/TRADE, TargetCompID=cServer, SSL 5211/5212.** RoE qualifier is **tag 57**, not 50; tag 50 must be QUOTE when 57=QUOTE. Options default `cServer` + ports 5211/5212. Options `SenderSubId` still empty. Process password **ABSENT**. Live Logon **NOT PROVEN**. |
+
+---
+
+## 2026-08-18 — R003 refuse Fake when USE_REAL_MT5=true (plan only)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | R003 |
+| Purpose | Read DemoSeeder + DI. Plan how to refuse Fake connector when `USE_REAL_MT5=true`. Do not modify product source. |
+| Artifact | `reports/swarm/20260818/R003_no_fake.md` |
+| Product source modified | **No** |
+| Test source modified | **No** |
+| DI SHA-256 | `EF0E0E466A23F7244F3DA9BC6BF46529949237BA75FC251D810C4AA88DA7A380` |
+| Seeder SHA-256 | `A641649125EE9D1041FF91DCA08980BD44588FE18FAFE7491D3880962ED1FE20` |
+| Fake SHA-256 | `AE7C1B1B01B1A5732ECD257AFEEB930D7D0052670F715E35F6A76E98A03F16E4` |
+| Verdict | **Gate MISSING.** Product C# has 0 `USE_REAL_MT5` hits. Both graphs always `DemoBrokerFactory.CreateDefault()`. Gitignored `.env` has `USE_REAL_MT5=true` but hosts do not load it; process env ABSENT. Plan: fail-closed at registration, seeder, and type-check; no real implementor ⇒ throw at start. Not a copy license. G01 still FAIL. |
+
+---
+
+## 2026-08-18 — E037 FIX host in options (no password)
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T13:52:12+05:30 |
+| Agent | E037 |
+| Purpose | FIX host in options. No password. Write report. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\E037_fixhost.md` |
+| Product source modified | **No** |
+| Options SHA-256 | `A354BBEA4665EE217A46B7536BECACE8F73BB1DB3693A195B8C66FF716753308` (`CTraderFixOptions.cs`, 2344 B) |
+| Verdict | **`Host=live-us-eqx-01.p.c-trader.com`. `Password=""`.** Unbound. Process/user-secrets password **absent**. API JSON `fix.ctrader.com` is a dead unofficial alias. Live `/api/fix/sessions` shows seeder host, `loggedOn=false`. Logon **NOT PROVEN**. |
+
+---
+
+## 2026-08-18 — R010 C# Manager API connect / groups / users / deals
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | R010 |
+| Purpose | Read `BalanceExample.NET` + `SimpleManager`. Document how C# connects and lists groups, users, deals. Method names only. No product source edits. Never copy passwords. |
+| Artifact | `D:\Prop\reports\swarm\20260818\R010_csharp_manager.md` |
+| Product source modified | **No** |
+| Vendor source modified | **No** |
+| Passwords copied | **None** |
+| Verdict | `BalanceExample.NET` is C# Manager API (`SMTManagerAPIFactory` → `CIMTManagerAPI.Connect` + `PUMP_MODE_FULL`). `SimpleManager` is **C++**, not C#. Neither sample lists groups. Users = one `UserRequest`. Deals = one-login `DealRequest` (C# only). List APIs exist on `CIMTManagerAPI` (`GroupTotal`/`GroupNext`/`GroupRequestArray`, `UserLogins`/`UserRequestArray`, `DealRequestByGroup`). Web API is a separate C# surface (`GroupTotal`/`UserLogins`/`DealGetPage`). |
+
+---
+
+## 2026-08-18 — R006 how to build `mt5_group_probe` on Windows
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T13:53:51+05:30 |
+| Agent | R006 |
+| Purpose | Read `mt5-sdk/CMakeLists.txt` and document how to build `mt5_group_probe` on Windows. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\R006_cmake.md` |
+| Product source modified | **No** |
+| CMakeLists SHA-256 | `98345532CA0D33888E919D14F680B933EB60C6C2A2CE85DBBF1F0D05419719E9` (173 lines; MATCH D66) |
+| Host | CMake 4.4.0; VS Build Tools 2022 (14.44.35207); vcpkg `C:\tools\vcpkg` (`nlohmann-json`/`spdlog`/`curl` `x64-windows`) |
+| Verdict | Target is **opt-in + WIN32 only**. Recipe: `-G "Visual Studio 17 2022" -A x64` + vcpkg toolchain + `-DMT5SDK_BUILD_PROBES=ON`, then `--config Release --target mt5_group_probe`. README first `cmake -B` snippet omits the flag. Exe **not** built this pass. |
+
+---
+
+## 2026-08-18 — E033 stale API process vs quoteHealthy true
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T13:50:55+05:30 / 2026-08-18T08:21:31Z / reconfirm 13:53:34+05:30 |
+| Agent | E033 |
+| Purpose | Old API still reports `quoteHealthy` true? Restart needed? Write the report. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\E033_stale_api.md` |
+| Product source modified | **No** |
+| Live process | `:5000` pid **54468** (parent **53816** `dotnet run --no-launch-profile`) started **13:42:16+05:30** |
+| Loaded Infrastructure.dll | `EB43953E…` @ 13:40:18 (`apps/api/bin`) |
+| src/Infrastructure/bin | `63C78E11…` @ 13:48:16 — **not loaded** |
+| Live `GET /api/overview` | `quoteHealthy=false`, `tradeHealthy=false`, `mt5Healthy=true` |
+| Live FIX rows | QUOTE+TRADE `Disconnected`; LastError admits no socket; seed clock = process start |
+| Verdict | **Assigned `true` is STALE as HTTP** (this pid seeded honest `Disconnected` at 13:42:16; same false as D77/E016/E031). **Restart still needed** for DLL/InMemory freshness. E033 did **not** recycle. |
+
+---
+
 ## 2026-08-18 — E032 Vite SPA routes return HTTP 200
 
 | Item | Value |
@@ -1348,5 +3076,68 @@ Do not claim a trading platform. Product source was not modified by this catalog
 | Live `GET /api/overview` | HTTP 200: `shadow=2`, `riskBlocked=1`, `live=0`, `liveCandidates=0`, `watch=0`, `realCopyEnabled=false` |
 | Cross-check | `/api/traders?state=SHADOW` → 10001+99001; `?state=RISK_BLOCKED` → 10002; `?state=LIVE` → `[]`; 10003 is `INSUFFICIENT_DATA` |
 | Verdict | **Confirmed demo fixture, not a live desk.** `/api/v1/overview` still 404. `FromBaseline` cannot emit LIVE. Page still drops `live`. |
+
+---
+
+## 2026-08-18 — R012 local Achiever connect needs HTTP proxy
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Measured at | 2026-08-18T13:56:14+05:30 |
+| Agent | R012 |
+| Purpose | Architecture egress `81.29.145.69` + YoPips `.env` HTTP proxy: does local connect need the proxy? Do not copy proxy password. Do not modify product source. |
+| Artifact | `D:\Prop\reports\swarm\20260818\R012_proxy.md` |
+| Product source modified | **No** |
+| Public egress (no proxy) | `106.219.132.213` (ipify / ifconfig.me / icanhazip) |
+| Achiever allow-list | `81.29.145.69` |
+| TCP | `57.128.141.65:443` OPEN; `81.29.145.69:49527` OPEN; no auth / no Manager logon |
+| YoPips evidence | `.env` `MT5_MODE=local` + `MT5_PROXY_TYPE=HTTP`; process used `IS_MT5_PROXY_ENABLED` (absent) → logs `proxy mode: DISABLED` then **1012** |
+| Verdict | **YES — local Achiever connect from this workstation needs the HTTP proxy** (or native SNAT as `81.29.145.69`). StarwaveFX does not. |
+
+---
+
+## 2026-08-18 — W500 slot 139 RiskEngine between CopyIntent and ExecutionIntent
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_139 |
+| Slot | 139 |
+| Purpose | Check whether `RiskEngine` sits between `CopyIntent` and `ExecutionIntent`. Goal: fetch ALL Achiever+Starwave groups and ALL manager traders; copy to cTrader must not send live orders (no loss). |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_139.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **NO_HOP.** Architecture §4/§32/§39/§75 require CopyIntent → Evaluate → ExecutionIntent. Product drift vs 99: 1 Evaluate caller (`CopyTradingService` L159) + `RiskDecisions.Add` with `AllowFixSend=false` hardcoded; DI registers unused `RiskEngine` singleton; hosted copy every 20s. Still 0 `ExecutionIntent` writers; no `35=D`; `NewOrderSingleImplemented`/`VenueReconciled` const false. Demo `PersistDemoShadowAsync` still bypasses Evaluate. Catalog still ALL groups/users (prior 18/8460). Risk to capital: **NONE** (`SAFE_BY_ABSENCE`). |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_140 MT5APIManager.h request APIs work without pump
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_140 |
+| Slot | 140 |
+| Purpose | Read `MT5APIManager.h` `GroupRequestArray` / `UserRequestArray` / `UserLogins` / `PositionRequestByGroup` / `DealRequestByGroup`. Confirm request APIs work without pump. Fetch ALL Achiever+Starwave groups and ALL manager traders. Copy to cTrader must not send live orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_140.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED.** Five APIs are network RPCs; pump optional (Admin MAIL/NEWS-only enum still has four of five; pool `Connect(...,0)` still calls `UserLogins`). C# request-first, no `_pumpEnabled` branch. Live census 18 groups / 8460 traders / 1984 pos (re-summed; not re-attached). `35=D` absent (`SAFE_BY_ABSENCE`). Residual: DI binds env `REAL_COPY_EXECUTION_ENABLED=true` (slots 80/100/120 hard-false pin is stale); sender still unimplemented. Risk to capital **NONE**. |
+
+---
+
+## 2026-08-18 — W500_RESEARCH_141 YoPips Connect pump-none + proxy IP:port / login:password
+
+| Item | Value |
+|---|---|
+| Date | 2026-08-18 |
+| Agent | W500_RESEARCH_141 |
+| Slot | 141 |
+| Purpose | Read YoPips `mt5_manager.cpp` Connect fallback to pump-none and proxy `IP:port` / `login:password`. ALL Achiever+Starwave groups/traders. No live cTrader orders. |
+| Artifact | `D:\Prop\reports\swarm\20260818\W500_RESEARCH_141.md` |
+| Product source modified | **No** |
+| Secret values printed | **None** |
+| Verdict | **CONFIRMED_WITH_GROUPS_CACHE_GAP.** Fallback `Connect(...,0)` exists. Proxy packs `address=IP:port` `auth=login:password`. Wrapper `pumpMode=0` remaps (omits GROUPS). `GetAllGroups` is cache-only. `UserLogins` is request-complete. YoPips `.env` `MT5_PROXY_ENABLED` unread (`IS_MT5_PROXY_ENABLED`). cTrader `35=D` absent; env `REAL_COPY=true` bound by DI but sender unimplemented. Census 18/8460 prior (re-summed). Risk to capital **NONE**. |
 
 ---

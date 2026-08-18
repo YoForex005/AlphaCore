@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseWindowsForms>false</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetaQuotes.MT5CommonAPI">
+      <HintPath>D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5CommonAPI64.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="MetaQuotes.MT5ManagerAPI">
+      <HintPath>D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5ManagerAPI64.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MT5APIManager64.dll" CopyToOutputDirectory="PreserveNewest" Link="MT5APIManager64.dll" />
+  </ItemGroup>
+</Project>

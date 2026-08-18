@@ -1,0 +1,1063 @@
+utc=2026-08-18T08:26:20.0622140Z
+tf=v4.0.30319 System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e
+=== METADATA D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5ManagerAPI64.dll ===
+HasMetadata=True
+IsEntireImageAvailable=True
+IsLoadedImage=False
+PEHeaders.CoffHeader.Machine=Amd64
+PEHeaders.CoffHeader.Characteristics=ExecutableImage, LargeAddressAware, Dll
+PEHeaders.IsCoffOnly=False
+PEHeaders.IsDll=True
+PEHeaders.IsExe=False
+PEHeaders.IsConsoleApplication=False
+Magic=PE32Plus
+Subsystem=WindowsGui
+DllCharacteristics=HighEntropyVirtualAddressSpace, DynamicBase, NxCompatible
+ImageBase=0x180000000
+CorHeader.MajorRuntimeVersion=2
+CorHeader.MinorRuntimeVersion=5
+CorHeader.Flags=NativeEntryPoint
+CorHeader.EntryPointTokenOrRelativeVirtualAddress=0x00024DB0
+CorHeader.MetadataDirectory.Size=133120
+ILONLY=False
+Requires32Bit=False
+ILLibrary=False
+StrongNameSigned=False
+NativeEntryPoint=True
+Prefers32Bit=False
+Assembly.Name=MetaQuotes.MT5ManagerAPI64
+Assembly.Version=5.5570.0.0
+Assembly.Culture=
+Assembly.Flags=0
+Assembly.HashAlgorithm=Sha1
+Assembly.PublicKey=
+-- AssemblyReferences --
+  mscorlib 4.0.0.0 flags=0 pk=B77A5C561934E089
+  MetaQuotes.MT5CommonAPI64 5.5570.0.0 flags=0 pk=
+  System 4.0.0.0 flags=0 pk=B77A5C561934E089
+-- Module --
+  Name=MetaQuotes.MT5ManagerAPI64.dll Mvid=21b945a4-1989-47b8-b2ab-57b63d855645
+-- CustomAttributes on assembly --
+  [System.Runtime.Versioning.TargetFrameworkAttribute] blob=01001C2E4E45544672616D65776F726B2C56657273696F6E3D76342E372E320100540E144672616D65776F726B446973706C61794E616D65142E4E4554204672616D65776F726B20342E372E32
+  [System.Reflection.AssemblyTrademarkAttribute] blob=01000A4D6574615472616465720000
+  [System.Reflection.AssemblyProductAttribute] blob=0100184D65746151756F7465732E4D54354D616E616765724150490000
+  [System.Security.SecurityRulesAttribute] blob=0100010000
+  [System.Reflection.AssemblyCompanyAttribute] blob=0100000000
+  [System.Reflection.AssemblyCopyrightAttribute] blob=010024436F7079726967687420323030302D323032362C204D65746151756F746573204C74642E0000
+  [System.Reflection.AssemblyTitleAttribute] blob=0100184D65746151756F7465732E4D54354D616E616765724150490000
+  [System.Reflection.AssemblyDescriptionAttribute] blob=0100254D6574615472616465722035204D616E61676572202E4E455420415049204C6962726172790000
+  [System.Reflection.AssemblyConfigurationAttribute] blob=0100000000
+  [System.CLSCompliantAttribute] blob=0100010000
+  [System.Runtime.InteropServices.ComVisibleAttribute] blob=0100000000
+-- TypeDefinitions (exported / public-ish) --
+  PUB MetaQuotes.MT5ManagerAPI.MTProxyInfo attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .Type attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeManagerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5ManagerAPI.CIMTManagerSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5ManagerAPI.CIMTAdminAPI attrs=Public, BeforeFieldInit
+  PUB .EnPumpModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExternalSyncModes attrs=NestedPublic, Sealed, BeforeFieldInit
+      MetaQuotes.MT5ManagerAPI.CNativeManagerSink attrs=SequentialLayout, Sealed, BeforeFieldInit
+      .IMTManagerSink attrs=SequentialLayout, Sealed, BeforeFieldInit
+  PUB .EnUsersRights attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersPasswords attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersConnectionTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSoActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPumpModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExternalSyncModes attrs=NestedPublic, Sealed, BeforeFieldInit
+      .CMTManagerAPIFactory attrs=SequentialLayout, Sealed, BeforeFieldInit
+      .IMTConManager attrs=SequentialLayout, Abstract, Sealed, BeforeFieldInit
+      .IMTConManagerAccess attrs=SequentialLayout, Abstract, Sealed, BeforeFieldInit
+      .IMTConManagerReport attrs=SequentialLayout, Abstract, Sealed, BeforeFieldInit
+      .IMTConManagerSink attrs=SequentialLayout, Sealed, BeforeFieldInit
+      .IMTManagerAPI attrs=SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeDealerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5ManagerAPI.CIMTDealerSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5ManagerAPI.CIMTManagerAPI attrs=Public, BeforeFieldInit
+  PUB .EnPumpModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExternalSyncModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5ManagerAPI.SMTManagerAPIFactory attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+TypeDefinitionCount=237 PublicOrNestedPublic=19
+
+=== METADATA D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5CommonAPI64.dll ===
+HasMetadata=True
+IsEntireImageAvailable=True
+IsLoadedImage=False
+PEHeaders.CoffHeader.Machine=Amd64
+PEHeaders.CoffHeader.Characteristics=ExecutableImage, LargeAddressAware, Dll
+PEHeaders.IsCoffOnly=False
+PEHeaders.IsDll=True
+PEHeaders.IsExe=False
+PEHeaders.IsConsoleApplication=False
+Magic=PE32Plus
+Subsystem=WindowsGui
+DllCharacteristics=HighEntropyVirtualAddressSpace, DynamicBase, NxCompatible
+ImageBase=0x180000000
+CorHeader.MajorRuntimeVersion=2
+CorHeader.MinorRuntimeVersion=5
+CorHeader.Flags=NativeEntryPoint
+CorHeader.EntryPointTokenOrRelativeVirtualAddress=0x0004B944
+CorHeader.MetadataDirectory.Size=517688
+ILONLY=False
+Requires32Bit=False
+ILLibrary=False
+StrongNameSigned=False
+NativeEntryPoint=True
+Prefers32Bit=False
+Assembly.Name=MetaQuotes.MT5CommonAPI64
+Assembly.Version=5.5570.0.0
+Assembly.Culture=
+Assembly.Flags=0
+Assembly.HashAlgorithm=Sha1
+Assembly.PublicKey=
+-- AssemblyReferences --
+  mscorlib 4.0.0.0 flags=0 pk=B77A5C561934E089
+  System 4.0.0.0 flags=0 pk=B77A5C561934E089
+-- Module --
+  Name=MetaQuotes.MT5CommonAPI64.dll Mvid=cf8abc07-e109-4ee5-81e0-7463b05e46e3
+-- CustomAttributes on assembly --
+  [System.Reflection.AssemblyProductAttribute] blob=0100174D65746151756F7465732E4D5435436F6D6D6F6E4150490000
+  [System.Reflection.AssemblyCopyrightAttribute] blob=010024436F7079726967687420323030302D323032362C204D65746151756F746573204C74642E0000
+  [System.Reflection.AssemblyConfigurationAttribute] blob=0100000000
+  [System.Reflection.AssemblyTrademarkAttribute] blob=01000A4D6574615472616465720000
+  [System.Reflection.AssemblyDescriptionAttribute] blob=0100244D657461547261646572203520436F6D6D6F6E202E4E455420415049204C6962726172790000
+  [System.Reflection.AssemblyCompanyAttribute] blob=0100000000
+  [System.CLSCompliantAttribute] blob=0100010000
+  [System.Runtime.InteropServices.ComVisibleAttribute] blob=0100000000
+  [System.Reflection.AssemblyTitleAttribute] blob=0100174D65746151756F7465732E4D5435436F6D6D6F6E4150490000
+  [System.Security.SecurityRulesAttribute] blob=0100010000
+  [System.Runtime.Versioning.TargetFrameworkAttribute] blob=01001C2E4E45544672616D65776F726B2C56657273696F6E3D76342E372E320100540E144672616D65776F726B446973706C61794E616D65142E4E4554204672616D65776F726B20342E372E32
+-- TypeDefinitions (exported / public-ish) --
+  PUB MetaQuotes.MT5CommonAPI.CIMTAttachment attrs=Public, BeforeFieldInit
+  PUB .EnFileTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFileFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTAttachmentArray,MetaQuotes::MT5CommonAPI::CIMTAttachment> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTAttachmentArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTRetCode attrs=Public, Sealed, BeforeFieldInit
+  PUB .IMTAttachment attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFileType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFileFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTAttachmentArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTClient attrs=Public, BeforeFieldInit
+  PUB .EnGender attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPreferredCommunication attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradingExperience attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEmployment attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEmploymentIndustry attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEducationLevel attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnWealthSource attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientOrigin attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnKYCStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTClientArray,MetaQuotes::MT5CommonAPI::CIMTClient> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTClientArray attrs=Public, BeforeFieldInit
+  PUB .IMTClient attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnGender attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPreferredCommunication attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradingExperience attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEmployment attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEmploymentIndustry attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEducationLevel attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnWealthSource attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnClientOrigin attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnKYCStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTClientArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTComment attrs=Public, BeforeFieldInit
+  PUB .EnCommentFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommentType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommentResult attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTCommentArray,MetaQuotes::MT5CommonAPI::CIMTComment> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTCommentArray attrs=Public, BeforeFieldInit
+  PUB .IMTComment attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnCommentFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommentType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommentResult attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTCommentArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDocument attrs=Public, BeforeFieldInit
+  PUB .EnDocumentTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDocumentSubtype attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDocumentStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTDocumentArray,MetaQuotes::MT5CommonAPI::CIMTDocument> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDocumentArray attrs=Public, BeforeFieldInit
+  PUB .IMTDocument attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnDocumentTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDocumentSubtype attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDocumentStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTDocumentArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNFilling attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNFillingArray,MetaQuotes::MT5CommonAPI::CIMTECNFilling> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNFillingArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryDeal attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNHistoryDealArray,MetaQuotes::MT5CommonAPI::CIMTECNHistoryDeal> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryDealArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryFilling attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNHistoryFillingArray,MetaQuotes::MT5CommonAPI::CIMTECNHistoryFilling> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryFillingArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryMatching attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNHistoryMatchingArray,MetaQuotes::MT5CommonAPI::CIMTECNHistoryMatching> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNHistoryMatchingArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNMatching attrs=Public, BeforeFieldInit
+  PUB .ENCMatchingState attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnECNMatchingOrderFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNMatchingArray,MetaQuotes::MT5CommonAPI::CIMTECNMatching> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNMatchingArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNProvider attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTECNProviderArray,MetaQuotes::MT5CommonAPI::CIMTECNProvider> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTECNProviderArray attrs=Public, BeforeFieldInit
+  PUB .IMTECNFilling attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNFillingArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryDeal attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryDealArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryFilling attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryFillingArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryMatching attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNHistoryMatchingArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNMatching attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .ENCMatchingState attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnECNMatchingOrderFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTECNMatchingArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNProvider attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTECNProviderArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTGeo attrs=Public, BeforeFieldInit
+  PUB .EnGeoRequestFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGeoRecordDetails attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTGeo attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnGeoRequestFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGeoRecordDetails attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .<unnamed-type-u> attrs=NestedPublic, ExplicitLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSubscriptionNews attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSubscriptionSymbol attrs=Public, BeforeFieldInit
+  PUB .EnLevel attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTickHistory attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSubscription attrs=Public, BeforeFieldInit
+  PUB .EnType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFreePeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnControlMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnImageType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConSubscriptionSink,IMTConSubscriptionSink,IMTConSubscription> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConSubscriptionSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConSubscriptionSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSubscriptionSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSubscription attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTSubscriptionArray,MetaQuotes::MT5CommonAPI::CIMTSubscription> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSubscriptionArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSubscriptionHistory attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTSubscriptionHistoryArray,MetaQuotes::MT5CommonAPI::CIMTSubscriptionHistory> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSubscriptionHistoryArray attrs=Public, BeforeFieldInit
+  PUB .IMTConSubscriptionNews attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConSubscriptionSymbol attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnLevel attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTickHistory attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConSubscription attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFreePeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnControlMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnImageType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConSubscriptionSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTSubscription attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnStatus attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTSubscriptionArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTSubscriptionHistory attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTSubscriptionHistoryArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.SMTMath attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSymbolSession attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSymbol attrs=Public, BeforeFieldInit
+  PUB .EnSectors attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnIndustries attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFillingFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExpirationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExecutionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCalcMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGTCMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTickFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnChartMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnInstantFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnInstantMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRequestFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginRateTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOptionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSpliceType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSpliceTimeType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTConSymbolArray,MetaQuotes::MT5CommonAPI::CIMTConSymbol> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSymbolArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConSymbolSink,IMTConSymbolSink,IMTConSymbol> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConSymbolSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConSymbolSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSymbolSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConCommTier attrs=Public, BeforeFieldInit
+  PUB .EnCommissionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommissionVolumeType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConCommission attrs=Public, BeforeFieldInit
+  PUB .EnCommMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommRangeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommChargeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommEntryMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommActionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommProfitMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommReasonFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGroupSymbol attrs=Public, BeforeFieldInit
+  PUB .EnREFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGroup attrs=Public, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAuthMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAuthOTPMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnReportsMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnReportsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnNewsMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMailMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistoryLimit attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFreeMarginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTransferMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnStopOutMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFreeProfitMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTConGroupArray,MetaQuotes::MT5CommonAPI::CIMTConGroup> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGroupArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConGroupSink,IMTConGroupSink,IMTConGroup> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConGroupSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConGroupSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGroupSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTAccount attrs=Public, BeforeFieldInit
+  PUB .EnSoActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTAccountArray,MetaQuotes::MT5CommonAPI::CIMTAccount> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTAccountArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeAccountSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTAccountSink attrs=Public, BeforeFieldInit
+  PUB .IMTConSymbolSession attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConSymbol attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnSectors attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnIndustries attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFillingFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExpirationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnExecutionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCalcMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGTCMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTickFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnChartMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnBookVolumeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSwapFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnInstantFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnInstantMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRequestFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginRateTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOptionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSpliceType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSpliceTimeType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConSymbolArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConSymbolSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTConCommTier attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnCommissionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommissionVolumeType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConCommission attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnCommMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommRangeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommChargeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommEntryMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommActionMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommProfitMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnCommReasonFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConGroupSymbol attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnREFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConGroup attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAuthMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAuthOTPMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnReportsMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnReportsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnNewsMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMailMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistoryLimit attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFreeMarginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTransferMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnStopOutMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFreeProfitMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnMarginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConGroupArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConGroupSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTAccount attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnSoActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTAccountArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTAccountSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTBookItem attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .EnBookItem attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTBook attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .EnBookFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .Constants attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeBookSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTBookSink attrs=Public, BeforeFieldInit
+  PUB .IMTBookSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .EnBookFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTByteStream attrs=Public, BeforeFieldInit
+  PUB .IMTByteStream attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTCertificate attrs=Public, BeforeFieldInit
+  PUB .IMTCertificate attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTChartBar attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConfirm attrs=Public, BeforeFieldInit
+  PUB .EnConfirmFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConfirm attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnConfirmFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTOrder attrs=Public, BeforeFieldInit
+  PUB .EnOrderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderFilling attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderTime attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderState attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActivationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTOrderArray,MetaQuotes::MT5CommonAPI::CIMTOrder> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTOrderArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTOrderSink,IMTOrderSink,IMTOrder> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeOrderSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeOrderSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTOrderSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTHistorySink,IMTHistorySink,IMTOrder> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeHistorySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeHistorySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTHistorySink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTPosition attrs=Public, BeforeFieldInit
+  PUB .EnPositionAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActivationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPositionReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTPositionArray,MetaQuotes::MT5CommonAPI::CIMTPosition> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTPositionArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTPositionSink,IMTPositionSink,IMTPosition> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativePositionSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativePositionSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTPositionSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDaily attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTDailyArray,MetaQuotes::MT5CommonAPI::CIMTDaily> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDailyArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTDailySink,IMTDailySink,IMTDaily> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeDailySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeDailySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDailySink attrs=Public, BeforeFieldInit
+  PUB .IMTOrder attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnOrderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderFilling attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderTime attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderState attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOrderReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActivationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTOrderArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTOrderSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTPosition attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnPositionAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnActivation attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActivationFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPositionReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTPositionArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTPositionSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTDaily attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTDailyArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTDailySink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDeal attrs=Public, BeforeFieldInit
+  PUB .EnDealAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnEntryFlag attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDealReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTDealArray,MetaQuotes::MT5CommonAPI::CIMTDeal> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDealArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTDealSink,IMTDealSink,IMTDeal> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeDealSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeDealSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTDealSink attrs=Public, BeforeFieldInit
+  PUB .IMTDeal attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnDealAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDealEntry attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnDealReason attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeModifyFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTDealArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTDealSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTExecution attrs=Public, BeforeFieldInit
+  PUB .EnTradeExecutions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTExecution attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnTradeExecutions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTExposure attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTExposureArray,MetaQuotes::MT5CommonAPI::CIMTExposure> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTExposureArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTExposureSink,IMTExposureSink,IMTExposure> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeExposureSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeExposureSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTExposureSink attrs=Public, BeforeFieldInit
+  PUB .IMTExposure attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTExposureArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTExposureSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTMailRange attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTMail attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeMailSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTMailSink attrs=Public, BeforeFieldInit
+  PUB .IMTMail attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTMailSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTNews attrs=Public, BeforeFieldInit
+  PUB .EnNewsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeNewsSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTNewsSink attrs=Public, BeforeFieldInit
+  PUB .IMTNews attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnNewsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTNewsSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTUser attrs=Public, BeforeFieldInit
+  PUB .EnUsersRights attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersPasswords attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersConnectionTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTUserArray,MetaQuotes::MT5CommonAPI::CIMTUser> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTUserArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTUserSink,IMTUserSink,IMTUser> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeUserSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeUserSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTUserSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTOnline attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTOnlineArray,MetaQuotes::MT5CommonAPI::CIMTOnline> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTOnlineArray attrs=Public, BeforeFieldInit
+  PUB .IMTUser attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnUsersRights attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersPasswords attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnUsersConnectionTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTUserArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTUserSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTOnline attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTOnlineArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTRequest attrs=Public, BeforeFieldInit
+  PUB .EnTradeActions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActionFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTRequestArray,MetaQuotes::MT5CommonAPI::CIMTRequest> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTRequestArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTRequestSink,IMTRequestSink,IMTRequest> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeRequestSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeRequestSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTRequestSink attrs=Public, BeforeFieldInit
+  PUB .IMTRequest attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnTradeActions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTradeActionFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTRequestArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTRequestSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSummary attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTSummaryArray,MetaQuotes::MT5CommonAPI::CIMTSummary> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSummaryArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTSummarySink,IMTSummarySink,IMTSummary> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeSummarySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeSummarySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTSummarySink attrs=Public, BeforeFieldInit
+  PUB .IMTSummary attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTSummaryArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTSummarySink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTTick attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .EnTickFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTTickShort attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .EnTickShortFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTTickStat attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTTickRate attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB .EnTickShortFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeTickSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTTickSink attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.EnMTFeederConstants attrs=Public, Sealed, BeforeFieldInit
+  PUB .IMTTickSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB .EnTickShortFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTickFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.SMTTime attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAutoParam attrs=Public, BeforeFieldInit
+  PUB .EnParams attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnParamType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAutoAction attrs=Public, BeforeFieldInit
+  PUB .EnActions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAutoCondition attrs=Public, BeforeFieldInit
+  PUB .EnConditions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAutomation attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggers attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerWeekdays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerMonths attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerMonthDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConAutomationSink,IMTConAutomationSink,IMTConAutomation> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConAutomationSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConAutomationSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAutomationSink attrs=Public, BeforeFieldInit
+  PUB .IMTConAutoParam attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnParams attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnParamType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConAutoAction attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnActions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConAutoCondition attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnConditions attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConAutomation attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggers attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerWeekdays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerMonths attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTriggerMonthDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConAutomationSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAccountAgreement attrs=Public, BeforeFieldInit
+  PUB .EnCaptionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAccountAllocation attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConCommon attrs=Public, BeforeFieldInit
+  PUB .EnUpdateMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConCommonSink,IMTConCommonSink,IMTConCommon> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConCommonSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConCommonSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConCommonSink attrs=Public, BeforeFieldInit
+  PUB .IMTConAccountAgreement attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnCaptionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConAccountAllocation attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConCommon attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnUpdateMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConCommonSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConEmail attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConEmailSink,IMTConEmailSink,IMTConEmail> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConEmailSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConEmailSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConEmailSink attrs=Public, BeforeFieldInit
+  PUB .IMTConEmail attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConEmailSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConParam attrs=Public, BeforeFieldInit
+  PUB .ParamType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTConParamArray,MetaQuotes::MT5CommonAPI::CIMTConParam> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConParamArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFeederTranslate attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFeeder attrs=Public, BeforeFieldInit
+  PUB .EnFeedersFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFeedersMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFeederModule attrs=Public, BeforeFieldInit
+  PUB .EnFeedersFieldFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConFeederSink,IMTConFeederSink,IMTConFeeder> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConFeederSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConFeederSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFeederSink attrs=Public, BeforeFieldInit
+  PUB .IMTConParam attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnParamType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConParamArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConFeederTranslate attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConFeeder attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFeedersFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFeedersMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConFeederModule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFeedersFieldFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConFeederSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFirewall attrs=Public, BeforeFieldInit
+  PUB .EnAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConFirewallSink,IMTConFirewallSink,IMTConFirewall> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConFirewallSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConFirewallSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConFirewallSink attrs=Public, BeforeFieldInit
+  PUB .IMTConFirewall attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConFirewallSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGatewayTranslate attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGateway attrs=Public, BeforeFieldInit
+  PUB .EnGatewayFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGatewayMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGatewayModule attrs=Public, BeforeFieldInit
+  PUB .EnGatewayFieldMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConGatewaySink,IMTConGatewaySink,IMTConGateway> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConGatewaySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConGatewaySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConGatewaySink attrs=Public, BeforeFieldInit
+  PUB .IMTConGatewayTranslate attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConGateway attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnGatewayFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnGatewayMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConGatewayModule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnGatewayFieldMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConGatewaySink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConHistorySync attrs=Public, BeforeFieldInit
+  PUB .EnHistoryMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncServer attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistoryData attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConHistorySyncSink,IMTConHistorySyncSink,IMTConHistorySync> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConHistorySyncSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConHistorySyncSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConHistorySyncSink attrs=Public, BeforeFieldInit
+  PUB .IMTConHistorySync attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnHistoryMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncServer attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistorySyncFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnHistoryData attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConHistorySyncSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConHoliday attrs=Public, BeforeFieldInit
+  PUB .EnHolidayMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConHolidaySink,IMTConHolidaySink,IMTConHoliday> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConHolidaySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConHolidaySink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConHolidaySink attrs=Public, BeforeFieldInit
+  PUB .IMTConHoliday attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnHolidayMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConHolidaySink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConKYCCountry attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConKYCGroup attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConKYC attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnProviderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConKYCSink,IMTConKYCSink,IMTConKYC> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConKYCSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConKYCSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConKYCSink attrs=Public, BeforeFieldInit
+  PUB .IMTConKYCCountry attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConKYCGroup attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConKYC attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnProviderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConKYCSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConLeverageTier attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConLeverageRule attrs=Public, BeforeFieldInit
+  PUB .EnRangeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConLeverage attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTConLeverageArray,MetaQuotes::MT5CommonAPI::CIMTConLeverage> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConLeverageArray attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConLeverageSink,IMTConLeverageSink,IMTConLeverage> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConLeverageSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConLeverageSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConLeverageSink attrs=Public, BeforeFieldInit
+  PUB .IMTConLeverageTier attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConLeverageRule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnRangeMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConLeverage attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConLeverageArray attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConLeverageSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConManagerReport attrs=Public, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConManagerAccess attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConManager attrs=Public, BeforeFieldInit
+  PUB .EnManagerRights attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnManagerRightFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnManagerLimit attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConManagerSink,IMTConManagerSink,IMTConManager> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConManagerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConManagerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConManagerSink attrs=Public, BeforeFieldInit
+  PUB .IMTConManagerReport attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnPermissionsFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConManagerAccess attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConManager attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnManagerRights attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnManagerRightFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnManagerLimit attrs=NestedPublic, Sealed, BeforeFieldInit
+      MetaQuotes.MT5CommonAPI.CNativeConManagerSink attrs=SequentialLayout, Sealed, BeforeFieldInit
+  PUB .IMTConManagerSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConMessengerCountry attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConMessengerGroup attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConMessengerTemplate attrs=Public, BeforeFieldInit
+  PUB .EnMessengerTemplateType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConMessenger attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnProviderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConMessengerSink,IMTConMessengerSink,IMTConMessenger> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConMessengerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConMessengerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConMessengerSink attrs=Public, BeforeFieldInit
+  PUB .IMTConMessengerCountry attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConMessengerGroup attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConMessengerTemplate attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnMessengerTemplateTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConMessenger attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnProviderType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConMessengerSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerRange attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConAddressRange attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConClusterState attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConBackupFolder attrs=Public, BeforeFieldInit
+  PUB .EnBackupFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerTrade attrs=Public, BeforeFieldInit
+  PUB .EnDemoMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvernightMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvermonthMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvernightDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerHistory attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerBackup attrs=Public, BeforeFieldInit
+  PUB .EnBackupFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnBackupPeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnBackupTTL attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSQLExportMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSQLExportFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerAccess attrs=Public, BeforeFieldInit
+  PUB .EnAccessMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAccessFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnServerPriority attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerAntiDDoS attrs=Public, BeforeFieldInit
+  PUB .EnAccessMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnServerPriority attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServer attrs=Public, BeforeFieldInit
+  PUB .EnServerTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFailoverModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConServerSink,IMTConServerSink,IMTConServer> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConServerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConServerSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConServerSink attrs=Public, BeforeFieldInit
+  PUB .IMTConServerRange attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConAddressRange attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConClusterState attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConBackupFolder attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnBackupFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConServerTrade attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnDemoMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvernightMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvermonthMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnOvernightDays attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConServerHistory attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnBackupFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnBackupPeriod attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnBackupTTL attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSQLExportMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnSQLExportFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConServerAccess attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnAccessMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAccessFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnServerPriority attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnAccessMask attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnServerPriority attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConServer attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnServerTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnFailoverModes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConServerSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConPluginModule attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConPlugin attrs=Public, BeforeFieldInit
+  PUB .EnPluginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPluginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConPluginSink,IMTConPluginSink,IMTConPlugin> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConPluginSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConPluginSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConPluginSink attrs=Public, BeforeFieldInit
+  PUB .IMTConPluginModule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConPlugin attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnPluginFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnPluginMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConPluginSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConReportModule attrs=Public, BeforeFieldInit
+  PUB .EnSnapshots attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConReport attrs=Public, BeforeFieldInit
+  PUB .EnReportMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConReportSink,IMTConReportSink,IMTConReport> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConReportSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConReportSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConReportSink attrs=Public, BeforeFieldInit
+  PUB .IMTConReportModule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnSnapshots attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTypes attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConReport attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnReportMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConReportSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConCondition attrs=Public, BeforeFieldInit
+  PUB .EnRouteCondition attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConRouteDealer attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConRoute attrs=Public, BeforeFieldInit
+  PUB .EnRouteMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRouteFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTypeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRouteAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConRouteSink,IMTConRouteSink,IMTConRoute> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConRouteSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConRouteSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConRouteSink attrs=Public, BeforeFieldInit
+  PUB .IMTConCondition attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnRouteCondition attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConRouteDealer attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConRoute attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnRouteMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRouteFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnTypeFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnRouteAction attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConRouteSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSpreadLeg attrs=Public, BeforeFieldInit
+  PUB .EnLegMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSpread attrs=Public, BeforeFieldInit
+  PUB .EnSpreadMarginType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConSpreadSink,IMTConSpreadSink,IMTConSpread> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConSpreadSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConSpreadSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConSpreadSink attrs=Public, BeforeFieldInit
+  PUB .IMTConSpreadLeg attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnLegMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConSpread attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnSpreadMarginType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConSpreadSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConTime attrs=Public, BeforeFieldInit
+  PUB .EnTimeTableMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConTimeSink,IMTConTimeSink,IMTConTime> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConTimeSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConTimeSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConTimeSink attrs=Public, BeforeFieldInit
+  PUB .IMTConTime attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnTimeTableMode attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConTimeSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConVPSCondition attrs=Public, BeforeFieldInit
+  PUB .EnCondition attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConVPSRule attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConVPSGroup attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConVPS attrs=Public, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseNative<MetaQuotes::MT5CommonAPI::CIMTConVPSSink,IMTConVPSSink,IMTConVPS> attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5CommonAPI::CNativeConVPSSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CSinkBaseDelegate<MetaQuotes::MT5CommonAPI::CNativeConVPSSink> attrs=Public, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.CIMTConVPSSink attrs=Public, BeforeFieldInit
+  PUB .IMTConVPSCondition attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnCondition attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionRule attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .EnConditionType attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConVPSRule attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConVPSGroup attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .IMTConVPS attrs=Public, SequentialLayout, Abstract, Sealed, BeforeFieldInit
+  PUB .EnFlags attrs=NestedPublic, Sealed, BeforeFieldInit
+  PUB .IMTConVPSSink attrs=Public, SequentialLayout, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTLicenseCheck attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.MTLogRecord attrs=Public, SequentialLayout, Sealed, UnicodeClass, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.EnMTLogCode attrs=Public, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.EnMTLogType attrs=Public, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.EnMTLogRequestMode attrs=Public, Sealed, BeforeFieldInit
+  PUB MetaQuotes.MT5CommonAPI.EnMTLogFlags attrs=Public, Sealed, BeforeFieldInit
+TypeDefinitionCount=1143 PublicOrNestedPublic=829
+
+=== MetadataLoadContext D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5ManagerAPI64.dll ===
+FullName=MetaQuotes.MT5ManagerAPI64, Version=5.5570.0.0, Culture=neutral, PublicKeyToken=null
+Location=D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5ManagerAPI64.dll
+ImageRuntimeVersion=v4.0.30319
+IsDynamic=False
+EntryPoint=
+  ref mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  ref MetaQuotes.MT5CommonAPI64, Version=5.5570.0.0, Culture=neutral, PublicKeyToken=null
+  ref System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+TypesLoaded=236
+  public MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeDealerSink>
+  public MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeManagerSink>
+  public MetaQuotes.MT5ManagerAPI.CIMTAdminAPI
+  public MetaQuotes.MT5ManagerAPI.CIMTDealerSink
+  public MetaQuotes.MT5ManagerAPI.CIMTManagerAPI
+  public MetaQuotes.MT5ManagerAPI.CIMTManagerSink
+  public MetaQuotes.MT5ManagerAPI.MTProxyInfo
+  public MetaQuotes.MT5ManagerAPI.SMTManagerAPIFactory
+-- SMTManagerAPIFactory members --
+  Method MetaQuotes.MT5CommonAPI.MTRetCode Initialize(System.String)
+  Method MetaQuotes.MT5CommonAPI.MTRetCode Shutdown()
+  Method MetaQuotes.MT5CommonAPI.MTRetCode GetVersion(System.UInt32&)
+  Method MetaQuotes.MT5ManagerAPI.CIMTManagerAPI CreateManager(System.UInt32, System.String, MetaQuotes.MT5CommonAPI.MTRetCode&)
+  Method MetaQuotes.MT5ManagerAPI.CIMTManagerAPI CreateManager(System.UInt32, MetaQuotes.MT5CommonAPI.MTRetCode&)
+  Method MetaQuotes.MT5ManagerAPI.CIMTAdminAPI CreateAdmin(System.UInt32, System.String, MetaQuotes.MT5CommonAPI.MTRetCode&)
+  Method MetaQuotes.MT5ManagerAPI.CIMTAdminAPI CreateAdmin(System.UInt32, MetaQuotes.MT5CommonAPI.MTRetCode&)
+  Method MetaQuotes.MT5CommonAPI.MTRetCode LicenseCheckManager(MetaQuotes.MT5ManagerAPI.CIMTManagerAPI, System.String)
+  Method MetaQuotes.MT5CommonAPI.MTRetCode LicenseCheckAdmin(MetaQuotes.MT5ManagerAPI.CIMTAdminAPI, System.String)
+  Field System.UInt32 ManagerAPIVersion
+  Field System.String ManagerAPIDate
+
+=== Runtime Assembly.LoadFrom D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5ManagerAPI64.dll ===
+Runtime=.NET 8.0.30
+OS=Microsoft Windows 10.0.26200
+ProcessArch=X64
+OK FullName=MetaQuotes.MT5ManagerAPI64, Version=5.5570.0.0, Culture=neutral, PublicKeyToken=null
+ImageRuntimeVersion=v4.0.30319
+IsCollectible=False
+  exported MetaQuotes.MT5ManagerAPI.MTProxyInfo
+  exported MetaQuotes.MT5ManagerAPI.MTProxyInfo+Type
+  exported MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeManagerSink>
+  exported MetaQuotes.MT5ManagerAPI.CIMTManagerSink
+  exported MetaQuotes.MT5ManagerAPI.CIMTAdminAPI
+  exported MetaQuotes.MT5ManagerAPI.CIMTAdminAPI+EnPumpModes
+  exported MetaQuotes.MT5ManagerAPI.CIMTAdminAPI+EnExternalSyncModes
+  exported MetaQuotes.MT5CommonAPI.CSinkAdapter<MetaQuotes::MT5ManagerAPI::CNativeDealerSink>
+  exported MetaQuotes.MT5ManagerAPI.CIMTDealerSink
+  exported MetaQuotes.MT5ManagerAPI.CIMTManagerAPI
+  exported MetaQuotes.MT5ManagerAPI.CIMTManagerAPI+EnPumpModes
+  exported MetaQuotes.MT5ManagerAPI.CIMTManagerAPI+EnExternalSyncModes
+  exported MetaQuotes.MT5ManagerAPI.SMTManagerAPIFactory
+ExportedTypeCount=13
+
+=== Runtime Assembly.LoadFrom D:\Prop\mt5-sdk\vendor\MetaTrader5SDK\Libs\MetaQuotes.MT5CommonAPI64.dll ===
+Runtime=.NET 8.0.30
+OS=Microsoft Windows 10.0.26200
+ProcessArch=X64
+OK FullName=MetaQuotes.MT5CommonAPI64, Version=5.5570.0.0, Culture=neutral, PublicKeyToken=null
+ImageRuntimeVersion=v4.0.30319
+IsCollectible=False
+  exported MetaQuotes.MT5CommonAPI.CIMTAttachment
+  exported MetaQuotes.MT5CommonAPI.CIMTAttachment+EnFileTypes
+  exported MetaQuotes.MT5CommonAPI.CIMTAttachment+EnFileFlags
+  exported MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTAttachmentArray\,MetaQuotes::MT5CommonAPI::CIMTAttachment>
+  exported MetaQuotes.MT5CommonAPI.CIMTAttachmentArray
+  exported MetaQuotes.MT5CommonAPI.MTRetCode
+  exported IMTAttachment
+  exported IMTAttachment+EnFileType
+  exported IMTAttachment+EnFileFlags
+  exported IMTAttachmentArray
+  exported MetaQuotes.MT5CommonAPI.CIMTClient
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnGender
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnClientType
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnClientStatus
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnPreferredCommunication
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnTradingExperience
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnEmployment
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnEmploymentIndustry
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnEducationLevel
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnWealthSource
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnClientOrigin
+  exported MetaQuotes.MT5CommonAPI.CIMTClient+EnKYCStatus
+  exported MetaQuotes.MT5CommonAPI.CNativeArrayInterface<IMTClientArray\,MetaQuotes::MT5CommonAPI::CIMTClient>
+  exported MetaQuotes.MT5CommonAPI.CIMTClientArray
+  exported IMTClient
+  exported IMTClient+EnGender
+  exported IMTClient+EnClientType
+  exported IMTClient+EnClientStatus
+  exported IMTClient+EnPreferredCommunication
+  exported IMTClient+EnTradingExperience
+  exported IMTClient+EnEmployment
+  exported IMTClient+EnEmploymentIndustry
+  exported IMTClient+EnEducationLevel
+  exported IMTClient+EnWealthSource
+  exported IMTClient+EnClientOrigin
+  exported IMTClient+EnKYCStatus
+  exported IMTClientArray
+  exported MetaQuotes.MT5CommonAPI.CIMTComment
+  exported MetaQuotes.MT5CommonAPI.CIMTComment+EnCommentFlags
+  exported MetaQuotes.MT5CommonAPI.CIMTComment+EnCommentType
+ExportedTypeCount=818

@@ -21,17 +21,19 @@ public sealed class NativeMt5Options
     public string? NativeDllDirectory { get; init; }
 }
 
-public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDealReader, IDisposable
+public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDealReader, IMt5BulkPositionReader, IDisposable
 {
     private readonly NativeMt5Options _opt;
     private readonly object _gate = new();
     private CIMTManagerAPI? _manager;
     private bool _connected;
+    private bool _pumpEnabled;
 
     public NativeMt5BrokerConnector(NativeMt5Options opt) => _opt = opt;
 
     public string BrokerCode => _opt.BrokerCode;
     public string? LastError { get; private set; }
+    public bool PumpEnabled => _pumpEnabled;
 
     public Task ConnectAsync(CancellationToken ct) => Task.Run(ConnectCore, ct);
     public Task DisconnectAsync(CancellationToken ct) { DisconnectCore(); return Task.CompletedTask; }
@@ -52,6 +54,9 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
     public Task<IReadOnlyList<Mt5PositionDto>> GetPositionsAsync(long login, CancellationToken ct) =>
         Task.Run(() => GetPositionsCore(login), ct);
 
+    public Task<IReadOnlyList<Mt5PositionDto>> GetGroupPositionsAsync(string? groupMask, CancellationToken ct) =>
+        Task.Run(() => GetGroupPositionsCore(string.IsNullOrWhiteSpace(groupMask) ? "*" : groupMask), ct);
+
     private void ConnectCore()
     {
         lock (_gate)
@@ -61,52 +66,67 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("Native MT5 Manager API is Windows x64 only.");
 
-            var dllDir = _opt.NativeDllDirectory
-                         ?? Path.Combine(AppContext.BaseDirectory);
+            var dllDir = _opt.NativeDllDirectory ?? AppContext.BaseDirectory;
             var init = SMTManagerAPIFactory.Initialize(dllDir);
-            if (init != MTRetCode.MT_RET_OK)
+            if (init != MTRetCode.MT_RET_OK && init != MTRetCode.MT_RET_ERR_DUPLICATE)
             {
-                LastError = $"Factory init failed: {init}";
+                LastError = Describe(init, "Factory.Initialize");
                 throw new InvalidOperationException(LastError);
             }
 
-            uint version = 0;
-            SMTManagerAPIFactory.GetVersion(out version);
+            SMTManagerAPIFactory.GetVersion(out var version);
             var created = SMTManagerAPIFactory.CreateManager(version, out var createRes);
             if (createRes != MTRetCode.MT_RET_OK || created is null)
             {
-                LastError = $"CreateManager failed: {createRes}";
+                LastError = Describe(createRes, "CreateManager");
                 throw new InvalidOperationException(LastError);
             }
 
             _manager = created;
-            if (_opt.ProxyEnabled && !string.IsNullOrWhiteSpace(_opt.ProxyHost))
-            {
-                var proxy = new MTProxyInfo
-                {
-                    enable = 1,
-                    type = MTProxyInfo.Type.PROXY_HTTP,
-                    address = $"{_opt.ProxyHost}:{_opt.ProxyPort}",
-                    auth = string.IsNullOrEmpty(_opt.ProxyUser) ? "" : $"{_opt.ProxyUser}:{_opt.ProxyPassword}"
-                };
-                _manager.ProxySet(proxy);
-            }
+            ApplyProxy();
 
             var endpoint = $"{_opt.Server}:{_opt.Port}";
             var pump = CIMTManagerAPI.EnPumpModes.PUMP_MODE_GROUPS
                        | CIMTManagerAPI.EnPumpModes.PUMP_MODE_USERS
                        | CIMTManagerAPI.EnPumpModes.PUMP_MODE_POSITIONS;
             var res = _manager.Connect(endpoint, _opt.Login, _opt.Password, null, pump, 30000);
+            if (res == MTRetCode.MT_RET_OK)
+            {
+                _connected = true;
+                _pumpEnabled = true;
+                LastError = null;
+                return;
+            }
+
+            res = _manager.Connect(endpoint, _opt.Login, _opt.Password, null, CIMTManagerAPI.EnPumpModes.PUMP_MODE_NONE, 30000);
             if (res != MTRetCode.MT_RET_OK)
             {
-                LastError = $"Connect {BrokerCode} {endpoint} failed: {res}";
+                LastError = Describe(res, $"Connect {BrokerCode} {endpoint} proxy={_opt.ProxyEnabled}");
                 _connected = false;
                 throw new InvalidOperationException(LastError);
             }
 
             _connected = true;
+            _pumpEnabled = false;
             LastError = null;
         }
+    }
+
+    private void ApplyProxy()
+    {
+        if (_manager is null || !_opt.ProxyEnabled || string.IsNullOrWhiteSpace(_opt.ProxyHost))
+            return;
+
+        var proxy = new MTProxyInfo
+        {
+            enable = 1,
+            type = MTProxyInfo.Type.PROXY_HTTP,
+            address = $"{_opt.ProxyHost}:{_opt.ProxyPort}",
+            auth = string.IsNullOrEmpty(_opt.ProxyUser) ? "" : $"{_opt.ProxyUser}:{_opt.ProxyPassword}"
+        };
+        var set = _manager.ProxySet(proxy);
+        if (set != MTRetCode.MT_RET_OK)
+            throw new InvalidOperationException(Describe(set, $"{BrokerCode} ProxySet"));
     }
 
     private void DisconnectCore()
@@ -117,6 +137,7 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
             _manager?.Dispose();
             _manager = null;
             _connected = false;
+            _pumpEnabled = false;
         }
     }
 
@@ -125,26 +146,41 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
         lock (_gate)
         {
             Ensure();
-            var total = _manager!.GroupTotal();
-            var list = new List<Mt5GroupDto>((int)total);
-            var grp = _manager.GroupCreate();
+            var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var list = new List<Mt5GroupDto>();
+
+            var arr = _manager!.GroupCreateArray();
             try
             {
-                for (uint i = 0; i < total; i++)
+                var res = _manager.GroupRequestArray("*", arr);
+                if (res == MTRetCode.MT_RET_OK || res == MTRetCode.MT_RET_OK_NONE)
                 {
-                    if (_manager.GroupNext(i, grp) != MTRetCode.MT_RET_OK)
-                        continue;
-                    list.Add(new Mt5GroupDto(
-                        grp.Group(),
-                        grp.Currency(),
-                        (int)grp.CurrencyDigits(),
-                        grp.Company(),
-                        (decimal)grp.MarginCall(),
-                        (decimal)grp.MarginStopOut(),
-                        ((ulong)grp.PermissionsFlags() & 0x2) != 0));
+                    for (uint i = 0; i < arr.Total(); i++)
+                    {
+                        var g = arr.Next(i);
+                        if (g is null)
+                            continue;
+                        AddGroup(list, seen, g);
+                    }
                 }
             }
-            finally { grp.Release(); }
+            finally { arr.Release(); }
+
+            if (list.Count == 0)
+            {
+                var grp = _manager.GroupCreate();
+                try
+                {
+                    var total = _manager.GroupTotal();
+                    for (uint i = 0; i < total; i++)
+                    {
+                        if (_manager.GroupNext(i, grp) != MTRetCode.MT_RET_OK)
+                            continue;
+                        AddGroup(list, seen, grp);
+                    }
+                }
+                finally { grp.Release(); }
+            }
 
             return list;
         }
@@ -162,62 +198,76 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
             }
             else
             {
-                var g = _manager!.GroupCreate();
-                try
-                {
-                    var total = _manager.GroupTotal();
-                    for (uint i = 0; i < total; i++)
-                    {
-                        if (_manager.GroupNext(i, g) == MTRetCode.MT_RET_OK)
-                            groups.Add(g.Group());
-                    }
-                }
-                finally { g.Release(); }
+                foreach (var g in GetGroupsCore())
+                    groups.Add(g.Name);
             }
 
-            var rows = new List<Mt5AccountDto>();
+            var byLogin = new Dictionary<ulong, Mt5AccountDto>();
             foreach (var gname in groups)
             {
-                var users = _manager!.UserCreateArray();
-                var accounts = _manager.UserCreateAccountArray();
-                try
-                {
-                    _manager.UserGetByGroup(gname, users);
-                    _manager.UserAccountGetByGroup(gname, accounts);
-                    var acctByLogin = new Dictionary<ulong, CIMTAccount>();
-                    for (uint i = 0; i < accounts.Total(); i++)
-                    {
-                        var a = accounts.Next(i);
-                        if (a is not null)
-                            acctByLogin[a.Login()] = a;
-                    }
-
-                    for (uint i = 0; i < users.Total(); i++)
-                    {
-                        var u = users.Next(i);
-                        if (u is null)
-                            continue;
-                        acctByLogin.TryGetValue(u.Login(), out var acc);
-                        rows.Add(new Mt5AccountDto(
-                            (long)u.Login(),
-                            u.Group(),
-                            (int)u.Leverage(),
-                            (decimal)(acc?.Balance() ?? 0),
-                            (decimal)(acc?.Equity() ?? 0),
-                            (decimal)(acc?.Margin() ?? 0),
-                            (decimal)(acc?.MarginFree() ?? 0),
-                            (decimal)(acc?.Profit() ?? 0)));
-                    }
-                }
-                finally
-                {
-                    users.Release();
-                    accounts.Release();
-                }
+                foreach (var row in ReadAccountsForGroup(gname))
+                    byLogin[ (ulong)row.Login ] = row;
             }
 
-            return rows;
+            return byLogin.Values.ToList();
         }
+    }
+
+    private List<Mt5AccountDto> ReadAccountsForGroup(string gname)
+    {
+        var rows = new List<Mt5AccountDto>();
+        var users = _manager!.UserCreateArray();
+        var accounts = _manager.UserCreateAccountArray();
+        try
+        {
+            var req = _manager.UserRequestArray(gname, users);
+            if (req != MTRetCode.MT_RET_OK && req != MTRetCode.MT_RET_OK_NONE && req != MTRetCode.MT_RET_ERR_NOTFOUND)
+                _manager.UserGetByGroup(gname, users);
+
+            if (users.Total() == 0)
+            {
+                var loginRes = MTRetCode.MT_RET_OK;
+                var logins = _manager.UserLogins(gname, out loginRes);
+                if (loginRes == MTRetCode.MT_RET_OK && logins is { Length: > 0 })
+                    _manager.UserRequestByLogins(logins, users);
+            }
+
+            var acctReq = _manager.UserAccountRequestArray(gname, accounts);
+            if (acctReq != MTRetCode.MT_RET_OK && acctReq != MTRetCode.MT_RET_OK_NONE)
+                _manager.UserAccountGetByGroup(gname, accounts);
+
+            var acctByLogin = new Dictionary<ulong, CIMTAccount>();
+            for (uint i = 0; i < accounts.Total(); i++)
+            {
+                var a = accounts.Next(i);
+                if (a is not null)
+                    acctByLogin[a.Login()] = a;
+            }
+
+            for (uint i = 0; i < users.Total(); i++)
+            {
+                var u = users.Next(i);
+                if (u is null)
+                    continue;
+                acctByLogin.TryGetValue(u.Login(), out var acc);
+                rows.Add(new Mt5AccountDto(
+                    (long)u.Login(),
+                    u.Group(),
+                    (int)u.Leverage(),
+                    (decimal)(acc?.Balance() ?? 0),
+                    (decimal)(acc?.Equity() ?? 0),
+                    (decimal)(acc?.Margin() ?? 0),
+                    (decimal)(acc?.MarginFree() ?? 0),
+                    (decimal)(acc?.Profit() ?? 0)));
+            }
+        }
+        finally
+        {
+            users.Release();
+            accounts.Release();
+        }
+
+        return rows;
     }
 
     private IReadOnlyList<Mt5DealDto> GetDealsCore(long login, DateTimeOffset from, DateTimeOffset to)
@@ -225,15 +275,21 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
         lock (_gate)
         {
             Ensure();
-            var arr = _manager!.DealCreateArray();
-            try
+            var all = new List<Mt5DealDto>();
+            foreach (var (start, end) in Windows(from, to))
             {
-                var res = _manager.DealRequest((ulong)login, from.ToUnixTimeSeconds(), to.ToUnixTimeSeconds(), arr);
-                if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
-                    throw new InvalidOperationException($"{BrokerCode} DealRequest {login} failed: {res}");
-                return ReadDeals(arr);
+                var arr = _manager!.DealCreateArray();
+                try
+                {
+                    var res = _manager.DealRequest((ulong)login, start.ToUnixTimeSeconds(), end.ToUnixTimeSeconds(), arr);
+                    if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
+                        throw new InvalidOperationException(Describe(res, $"{BrokerCode} DealRequest {login}"));
+                    all.AddRange(ReadDeals(arr));
+                }
+                finally { arr.Release(); }
             }
-            finally { arr.Release(); }
+
+            return all;
         }
     }
 
@@ -242,15 +298,21 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
         lock (_gate)
         {
             Ensure();
-            var arr = _manager!.DealCreateArray();
-            try
+            var all = new List<Mt5DealDto>();
+            foreach (var (start, end) in Windows(from, to))
             {
-                var res = _manager.DealRequestByGroup(group, from.ToUnixTimeSeconds(), to.ToUnixTimeSeconds(), arr);
-                if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
-                    throw new InvalidOperationException($"{BrokerCode} DealRequestByGroup {group} failed: {res}");
-                return ReadDeals(arr);
+                var arr = _manager!.DealCreateArray();
+                try
+                {
+                    var res = _manager.DealRequestByGroup(group, start.ToUnixTimeSeconds(), end.ToUnixTimeSeconds(), arr);
+                    if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
+                        throw new InvalidOperationException(Describe(res, $"{BrokerCode} DealRequestByGroup {group}"));
+                    all.AddRange(ReadDeals(arr));
+                }
+                finally { arr.Release(); }
             }
-            finally { arr.Release(); }
+
+            return all;
         }
     }
 
@@ -265,30 +327,82 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
                 var res = _manager.PositionRequest((ulong)login, arr);
                 if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
                     return Array.Empty<Mt5PositionDto>();
-                var rows = new List<Mt5PositionDto>((int)arr.Total());
-                for (uint i = 0; i < arr.Total(); i++)
-                {
-                    var p = arr.Next(i);
-                    if (p is null)
-                        continue;
-                    rows.Add(new Mt5PositionDto(
-                        (long)p.Position(),
-                        (long)p.Login(),
-                        p.Symbol(),
-                        p.Action() == 0 ? TradeDirection.Long : TradeDirection.Short,
-                        p.Volume(),
-                        (decimal)p.PriceOpen(),
-                        (decimal)p.PriceCurrent(),
-                        (decimal)p.PriceSL(),
-                        (decimal)p.PriceTP(),
-                        (decimal)p.Profit(),
-                        DateTimeOffset.FromUnixTimeSeconds(p.TimeCreate())));
-                }
-
-                return rows;
+                return ReadPositions(arr);
             }
             finally { arr.Release(); }
         }
+    }
+
+    private IReadOnlyList<Mt5PositionDto> GetGroupPositionsCore(string mask)
+    {
+        lock (_gate)
+        {
+            Ensure();
+            var arr = _manager!.PositionCreateArray();
+            try
+            {
+                var res = _manager.PositionRequestByGroup(mask, arr);
+                if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
+                    res = _manager.PositionGetByGroup(mask, arr);
+                if (res != MTRetCode.MT_RET_OK && res != MTRetCode.MT_RET_OK_NONE && res != MTRetCode.MT_RET_ERR_NOTFOUND)
+                    return Array.Empty<Mt5PositionDto>();
+                return ReadPositions(arr);
+            }
+            finally { arr.Release(); }
+        }
+    }
+
+    private static IEnumerable<(DateTimeOffset Start, DateTimeOffset End)> Windows(DateTimeOffset from, DateTimeOffset to)
+    {
+        var cursor = from;
+        while (cursor < to)
+        {
+            var end = cursor.AddDays(14);
+            if (end > to)
+                end = to;
+            yield return (cursor, end);
+            cursor = end;
+        }
+    }
+
+    private static void AddGroup(List<Mt5GroupDto> list, HashSet<string> seen, CIMTConGroup grp)
+    {
+        var name = grp.Group();
+        if (string.IsNullOrWhiteSpace(name) || !seen.Add(name))
+            return;
+        list.Add(new Mt5GroupDto(
+            name,
+            grp.Currency(),
+            (int)grp.CurrencyDigits(),
+            grp.Company(),
+            (decimal)grp.MarginCall(),
+            (decimal)grp.MarginStopOut(),
+            ((ulong)grp.PermissionsFlags() & 0x2) != 0));
+    }
+
+    private static List<Mt5PositionDto> ReadPositions(CIMTPositionArray arr)
+    {
+        var rows = new List<Mt5PositionDto>((int)arr.Total());
+        for (uint i = 0; i < arr.Total(); i++)
+        {
+            var p = arr.Next(i);
+            if (p is null)
+                continue;
+            rows.Add(new Mt5PositionDto(
+                (long)p.Position(),
+                (long)p.Login(),
+                p.Symbol(),
+                p.Action() == 0 ? TradeDirection.Long : TradeDirection.Short,
+                p.Volume(),
+                (decimal)p.PriceOpen(),
+                (decimal)p.PriceCurrent(),
+                (decimal)p.PriceSL(),
+                (decimal)p.PriceTP(),
+                (decimal)p.Profit(),
+                DateTimeOffset.FromUnixTimeSeconds(p.TimeCreate())));
+        }
+
+        return rows;
     }
 
     private static List<Mt5DealDto> ReadDeals(CIMTDealArray arr)
@@ -323,6 +437,21 @@ public sealed class NativeMt5BrokerConnector : IMt5BrokerConnector, IMt5BulkDeal
     {
         if (_manager is null || !_connected)
             throw new InvalidOperationException($"{BrokerCode} is not connected. {LastError}");
+    }
+
+    private static string Describe(MTRetCode code, string op)
+    {
+        var hint = (int)code switch
+        {
+            7 => "network/timeout — check proxy, firewall, server",
+            1012 => "manager IP blocked — Achiever requires the whitelist HTTP proxy",
+            3 => "params/auth — check manager login",
+            5 => "disk/no-connect in some builds — server unreachable",
+            10 => "no connection",
+            9 => "timeout",
+            _ => code.ToString()
+        };
+        return $"{op} failed: {(int)code} {code} ({hint})";
     }
 
     public void Dispose() => DisconnectCore();

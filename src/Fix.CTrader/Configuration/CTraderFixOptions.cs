@@ -7,7 +7,7 @@ public sealed class CTraderFixOptions
     /// <summary>
     /// FIX gateway host (cTrader).
     /// </summary>
-    public string Host { get; set; } = "live-us-eqx-01.p.c-trader.com";
+    public string Host { get; set; } = "demo-us-eqx-01.p.c-trader.com";
 
     /// <summary>
     /// FIX username (AccountId). Must never be logged.
@@ -44,7 +44,7 @@ public sealed class CTraderFixOptions
 
         public int PlainPort { get; set; } = 5201;
 
-        public string SenderCompId { get; set; } = "live.pepperstone.1369850";
+        public string SenderCompId { get; set; } = "demo.pepperstone.5328266";
 
         public string TargetCompId { get; set; } = "cServer";
 
@@ -65,7 +65,7 @@ public sealed class CTraderFixOptions
         /// <summary>
         /// cTrader FIX gateway SenderCompID (configurable).
         /// </summary>
-        public string SenderCompId { get; set; } = "live.pepperstone.1369850";
+        public string SenderCompId { get; set; } = "demo.pepperstone.5328266";
 
         public string TargetCompId { get; set; } = "cServer";
 

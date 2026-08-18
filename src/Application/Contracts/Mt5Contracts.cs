@@ -72,3 +72,8 @@ public interface IMt5BulkDealReader
 {
     Task<IReadOnlyList<Mt5DealDto>> GetGroupDealsAsync(string group, DateTimeOffset from, DateTimeOffset to, CancellationToken ct);
 }
+
+public interface IMt5BulkPositionReader
+{
+    Task<IReadOnlyList<Mt5PositionDto>> GetGroupPositionsAsync(string? groupMask, CancellationToken ct);
+}

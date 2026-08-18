@@ -335,4 +335,168 @@ public sealed class EfTradingStore : ITradingStore
 
         await _db.SaveChangesAsync(ct);
     }
+
+    public Task<IReadOnlyList<long>> ListLoginsAsync(Guid brokerId, CancellationToken ct) =>
+        _db.Mt5Accounts.Where(a => a.BrokerId == brokerId).Select(a => a.Login).ToListAsync(ct)
+            .ContinueWith(t => (IReadOnlyList<long>)t.Result, ct);
+
+    public Task<IReadOnlyList<long>> ListLoginsWithDealsAsync(Guid brokerId, CancellationToken ct) =>
+        _db.Mt5Deals.Where(d => d.BrokerId == brokerId).Select(d => d.Login).Distinct().ToListAsync(ct)
+            .ContinueWith(t => (IReadOnlyList<long>)t.Result, ct);
+
+    public async Task UpsertGroupsBatchAsync(Guid brokerId, IReadOnlyList<Mt5GroupDto> groups, DateTimeOffset now, CancellationToken ct)
+    {
+        var existing = await _db.Mt5Groups.Where(g => g.BrokerId == brokerId).ToListAsync(ct);
+        var byName = existing.ToDictionary(g => g.Name, StringComparer.OrdinalIgnoreCase);
+        foreach (var group in groups)
+        {
+            if (byName.TryGetValue(group.Name, out var row))
+            {
+                row.Currency = group.Currency;
+                row.CurrencyDigits = group.CurrencyDigits;
+                row.Company = group.Company;
+                row.MarginCall = group.MarginCall;
+                row.MarginStopOut = group.MarginStopOut;
+                row.ConnectionsAllowed = group.ConnectionsAllowed;
+                row.LastSyncedAt = now;
+            }
+            else
+            {
+                _db.Mt5Groups.Add(new Mt5Group
+                {
+                    Id = Guid.NewGuid(),
+                    BrokerId = brokerId,
+                    Name = group.Name,
+                    Currency = group.Currency,
+                    CurrencyDigits = group.CurrencyDigits,
+                    Company = group.Company,
+                    MarginCall = group.MarginCall,
+                    MarginStopOut = group.MarginStopOut,
+                    ConnectionsAllowed = group.ConnectionsAllowed,
+                    EnabledForAnalysis = true,
+                    LastDiscoveredAt = now,
+                    LastSyncedAt = now
+                });
+            }
+        }
+
+        await _db.SaveChangesAsync(ct);
+    }
+
+    public async Task UpsertAccountsBatchAsync(Guid brokerId, IReadOnlyList<Mt5AccountDto> accounts, DateTimeOffset now, CancellationToken ct)
+    {
+        var existing = await _db.Mt5Accounts.Where(a => a.BrokerId == brokerId).ToListAsync(ct);
+        var byLogin = existing.ToDictionary(a => a.Login);
+        var n = 0;
+        foreach (var account in accounts)
+        {
+            if (byLogin.TryGetValue(account.Login, out var row))
+            {
+                row.GroupName = account.GroupName;
+                row.Leverage = account.Leverage;
+                row.Balance = account.Balance;
+                row.Equity = account.Equity;
+                row.Margin = account.Margin;
+                row.MarginFree = account.MarginFree;
+                row.Profit = account.Profit;
+                row.LastSyncedAt = now;
+            }
+            else
+            {
+                _db.Mt5Accounts.Add(new Mt5Account
+                {
+                    Id = Guid.NewGuid(),
+                    BrokerId = brokerId,
+                    Login = account.Login,
+                    GroupName = account.GroupName,
+                    Leverage = account.Leverage,
+                    Balance = account.Balance,
+                    Equity = account.Equity,
+                    Margin = account.Margin,
+                    MarginFree = account.MarginFree,
+                    Profit = account.Profit,
+                    LastSyncedAt = now
+                });
+            }
+
+            n++;
+            if (n % 500 == 0)
+                await _db.SaveChangesAsync(ct);
+        }
+
+        await _db.SaveChangesAsync(ct);
+    }
+
+    public async Task<int> UpsertDealsBatchAsync(Guid brokerId, IReadOnlyList<Mt5DealDto> deals, DateTimeOffset now, CancellationToken ct)
+    {
+        if (deals.Count == 0)
+            return 0;
+
+        var tickets = deals.Select(d => d.DealTicket).ToList();
+        var existing = await _db.Mt5Deals
+            .Where(d => d.BrokerId == brokerId && tickets.Contains(d.DealTicket))
+            .Select(d => d.DealTicket)
+            .ToListAsync(ct);
+        var have = existing.ToHashSet();
+        var inserted = 0;
+        foreach (var deal in deals)
+        {
+            if (!have.Add(deal.DealTicket))
+                continue;
+            _db.Mt5Deals.Add(new Mt5Deal
+            {
+                Id = Guid.NewGuid(),
+                BrokerId = brokerId,
+                DealTicket = deal.DealTicket,
+                Login = deal.Login,
+                OrderTicket = deal.OrderTicket,
+                PositionId = deal.PositionId,
+                Symbol = deal.Symbol,
+                Action = deal.Action,
+                Entry = deal.Entry,
+                VolumeNative = deal.VolumeNative,
+                Price = deal.Price,
+                Profit = deal.Profit,
+                Commission = deal.Commission,
+                Swap = deal.Swap,
+                DealTime = deal.Time,
+                Comment = deal.Comment,
+                IngestedAt = now
+            });
+            inserted++;
+            if (inserted % 400 == 0)
+                await _db.SaveChangesAsync(ct);
+        }
+
+        await _db.SaveChangesAsync(ct);
+        return inserted;
+    }
+
+    public async Task ReplaceBrokerPositionsAsync(Guid brokerId, IReadOnlyList<Mt5PositionDto> positions, CancellationToken ct)
+    {
+        var existing = _db.Mt5Positions.Where(p => p.BrokerId == brokerId);
+        _db.Mt5Positions.RemoveRange(existing);
+        foreach (var p in positions)
+        {
+            _db.Mt5Positions.Add(new Mt5Position
+            {
+                Id = Guid.NewGuid(),
+                BrokerId = brokerId,
+                PositionTicket = p.PositionTicket,
+                Login = p.Login,
+                Symbol = p.Symbol,
+                Direction = p.Direction,
+                VolumeNative = p.VolumeNative,
+                PriceOpen = p.PriceOpen,
+                PriceCurrent = p.PriceCurrent,
+                PriceSl = p.PriceSl,
+                PriceTp = p.PriceTp,
+                Profit = p.Profit,
+                TimeCreate = p.TimeCreate,
+                TimeUpdate = DateTimeOffset.UtcNow
+            });
+        }
+
+        await _db.SaveChangesAsync(ct);
+    }
 }

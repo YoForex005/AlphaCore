@@ -6,7 +6,7 @@ export default function TradersPage() {
   if (isLoading) return <p className="text-gray-400">Loading traders…</p>;
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-white mb-4">Trader leaderboard</h1>
+      <h1 className="text-2xl font-semibold text-white mb-4">All manager traders ({data.length})</h1>
       <table className="w-full text-sm text-left">
         <thead className="text-gray-400 border-b border-gray-800">
           <tr>

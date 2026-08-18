@@ -12,11 +12,7 @@ using (var scope = host.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<TraderDbContext>();
     await db.Database.EnsureCreatedAsync();
-    await DemoSeeder.SeedAsync(
-        db,
-        scope.ServiceProvider.GetRequiredService<TraderIntelligence.Application.Ingestion.ITradingStore>(),
-        scope.ServiceProvider.GetRequiredService<TraderIntelligence.Application.Ingestion.ReconstructionScoringService>(),
-        CancellationToken.None);
+    await BrokerCatalogSeed.EnsureAsync(db, CancellationToken.None);
 }
 
 host.Run();

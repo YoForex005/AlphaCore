@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TraderIntelligence.Application.Dashboard;
+using TraderIntelligence.Application.Runtime;
 using TraderIntelligence.Domain.Enums;
 using TraderIntelligence.Infrastructure.Persistence;
 
@@ -8,13 +9,20 @@ namespace TraderIntelligence.Infrastructure.Dashboard;
 public sealed class EfDashboardQueries : IDashboardQueries
 {
     private readonly TraderDbContext _db;
+    private readonly LiveRuntimeStatus _runtime;
 
-    public EfDashboardQueries(TraderDbContext db) => _db = db;
+    public EfDashboardQueries(TraderDbContext db, LiveRuntimeStatus runtime)
+    {
+        _db = db;
+        _runtime = runtime;
+    }
 
     public async Task<OverviewDto> GetOverviewAsync(CancellationToken ct)
     {
         var accounts = await _db.Mt5Accounts.CountAsync(ct);
-        var brokers = await _db.Brokers.CountAsync(b => b.Enabled, ct);
+        var brokers = _runtime.Brokers.Values.Count(b => b.Connected);
+        if (brokers == 0)
+            brokers = await _db.Brokers.CountAsync(b => b.Enabled, ct);
         var scores = await _db.TraderScores.ToListAsync(ct);
         var xauTraders = scores.Count(s => s.CompletedXauTrades > 0);
         var three = scores.Count(s => s.CompletedXauTrades >= 3);
@@ -36,10 +44,12 @@ public sealed class EfDashboardQueries : IDashboardQueries
             0,
             0,
             0,
-            brokers > 0,
-            quote?.Status is FixSessionStatus.LoggedOn or FixSessionStatus.ReadyForMarketData or FixSessionStatus.ReadyForExecution,
-            trade?.Status is FixSessionStatus.LoggedOn or FixSessionStatus.Reconciling or FixSessionStatus.ReadyForExecution,
-            false);
+            _runtime.Brokers.Values.Count(b => b.Connected) > 0,
+            quote?.Status is FixSessionStatus.LoggedOn or FixSessionStatus.ReadyForMarketData or FixSessionStatus.ReadyForExecution
+                || _runtime.Quote.LoggedOn,
+            trade?.Status is FixSessionStatus.LoggedOn or FixSessionStatus.Reconciling or FixSessionStatus.ReadyForExecution
+                || _runtime.Trade.LoggedOn,
+            _runtime.RealCopyEnabled);
     }
 
     public async Task<IReadOnlyList<BrokerStatusDto>> GetBrokersAsync(CancellationToken ct)
@@ -50,7 +60,8 @@ public sealed class EfDashboardQueries : IDashboardQueries
         {
             var groups = await _db.Mt5Groups.CountAsync(g => g.BrokerId == b.Id, ct);
             var accounts = await _db.Mt5Accounts.CountAsync(a => a.BrokerId == b.Id, ct);
-            result.Add(new BrokerStatusDto(b.Code, b.DisplayName, b.Server, MaskLogin(b.ManagerLogin), true, groups, accounts, DateTimeOffset.UtcNow));
+            var live = _runtime.Brokers.TryGetValue(b.Code, out var st) && st.Connected;
+            result.Add(new BrokerStatusDto(b.Code, b.DisplayName, b.Server, MaskLogin(b.ManagerLogin), live, groups, accounts, st?.UpdatedAt ?? DateTimeOffset.UtcNow));
         }
 
         return result;
@@ -82,29 +93,30 @@ public sealed class EfDashboardQueries : IDashboardQueries
             .Select(g => new { g.Key.BrokerId, g.Key.Login, Pnl = g.Sum(x => x.NetRealizedPnl) })
             .ToListAsync(ct);
         var pnlMap = pnls.ToDictionary(x => (x.BrokerId, x.Login), x => x.Pnl);
+        var scoreMap = scores.ToDictionary(s => (s.BrokerId, s.Login));
 
         var mapped = new List<TraderRowDto>();
-        foreach (var s in scores)
+        foreach (var account in accounts)
         {
-            if (!brokers.TryGetValue(s.BrokerId, out var b))
+            if (!brokers.TryGetValue(account.BrokerId, out var b))
                 continue;
-            var account = accounts.FirstOrDefault(a => a.BrokerId == s.BrokerId && a.Login == s.Login);
-            pnlMap.TryGetValue((s.BrokerId, s.Login), out var pnl);
+            scoreMap.TryGetValue((account.BrokerId, account.Login), out var s);
+            pnlMap.TryGetValue((account.BrokerId, account.Login), out var pnl);
             mapped.Add(new TraderRowDto(
                 b.Code,
-                s.Login,
-                account?.GroupName,
-                s.CompletedXauTrades,
+                account.Login,
+                account.GroupName,
+                s?.CompletedXauTrades ?? 0,
                 pnl,
-                s.EarlyQualityScore,
+                s?.EarlyQualityScore ?? 0,
                 null,
-                s.RiskScore,
-                s.Martingale,
-                s.AveragingDown,
-                s.LotEscalation,
-                s.CurrentState,
+                s?.RiskScore ?? 0,
+                s?.Martingale ?? false,
+                s?.AveragingDown ?? false,
+                s?.LotEscalation ?? false,
+                s?.CurrentState ?? TraderState.INSUFFICIENT_DATA,
                 0,
-                s.LastScoredAt));
+                s?.LastScoredAt ?? account.LastSyncedAt));
         }
 
         IEnumerable<TraderRowDto> filtered = mapped;
@@ -193,7 +205,7 @@ public sealed class EfDashboardQueries : IDashboardQueries
             .Select(r => r.Reason)
             .ToListAsync(ct);
 
-        return new RiskDashboardDto(0, 0, 0, 0, 0, (ks?.Mode ?? KillSwitchMode.None).ToString(), false, rejects);
+        return new RiskDashboardDto(0, 0, 0, 0, 0, (ks?.Mode ?? KillSwitchMode.None).ToString(), _runtime.RealCopyEnabled, rejects);
     }
 
     private static long MaskLogin(long login)

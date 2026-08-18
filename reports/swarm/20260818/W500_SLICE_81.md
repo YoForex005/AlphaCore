@@ -1,0 +1,167 @@
+# W500_SLICE_81
+
+- **slot:** 81
+- **file:** `D:/Prop/src/Infrastructure/Seeding/DemoSeeder.cs`
+- **angle:** failure to fetch ALL manager groups
+- **read:** full file (140 lines) via `read_file`; grep on this file for `GetGroups|GroupTotal|GroupNext|GroupRequest|CreateDefault|10001` (hits only `CreateDefault` + the four login literals); cross-read `FakeMt5BrokerConnector` / `DemoBrokerFactory`, `DealIngestionService`, `NativeMt5BrokerConnector.GetGroupsCore`, `LiveIngestHostedService`, `BrokerCatalogSeed`, `apps/api/Program.cs`, `apps/mt5-worker/Program.cs`, `apps/fix-worker/Program.cs`
+- **verdict:** FAIL
+
+## Binding law (this angle)
+
+Architecture v2 §7: `demo\Maxmaster` is not the only group; startup/resync must dynamically enumerate **all groups accessible to the Manager login** (Connect → enumerate groups → upsert → accounts → history).
+
+Architecture v2 §9 / A39: discovery is Manager API set A (`GroupRequestArray("*")` / `GroupTotal`+`GroupNext`). Plan maps and hardcoded `demo\yo-*` names are **not** the enumerator.
+
+This is **not** an empty-PASS. The assigned file was fully read. It **does** write `mt5_groups` — from a Fake four-name book, not from the manager-visible set.
+
+## Evidence quotes
+
+`SeedAsync` never connects as manager `2027` / `9904`. After catalog `SaveChangesAsync` it builds a **private** `BrokerRegistry` from `DemoBrokerFactory.CreateDefault()` (`FakeMt5BrokerConnector` only) and runs `DealIngestionService.SyncBrokerAsync` on that graph. There is no `NativeMt5BrokerConnector`, no `GetGroupsAsync` in this file, no `GroupRequestArray("*")`, no `GroupTotal`/`GroupNext`, no DI `IBrokerRegistry`.
+
+```126:138:D:/Prop/src/Infrastructure/Seeding/DemoSeeder.cs
+        var (achiever, starwave) = DemoBrokerFactory.CreateDefault();
+        var registry = new BrokerRegistry(new IMt5BrokerConnector[] { achiever, starwave });
+        var ingestion = new DealIngestionService(registry, store);
+        var from = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        var to = new DateTimeOffset(2026, 12, 31, 0, 0, 0, TimeSpan.Zero);
+        await ingestion.SyncBrokerAsync(BrokerCodes.Achiever, from, to, ct);
+        await ingestion.SyncBrokerAsync(BrokerCodes.StarwaveFx, from, to, ct);
+
+        foreach (var login in new long[] { 10001, 10002, 10003, 99001 })
+        {
+            var code = login >= 99000 ? BrokerCodes.StarwaveFx : BrokerCodes.Achiever;
+            await scoring.RebuildTraderAsync(code, login, ct);
+        }
+```
+
+Grep of this file for `GetGroups|GroupTotal|GroupNext|GroupRequest` is empty. The only group universe this path can persist is the Fake constructor list (three Achiever names + one Starwave name):
+
+```80:106:D:/Prop/src/Mt5/Connectors/FakeMt5BrokerConnector.cs
+        var achiever = new FakeMt5BrokerConnector(
+            "ACHIEVER",
+            groups: new[]
+            {
+                new Mt5GroupDto(@"demo\Maxmaster", "USD", 2, "Achiever", 100, 50, true),
+                new Mt5GroupDto(@"demo\yo-2step", "USD", 2, "Achiever", 100, 50, true),
+                new Mt5GroupDto(@"contest\yo-2step", "USD", 2, "Achiever", 100, 50, true)
+            },
+            accounts: new[]
+            {
+                new Mt5AccountDto(10001, @"demo\Maxmaster", 100, 10_000, 10_240, 200, 9_800, 240),
+                new Mt5AccountDto(10002, @"demo\yo-2step", 100, 5_000, 4_820, 150, 4_670, -180),
+                new Mt5AccountDto(10003, @"contest\yo-2step", 200, 25_000, 25_000, 0, 25_000, 0)
+            },
+            deals: BuildAchieverDeals(t0));
+
+        var starwave = new FakeMt5BrokerConnector(
+            "STARWAVEFX",
+            groups: new[]
+            {
+                new Mt5GroupDto(@"real\standard", "USD", 2, "StarwaveFX", 80, 50, true)
+            },
+```
+
+`FakeMt5BrokerConnector.GetGroupsAsync` returns that constructor list only — not Manager set A:
+
+```44:45:D:/Prop/src/Mt5/Connectors/FakeMt5BrokerConnector.cs
+    public Task<IReadOnlyList<Mt5GroupDto>> GetGroupsAsync(CancellationToken ct) =>
+        Task.FromResult<IReadOnlyList<Mt5GroupDto>>(_groups);
+```
+
+Ingestion upserts **whatever** the connector returns, then walks that same list for bulk deals. On this seeder path the connector is Fake, so the persisted census is the four-name subset. Current `SyncCatalogAsync` (called from `SyncBrokerAsync`) is:
+
+```44:48:D:/Prop/src/Application/Ingestion/DealIngestionService.cs
+        var groups = await connector.GetGroupsAsync(ct);
+        await _store.UpsertGroupsBatchAsync(brokerId, groups, now, ct);
+
+        var accounts = await connector.GetAccountsAsync(null, ct);
+        await _store.UpsertAccountsBatchAsync(brokerId, accounts, now, ct);
+```
+
+Fake does **not** implement `IMt5BulkDealReader`. `SyncBrokerAsync` therefore walks the four hardcoded accounts, not `DealRequestByGroup` over every manager-visible group:
+
+```64:78:D:/Prop/src/Application/Ingestion/DealIngestionService.cs
+        if (connector is IMt5BulkDealReader bulk)
+        {
+            foreach (var group in groups)
+            {
+                var deals = await bulk.GetGroupDealsAsync(group.Name, from, to, ct);
+                insertedDeals += await _store.UpsertDealsBatchAsync(brokerId, deals, now, ct);
+            }
+        }
+        else
+        {
+            foreach (var account in accounts)
+            {
+                var deals = await connector.GetDealsAsync(account.Login, from, to, ct);
+                insertedDeals += await _store.UpsertDealsBatchAsync(brokerId, deals, now, ct);
+            }
+        }
+```
+
+Catalog `Broker` rows carry manager logins `2027` / `9904` and lab server names but are **never** used as Connect/enumerate input. They are POCOs written before the Fake ingest:
+
+```29:59:D:/Prop/src/Infrastructure/Seeding/DemoSeeder.cs
+        db.Brokers.AddRange(
+            new Broker
+            {
+                Id = achieverId,
+                Code = BrokerCodes.Achiever,
+                DisplayName = "Achiever",
+                Server = "57.128.141.65",
+                Port = 443,
+                ManagerLogin = 2027,
+                ServerName = "AchieverGlobalMarkets-Server",
+                Mode = "local",
+                PoolSize = 8,
+                Enabled = true,
+                CreatedAt = now,
+                UpdatedAt = now
+            },
+            new Broker
+            {
+                Id = starwaveId,
+                Code = BrokerCodes.StarwaveFx,
+                DisplayName = "StarwaveFX",
+                Server = "84.201.6.142",
+                Port = 443,
+                ManagerLogin = 9904,
+                ServerName = "StarwaveFX",
+```
+
+First-writer latch: any existing `Brokers` row makes the seeder return. It never retries Manager discovery and never reconciles Fake names against `GroupRequestArray("*")`.
+
+```22:23:D:/Prop/src/Infrastructure/Seeding/DemoSeeder.cs
+        if (await db.Brokers.AnyAsync(ct))
+            return;
+```
+
+Measured product callers of `DemoSeeder.SeedAsync` (this read):
+
+| Host | Seed call |
+|---|---|
+| `D:/Prop/apps/api/Program.cs` | **No.** Uses `BrokerCatalogSeed.EnsureAsync` (catalog only; no Fake groups). |
+| `D:/Prop/apps/mt5-worker/Program.cs` | **Yes.** After `EnsureCreatedAsync`, before `host.Run()`. |
+| `D:/Prop/apps/fix-worker/Program.cs` | **Yes.** Same pattern. |
+| `D:/Prop/tests/Integration/SeedingAndStoreTests.cs` | Yes (test). |
+
+```11:19:D:/Prop/apps/mt5-worker/Program.cs
+using (var scope = host.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TraderDbContext>();
+    await db.Database.EnsureCreatedAsync();
+    await DemoSeeder.SeedAsync(
+        db,
+        scope.ServiceProvider.GetRequiredService<TraderIntelligence.Application.Ingestion.ITradingStore>(),
+        scope.ServiceProvider.GetRequiredService<TraderIntelligence.Application.Ingestion.ReconstructionScoringService>(),
+        CancellationToken.None);
+}
+```
+
+On an empty shared store, **mt5-worker / fix-worker first boot plants the Fake four groups** (and four scored logins) before `LiveIngestHostedService` can walk native `GetGroupsCore`. Native discovery (`GroupRequestArray("*")` then `GroupTotal`/`GroupNext`) exists only on `NativeMt5BrokerConnector` and is **bypassed by this file**. Live ingest may later upsert additional names **if** Connect succeeds; this seeder does not wait for that, does not compare counts to `GroupTotal`, and still scores only `{10001, 10002, 10003, 99001}`.
+
+A39 “Never”: hard-coded `demo\Maxmaster` / `demo\yo-2step` / `contest\yo-2step` / `real\standard` as the enumerator. Missing live siblings (env/plan catalog and anything else the manager ACL can see) include at least `demo\yo-1step`, `contest\yo-1step`, `contest\yo-instant`, pay-first / Flexy / rebate / archive, plus any group added on the trade server after this list was written.
+
+## No-loss implication
+
+This file does not emit FIX `NewOrderSingle`, Manager `OrderSend`, or any other destination send. Seeded FIX rows are `Disconnected` with `LastError` stating no live socket / NewOrderSingle off. The capital path is **indirect**: no-loss / RISK_BLOCKED / shadow / copy-eligibility can only see accounts that were ingested. A four-name Fake snapshot omits every other manager-visible group. Hidden source logins keep trading; their drawdown never reaches `BaselineScorer` or kill-switch. Dashboard `mt5_groups` after worker seed looks like a complete book while the live manager set is larger. If live ingest later fails (one-shot host, Connect error, no dummy substitute), the Fake subset remains the universe. Slot 81 is a **FAIL** on ALL-group discovery in `DemoSeeder`.

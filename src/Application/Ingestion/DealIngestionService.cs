@@ -16,6 +16,12 @@ public interface ITradingStore
     Task UpsertScoreAsync(TraderScore score, CancellationToken ct);
     Task PersistDemoShadowAsync(Guid brokerId, long login, TraderState state, IReadOnlyList<ReconstructedTradeResult> completedXau, CancellationToken ct);
     Task<Guid> ResolveBrokerIdAsync(string brokerCode, CancellationToken ct);
+    Task<IReadOnlyList<long>> ListLoginsAsync(Guid brokerId, CancellationToken ct);
+    Task<IReadOnlyList<long>> ListLoginsWithDealsAsync(Guid brokerId, CancellationToken ct);
+    Task UpsertGroupsBatchAsync(Guid brokerId, IReadOnlyList<Mt5GroupDto> groups, DateTimeOffset now, CancellationToken ct);
+    Task UpsertAccountsBatchAsync(Guid brokerId, IReadOnlyList<Mt5AccountDto> accounts, DateTimeOffset now, CancellationToken ct);
+    Task<int> UpsertDealsBatchAsync(Guid brokerId, IReadOnlyList<Mt5DealDto> deals, DateTimeOffset now, CancellationToken ct);
+    Task ReplaceBrokerPositionsAsync(Guid brokerId, IReadOnlyList<Mt5PositionDto> positions, CancellationToken ct);
 }
 
 public sealed class DealIngestionService
@@ -29,7 +35,7 @@ public sealed class DealIngestionService
         _store = store;
     }
 
-    public async Task<int> SyncBrokerAsync(string brokerCode, DateTimeOffset from, DateTimeOffset to, CancellationToken ct)
+    public async Task<BrokerSyncResult> SyncCatalogAsync(string brokerCode, CancellationToken ct)
     {
         var connector = _registry.Get(brokerCode);
         await connector.ConnectAsync(ct);
@@ -37,24 +43,31 @@ public sealed class DealIngestionService
         var now = DateTimeOffset.UtcNow;
 
         var groups = await connector.GetGroupsAsync(ct);
-        foreach (var group in groups)
-            await _store.UpsertGroupAsync(brokerId, group, now, ct);
+        await _store.UpsertGroupsBatchAsync(brokerId, groups, now, ct);
 
         var accounts = await connector.GetAccountsAsync(null, ct);
+        await _store.UpsertAccountsBatchAsync(brokerId, accounts, now, ct);
+
+        return new BrokerSyncResult(groups.Count, accounts.Count, 0, 0);
+    }
+
+    public async Task<int> SyncBrokerAsync(string brokerCode, DateTimeOffset from, DateTimeOffset to, CancellationToken ct)
+    {
+        var connector = _registry.Get(brokerCode);
+        await connector.ConnectAsync(ct);
+        var catalog = await SyncCatalogAsync(brokerCode, ct);
+        var brokerId = await _store.ResolveBrokerIdAsync(brokerCode, ct);
+        var now = DateTimeOffset.UtcNow;
+        var groups = await connector.GetGroupsAsync(ct);
+        var accounts = await connector.GetAccountsAsync(null, ct);
         var insertedDeals = 0;
-        foreach (var account in accounts)
-            await _store.UpsertAccountAsync(brokerId, account, now, ct);
 
         if (connector is IMt5BulkDealReader bulk)
         {
             foreach (var group in groups)
             {
                 var deals = await bulk.GetGroupDealsAsync(group.Name, from, to, ct);
-                foreach (var deal in deals)
-                {
-                    if (await _store.UpsertDealAsync(brokerId, deal, now, ct))
-                        insertedDeals++;
-                }
+                insertedDeals += await _store.UpsertDealsBatchAsync(brokerId, deals, now, ct);
             }
         }
         else
@@ -62,23 +75,30 @@ public sealed class DealIngestionService
             foreach (var account in accounts)
             {
                 var deals = await connector.GetDealsAsync(account.Login, from, to, ct);
-                foreach (var deal in deals)
-                {
-                    if (await _store.UpsertDealAsync(brokerId, deal, now, ct))
-                        insertedDeals++;
-                }
+                insertedDeals += await _store.UpsertDealsBatchAsync(brokerId, deals, now, ct);
             }
         }
 
-        foreach (var account in accounts.Take(200))
+        if (connector is IMt5BulkPositionReader posBulk)
         {
-            var positions = await connector.GetPositionsAsync(account.Login, ct);
-            await _store.ReplacePositionsAsync(brokerId, account.Login, positions, ct);
+            var positions = await posBulk.GetGroupPositionsAsync("*", ct);
+            await _store.ReplaceBrokerPositionsAsync(brokerId, positions, ct);
+        }
+        else
+        {
+            foreach (var account in accounts)
+            {
+                var positions = await connector.GetPositionsAsync(account.Login, ct);
+                await _store.ReplacePositionsAsync(brokerId, account.Login, positions, ct);
+            }
         }
 
+        _ = catalog;
         return insertedDeals;
     }
 }
+
+public sealed record BrokerSyncResult(int Groups, int Accounts, int DealsInserted, int Positions);
 
 public sealed class ReconstructionScoringService
 {

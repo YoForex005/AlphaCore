@@ -1,0 +1,183 @@
+# W500_SLICE_99
+
+- **slot:** 99
+- **file:** `D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md`
+- **angle:** env file not loaded before `WebApplication.CreateBuilder`
+- **read:** full file (2868 lines) via `read_file` in sequential chunks covering §§1–75 (offsets 1, 1000, 1490, 1980, 2470). `grep` on this path for `WebApplication|CreateBuilder|CreateApplicationBuilder|EnvFile|dotenv|DotNetEnv|AddEnvironmentVariables|\.env|secret|environment variable|IConfiguration|Program\.cs` found only config *catalogs* and secret-store language — **zero** host-bootstrap tokens. A second `grep` for `load.*env|before.*Create|CreateBuilder|Program\.cs|dotenv|EnvFile|FindAndLoad|AddEnvironmentVariables|appsettings` on this file returned **no matches**.
+- **verdict:** PASS
+
+## Binding law (this angle)
+
+The assigned artifact is the v2 architecture prompt, not a host `Program.cs`. The angle asks whether a `.env` file is (or must be) parsed into the process environment **before** `WebApplication.CreateBuilder`.
+
+This markdown:
+
+- is not executable C#
+- never names `WebApplication`, `CreateBuilder`, `CreateApplicationBuilder`, `EnvFile`, dotenv, `FindAndLoad`, or `AddEnvironmentVariables`
+- specifies **environment variables / OS secret store / Vault** as the secret surface, and `.env.example` as a **placeholder catalog only**
+- hard-defaults real copy **off** (`Execution default: Disabled`; `REAL_COPY_EXECUTION_ENABLED=false`)
+
+Empty PASS is valid only after a full read. That read is complete (line 1 through 2868). The angle is **absent by construction**, not skipped.
+
+## Evidence quotes
+
+Header: execution is disabled by default. There is no ASP.NET host bootstrap and no dotenv load step:
+
+```1:7:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+# MT5 Trader Intelligence + cTrader FIX 4.4 Execution Platform
+## Unbiased Architecture Review + Senior Engineer Implementation Prompt
+
+**Version:** 2.0  
+**Primary use case:** Identify high-quality XAUUSD traders from ~5,000+ MT5 accounts, shadow-copy them, and route approved real trades to a cTrader/cServer FIX 4.4 execution account.  
+**AI/LLM dependency:** None.  
+**Execution default:** Disabled until shadow/reconciliation/risk controls are proven.
+```
+
+§5 names ASP.NET Core as the API stack but does not prescribe `Program.cs` or env-file parse order:
+
+```220:231:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+Use:
+
+```text
+C#
+.NET 8+ compatible stack
+ASP.NET Core
+.NET Worker Services
+Entity Framework Core or existing proven data layer
+Npgsql
+Serilog
+OpenTelemetry
+```
+```
+
+§7 / §8 / §9 / §25 / §56 list configuration as ` ```env ` **catalogs** (key names + placeholders). They are not a host instruction to parse a file before `CreateBuilder`. Example (secrets shown only as `<SECRET>` sentinels; values not reproduced):
+
+```361:377:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+Non-secret configuration currently includes:
+
+```env
+MT5_SERVER=57.128.141.65
+MT5_PORT=443
+MT5_LOGIN=2027
+MT5_DEFAULT_GROUP=demo\Maxmaster
+MT5_MODE=local
+MT5_POOL_SIZE=8
+MT5_SERVER_NAME=AchieverGlobalMarkets-Server
+```
+
+Secret:
+
+```env
+MT5_PASSWORD=<SECRET>
+```
+```
+
+§41 is the live-order gate. The documented default is **false**; NewOrderSingle requires an explicit `true` **plus** a healthy risk engine. This document never says that flag must be read from a dotenv file, nor when relative to `CreateBuilder`:
+
+```1564:1590:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+# 41. Real Execution Feature Flags
+
+Default:
+
+```env
+CTRADER_FIX_ENABLED=true
+CTRADER_FIX_QUOTE_ENABLED=true
+CTRADER_FIX_TRADE_SESSION_ENABLED=true
+REAL_COPY_EXECUTION_ENABLED=false
+```
+
+This allows:
+
+- connecting,
+- receiving prices,
+- requesting orders/positions,
+- validating FIX connectivity,
+
+without automatically placing new real orders.
+
+Actual NewOrderSingle submission should require:
+
+```env
+REAL_COPY_EXECUTION_ENABLED=true
+```
+
+plus runtime risk-engine healthy state.
+```
+
+§55–56: secrets live in **environment variables / OS store / Vault**. `.env.example` is placeholders only. There is no “load `.env` before the web host builder” sentence:
+
+```2002:2027:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+# 55. Security
+
+Never expose:
+
+```text
+MT5 passwords
+proxy credentials
+cTrader account password
+FIX password
+database passwords
+Redis passwords
+```
+
+to React.
+
+Use:
+
+```text
+environment variables
+OS secret store
+Vault/cloud secrets manager
+```
+
+Production secrets must not be committed to Git.
+
+Create only placeholders in `.env.example`.
+```
+
+§56 ends the example catalog with the same fail-closed flag (`REAL_COPY_EXECUTION_ENABLED=false`). Password slots are `<SECRET>` only:
+
+```2096:2101:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+CTRADER_FIX_USE_SSL=true
+
+CTRADER_FIX_QUOTE_ENABLED=true
+CTRADER_FIX_TRADE_SESSION_ENABLED=true
+
+REAL_COPY_EXECUTION_ENABLED=false
+```
+
+§62: new live orders fail closed when TRADE FIX / DB / quotes are unhealthy. §67 Phase 7: “Still keep real NewOrderSingle disabled.” §68–70: live copy is gated. Final lines of the file:
+
+```2865:2867:D:/Prop/MT5_XAUUSD_Trader_Intelligence_cTrader_FIX44_Architecture_v2.md
+The software must remain **deterministic, auditable, idempotent, risk-gated, recoverable after restart, and safe by default**.
+
+Real order submission must remain OFF until the system has passed the defined shadow, reconciliation, sizing, and risk-engine gates.
+```
+
+§66 lists `/apps/api` and workers as folders only. §73 required outputs are audit / gap / sequence / risk list. None of those sections mention dotenv load order or `WebApplication.CreateBuilder`.
+
+This file does **not** contain:
+
+- `WebApplication.CreateBuilder` / `Host.CreateApplicationBuilder`
+- `EnvFile.Load` / `EnvFile.FindAndLoad` / `DotNetEnv` / `AddEnvironmentVariables`
+- any “parse `.env` into `Environment` **before** the generic host builds `IConfiguration`” contract
+- any instruction that a missing dotenv load should enable live copy or invent MT5/FIX passwords
+
+Repo grep of this path for the host-bootstrap tokens above: **no hits**.
+
+Out-of-slice residual (does **not** change this file’s verdict): product `D:/Prop/apps/api/Program.cs` currently calls `EnvFile.FindAndLoad()` on line 9 **before** `WebApplication.CreateBuilder(args)` on line 11, then `builder.Configuration.AddEnvironmentVariables()` on line 12. Those hosts are not this slot’s assigned file. Architecture’s own contract is **process environment / secret store / Vault**, which `CreateBuilder` already reads when the operator injects process env (Docker `env_file`, systemd, user-secrets). A missing dotenv parse is therefore not an architecture-law violation inside this markdown.
+
+## No-loss implication
+
+This file cannot skip `EnvFile` and cannot send FIX. It cannot leave `MT5_PASSWORD` / `CTRADER_FIX_PASSWORD` / `REAL_COPY_EXECUTION_ENABLED` unset-in-`IConfiguration` because it never builds `IConfiguration`.
+
+Capital path from the **angle** (dotenv not applied before `CreateBuilder`):
+
+- **Not present in this artifact.** A design doc that never names `CreateBuilder` cannot fail to load `.env` before it.
+- Architecture law is fail-closed: execution default disabled (L7); `REAL_COPY_EXECUTION_ENABLED=false` (§41, §56); NewOrderSingle stays off through Phase 7; live send requires explicit flag + risk health + §68/§70 gates.
+- If an operator only fills a gitignored `.env` and a host never parses it, process env stays empty. That **does not arm** live copy from this document; it leaves passwords and the real-copy flag unset unless already in the OS environment. Unset `REAL_COPY_EXECUTION_ENABLED` is not `true`.
+- Worst case documented here is connecting QUOTE/TRADE **without** placing new real orders (§41). That is the intended no-loss posture.
+
+Slot 99 therefore has **no capital-loss path** of “env file not loaded before `WebApplication.CreateBuilder`” **in the assigned file**.
+
+Empty-PASS justification: the assigned file was fully read (2868 lines); the angle (dotenv-before-`CreateBuilder`) is absent by construction, not by skipped review.
