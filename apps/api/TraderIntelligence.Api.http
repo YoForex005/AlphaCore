@@ -1,0 +1,6 @@
+@TraderIntelligence.Api_HostAddress = http://localhost:5160
+
+GET {{TraderIntelligence.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

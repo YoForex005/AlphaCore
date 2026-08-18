@@ -1,0 +1,73 @@
+# =========================
+# .NET
+# =========================
+bin/
+obj/
+out/
+build/
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+TestResults/
+coverage/
+*.pdb
+*.log
+
+# DLLs (vendor SDK tracked deliberately)
+# *.dll
+
+# =========================
+# Secrets & Environment
+# =========================
+.env
+.env.*
+!.env.example
+*.pfx
+secrets.json
+appsettings.Development.json
+appsettings.*.local.json
+
+# =========================
+# FIX session state
+# =========================
+store/
+fix-store/
+*.seqnums
+*.session
+
+# =========================
+# Node / React
+# =========================
+node_modules/
+dist/
+apps/web/.vite/
+
+# =========================
+# Python
+# =========================
+services/ml-service/.venv/
+services/ml-service/__pycache__/
+*.pyc
+
+# =========================
+# Logs
+# =========================
+logs/
+
+# =========================
+# OS
+# =========================
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# =========================
+# Vendor SDK — tracked deliberately
+# =========================
+# vendor/MetaTrader5SDK/Libs/ is committed on purpose
