@@ -4,9 +4,12 @@ import { useTraders } from '../api/hooks';
 export default function TradersPage() {
   const { data = [], isLoading } = useTraders({});
   if (isLoading) return <p className="text-gray-400">Loading traders…</p>;
+  const rows = data.slice(0, 250);
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-white mb-4">All manager traders ({data.length})</h1>
+      <h1 className="text-2xl font-semibold text-white mb-4">
+        All manager traders ({data.length}{data.length > 250 ? `, showing first 250` : ''})
+      </h1>
       <table className="w-full text-sm text-left">
         <thead className="text-gray-400 border-b border-gray-800">
           <tr>
@@ -22,7 +25,7 @@ export default function TradersPage() {
           </tr>
         </thead>
         <tbody>
-          {data.map((t: any) => (
+          {rows.map((t: any) => (
             <tr key={`${t.broker}-${t.login}`} className="border-b border-gray-800 text-gray-200">
               <td className="py-2">{t.broker}</td>
               <td><Link className="text-blue-300" to={`/traders/${t.broker}/${t.login}`}>{t.login}</Link></td>

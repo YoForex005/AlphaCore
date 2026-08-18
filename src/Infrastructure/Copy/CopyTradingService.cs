@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using TraderIntelligence.Application.Contracts;
 using TraderIntelligence.Application.Copy;
 using TraderIntelligence.Application.Runtime;
 using TraderIntelligence.Fix.CTrader.Sessions;
@@ -25,6 +26,7 @@ public sealed class CopyTradingService
     private readonly LiveRuntimeStatus _runtime;
     private readonly IConfiguration _config;
     private readonly ILogger<CopyTradingService> _log;
+    private readonly IBrokerRegistry _brokers;
     private readonly RiskEngine _risk = new();
     private readonly XauUsdOneToOneCopyPolicy _policy = new();
     private readonly CopyRosterEngine _roster = new();
@@ -34,12 +36,14 @@ public sealed class CopyTradingService
         TraderDbContext db,
         LiveRuntimeStatus runtime,
         IConfiguration config,
-        ILogger<CopyTradingService> log)
+        ILogger<CopyTradingService> log,
+        IBrokerRegistry brokers)
     {
         _db = db;
         _runtime = runtime;
         _config = config;
         _log = log;
+        _brokers = brokers;
     }
 
     public bool DemoDest =>
@@ -74,7 +78,7 @@ public sealed class CopyTradingService
             LiveSends: sends,
             Blockers: blockers,
             Summary: DemoDest
-                ? "Demo dest auto-copy ON. Eligible demo/contest opens send on the 20s tick; dest closes when the MT5 source closes. Live 1369850 is never used."
+                ? "Demo dest auto-copy ON. Dest closes when the MT5 Manager book drops the master ticket, then 35=AN dest book is checked. Live 1369850 is never used."
                 : "Copy pipeline ON. Shadow intents only. Live Pepperstone will not receive NewOrderSingle.");
     }
 
@@ -497,121 +501,111 @@ public sealed class CopyTradingService
             return 0;
 
         var ledger = DemoCopyLedger.Load();
-        if (ledger.All(x => x.SourceLogin != "305750" || x.SourcePositionId != "21250421"))
+        var sent = await ReconcileDestClosesAsync(host, sender, target, account, password, ledger, ct);
+        DemoCopyLedger.Save(ledger);
+        return sent;
+    }
+
+    public async Task<int> ReconcileDestClosesAsync(CancellationToken ct)
+    {
+        if (!DemoDest)
+            return 0;
+        var host = _config["CTRADER_FIX_HOST"] ?? "";
+        var sender = _config["CTRADER_FIX_TRADE_SENDER_COMP_ID"] ?? "";
+        var target = _config["CTRADER_FIX_TRADE_TARGET_COMP_ID"] ?? "cServer";
+        var account = _config["CTRADER_FIX_ACCOUNT_ID"] ?? "";
+        var password = _config["CTRADER_FIX_PASSWORD"] ?? "";
+        if (string.IsNullOrWhiteSpace(password))
+            return 0;
+        var ledger = DemoCopyLedger.Load();
+        var sent = await ReconcileDestClosesAsync(host, sender, target, account, password, ledger, ct);
+        DemoCopyLedger.Save(ledger);
+        return sent;
+    }
+
+    private async Task<int> ReconcileDestClosesAsync(
+        string host, string sender, string target, string account, string password,
+        List<DemoCopyFill> ledger, CancellationToken ct)
+    {
+        var liveByBroker = new Dictionary<string, HashSet<string>>(StringComparer.OrdinalIgnoreCase);
+        foreach (var conn in _brokers.All())
         {
-            ledger.Add(new DemoCopyFill
+            if (conn is not IMt5BulkPositionReader bulk)
+                continue;
+            try
             {
-                SourceLogin = "305750",
-                SourcePositionId = "21250421",
-                IsLong = true,
-                Lots = 0.01m,
-                DestPositionId = "237339770",
-                DestClOrdId = "C20260818093047317",
-                DestFillPrice = 4390.2m
-            });
+                var book = await bulk.GetGroupPositionsAsync("*", ct);
+                if (!CopyLifecycle.TrustManagerBook(book.Count))
+                {
+                    _log.LogWarning("Manager book empty for {Broker}; skip dest closes this tick", conn.BrokerCode);
+                    continue;
+                }
+                liveByBroker[conn.BrokerCode] = book.Select(p => p.PositionTicket.ToString()).ToHashSet();
+            }
+            catch (Exception ex)
+            {
+                _log.LogWarning(ex, "Manager book failed for {Broker}; skip closes this tick", conn.BrokerCode);
+            }
         }
 
-        var sent = 0;
-        const int maxPerTick = 5;
+        DestBookResult? destBook = null;
+        try
+        {
+            destBook = await CTraderFixDestBook.RequestAsync(host, sender, target, account, password, ct);
+        }
+        catch (Exception ex)
+        {
+            _log.LogWarning(ex, "Dest 35=AN failed");
+        }
 
+        var ledgerOpen = ledger.Count(f => !f.DestClosed && !string.IsNullOrWhiteSpace(f.DestPositionId));
+        var destOpen = destBook is not null
+                       && CopyLifecycle.TrustDestVenueSnapshot(destBook.Complete, destBook.Positions.Count, ledgerOpen)
+            ? destBook.Positions.Select(p => p.PosId).ToHashSet(StringComparer.Ordinal)
+            : null;
+
+        var sent = 0;
         foreach (var fill in ledger.Where(f => !f.DestClosed && !string.IsNullOrWhiteSpace(f.DestPositionId)).ToList())
         {
-            if (!long.TryParse(fill.SourceLogin, out var login) || !long.TryParse(fill.SourcePositionId, out var pos))
-                continue;
-            var sourceQuery = _db.ReconstructedTrades.AsNoTracking().Where(t => t.Login == login && t.PositionId == pos);
-            if (!string.IsNullOrWhiteSpace(fill.Broker))
+            if (destOpen is not null && !destOpen.Contains(fill.DestPositionId!))
             {
-                var bid = await _db.Brokers.AsNoTracking()
-                    .Where(b => b.Code == fill.Broker)
-                    .Select(b => b.Id)
-                    .FirstOrDefaultAsync(ct);
-                if (bid != Guid.Empty)
-                    sourceQuery = sourceQuery.Where(t => t.BrokerId == bid);
-            }
-            var source = await sourceQuery.FirstOrDefaultAsync(ct);
-            if (source is null || !source.Completed)
+                fill.DestClosed = true;
+                sent++;
+                _log.LogInformation("Dest {Dest} already flat on cTrader for {Login}/{Pos}",
+                    fill.DestPositionId, fill.SourceLogin, fill.SourcePositionId);
                 continue;
-            if (!CopyLifecycle.ShouldCloseDest(true, true, fill.DestClosed))
+            }
+
+            var broker = fill.Broker ?? "ACHIEVER";
+            if (!liveByBroker.TryGetValue(broker, out var live))
+                continue;
+            var masterLive = live.Contains(fill.SourcePositionId);
+            if (!CopyLifecycle.ShouldCloseDestBecauseMasterGone(masterLive, true, fill.DestClosed))
                 continue;
 
             var close = await CTraderFixCopyOpen.SendAsync(
                 host, sender, target, account, password,
                 fill.SourceLogin, fill.SourcePositionId, fill.IsLong, fill.Lots, ct, fill.DestPositionId);
-            if (close.Filled || close.OrderSent)
+            if (close.Filled || close.OrderSent || AlreadyFlat(close.Error))
             {
                 fill.DestClosed = true;
                 sent++;
-                _log.LogInformation("Auto-closed dest {Dest} for source {Login}/{Pos} filled={Filled}",
-                    fill.DestPositionId, fill.SourceLogin, fill.SourcePositionId, close.Filled);
+                _log.LogInformation("Auto-closed dest {Dest} master gone {Login}/{Pos} filled={Filled} err={Err}",
+                    fill.DestPositionId, fill.SourceLogin, fill.SourcePositionId, close.Filled, close.Error);
             }
             else
                 _log.LogWarning("Auto-close failed {Login}/{Pos}: {Err}", fill.SourceLogin, fill.SourcePositionId, close.Error);
         }
 
-        var admitted = await _db.CopyIntents.AsNoTracking()
-            .Where(c => c.Status == "ADMITTED" && c.IdempotencyKey.StartsWith("roster:"))
-            .ToListAsync(ct);
-
-        foreach (var seat in admitted)
-        {
-            if (sent >= maxPerTick)
-                break;
-            var opens = await _db.ReconstructedTrades
-                .Where(t => t.BrokerId == seat.BrokerId && t.Login == seat.SourceLogin
-                            && t.CanonicalSymbol == "XAUUSD" && !t.Completed)
-                .ToListAsync(ct);
-            foreach (var trade in opens)
-            {
-                if (sent >= maxPerTick)
-                    break;
-                if (trade.MaxVolumeLots > MaxAutoLots)
-                    continue;
-                var already = ledger.Any(f => f.SourceLogin == seat.SourceLogin.ToString()
-                                              && f.SourcePositionId == trade.PositionId.ToString()
-                                              && !string.IsNullOrWhiteSpace(f.DestPositionId));
-                if (!CopyLifecycle.ShouldOpenDest(true, already))
-                    continue;
-
-                var fill = await CTraderFixCopyOpen.SendAsync(
-                    host, sender, target, account, password,
-                    seat.SourceLogin.ToString(), trade.PositionId.ToString(),
-                    trade.Direction == TradeDirection.Long, trade.MaxVolumeLots, ct);
-                if (!fill.Filled)
-                {
-                    _log.LogWarning("Auto-open failed {Login}/{Pos}: {Err}", seat.SourceLogin, trade.PositionId, fill.Error);
-                    continue;
-                }
-
-                ledger.Add(new DemoCopyFill
-                {
-                    SourceLogin = seat.SourceLogin.ToString(),
-                    SourcePositionId = trade.PositionId.ToString(),
-                    IsLong = trade.Direction == TradeDirection.Long,
-                    Lots = trade.MaxVolumeLots,
-                    DestPositionId = fill.PosId,
-                    DestClOrdId = fill.ClOrdId,
-                    DestFillPrice = decimal.TryParse(fill.LastPx, out var px) ? px : null
-                });
-                var intent = await _db.CopyIntents.FirstOrDefaultAsync(
-                    c => c.IdempotencyKey == $"copy:{seat.BrokerId}:{seat.SourceLogin}:{trade.PositionId}:open", ct);
-                if (intent is not null)
-                {
-                    intent.DestPositionId = fill.PosId;
-                    intent.DestClOrdId = fill.ClOrdId;
-                    intent.DestFillPrice = decimal.TryParse(fill.LastPx, out var px2) ? px2 : null;
-                    intent.Status = "DEMO_SENT";
-                }
-                sent++;
-                _log.LogInformation("Auto-opened dest {Dest} for {Login}/{Pos} px={Px}",
-                    fill.PosId, seat.SourceLogin, trade.PositionId, fill.LastPx);
-            }
-        }
-
-        DemoCopyLedger.Save(ledger);
-        if (sent > 0)
-            await _db.SaveChangesAsync(ct);
         return sent;
     }
+
+    private static bool AlreadyFlat(string? error) =>
+        !string.IsNullOrWhiteSpace(error)
+        && (error.Contains("not found", StringComparison.OrdinalIgnoreCase)
+            || error.Contains("does not exist", StringComparison.OrdinalIgnoreCase)
+            || error.Contains("UNKNOWN", StringComparison.OrdinalIgnoreCase)
+            || error.Contains("closed", StringComparison.OrdinalIgnoreCase));
 
     private List<string> BuildBlockers(int liveTraders)
     {

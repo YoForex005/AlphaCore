@@ -130,7 +130,7 @@ if (watch)
                     if (t.GetProperty("completed").GetBoolean())
                         continue;
                     var lots = t.GetProperty("maxVolumeLots").GetDecimal();
-                    if (lots <= 0 || lots > 0.05m)
+                    if (lots <= 0)
                         continue;
                     var pos = t.GetProperty("positionId").GetInt64().ToString();
                     if (ledger.Any(f => f.SourceLogin == login.ToString() && f.SourcePositionId == pos && !string.IsNullOrWhiteSpace(f.DestPositionId)))

@@ -1,0 +1,13 @@
+{
+  "updatedUtc": "2026-08-18T11:03:31.2056217+00:00",
+  "dest": "demo.pepperstone.5328266",
+  "ledgerOpen": 253,
+  "ledgerClosed": 62,
+  "destVenueOpen": 252,
+  "destBookComplete": true,
+  "destBookError": null,
+  "masterStillOpen": 253,
+  "masterGoneShouldClose": 0,
+  "destAlreadyFlat": 5,
+  "destVenueStillOpen": 248
+}

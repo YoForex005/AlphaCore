@@ -64,3 +64,34 @@ export function useCopyStatus() {
 export function useCopyIntents() {
   return useQuery({ queryKey: ['copy-intents'], queryFn: () => client.get('/api/copy/intents').then(r => r.data), refetchInterval: 4000 });
 }
+
+export function useCopyLive() {
+  return useQuery({
+    queryKey: ['copy-live'],
+    queryFn: async () => {
+      const r = await fetch('/copy-live.json', { cache: 'no-store' });
+      if (!r.ok) return { fills: [], open: 0, closed: 0, total: 0 };
+      const text = await r.text();
+      const clean = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+      try { return JSON.parse(clean); } catch { return { fills: [], open: 0, closed: 0, total: 0 }; }
+    },
+    refetchInterval: 1000,
+    retry: false,
+  });
+}
+
+export function useCopyReconcile() {
+  return useQuery({
+    queryKey: ['copy-reconcile'],
+    queryFn: async () => {
+      const r = await fetch('/copy-reconcile.json', { cache: 'no-store' });
+      if (!r.ok) return null;
+      const text = await r.text();
+      const clean = text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+      try { return JSON.parse(clean); } catch { return null; }
+    },
+    refetchInterval: 1000,
+    retry: false,
+  });
+}
+}

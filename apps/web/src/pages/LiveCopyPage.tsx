@@ -1,60 +1,68 @@
-import { useCopyIntents, useCopyStatus } from '../api/hooks';
+import { useCopyIntents, useCopyLive, useCopyReconcile, useCopyStatus } from '../api/hooks';
 
 export default function LiveCopyPage() {
-  const { data: status, isLoading } = useCopyStatus();
+  const { data: status } = useCopyStatus();
   const { data: intents = [] } = useCopyIntents();
-  if (isLoading) return <p className="text-gray-400">Loading copy pipeline…</p>;
+  const { data: live } = useCopyLive();
+  const { data: rec } = useCopyReconcile();
+  const fills = live?.fills ?? [];
+  const open = live?.open ?? fills.filter((f: any) => !f.DestClosed).length;
+  const closed = live?.closed ?? fills.filter((f: any) => f.DestClosed).length;
 
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-semibold text-white">Live copy portfolio</h1>
-      <p className="text-amber-300 text-sm">{status?.summary}</p>
+      <p className="text-emerald-300 text-sm">
+        Dest book: demo Pepperstone {live?.dest ?? '5328266'}. Backend compares MT5 Manager tickets to dest 35=AN. Dest closes only when the master ticket is gone — not a manual flatten.
+      </p>
+      <p className="text-gray-500 text-xs">Updated {live?.updatedUtc ?? '—'}</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
-        <Stat label="REAL_COPY armed" value={status?.realCopyArmed ? 'YES' : 'NO'} hot={status?.realCopyArmed} />
-        <Stat label="SHADOW traders" value={status?.shadowTraders ?? 0} />
+        <Stat label="Dest OPEN" value={open} hot />
+        <Stat label="Dest CLOSED" value={closed} />
+        <Stat label="Dest fills total" value={live?.total ?? fills.length} />
+        <Stat label="SHADOW (API)" value={status?.shadowTraders ?? 0} />
         <Stat label="LIVE traders" value={status?.liveTraders ?? 0} />
-        <Stat label="Live sends" value={status?.liveSends ?? 0} />
-        <Stat label="Intents" value={status?.intents ?? 0} />
-        <Stat label="Shadow fills" value={status?.shadowFills ?? 0} />
+        <Stat label="Paper intents" value={status?.intents ?? 0} />
         <Stat label="QUOTE" value={status?.quoteLoggedOn ? 'up' : 'down'} />
         <Stat label="TRADE" value={status?.tradeLoggedOn ? 'up' : 'down'} />
+        <Stat label="Master still open" value={rec?.masterStillOpen ?? '—'} />
+        <Stat label="Master gone → close" value={rec?.masterGoneShouldClose ?? '—'} hot />
+        <Stat label="cTrader dest open" value={rec?.destVenueOpen ?? '—'} />
+        <Stat label="Dest already flat" value={rec?.destAlreadyFlat ?? '—'} />
       </div>
-      {status?.blockers?.length > 0 && (
-        <div className="rounded border border-amber-900 bg-amber-950/40 p-3 text-sm text-amber-200">
-          <div className="font-medium mb-1">Live send blockers (Pepperstone cannot be filled)</div>
-          <ul className="list-disc pl-5 space-y-1">
-            {status.blockers.map((b: string) => <li key={b}>{b}</li>)}
-          </ul>
-        </div>
-      )}
       <table className="w-full text-sm text-left">
         <thead className="text-gray-400 border-b border-gray-800">
           <tr>
             <th className="py-2">Broker</th>
-            <th>Login</th>
-            <th>Pos</th>
+            <th>Master</th>
+            <th>MT5 pos</th>
+            <th>Dest pos</th>
             <th>Side</th>
-            <th>Qty</th>
-            <th>Status</th>
-            <th>Risk</th>
+            <th>Lots</th>
+            <th>Fill</th>
+            <th>State</th>
           </tr>
         </thead>
         <tbody>
-          {intents.map((c: any) => (
-            <tr key={`${c.broker}-${c.login}-${c.positionId}`} className="border-b border-gray-800 text-gray-200">
-              <td className="py-2">{c.broker}</td>
-              <td>{c.login}</td>
-              <td>{c.positionId}</td>
-              <td>{c.direction}</td>
-              <td>{Number(c.quantity).toFixed(2)}</td>
-              <td>{c.status}</td>
-              <td>{c.riskReason ?? '—'}</td>
+          {fills.slice().reverse().map((f: any) => (
+            <tr key={`${f.Broker}-${f.SourceLogin}-${f.SourcePositionId}`} className="border-b border-gray-800 text-gray-200">
+              <td className="py-2">{f.Broker}</td>
+              <td>{f.SourceLogin}</td>
+              <td>{f.SourcePositionId}</td>
+              <td>{f.DestPositionId}</td>
+              <td>{f.IsLong ? 'Buy' : 'Sell'}</td>
+              <td>{Number(f.Lots).toFixed(2)}</td>
+              <td>{f.DestFillPrice ?? '—'}</td>
+              <td className={f.DestClosed ? 'text-emerald-400' : 'text-amber-300'}>{f.DestClosed ? 'CLOSED' : 'OPEN'}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {intents.length === 0 && (
-        <p className="text-gray-500 text-sm">No copy intents yet. Demo dest auto-sends after a trader is ADMITTED and has an open XAUUSD position. Dest closes when that MT5 position closes.</p>
+      {fills.length === 0 && (
+        <p className="text-gray-500 text-sm">No dest ledger yet. FastCopyWatch writes this table when it sends to demo cTrader.</p>
+      )}
+      {intents.length > 0 && (
+        <p className="text-gray-600 text-xs">Paper SHADOW intents from the old API hop: {intents.length} (not dest fills).</p>
       )}
     </div>
   );
